@@ -1,16 +1,9 @@
-const express = require("express")
-
-const app = express()
-const PORT = 4000
+require("dotenv").config();
+const app = require("./app");
 
 
-app.get("/", (req, res) => {
-    return res.json({ "Message": "Hello" })
-})
-app.get("/home", (req, res) => {
-    return res.send("Home Route")
-})
+const { PORT } = process.env;
 
 app.listen(PORT, () => {
-    console.log("Server is Up and Running");
+    console.log(`Server is Up and Running at ${PORT}`);
 })
