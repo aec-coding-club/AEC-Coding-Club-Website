@@ -1,32 +1,59 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
-
+const jwt = require("jsonwebtoken");
+const { SECRET } = process.env;
 const Counter = require("../models/Counter");
+
+//? MARK : Register Route
 
 exports.register = async (req, res) => {
     try {
-
         //* Getting Data from the BODY
-        const { firstName, lastName, email, password, contact_no, batch, branch, confirmPassword, } = req.body;
+        const {
+            firstName,
+            lastName,
+            email,
+            password,
+            contact_no,
+            batch,
+            branch,
+            confirmPassword,
+        } = req.body;
 
         // * Checking if any Data is Missing from the BODY
-        if (!firstName || !lastName || !email || !password || !contact_no || !batch || !branch || !confirmPassword) {
-            res.status(400).json({ error: "All Fields Are Required" });
+        if (
+            !firstName ||
+            !lastName ||
+            !email ||
+            !password ||
+            !contact_no ||
+            !batch ||
+            !branch ||
+            !confirmPassword
+        ) {
+            res.status(400).json({
+                success: false,
+                error: "All Fields Are Required",
+            });
         }
 
         // * Checking if Password and Confirm Password are Not Same
         if (password != confirmPassword) {
-            return res
-                .status(403)
-                .json({ error: "Password and Confirm Password Does not Match" });
+            return res.status(403).json({
+                success: false,
+                error: "Password and Confirm Password Does not Match",
+            });
         }
 
         const existingUserE = await User.findOne({ email: email });
         const existingUserP = await User.findOne({ contact_no: contact_no });
-        
+
         // ! Checking if the user already exists
         if (existingUserP || existingUserE) {
-            return res.status(401).json({ error: "User Already Exists" });
+            return res.status(401).json({
+                success: false,
+                error: "User Already Exists",
+            });
         }
         const myEncryPassword = await bcrypt.hash(password, 10);
 
@@ -88,6 +115,55 @@ exports.register = async (req, res) => {
         console.log(user);
         res.send(user);
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).json({
+            success: false,
+            error: error.message,
+        });
+    }
+};
+
+//? MARK : Login Route
+
+exports.login = async (req, res) => {
+    try {
+        // ! MARK : ID is EMAIL or UID generated
+        const { id, password } = req.body;
+        if (!id || !password) {
+            res.status(400).json({
+                success: false,
+                error: "Field is Missing",
+            });
+        }
+        const user = await User.findOne({ id });
+        if (user && (await bcrypt.compare(password, user.password))) {
+            const token = jwt.sign(
+                {
+                    user_id: user.uid,
+                    email : user.email,
+                },
+                SECRET,
+                {
+                    expiresIn: "24h",
+                }
+            );
+            user.token = token;
+            const options = {
+                expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+                httpOnly: true,
+                token,
+                user,
+            }
+            res.status(200).cookie("token", token, options).json({
+                success: true,
+                token,
+                user,
+            });
+        }
+        res.status(400).json({
+            success: false,
+            error: "ID or Password is incorrect"
+        });
+    } catch (error) {
+        console.log(error.message);
     }
 };

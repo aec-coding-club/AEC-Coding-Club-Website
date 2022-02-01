@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { register } = require("../controllers/auth");
+const { login } = require("../controllers/auth");
 const { check, validationResult } = require("express-validator");
 
 router.post(
@@ -14,6 +15,11 @@ router.post(
     ],
     register
 );
+router.post("/login", [
+    check("email", "E-Mail is Required").isEmail(),
+], login
+);
+
 router.get("/dummy", function (req, res) {
     res.status(200).json({message : "Hi Abir How Are You"});
 });

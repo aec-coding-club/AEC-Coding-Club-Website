@@ -14,14 +14,14 @@ const App = () => {
         <Navbar />
         <Container className="mx-3 my-3 text-center">
           <Switch>
-            <Route exact path="/">
-              <HomePage/>
-            </Route>
             <Route path="/newevent">
               <EventRegister />
             </Route>
             <Route path="/newuser">
               <UserRegister />
+            </Route>
+            <Route exact path="/">
+              <HomePage/>
             </Route>
           </Switch>
         </Container>
