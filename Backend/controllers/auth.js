@@ -1,5 +1,7 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+
+
 exports.register = async (req, res) => {
     const { firstName, lastName, email, password, contact_no, batch, branch } = req.body;
     if (!firstName || !lastName || !email || !password || !contact_no || !batch || !branch) {
@@ -11,12 +13,21 @@ exports.register = async (req, res) => {
         res.status(401).json({ error: "User Already Exists" });
     }
     const myEncryPassword = await bcrypt.hash(password, 10);
-    // count = mongoose.count()
-    // console.log(count);
 
+    const givecount = (num) => {
+        console.log(`LOGGING NUM ${num}`);
+        return num
+    }
+
+    User.count({}, function (err, count) {
+        console.log("Number of users:", count);
+        givecount(count)
+    })
     const uid = `AECCC/${branch}/${batch}/`
+    // console.log(User.count());
+
     console.log(uid);
-    console.log(User.count());
+
     const user = await User.create({
         firstName,
         lastName,
