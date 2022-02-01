@@ -8,7 +8,6 @@ import {
   NavItem,
   Button,
 } from "reactstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Navbarcustom = () => {
   return (

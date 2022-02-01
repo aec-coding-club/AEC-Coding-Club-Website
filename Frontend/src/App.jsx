@@ -12,19 +12,17 @@ const App = () => {
       <Fragment>
         <Navbar />
         <Container className="mx-3 my-3 text-center">
-        <Switch>
-          <Route exact path="/">
-            <h1 className="display-4 text-center">Home Page</h1>
-          </Route>
-          <Route path="/newevent">
-            <EventRegister />
-          </Route>
-          <Route path="/newuser">
-            <UserRegister />
-          </Route>
-        </Switch>
-
-
+          <Switch>
+            <Route exact path="/">
+              <h1 className="display-4 text-center">Home Page</h1>
+            </Route>
+            <Route path="/newevent">
+              <EventRegister />
+            </Route>
+            <Route path="/newuser">
+              <UserRegister />
+            </Route>
+          </Switch>
         </Container>
       </Fragment>
     </Router>
