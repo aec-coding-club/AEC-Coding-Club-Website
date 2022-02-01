@@ -15,7 +15,7 @@ router.post(
     register
 );
 router.get("/dummy", function (req, res) {
-    res.send("<h1>Home Page dummy Route</h1>");
+    res.status(200).json({message : "Hi Abir How Are You"});
 });
 
 module.exports = router;
