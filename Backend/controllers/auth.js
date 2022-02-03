@@ -127,19 +127,19 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         // ! MARK : ID is EMAIL or UID generated
-        const { id, password } = req.body;
-        if (!id || !password) {
+        const { uid, password } = req.body;
+        if (!uid || !password) {
             res.status(400).json({
                 success: false,
                 error: "Field is Missing",
             });
         }
-        const user = await User.findOne({ id });
+        const user = await User.findOne({ uid });
         if (user && (await bcrypt.compare(password, user.password))) {
             const token = jwt.sign(
                 {
                     user_id: user.uid,
-                    email : user.email,
+                    email: user.email,
                 },
                 SECRET,
                 {
@@ -167,3 +167,5 @@ exports.login = async (req, res) => {
         console.log(error.message);
     }
 };
+
+
