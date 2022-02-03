@@ -42,6 +42,7 @@ const userSchema = new mongoose.Schema({
     },
     profilePicture: {
         type: String,
+        default: 'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg'
     },
     event: {
         type: Array,
