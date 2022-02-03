@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 const { check, validationResult } = require("express-validator");
 const { register, login, verifyOTP } = require("../controllers/auth");
-const { isAuthenticated } = require("../middlewares/verify");
+const { isAuthenticated, isActivated } = require("../middlewares/verify");
 const { dashboard } = require("../controllers/user");
 
 router.post(
