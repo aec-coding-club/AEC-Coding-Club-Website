@@ -54,8 +54,9 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     count: { type: Number },
+    active: {type: Boolean},
     otpstatus: {
-        otp: { type: Number },
+        otp: { type: String },
         wrongTry: { type: Number },
         timeStamp: { type: Number },
         otpRequest: { type: Number },

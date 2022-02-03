@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { register, login, verifyOTP } = require("../controllers/auth");
-const { verifyToken } = require('./verify');
+const { isAuthenticated } = require("../middlewares/verify");
 const { check, validationResult } = require("express-validator");
 
 router.post(
@@ -20,14 +20,14 @@ router.post("/login", [
 ], login
 );
 
-router.post("/verify", verifyToken, verifyOTP )
+router.post("/verify", isAuthenticated, verifyOTP )
 
 router.get("/dummy", function (req, res) {
     res.status(200).json({ message: "It's okay, but you're anonymous" });
 });
 
-router.get("/whoami", verifyToken, function (req, res) {
-    res.status(200).json({ message: "Hi Abir How Are You" });
+router.get("/whoami", isAuthenticated, function (req, res) {
+    res.status(200).json({ message: `Hi ${req.user.email} How Are You` });
 });
 
 module.exports = router;

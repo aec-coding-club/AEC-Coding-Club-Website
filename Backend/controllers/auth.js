@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { SECRET } = process.env;
 const User = require("../models/User");
-const otpSender = require("./otp.js")
+const otpSender = require("./mailsender.js")
 const Counter = require("../models/Counter");
 
 //? MARK : Register Route
@@ -107,8 +107,11 @@ exports.register = async (req, res) => {
         // ! Sending OTP to user's email
 
         let otp = (Math.round(Math.random() * 10000))
-        let msg = `<h1>Your OTP is ${otp}</h1>`
-        otpSender(email, msg);
+        let msg = `${otp}`
+        otpSender(email, msg)
+            .then((msg) => {
+
+            });
 
         // ! Creating User in DB
         const user = await User.create({
@@ -124,7 +127,31 @@ exports.register = async (req, res) => {
             otpstatus: { otp: otp, wrongTry: 0, timeStamp: Date.now(), otpRequest: 1, initialTimeStamp: Date.now() }
         });
         console.log(user);
-        res.send(user);
+
+        const token = jwt.sign(
+            {
+                user_id: user.uid,
+                email: user.email,
+            },
+            SECRET,
+            {
+                expiresIn: "24h",
+            }
+        );
+        user.token = token;
+        const options = {
+            expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+            httpOnly: true,
+            token,
+            user,
+        }
+        res.status(200).cookie("token", token, options).json({
+            success: true,
+            token,
+            user,
+        });
+
+
     } catch (error) {
         res.status(400).json({
             success: false,
@@ -182,30 +209,28 @@ exports.login = async (req, res) => {
 exports.verifyOTP = async (req, res) => {
 
     const otp = req.body.otp
-    const uid = req.authData.user_id
+    const uid = req.user.user_id
     if (otp) {
-        //    User.findOne({'uid':uid}).limit(1).next((err, doc)=>{
-        //        console.log(doc);
-        //    })
 
         User.findOne({ 'uid': uid }, function (err, docs) {
             if (docs.otpstatus.wrongTry > 5) {
-                return res.status(401).send({ message: "maximum attempt exeeded" })
+                return res.status(401).send({ message: "maximum attempt exeeded new otp is sent" })
             } else if (docs.otpstatus.otp != otp) {
                 console.log(docs.otpstatus.wrongTry);
                 console.log("uid: " + uid);
 
                 User.updateOne(
                     { uid: uid },
-                     { $set: { "otpstatus.wrongTry": parseInt(docs.otpstatus.wrongTry) + 1 }  }
+                    { $set: { 'otpstatus.wrongTry': docs.otpstatus.wrongTry + 1  } }
                 )
-
-                // User.findOneAndUpdate({ uid: uid }, { $set: { "otpstatus.wrongTry": parseInt(docs.otpstatus.wrongTry) + 1 }  });
-                // console.log(docs.otpstatus);
+                    .then((msg) => { console.log(msg); })
+                    .catch((err) => { console.log(err); })
                 return res.status(401).send({ message: "wrong otp" })
             } else {
                 User.updateOne({ uid: uid },
-                    { $set: { active: true, otpstatus: null } });
+                    { $set: { active: true, otpstatus: null } })
+                    .then((msg) => { console.log(msg) })
+                    .catch((err) => { console.log(err) });
                 return res.status(200).send({ message: "account activated" })
             }
         });
