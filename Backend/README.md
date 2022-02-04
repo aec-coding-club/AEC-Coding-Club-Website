@@ -6,27 +6,27 @@ api URL routes (/routes/auth.js) ->
  - ### /api/v1/register     (post)
    - **body:**   
     {  
-    "firstName":"qwerty",   
-    "lastName":"dorvok",  
-    "email":"souvikmandal210@gmail.com",  
-    "contact_no": 1224458890,  
-    "branch" : "IT",  
-    "batch":2025,  
-    "password":"abcd123",  
-    "confirmPassword":"abcd123"   
+    "firstName": {string},   
+    "lastName": {string},  
+    "email": {string},  
+    "contact_no": {string},  
+    "branch" : {string},  
+    "batch": {number},  
+    "password": {string},  
+    "confirmPassword": {string}   
     }  
 
  - ### /api/v1/login        (post)
    - **body:**   
      {   
-      "uid":"\<user id>",	  
-      "password": "\<password>"  
+      "uid": {string},	  
+      "password": {string}  
        }
 
  - ### /api/v1/active-account       (post)
    - **body:**  
     {   
-     "otp":"\<otp>"   
+     "otp": {string}  
      }
 
  - ### /api/v1/dummy        (get)
