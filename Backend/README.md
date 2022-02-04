@@ -2,17 +2,45 @@
 
 
 api URL routes (/routes/auth.js) ->
-```
- - /api/v1/register     (post)
- - /api/v1/login        (post)
- - /api/v1/verify       (post)
- - /api/v1/dummy        (get)
- - /api/v1/whoami       (get)
- - /api/v1/dashboard    (get)
-```
 
- first time?
-  add .env file and write:
+ - ### /api/v1/register     (post)
+   - **body:**   
+    {  
+    "firstName":"qwerty",   
+    "lastName":"dorvok",  
+    "email":"souvikmandal210@gmail.com",  
+    "contact_no": 1224458890,  
+    "branch" : "IT",  
+    "batch":2025,  
+    "password":"abcd123",  
+    "confirmPassword":"abcd123"   
+    }  
+
+ - ### /api/v1/login        (post)
+   - **body:**   
+     {   
+      "uid":"\<user id>",	  
+      "password": "\<password>"  
+       }
+
+ - ### /api/v1/active-account       (post)
+   - **body:**  
+    {   
+     "otp":"\<otp>"   
+     }
+
+ - ### /api/v1/dummy        (get)
+ - ### /api/v1/whoami       (get)
+ - ### /api/v1/dashboard    (get)
+
+
+------------------------------
+
+<br>
+<br>
+
+## first time?
+  **add .env file and write:**
 
   PORT = 4000
 MONGODB_URL = mongodb://localhost:27017/AECCC <br>
