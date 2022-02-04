@@ -94,11 +94,11 @@ exports.register = async (req, res) => {
         if (parseInt(countupdate.seq / 10) === 0) {
             uid = `AECCC/${branch}/${batch}/000${countupdate.seq}`;
         } else if (parseInt(countupdate.seq / 100) === 0) {
-            uid = `AECCC/${branch}/${batch}/00${countupdate.seq} `;
+            uid = `AECCC/${branch}/${batch}/00${countupdate.seq}`;
         } else if (parseInt(countupdate.seq / 1000) === 0) {
-            uid = `AECCC/${branch} /${batch}/0${countupdate.seq} `;
+            uid = `AECCC/${branch} /${batch}/0${countupdate.seq}`;
         } else {
-            uid = `AECCC/${branch}/${batch}/${countupdate.seq} `;
+            uid = `AECCC/${branch}/${batch}/${countupdate.seq}`;
         }
         console.log(uid);
         // console.log(User.count());
@@ -258,7 +258,7 @@ exports.verifyOTP = async (req, res) => {
                         res.send({ msg: "otp has been expired, new OTP has sent" })
 
                     } else {
-                        return res.status(401).send({ message: "maximum attempt exeeded new otp is sent" })
+                        return res.status(401).send({ message: "maximum attempt exeeded" })
                     }
 
                 } else if (docs.otpstatus.otp != otp) {
@@ -280,7 +280,7 @@ exports.verifyOTP = async (req, res) => {
                     return res.status(200).send({ message: "account activated" })
                 }
             } else {
-                res.redierect("/dashboard");
+                res.redirect("/api/v1/dashboard");
             }
 
         });
