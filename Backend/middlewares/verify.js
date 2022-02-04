@@ -31,13 +31,17 @@ exports.isAuthenticated = (req, res, next) => {
     }
 };
 
-exports.isActivated = (req, res, next) => {
+exports.isActivated = async (req, res, next) => {
     try {
-        let user = User.findOne(req.user.uid);
-        if (user.status == false) {
+        uid = req.user.user_id
+        let user = await User.findOne({ 'uid': uid });
+        console.log(user);
+        // console.log(req.user);
+        if (user.active == false) {
             return res
                 .status(401)
                 .json({ success: "false", message: "E-Mail is Not Verified" });
+            ///should be res.redirect()
         } else {
             next();
         }

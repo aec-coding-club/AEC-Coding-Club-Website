@@ -24,12 +24,12 @@ router.post("/login", [check("email", "E-Mail is Required").isEmail()], login);
 router.post("/verify", isAuthenticated, verifyOTP )
 
 router.get("/dummy", function (req, res) {
-    res.status(200).json({ message: "It's okay, but you're anonymous" });
+    res.status(200).json({ message: "Hello world!" });
 });
 
 router.get("/whoami", isAuthenticated, function (req, res) {
     res.status(200).json({ message: `Hi ${req.user.email} How Are You` });
 });
-router.get("/dashboard", isAuthenticated, dashboard);
+router.get("/dashboard", isAuthenticated, isActivated, dashboard);
 
 module.exports = router;
