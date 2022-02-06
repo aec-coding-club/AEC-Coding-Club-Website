@@ -15,5 +15,11 @@ app.use(cookieparser());
 // ! AUTHENTICATION ROUTE
 app.use("/api/v1", auth);
 app.use("/api/v1", events);
-
+app.use("/*", (req, res) => {
+  res
+    .status(404)
+    .send(
+      `<br><br><h1 style="text-align: center;">404 || content not found</h1>`
+    );
+});
 module.exports = app;

@@ -32,11 +32,5 @@ router.get("/whoami", isAuthenticated, function (req, res) {
 });
 router.get("/dashboard", isAuthenticated, isActivated, dashboard);
 
-app.use("/*", (req, res) => {
-  res
-    .status(404)
-    .send(
-      `<br><br><h1 style="text-align: center;">404 || content not found</h1>`
-    );
-});
+
 module.exports = router;
