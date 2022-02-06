@@ -23,15 +23,10 @@ api URL routes (/routes/auth.js) ->
       "password": {string}  
        }
 
- - ### /api/v1/active-account       (post)
-   - **body:**  
-    {   
-     "otp": {string}  
-     }
-
- - ### /api/v1/dummy        (get)
- - ### /api/v1/whoami       (get)
- - ### /api/v1/dashboard    (get)
+ - ### /api/v1/verify/{string}   (get)
+ - ### /api/v1/dummy             (get)
+ - ### /api/v1/whoami            (get)
+ - ### /api/v1/dashboard         (get)
 
 
 ------------------------------
