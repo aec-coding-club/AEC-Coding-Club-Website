@@ -2,15 +2,15 @@ import React from 'react'
 
 import Navbar from '../Components/Navbar'
 
-const Home = () => {
+const Members = () => {
   return (
     <>
       <Navbar />
       <main>
-        <h1>Home</h1>
+        <h1>Members</h1>
       </main>
     </>
   )
 }
 
-export default Home
+export default Members

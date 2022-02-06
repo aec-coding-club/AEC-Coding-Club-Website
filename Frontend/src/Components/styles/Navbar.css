@@ -1,0 +1,128 @@
+nav {
+  width: 100%;
+  padding: 1.5rem 4rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--nav-body);
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  box-shadow: 2px 2px 5pxvar (--nav-drop-shadow);
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-image {
+  width: 4rem;
+  height: 4rem;
+}
+
+.logo-name {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.logo-motto {
+  font-size: 0.75rem;
+}
+
+/* Navbar Curve [FROM shapedivider.app]*/
+.custom-shape-divider-top-1644172493 {
+  position: absolute;
+  top: 99%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1644172493 svg {
+  position: relative;
+  display: block;
+  width: calc(110% + 1.3px);
+  height: 50px;
+  -webkit-filter: drop-shadow(2px 2px 3px var(--nav-drop-shadow));
+  filter: drop-shadow(2px 2px 3px var(--nav-drop-shadow));
+}
+
+.custom-shape-divider-top-1644172493 .shape-fill {
+  fill: var(--nav-body);
+}
+
+.nav-link-wrapper,
+.nav-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  transition: all 300ms ease;
+}
+.active {
+  color: var(--btn-bg);
+}
+
+.nav-btn-wrapper {
+  gap: 1.5rem;
+}
+
+.menu-toggle-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-toggle-icon svg {
+  font-size: 1.5rem;
+  fill: var(--btn-bg);
+}
+
+@media (max-width: 1100px) {
+  nav {
+    padding: 1.5rem 3rem;
+  }
+  .nav-link-wrapper,
+  .nav-btn-wrapper {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  nav {
+    padding: 1.5rem 2rem;
+  }
+  .nav-link-wrapper,
+  .nav-btn-wrapper {
+    display: none;
+  }
+  .menu-toggle-icon {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    padding: 1.5rem 1rem;
+  }
+  .logo-image {
+    width: 3rem;
+    height: 3rem;
+  }
+  .logo-name {
+    font-size: 0.85rem;
+  }
+  .logo-motto {
+    font-size: 0.65rem;
+  }
+}

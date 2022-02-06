@@ -1,8 +1,17 @@
 // List all Events
-import React from "react";
+import React from 'react'
+
+import Navbar from '../Components/Navbar'
 
 const Events = () => {
-  return <div></div>;
-};
+  return (
+    <>
+      <Navbar />
+      <main>
+        <h1>Events</h1>
+      </main>
+    </>
+  )
+}
 
-export default Events;
+export default Events

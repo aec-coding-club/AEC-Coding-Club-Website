@@ -1,16 +1,25 @@
-import React from "react";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
-import MemberCard from "./Components/MemberCard";
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import Home from './Pages/Home'
+import Events from './Pages/Events'
+import Members from './Pages/Members'
+
+import './App.css'
 
 const App = () => {
   return (
     <>
-      <Navbar />
-      <MemberCard />
-      <Footer />
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/events' element={<Events />} />
+          <Route exact path='/members' element={<Members />} />
+          {/* @TODO: add a 404 page */}
+        </Routes>
+      </Router>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
