@@ -1,11 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const EventRegister = () => {
-  return (
-    <>
-        <h1 className="display-3">Event Registration Form</h1>
-    </>
-  );
+export const EventRegister = () => {
+  return <div></div>;
 };
-
-export default EventRegister;
