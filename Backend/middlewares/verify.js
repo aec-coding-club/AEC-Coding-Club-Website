@@ -13,7 +13,7 @@ exports.isAuthenticated = (req, res, next) => {
         }
         try {
             const info = jwt.verify(token, process.env.SECRET);
-            // console.log(info);
+            console.log(info);
             req.user = info;
         } catch (error) {
             return res.status(401).json({
