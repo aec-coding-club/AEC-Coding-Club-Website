@@ -54,7 +54,15 @@ const userSchema = new mongoose.Schema({
     token: {
         type: String,
     },
-    count: { type: Number }
+    count: { type: Number },
+    active: {type: Boolean},
+    otpstatus: {
+        otp: { type: String },
+        wrongTry: { type: Number },
+        timeStamp: { type: Number },
+        otpRequest: { type: Number },
+        initialTimeStamp: { type: Number },
+    }
 });
 
 module.exports = mongoose.model("user", userSchema);

@@ -1,10 +1,9 @@
 var express = require("express");
 var router = express.Router();
-const { register } = require("../controllers/auth");
-const { login } = require("../controllers/auth");
-const { dashboard } = require("../controllers/user");
 const { check, validationResult } = require("express-validator");
-const { isAuthenticated } = require("../middlewares/auth");
+const { register, login, verifyOTP } = require("../controllers/auth");
+const { isAuthenticated, isActivated } = require("../middlewares/verify");
+const { dashboard } = require("../controllers/user");
 
 router.post(
     "/register",
@@ -22,9 +21,15 @@ router.post(
 );
 router.post("/login", [check("email", "E-Mail is Required").isEmail()], login);
 
+router.post("/verify", isAuthenticated, verifyOTP )
+
 router.get("/dummy", function (req, res) {
-    res.status(200).json({ message: "Hi Abir How Are You" });
+    res.status(200).json({ message: "Hello world!" });
 });
-router.get("/dashboard", isAuthenticated, dashboard);
+
+router.get("/whoami", isAuthenticated, function (req, res) {
+    res.status(200).json({ message: `Hi ${req.user.email} How Are You` });
+});
+router.get("/dashboard", isAuthenticated, isActivated, dashboard);
 
 module.exports = router;
