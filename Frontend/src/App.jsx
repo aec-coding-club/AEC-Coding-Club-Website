@@ -1,33 +1,25 @@
-import React, { Fragment } from "react";
-import { Container } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import EventRegister from "./Pages/EventRegister";
-import UserRegister from "./Pages/UserRegister";
-import HomePage from "./Pages/HomePage";
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import Home from './Pages/Home'
+import Events from './Pages/Events'
+import Members from './Pages/Members'
+
+import './App.css'
 
 const App = () => {
   return (
-    <Router>
-      <Fragment>
-        <Navbar />
-        <Container className="mx-3 my-3 text-center">
-          <Switch>
-            <Route path="/newevent">
-              <EventRegister />
-            </Route>
-            <Route path="/newuser">
-              <UserRegister />
-            </Route>
-            <Route exact path="/">
-              <HomePage/>
-            </Route>
-          </Switch>
-        </Container>
-      </Fragment>
-    </Router>
-  );
-};
+    <>
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/events' element={<Events />} />
+          <Route exact path='/members' element={<Members />} />
+          {/* @TODO: add a 404 page */}
+        </Routes>
+      </Router>
+    </>
+  )
+}
 
-export default App;
+export default App
