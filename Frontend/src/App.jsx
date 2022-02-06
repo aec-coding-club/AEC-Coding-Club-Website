@@ -1,32 +1,15 @@
-import React, { Fragment } from "react";
-import { Container } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
 import Navbar from "./Components/Navbar";
-import EventRegister from "./Pages/EventRegister";
-import UserRegister from "./Pages/UserRegister";
-import HomePage from "./Pages/HomePage";
+import Footer from "./Components/Footer";
+import MemberCard from "./Components/MemberCard";
 
 const App = () => {
   return (
-    <Router>
-      <Fragment>
-        <Navbar />
-        <Container className="mx-3 my-3 text-center">
-          <Switch>
-            <Route path="/newevent">
-              <EventRegister />
-            </Route>
-            <Route path="/newuser">
-              <UserRegister />
-            </Route>
-            <Route exact path="/">
-              <HomePage/>
-            </Route>
-          </Switch>
-        </Container>
-      </Fragment>
-    </Router>
+    <>
+      <Navbar />
+      <MemberCard />
+      <Footer />
+    </>
   );
 };
 
