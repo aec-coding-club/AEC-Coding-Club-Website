@@ -1,0 +1,21 @@
+.member-filter {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.member-filter .btn {
+  border-radius: 0.5rem;
+}
+
+.member-filter .btn.selected {
+  color: var(--btn-bg);
+  background-color: #fff;
+}
+
+.member-filter .btn:hover {
+  transform: scale(1.05);
+}

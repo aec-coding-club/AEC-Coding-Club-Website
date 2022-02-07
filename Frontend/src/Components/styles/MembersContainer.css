@@ -1,0 +1,10 @@
+.members-container {
+  position: relative;
+  width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem 0rem;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
