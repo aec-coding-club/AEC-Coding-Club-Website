@@ -39,8 +39,8 @@ const Signup = () => {
 
     if (dataposted.data.success) {
       console.log("User Created Successfully");
-      navigate("/events")
-
+      navigate("/verify")
+      
     } else {
       console.log("User Not Created Successfully");
     }
