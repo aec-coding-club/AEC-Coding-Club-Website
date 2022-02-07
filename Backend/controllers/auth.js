@@ -107,7 +107,7 @@ exports.register = async (req, res) => {
 
     // ! Sending OTP to user's email
 
-    let otp = Math.floor(10000 + (Math.random()-1) * 100000);
+    let otp = Math.floor(10000 + (Math.random() - 1) * 100000);
     let msg = `${otp}`;
     otpSender(email, msg);
 
@@ -200,11 +200,12 @@ exports.login = async (req, res) => {
         token,
         user,
       });
+    } else {
+      return res.json({
+        success: false,
+        error: "ID or Password is incorrect",
+      });
     }
-    return res.json({
-      success: false,
-      error: "ID or Password is incorrect",
-    });
   } catch (error) {
     console.log(error.message);
   }
@@ -218,7 +219,7 @@ exports.verifyOTP = async (req, res) => {
     User.findOne({ uid: uid }, function (err, docs) {
       if (docs.otpstatus && docs.active == false) {
         if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
-          let otp = Math.floor(10000 + (Math.random()-1) * 100000);
+          let otp = Math.floor(10000 + (Math.random() - 1) * 100000);
           let msg = `${otp}`;
           otpSender(email, msg);
 
@@ -244,7 +245,7 @@ exports.verifyOTP = async (req, res) => {
           res.send({ msg: "otp has been expired, new OTP has sent" });
         } else if (docs.otpstatus.wrongTry > 5) {
           if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
-            let otp = Math.floor(10000 + (Math.random()-1) * 100000);
+            let otp = Math.floor(10000 + (Math.random() - 1) * 100000);
             let msg = `${otp}`;
             otpSender(email, msg);
 
@@ -268,7 +269,7 @@ exports.verifyOTP = async (req, res) => {
               });
             res.send({ msg: "otp has been expired, new OTP has sent" });
           } else if (docs.otpstatus.otpRequest < 5) {
-            let otp = Math.floor(10000 + (Math.random()-1) * 100000);
+            let otp = Math.floor(10000 + (Math.random() - 1) * 100000);
             let msg = `${otp}`;
             otpSender(email, msg);
 
