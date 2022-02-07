@@ -6,6 +6,7 @@ import Members from "./Pages/Members";
 import Register from "./Pages/Register";
 import Login from "./Pages/login";
 import Otpverify from "./Pages/OTPVerify";
+import Dashboard from "./Pages/Dashboard";
 import ErrorPage from "./Pages/ErrorPage"
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/verify" element={<Otpverify />} />
+          <Route exact path="/dashboard" element={() => <Dashboard auth={true} />} />
           <Route exact path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

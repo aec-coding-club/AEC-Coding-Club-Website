@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Axios from "axios";
 import { Api } from "../backend";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 const Signup = () => {
   const [registerdata, setRegisterdata] = useState({
@@ -23,7 +24,7 @@ const Signup = () => {
   async function submit(e) {
     e.preventDefault();
     console.log("Data Submitted");
-    
+
     const dataposted = await Axios.post(`${Api}register`, {
       firstName: registerdata.firstName,
       lastName: registerdata.lastName,
@@ -39,8 +40,8 @@ const Signup = () => {
 
     if (dataposted.data.success) {
       console.log("User Created Successfully");
-      navigate("/verify")
-      
+      Cookies.set('token', dataposted.data.token)
+      navigate("/verify");
     } else {
       console.log("User Not Created Successfully");
     }
