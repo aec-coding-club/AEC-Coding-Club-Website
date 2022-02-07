@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
       !branch ||
       !confirmPassword
     ) {
-      res.status(400).json({
+      return res.json({
         success: false,
         error: "All Fields Are Required",
       });
@@ -42,7 +42,7 @@ exports.register = async (req, res) => {
 
     // * Checking if Password and Confirm Password are Not Same
     if (password != confirmPassword) {
-      return res.status(403).json({
+      return res.json({
         success: false,
         error: "Password and Confirm Password Does not Match",
       });
@@ -53,7 +53,7 @@ exports.register = async (req, res) => {
 
     // ! Checking if the user already exists
     if (existingUserP || existingUserE) {
-      return res.status(401).json({
+      return res.json({
         success: false,
         error: "User Already Exists",
       });
@@ -151,13 +151,13 @@ exports.register = async (req, res) => {
       token,
       user,
     };
-    res.status(200).cookie("token", token, options).json({
+    return res.status(200).cookie("token", token, options).json({
       success: true,
       token,
       user,
     });
   } catch (error) {
-    res.status(400).json({
+    return res.json({
       success: false,
       error: error.message,
     });
@@ -171,7 +171,7 @@ exports.login = async (req, res) => {
     // ! MARK : ID is EMAIL or UID generated
     const { uid, password } = req.body;
     if (!uid || !password) {
-      res.status(400).json({
+      return res.json({
         success: false,
         error: "Field is Missing",
       });
@@ -195,16 +195,17 @@ exports.login = async (req, res) => {
         token,
         user,
       };
-      res.status(200).cookie("token", token, options).json({
+      return res.status(200).cookie("token", token, options).json({
         success: true,
         token,
         user,
       });
+    } else {
+      return res.json({
+        success: false,
+        error: "ID or Password is incorrect",
+      });
     }
-    res.status(400).json({
-      success: false,
-      error: "ID or Password is incorrect",
-    });
   } catch (error) {
     console.log(error.message);
   }
