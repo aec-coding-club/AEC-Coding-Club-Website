@@ -40,18 +40,6 @@
     "github": "https://github.com/"
   },
   {
-    "name": "SKD Sir",
-    "batch": 2024,
-    "role": 3,
-    "img": "../Assets/members/member.png"
-  },
-  {
-    "name": "BKM Sir",
-    "batch": 2024,
-    "role": 3,
-    "img": "../Assets/members/member.png"
-  },
-  {
     "name": "Jane Doe",
     "batch": 2024,
     "role": 1,
