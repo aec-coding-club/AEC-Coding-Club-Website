@@ -1,4 +1,4 @@
-# The AEC Coding Club Website
+# Wanna expose your location?
 
 Welcome to the code for AECCC's website.
 
