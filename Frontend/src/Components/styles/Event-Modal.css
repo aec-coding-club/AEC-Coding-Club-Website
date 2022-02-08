@@ -1,0 +1,63 @@
+.event-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+.event-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) scale(0);
+  width: 90%;
+  max-width: 600px;
+  min-height: 300px;
+  background-color: var(--nav-body);
+  z-index: 10;
+  position: relative;
+  color: #333;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: 200ms ease;
+}
+.modal-show {
+  transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+.close-btn svg {
+  font-size: 1.5rem;
+  fill: var(--btn-bg);
+}
+.modal-date {
+  font-size: 0.85rem;
+  color: rgb(83, 83, 83);
+  margin-bottom: 0.5rem;
+}
+.modal-text {
+  font-size: 0.85rem;
+  line-height: 1.15rem;
+  margin-block: 1rem;
+}
+.event-modal .btn-disabled {
+  background-color: gray;
+}
+.event-modal .btn-disabled:hover {
+  transform: unset;
+  box-shadow: unset;
+}
