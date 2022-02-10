@@ -4,7 +4,7 @@ const events = require("./routes/events");
 const app = express();
 const cookieparser = require("cookie-parser");
 require("dotenv").config();
-var cors = require('cors')
+var cors = require("cors");
 const connect = require("./config/database").connect(); //! DATABASE CONNECTION
 
 const PORT = process.env.PORT;
@@ -12,7 +12,11 @@ const PORT = process.env.PORT;
 // ! MIDDLEWARES
 app.use(express.json());
 app.use(cookieparser());
-app.use(cors())
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 // ! AUTHENTICATION ROUTE
 app.use("/api/v1", auth);
