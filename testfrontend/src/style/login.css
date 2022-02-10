@@ -1,0 +1,41 @@
+/* * {
+  background-color: black;
+} */
+.heading {
+  margin: auto;
+  width: 100vw;
+  margin-left: 65vw;
+}
+.heading h1 {
+  font-size: 40px;
+  color: rgb(77, 8, 240);
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.image {
+  height: 80vh;
+}
+.form {
+  height: 20vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.textfield {
+  height: 10vh;
+  color: rgb(51, 10, 233);
+  width: 28vw;
+  margin-top: 5vh;
+  padding: 1vh 2vw;
+
+}
+.btn-signin {
+  margin-top: 3vh;
+  height: 5vh;
+}
