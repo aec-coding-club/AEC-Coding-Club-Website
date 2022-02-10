@@ -24,7 +24,6 @@ const Signup = () => {
   async function submit(e) {
     e.preventDefault();
     console.log("Data Submitted");
-
     const dataposted = await Axios.post(`${Api}register`, {
       firstName: registerdata.firstName,
       lastName: registerdata.lastName,
@@ -40,8 +39,7 @@ const Signup = () => {
 
     if (dataposted.data.success) {
       console.log("User Created Successfully");
-      localStorage.setItem("token", dataposted.data.token);
-      // Cookies.set('token', dataposted.data.token)
+      Cookies.set('token', dataposted.data.token)
       navigate("/verify");
     } else {
       console.log("User Not Created Successfully");

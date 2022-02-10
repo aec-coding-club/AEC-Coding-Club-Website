@@ -14,9 +14,13 @@ const Otpform = () => {
   async function submit(e) {
     e.preventDefault();
     console.log("Data Submitted");
-    
-    const dataposted = await Axios.get(`${Api}verify`, {
+
+    const data = {
       otp: registerdata.otp,
+    };
+    
+    const dataposted = await Axios.post(`${Api}verify`, data, {
+      withCredentials: true,
     });
 
     if (dataposted.data.success) {
