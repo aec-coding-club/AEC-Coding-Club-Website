@@ -2,7 +2,7 @@
   {
     "name": "Saikat Mukherjee",
     "batch": 2024,
-    "role": 0,
+    "role": 2,
     "img": "../Assets/members/member.png",
     "linkedin": "https://www.linkedin.com",
     "github": "https://github.com/"
@@ -10,7 +10,7 @@
   {
     "name": "Pranay Gupta",
     "batch": 2024,
-    "role": 1,
+    "role": 2,
     "img": "../Assets/members/member.png",
     "linkedin": "https://www.linkedin.com",
     "github": "https://github.com/"
@@ -18,13 +18,29 @@
   {
     "name": "Soumya Banerjee",
     "batch": 2024,
-    "role": 0,
+    "role": 2,
     "img": "../Assets/members/member.png",
     "linkedin": "https://www.linkedin.com",
     "github": "https://github.com/"
   },
   {
     "name": "Souvik Mandal",
+    "batch": 2024,
+    "role": 2,
+    "img": "../Assets/members/member.png",
+    "linkedin": "https://www.linkedin.com",
+    "github": "https://github.com/"
+  },
+  {
+    "name": "Abir Pal",
+    "batch": 2024,
+    "role": 2,
+    "img": "../Assets/members/member.png",
+    "linkedin": "https://www.linkedin.com",
+    "github": "https://github.com/"
+  },
+  {
+    "name": "Jane Doe",
     "batch": 2024,
     "role": 1,
     "img": "../Assets/members/member.png",
@@ -32,39 +48,7 @@
     "github": "https://github.com/"
   },
   {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
+    "name": "Peter Parker",
     "batch": 2024,
     "role": 1,
     "img": "../Assets/members/member.png",
@@ -72,57 +56,9 @@
     "github": "https://github.com/"
   },
   {
-    "name": "Souvik Mandal",
+    "name": "Mary Jane",
     "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 0,
+    "role": 1,
     "img": "../Assets/members/member.png",
     "linkedin": "https://www.linkedin.com",
     "github": "https://github.com/"

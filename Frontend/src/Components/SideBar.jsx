@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import { FaTimes } from 'react-icons/fa'
 
 import './styles/SideBar.css'
 
 function SideBar({ sidebarOpen, handleSideBar }) {
+  const navigate = useNavigate()
   const [sidebarClass, setSidebarClass] = useState('nav-sidebar')
 
   useEffect(() => {
@@ -19,13 +21,23 @@ function SideBar({ sidebarOpen, handleSideBar }) {
       </div>
       <div className='sidebar-main'>
         <div className='sidebar-btn-wrapper'>
-          <button className='btn sign-up'>Sign Up</button>
-          <button className='btn sign-in'>Sign In</button>
+          <button className='btn sign-up' onClick={() => navigate('/signup')}>
+            Sign Up
+          </button>
+          <button className='btn sign-in' onClick={() => navigate('/signin')}>
+            Sign In
+          </button>
         </div>
         <div className='sidebar-link-wrapper'>
-          <p>Home</p>
-          <p>Events</p>
-          <p>Members</p>
+          <NavLink to='/' className='nav-link'>
+            Home
+          </NavLink>
+          <NavLink to='/events' className='nav-link'>
+            Events
+          </NavLink>
+          <NavLink to='/members' className='nav-link'>
+            Members
+          </NavLink>
         </div>
       </div>
     </div>

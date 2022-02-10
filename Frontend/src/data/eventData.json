@@ -1,0 +1,62 @@
+[
+  {
+    "img": "../Assets/events/event-card-1.jpg",
+    "title": "Coding Quiz based on DSA",
+    "modal": {
+      "header": "Coding Quiz On DSA",
+      "date": "18 February 2021 - (5 : 00 p.m - 8 : 00 p.m)",
+      "text": "simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets",
+      "register": true
+    }
+  },
+  {
+    "img": "../Assets/events/event-card-1.jpg",
+    "title": "Coding Quiz based on DSA",
+    "modal": {
+      "header": "Coding Quiz On DSA",
+      "date": "18 February 2021 - (5 : 00 p.m - 8 : 00 p.m)",
+      "text": "simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets",
+      "register": false
+    }
+  },
+  {
+    "img": "../Assets/events/event-card-1.jpg",
+    "title": "Coding Quiz based on DSA",
+    "modal": {
+      "header": "Coding Quiz On DSA",
+      "date": "18 February 2021 - (5 : 00 p.m - 8 : 00 p.m)",
+      "text": "simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets",
+      "register": true
+    }
+  },
+  {
+    "img": "../Assets/events/event-card-1.jpg",
+    "title": "Coding Quiz based on DSA",
+    "modal": {
+      "header": "Coding Quiz On DSA",
+      "date": "18 February 2021 - (5 : 00 p.m - 8 : 00 p.m)",
+      "text": "simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets",
+      "register": false
+    }
+  },
+  {
+    "img": "../Assets/events/event-card-1.jpg",
+    "title": "Coding Quiz based on DSA",
+    "modal": {
+      "header": "Coding Quiz On DSA",
+      "date": "18 February 2021 - (5 : 00 p.m - 8 : 00 p.m)",
+      "text": "simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets",
+      "register": true
+    }
+  },
+  {
+    "img": "../Assets/events/event-card-1.jpg",
+    "title": "Coding Quiz based on DSA",
+    "modal": {
+      "header": "Coding Quiz On DSA",
+      "date": "18 February 2021 - (5 : 00 p.m - 8 : 00 p.m)",
+      "text": "simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets",
+      "register": false
+    }
+  }
+]
