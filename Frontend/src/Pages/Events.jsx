@@ -7,7 +7,7 @@ import EventsContainer from '../Components/EventsContainer'
 
 const Events = () => {
   // when user is logged in
-  const user = true
+  const user = false
 
   return (
     <>

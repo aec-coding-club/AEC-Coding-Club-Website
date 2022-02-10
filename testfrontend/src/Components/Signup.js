@@ -40,7 +40,8 @@ const Signup = () => {
 
     if (dataposted.data.success) {
       console.log("User Created Successfully");
-      Cookies.set('token', dataposted.data.token)
+      localStorage.setItem("token", dataposted.data.token);
+      // Cookies.set('token', dataposted.data.token)
       navigate("/verify");
     } else {
       console.log("User Not Created Successfully");
