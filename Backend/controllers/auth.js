@@ -147,7 +147,7 @@ exports.register = async (req, res) => {
     user.token = token;
     const options = {
       expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      httpOnly: true, 
+      httpOnly: true,
       token,
       user,
     };

@@ -15,16 +15,14 @@ const Signin = () => {
   async function submit(e) {
     e.preventDefault();
     console.log("Data Submitted");
-
-    const dataposted = await Axios.post(
-      `${Api}login`,
-      {
-        uid: registerdata.uid,
-        password: registerdata.password,
-        // withCredentials: true,
-      },
-      { withCredentials: true }
-    );
+    const data = {
+      uid: registerdata.uid,
+      password: registerdata.password,
+    };
+    const dataposted = await Axios.post(`${Api}login`, data, {
+      withCredentials: true,
+      crossorigin: true,
+    });
 
     if (dataposted.data.success) {
       console.log("Logged In Successfully");
