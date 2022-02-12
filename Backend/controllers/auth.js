@@ -210,7 +210,7 @@ exports.login = async (req, res) => {
     }
   } catch (error) {
     console.log(error.message);
-    return res.status(401).json({
+    return res.json({
       success: false,
       error: error.message,
     });
@@ -312,7 +312,7 @@ exports.verifyOTP = async (req, res) => {
               msg: "otp has been expired, new OTP has sent",
             });
           } else {
-            return res.status(401).send({
+            return res.send({
               success: false,
               token: true,
               message: "maximum attempt exeeded",
@@ -331,7 +331,6 @@ exports.verifyOTP = async (req, res) => {
               console.log(err);
             });
           return res
-            .status(401)
             .send({ success: false, token: true, message: "wrong otp" });
         } else {
           User.updateOne(

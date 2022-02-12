@@ -13,12 +13,13 @@ function Dashboard() {
     const parseddata = await axios.get(`${Api}dashboard`, {
       withCredentials: true,
     });
-    if(!parseddata.data.success){
+    if(!parseddata.data.token){
+      console.log("Navigating");
       navigate("/");
     }
     console.log(Api);
     console.log(parseddata);
-    setAuth(parseddata.data.success);
+    setAuth(parseddata.data.token);
   }
 
   useEffect(() => {

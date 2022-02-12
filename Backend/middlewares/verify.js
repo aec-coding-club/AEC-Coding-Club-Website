@@ -17,7 +17,7 @@ exports.isAuthenticated = (req, res, next) => {
       console.log(info);
       req.user = info;
     } catch (error) {
-      return res.status(401).json({
+      return res.json({
         success: false,
         token: false,
         message: "Invalid Token",
@@ -42,7 +42,7 @@ exports.isActivated = async (req, res, next) => {
     console.log(user);
     // console.log(req.user);
     if (user.active == false) {
-      return res.status(401).json({
+      return res.json({
         success: "false",
         token: true,
         message: "E-Mail is Not Verified",

@@ -37,19 +37,6 @@ const Otpform = () => {
     console.log(newdata);
   }
 
-  async function fetchdata() {
-    const parseddata = await Axios.post(`${Api}verify`, {
-      withCredentials: true,
-    })
-    if(!parseddata.data.token){
-      navigate("/");
-    }
-    console.log("Useeffet :- ", parseddata);
-  }
-
-  useEffect(() => {
-    fetchdata();
-  }, []);
 
   return (
     <>
