@@ -7,7 +7,7 @@ import EventsContainer from "../Components/EventsContainer";
 
 const Events = () => {
   // when user is logged in
-  const user = true;
+  const user = false;
 
   return (
     <>
@@ -21,7 +21,7 @@ const Events = () => {
             <div className="events-header-right">
               <img
                 src="../Assets/events/events-header.jpg"
-                alt="events-image"
+                alt="events"
                 className="events-header-img"
               />
             </div>

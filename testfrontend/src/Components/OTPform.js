@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { Api } from "../backend";
 import { useNavigate } from "react-router-dom";
@@ -14,17 +14,18 @@ const Otpform = () => {
   async function submit(e) {
     e.preventDefault();
     console.log("Data Submitted");
-    
-    const dataposted = await Axios.get(`${Api}verify`, {
+    const data = {
       otp: registerdata.otp,
+    };
+    const dataposted = await Axios.post(`${Api}verify`, data, {
+      withCredentials: true,
     });
-
     if (dataposted.data.success) {
       console.log("User Created Successfully");
-      navigate("/")
-      
+      navigate("/dashboard");
     } else {
       console.log("User Not Created Successfully");
+      navigate("/verify");
     }
     console.log(dataposted);
   }
@@ -35,6 +36,7 @@ const Otpform = () => {
     setRegisterdata(newdata);
     console.log(newdata);
   }
+
 
   return (
     <>
@@ -48,7 +50,6 @@ const Otpform = () => {
           placeholder="Enter your OTP"
           maxLength={6}
         />
-        
 
         <button>Verify OTP</button>
       </form>

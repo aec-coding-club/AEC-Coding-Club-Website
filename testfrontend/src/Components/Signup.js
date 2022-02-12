@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Axios from "axios";
 import { Api } from "../backend";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie'
+import authContext from "../Context/authContext";
 
 const Signup = () => {
+  const [data, setData] = useContext(authContext)
+  console.log(data);
   const [registerdata, setRegisterdata] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    contact_no: 0,
+    contact_no: 8145590321,
     branch: "",
-    batch: 0,
+    batch: 2024,
     password: "",
     confirmPassword: "",
     linkedin: "",
@@ -24,7 +27,6 @@ const Signup = () => {
   async function submit(e) {
     e.preventDefault();
     console.log("Data Submitted");
-
     const dataposted = await Axios.post(`${Api}register`, {
       firstName: registerdata.firstName,
       lastName: registerdata.lastName,
@@ -40,6 +42,7 @@ const Signup = () => {
 
     if (dataposted.data.success) {
       console.log("User Created Successfully");
+      localStorage.setItem('token', dataposted.data.token)
       Cookies.set('token', dataposted.data.token)
       navigate("/verify");
     } else {
@@ -49,6 +52,7 @@ const Signup = () => {
   }
 
   function handelChange(e) {
+    Cookies.set('foo', 'barbar')
     const newdata = { ...registerdata };
     newdata[e.target.id] = e.target.value;
     setRegisterdata(newdata);
