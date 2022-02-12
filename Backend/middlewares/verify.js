@@ -36,6 +36,7 @@ exports.isAuthenticated = (req, res, next) => {
 
 exports.isActivated = async (req, res, next) => {
   try {
+    console.log(`IS ACTIVATED MIDDLEWARE IS INVOKED`);
     uid = req.user.user_id;
     let user = await User.findOne({ uid: uid });
     console.log(user);
@@ -52,5 +53,6 @@ exports.isActivated = async (req, res, next) => {
     }
   } catch (error) {
     console.log(error);
+    return res.json({ success: false, token: true, error: error.message });
   }
 };

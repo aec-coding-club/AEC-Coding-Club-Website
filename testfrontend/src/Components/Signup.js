@@ -42,6 +42,7 @@ const Signup = () => {
 
     if (dataposted.data.success) {
       console.log("User Created Successfully");
+      localStorage.setItem('token', dataposted.data.token)
       Cookies.set('token', dataposted.data.token)
       navigate("/verify");
     } else {
