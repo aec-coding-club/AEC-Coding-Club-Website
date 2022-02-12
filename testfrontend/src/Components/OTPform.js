@@ -42,7 +42,7 @@ const Otpform = () => {
     const parseddata = await Axios.post(`${Api}verify`, {
       withCredentials: true,
     })
-    if(!parseddata.data.success){
+    if(!parseddata.data.token){
       navigate("/");
     }
     console.log("Useeffet :- ", parseddata);

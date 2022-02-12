@@ -7,7 +7,8 @@ exports.isAuthenticated = (req, res, next) => {
       req.cookies.token || req.header("Authorization").replace("Bearer ", "");
     if (!token || token == undefined) {
       return res.status(403).json({
-        success: "false",
+        success: false,
+        token: false,
         message: "Token is Missing Please Sign In to Continue",
       });
     }
@@ -17,7 +18,8 @@ exports.isAuthenticated = (req, res, next) => {
       req.user = info;
     } catch (error) {
       return res.status(401).json({
-        success: "false",
+        success: false,
+        token: false,
         message: "Invalid Token",
       });
     }
@@ -26,7 +28,8 @@ exports.isAuthenticated = (req, res, next) => {
     console.log(error.message);
     return res.json({
       success: false,
-      message: "Token is Missing Please Sign In to Continue",
+      token: false,
+      message: "Something Went Wrong token can't be Verified Please Try Again",
     });
   }
 };
@@ -38,9 +41,11 @@ exports.isActivated = async (req, res, next) => {
     console.log(user);
     // console.log(req.user);
     if (user.active == false) {
-      return res
-        .status(401)
-        .json({ success: "false", message: "E-Mail is Not Verified" });
+      return res.status(401).json({
+        success: "false",
+        token: true,
+        message: "E-Mail is Not Verified",
+      });
       ///should be res.redirect()
     } else {
       next();
