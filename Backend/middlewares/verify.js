@@ -3,7 +3,8 @@ const User = require("../models/User");
 
 exports.isAuthenticated = (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const token =
+      req.cookies.token || req.header("Authorization").replace("Bearer ", "");
     console.log(`TOKEN FETCHED! ${token} THROUGH ISAUTHENTICATED MIDDLEWARE`);
     if (!token || token === undefined) {
       return res.json({
