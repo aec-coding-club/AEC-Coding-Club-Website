@@ -247,7 +247,10 @@ exports.verifyOTP = async (req, res) => {
               console.log(err);
             });
 
-          res.send({ success: true, msg: "otp has been expired, new OTP has sent" });
+          res.send({
+            success: true,
+            msg: "otp has been expired, new OTP has sent",
+          });
         } else if (docs.otpstatus.wrongTry > 5) {
           if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
@@ -272,7 +275,10 @@ exports.verifyOTP = async (req, res) => {
               .catch((err) => {
                 console.log(err);
               });
-            res.send({ success: true, msg: "otp has been expired, new OTP has sent" });
+            res.send({
+              success: true,
+              msg: "otp has been expired, new OTP has sent",
+            });
           } else if (docs.otpstatus.otpRequest < 5) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
@@ -296,9 +302,14 @@ exports.verifyOTP = async (req, res) => {
               .catch((err) => {
                 console.log(err);
               });
-            res.send({ success: true, msg: "otp has been expired, new OTP has sent" });
+            res.send({
+              success: true,
+              msg: "otp has been expired, new OTP has sent",
+            });
           } else {
-            return res.status(401).send({success: false, message: "maximum attempt exeeded" });
+            return res
+              .status(401)
+              .send({ success: false, message: "maximum attempt exeeded" });
           }
         } else if (docs.otpstatus.otp != otp) {
           console.log(docs.otpstatus.wrongTry);
@@ -312,7 +323,7 @@ exports.verifyOTP = async (req, res) => {
             .catch((err) => {
               console.log(err);
             });
-          return res.status(401).send({success: false, message: "wrong otp" });
+          return res.status(401).send({ success: false, message: "wrong otp" });
         } else {
           User.updateOne(
             { uid: uid },
@@ -322,7 +333,9 @@ exports.verifyOTP = async (req, res) => {
             .catch((err) => {
               console.log(err);
             });
-          return res.status(200).send({success: true, message: "account activated" });
+          return res
+            .status(200)
+            .send({ success: true, message: "account activated" });
         }
       } else {
         res.redirect("/api/v1/dashboard");

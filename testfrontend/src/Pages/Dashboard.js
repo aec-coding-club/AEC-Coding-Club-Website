@@ -27,7 +27,7 @@ function Dashboard() {
 
   return(
     <>
-      {auth ? <DummyComponent/> : "not required"}
+      {auth ? <DummyComponent/> : `Welcome to the Dashboard`}
     </>
   )
 }

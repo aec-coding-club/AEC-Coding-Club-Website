@@ -3,11 +3,11 @@ const User = require("../models/User");
 
 exports.isAuthenticated = (req, res, next) => {
   try {
-    const token =
-      req.cookies.token || req.header("Authorization").replace("Bearer ", "");
-    if (!token || token == undefined) {
-      return res.status(403).json({
-        success: "false",
+    const token = req.cookies.token;
+    console.log(`TOKEN FETCHED! ${token} THROUGH ISAUTHENTICATED MIDDLEWARE`);
+    if (!token || token === undefined) {
+      return res.json({
+        success: false,
         message: "Token is Missing Please Sign In to Continue",
       });
     }
@@ -16,8 +16,8 @@ exports.isAuthenticated = (req, res, next) => {
       console.log(info);
       req.user = info;
     } catch (error) {
-      return res.status(401).json({
-        success: "false",
+      return res.json({
+        success: false,
         message: "Invalid Token",
       });
     }
@@ -26,26 +26,30 @@ exports.isAuthenticated = (req, res, next) => {
     console.log(error.message);
     return res.json({
       success: false,
-      message: "Token is Missing Please Sign In to Continue",
+      message: "Somehing Went Wrong Cookies Can't be Accessed",
     });
   }
 };
 
 exports.isActivated = async (req, res, next) => {
   try {
+    console.log(`IS ACTIVATED MIDDLEWARE IS INVOKED`);
     uid = req.user.user_id;
     let user = await User.findOne({ uid: uid });
     console.log(user);
     // console.log(req.user);
     if (user.active == false) {
-      return res
-        .status(401)
-        .json({ success: "false", message: "E-Mail is Not Verified" });
+      return res.json({
+        success: false,
+        token: true,
+        message: "E-Mail is Not Verified",
+      });
       ///should be res.redirect()
     } else {
       next();
     }
   } catch (error) {
     console.log(error);
+    return res.json({ success: false, token: true, error: error.message });
   }
 };

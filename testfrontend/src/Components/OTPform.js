@@ -22,11 +22,10 @@ const Otpform = () => {
     });
     if (dataposted.data.success) {
       console.log("User Created Successfully");
-      navigate("/dashboard")
-      
+      navigate("/dashboard");
     } else {
       console.log("User Not Created Successfully");
-      navigate("/verify")
+      navigate("/verify");
     }
     console.log(dataposted);
   }
@@ -41,8 +40,8 @@ const Otpform = () => {
   async function fetchdata() {
     const parseddata = await Axios.post(`${Api}verify`, {
       withCredentials: true,
-    })
-    if(!parseddata.data.success){
+    });
+    if (!parseddata.data.success) {
       navigate("/");
     }
     console.log("Useeffet :- ", parseddata);
@@ -64,7 +63,6 @@ const Otpform = () => {
           placeholder="Enter your OTP"
           maxLength={6}
         />
-        
 
         <button>Verify OTP</button>
       </form>
