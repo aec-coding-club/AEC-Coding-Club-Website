@@ -26,7 +26,7 @@ const Signin = () => {
 
     if (dataposted.data.success) {
       console.log("Logged In Successfully");
-      navigate("/");
+      navigate("/dashboard");
     } else {
       console.log("User Not Created Successfully");
     }

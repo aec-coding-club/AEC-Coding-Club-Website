@@ -12,6 +12,7 @@ exports.dashboard = async (req, res) => {
     branch: user.branch,
     batch: user.batch,
     email: user.email,
+    success : true
   };
   return res.json(user_data);
 };
