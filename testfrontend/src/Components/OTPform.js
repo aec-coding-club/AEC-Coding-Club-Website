@@ -37,6 +37,7 @@ const Otpform = () => {
     console.log(newdata);
   }
 
+
   return (
     <>
       <form onSubmit={(e) => submit(e)}>

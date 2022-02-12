@@ -4,7 +4,6 @@ const { check, validationResult } = require("express-validator");
 const { register, login, verifyOTP } = require("../controllers/auth");
 const { isAuthenticated, isActivated } = require("../middlewares/verify");
 const { dashboard } = require("../controllers/user");
-const { istokenpresent } = require("../middlewares/istoken");
 
 router.post(
   "/register",
@@ -22,7 +21,7 @@ router.post(
 );
 router.post("/login", [check("email", "E-Mail is Required").isEmail()], login);
 
-router.post("/verify", isAuthenticated, istokenpresent, verifyOTP);
+router.post("/verify", isAuthenticated, verifyOTP);
 router.post("/dummy", isAuthenticated, (req, res) => {
   token = req.cookies.token;
   return res.json({ token: token });

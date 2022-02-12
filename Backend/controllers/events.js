@@ -47,7 +47,9 @@ exports.add = async (req, res) => {
       date: newEvent.date,
     });
   } catch (error) {
-    res.status(500).json({ error: "Cannot Create Event" });
+    res
+      .status(500)
+      .json({ success: false, token: true, error: "Cannot Create Event" });
   }
 };
 
@@ -55,16 +57,21 @@ exports.add = async (req, res) => {
 exports.update = async (req, res) => {
   try {
     const { error } = validator.event(req.body);
-    if (error) return res.status(406).json({ error: "Invalid Event Data" });
+    if (error)
+      return res
+        .status(406)
+        .json({ success: false, token: true, error: "Invalid Event Data" });
 
     const updatedEvent = await event.findByIdAndUpdate(
       req.params.id,
-      req.body,
-      { new: true, runValidators: true }
+      req.body
+      // { new: true, runValidators: true }
     );
 
     if (!updatedEvent)
-      return res.status(404).json({ message: "Cannot Find Event" });
+      return res
+        .status(404)
+        .json({ success: false, token: true, message: "Cannot Find Event" });
 
     res.status(200).json({
       _id: updatedEvent._id,
@@ -75,7 +82,9 @@ exports.update = async (req, res) => {
       date: updatedEvent.date,
     });
   } catch (error) {
-    res.status(500).json({ error: "Cannot Update Event" });
+    res
+      .status(500)
+      .json({ success: false, token: true, error: "Cannot Update Event" });
   }
 };
 
@@ -85,9 +94,13 @@ exports.deletevent = async (req, res) => {
     const deletedEvent = await event.findByIdAndDelete(req.params.id);
 
     if (!deletedEvent)
-      return res.status(404).json({ message: "Cannot Find Event" });
+      return res
+        .status(404)
+        .json({ success: false, token: true, message: "Cannot Find Event" });
 
     res.status(200).json({
+      success: true,
+      token: true,
       _id: deletedEvent._id,
       title: deletedEvent.title,
       description: deletedEvent.description,
@@ -96,7 +109,10 @@ exports.deletevent = async (req, res) => {
       date: deletedEvent.date,
     });
   } catch (error) {
-    res.status(500).json({ error: "Cannot Delete Event" });
+    res.status(500).json({
+      token: true,
+      error: "Cannot Delete Event",
+    });
   }
 };
 // ! TODO: When User Registers into a Event No Duplicate event can't be in the same array
@@ -110,6 +126,7 @@ exports.registerevent = async (req, res) => {
     if (tempuser.event.includes(id)) {
       return res.status(400).json({
         success: false,
+        token: true,
         message: "You are Already Registered for the Event",
       });
     }
@@ -119,8 +136,10 @@ exports.registerevent = async (req, res) => {
     );
     return res
       .status(200)
-      .json({ success: true, message: "Event Added", updateuser });
+      .json({ success: true, token: true, message: "Event Added", updateuser });
   } catch (error) {
-    return res.status(401).json({ success: false, message: error.message });
+    return res
+      .status(401)
+      .json({ success: false, token: true, message: error.message });
   }
 };

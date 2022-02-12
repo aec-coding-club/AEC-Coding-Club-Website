@@ -5,10 +5,10 @@ exports.isAuthenticated = (req, res, next) => {
   try {
     const token =
       req.cookies.token || req.header("Authorization").replace("Bearer ", "");
-    console.log(`TOKEN FETCHED! ${token} THROUGH ISAUTHENTICATED MIDDLEWARE`);
-    if (!token || token === undefined) {
-      return res.json({
+    if (!token || token == undefined) {
+      return res.status(403).json({
         success: false,
+        token: false,
         message: "Token is Missing Please Sign In to Continue",
       });
     }
@@ -19,6 +19,7 @@ exports.isAuthenticated = (req, res, next) => {
     } catch (error) {
       return res.json({
         success: false,
+        token: false,
         message: "Invalid Token",
       });
     }
@@ -27,7 +28,8 @@ exports.isAuthenticated = (req, res, next) => {
     console.log(error.message);
     return res.json({
       success: false,
-      message: "Somehing Went Wrong Cookies Can't be Accessed",
+      token: false,
+      message: "Something Went Wrong token can't be Verified Please Try Again",
     });
   }
 };
@@ -41,7 +43,7 @@ exports.isActivated = async (req, res, next) => {
     // console.log(req.user);
     if (user.active == false) {
       return res.json({
-        success: false,
+        success: "false",
         token: true,
         message: "E-Mail is Not Verified",
       });
