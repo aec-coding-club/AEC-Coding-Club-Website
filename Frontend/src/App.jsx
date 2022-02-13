@@ -7,7 +7,8 @@ import Members from './Pages/Members'
 import Signup from './Pages/Signup'
 import Signin from './Pages/Signin'
 import Otpverify from './Pages/OTP'
-
+import Dashboard from './Pages/Dashboard-Secure'
+import Errorpage from './Pages/Errorpage'
 import './App.css'
 
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/signin' element={<Signin />} />
           <Route exact path="/verify" element={<Otpverify />} />
-          {/* @TODO: add a 404 page */}
+          <Route exact path="/dashboard" element={<Dashboard />}/>
+          <Route exact path="*" element={<Errorpage />} />
         </Routes>
       </Router>
     </>
