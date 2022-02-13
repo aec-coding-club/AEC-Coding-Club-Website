@@ -1,6 +1,6 @@
 nav {
   width: 100%;
-  padding: 1.5rem 4rem;
+  padding: 0.7rem 4rem;
   /* padding-bottom: 0rem; */
   background-color: var(--nav-body);
   position: relative;
@@ -26,12 +26,13 @@ nav {
 
 .logo-name {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
+  line-height: 1;
 }
 
 .logo-motto {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .nav-link-wrapper,
@@ -43,11 +44,14 @@ nav {
 }
 
 .nav-link {
-  color: #333;
+  color: #111111;
+  font-weight: 500;
+  font-size: 1.15rem;
   text-decoration: none;
   transition: all 300ms ease;
 }
 .active {
+  font-weight: 600;
   color: var(--btn-bg);
 }
 

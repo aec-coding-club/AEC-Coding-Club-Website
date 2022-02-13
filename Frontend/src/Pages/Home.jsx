@@ -1,13 +1,14 @@
 import React from 'react'
 
 import Navbar from '../Components/Navbar'
+import './styles/Home.css'
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <main>
-        <h1>Home</h1>
+      <main className="home-main">
+        <h1>Home Page</h1>
       </main>
     </>
   )

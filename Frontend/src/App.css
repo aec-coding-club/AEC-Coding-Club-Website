@@ -9,7 +9,7 @@
 }
 
 :root {
-  --background-bg: #333;
+  --background-bg: #111111;
   --nav-body: rgba(234, 226, 183, 1);
   --btn-bg: rgba(214, 40, 40, 1);
   --nav-drop-shadow: rgba(19, 19, 19, 0.548);
@@ -38,6 +38,6 @@ body {
 }
 
 .btn:hover {
-  transform: translateX(-3px) translateY(-3px);
+  transform: translateX(-1px) translateY(-1px);
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.384);
 }

@@ -24,7 +24,7 @@ const Signup = () => {
         </div>
 
         <form>
-          <h2>Sign Up for an Account</h2>
+          <h1>Sign Up for an Account</h1>
           <div className="details">
             <label for="exampleInputPassword1">Name:</label>
             <br />
@@ -95,18 +95,18 @@ const Signup = () => {
             ></input>
           </div>
 
-          <button className="btn login-signup-btn">Sign in</button>
+          <button className="btn login-signup-btn">Sign Up</button>
 
           <div>
             <p>
               <a href="/" className="links">
-                Explore more
+                Explore More
               </a>
             </p>
             <p>
               Already have an account?{" "}
               <a href="/signin" className="links">
-                Signin here
+                Sign In Here
               </a>
             </p>
           </div>

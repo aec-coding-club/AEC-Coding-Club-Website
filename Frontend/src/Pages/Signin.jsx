@@ -24,7 +24,7 @@ const Signin = () => {
         </div>
 
         <form>
-          <h2>Sign in with your UID and Password</h2>
+          <h1>Sign In with your UID and Password</h1>
           <div className="details">
             <label for="exampleInputPassword1">User Id:</label>
             <br />
@@ -53,18 +53,18 @@ const Signin = () => {
             ></input>
           </div>
 
-          <button className="btn login-signup-btn">Sign in</button>
+          <button className="btn login-signup-btn">Sign In</button>
 
           <div>
             <p>
               <a href="/" className="links">
-                Explore more
+                Explore More
               </a>
             </p>
             <p>
               Don't have an account?{" "}
-              <a href="/signin" className="links">
-                Register here
+              <a href="/signup" className="links">
+                Register Here
               </a>
             </p>
           </div>
