@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
   profilePicture: {
     type: String,
     default:
-      "https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg",
+      "https://res.cloudinary.com/sahebcloud/image/upload/v1644605990/dummypic_vns8f6.jpg",
   },
   linkedin: { type: String, default: "https://www.linkedin.com" },
   github: { type: String, default: "https://github.com/" },
