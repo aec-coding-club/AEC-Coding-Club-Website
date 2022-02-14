@@ -5,7 +5,7 @@ const DashboadComponent = ({ details }) => {
   console.log(details.userInfo);
   return (
     <>
-      <Navbar />
+      <Navbar userImage={details.userInfo.pimage} userNameText={details.userInfo.name}/>
       <div className="home-main">
         <h1>You are Verified and Authorized Welcome to Dashboard Route</h1>
       </div>

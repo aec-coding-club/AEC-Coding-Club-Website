@@ -69,6 +69,17 @@ nav {
   fill: var(--btn-bg);
 }
 
+.logged-user-image{
+  width: 50px;
+  border: 1px solid #111111;
+  border-radius: 100%;
+}
+.user-name-text{
+  font-size:1.2rem;
+  font-weight: 600;
+  margin-left: -5px;
+}
+
 /* .nav-curve-wrapper {
   position: absolute;
   top: 0;
