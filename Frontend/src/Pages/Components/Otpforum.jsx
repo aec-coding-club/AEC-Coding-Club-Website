@@ -21,6 +21,7 @@ const Otpforum = () => {
     if (dataposted.data.success) {
       console.log("User Created Successfully");
       navigate("/dashboard");
+      window.location.reload();
     } else {
       console.log("User Not Created Successfully");
       setRegisterdata({
