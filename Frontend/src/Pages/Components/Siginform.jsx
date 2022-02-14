@@ -26,6 +26,7 @@ const Siginform = () => {
       console.log("Logged In Successfully");
       localStorage.setItem('token', dataposted.data.token)
       navigate("/dashboard");
+      window.location.reload(); 
     } else {
       console.log("Access Denied");
       setRegisterdata({
