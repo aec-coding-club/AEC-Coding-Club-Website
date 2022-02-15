@@ -7,7 +7,7 @@ const Signup = () => {
   
   return (
     <>
-      <div className="user-login">
+      <div className="user-login ">
         <div className="user-img">
           <img alt="" src={signupImg}></img>
         </div>
