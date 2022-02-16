@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-
-import { FaTimes } from 'react-icons/fa'
-
-import './styles/SideBar.css'
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FaTimes } from 'react-icons/fa';
+import './styles/SideBar.css';
 
 function SideBar({ sidebarOpen, handleSideBar }) {
-  const navigate = useNavigate()
-  const [sidebarClass, setSidebarClass] = useState('nav-sidebar')
+  const navigate = useNavigate();
+  const [sidebarClass, setSidebarClass] = useState('nav-sidebar');
 
   useEffect(() => {
-    if (sidebarOpen) setSidebarClass('nav-sidebar open')
-    else setSidebarClass('nav-sidebar close')
-  }, [sidebarOpen])
+    if (sidebarOpen) setSidebarClass('nav-sidebar open');
+    else setSidebarClass('nav-sidebar close');
+  }, [sidebarOpen]);
 
   return (
     <div className={sidebarClass}>
@@ -41,7 +39,7 @@ function SideBar({ sidebarOpen, handleSideBar }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default SideBar
+export default SideBar;

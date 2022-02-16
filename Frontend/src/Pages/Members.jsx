@@ -1,23 +1,23 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 
-import './styles/Members.css'
-import Navbar from '../Components/Navbar'
-import MemberFilter from '../Components/MemberFilter'
-import MembersContainer from '../Components/MembersContainer'
-import UserContext from './Context/LoggedUserContext'
+import './styles/Members.css';
+import Navbar from '../Components/Navbar';
+import MemberFilter from '../Components/MemberFilter';
+import MembersContainer from '../Components/MembersContainer';
+import UserContext from './Context/LoggedUserContext';
 
 const Members = () => {
-  const [memberFilter, setMemberFilter] = useState('all')
+  const [memberFilter, setMemberFilter] = useState('all');
 
   function handleMemberFilter(selectedFilter) {
-    setMemberFilter(selectedFilter)
+    setMemberFilter(selectedFilter);
   }
 
-  const details = useContext(UserContext)
-  console.log("details", details);
+  const details = useContext(UserContext);
+  console.log('details', details);
   const [tokenChecker, setTokenChecker] = useState(false);
   const checkToken = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     console.log(token);
     if (token) {
       setTokenChecker(true);
@@ -29,9 +29,15 @@ const Members = () => {
   }, []);
 
   return (
-    
     <>
-      {tokenChecker ? <Navbar userImage={details.userInfo.pimage} userNameText={details.userInfo.name}/> : <Navbar/>}
+      {tokenChecker ? (
+        <Navbar
+          userImage={details.userInfo.pimage}
+          userNameText={details.userInfo.name}
+        />
+      ) : (
+        <Navbar />
+      )}
       <main className='members'>
         <header className='members-header'>
           <h1>The Team</h1>
@@ -50,7 +56,7 @@ const Members = () => {
         <MembersContainer memberFilter={memberFilter} />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Members
+export default Members;

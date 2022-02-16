@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react';
 
-import './styles/EventCard.css'
-import EventModal from './EventModal'
+import './styles/EventCard.css';
+import EventModal from './EventModal';
 
 export const EventCard = ({ cardData }) => {
-  const [modalShow, setModalShow] = React.useState(false)
-  const { img, title, modal } = cardData
+  const [modalShow, setModalShow] = React.useState(false);
+  const { img, title, modal } = cardData;
 
   function onHide() {
-    setModalShow(false)
+    setModalShow(false);
   }
 
   return (
@@ -21,5 +21,5 @@ export const EventCard = ({ cardData }) => {
       </div>
       <EventModal modal={modal} modalShow={modalShow} onHide={onHide} />
     </>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
 
-import './styles/MemberFilter.css'
+import './styles/MemberFilter.css';
 
 const MemberFilter = ({ memberFilter, handleMemberFilter }) => {
   return (
@@ -24,7 +24,7 @@ const MemberFilter = ({ memberFilter, handleMemberFilter }) => {
         Sub Committee
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default MemberFilter
+export default MemberFilter;

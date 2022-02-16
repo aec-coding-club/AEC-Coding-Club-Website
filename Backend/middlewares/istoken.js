@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
 exports.istokenpresent = (req, res, next) => {
   try {
@@ -8,7 +8,7 @@ exports.istokenpresent = (req, res, next) => {
     if (token === undefined) {
       return res.json({
         success: false,
-        message: "Token is Missing Please Sign In to Continue",
+        message: 'Token is Missing Please Sign In to Continue',
       });
     }
     try {
@@ -18,7 +18,7 @@ exports.istokenpresent = (req, res, next) => {
     } catch (error) {
       return res.json({
         success: false,
-        message: "Invalid Token",
+        message: 'Invalid Token',
       });
     }
     next();

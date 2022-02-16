@@ -1,7 +1,7 @@
-.home-main{
-    width:100vw;
-    height:30vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.home-main {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

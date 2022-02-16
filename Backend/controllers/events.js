@@ -1,18 +1,18 @@
-const event = require("../models/Event");
-const User = require("../models/User");
+const event = require('../models/Event');
+const User = require('../models/User');
 
 exports.get = async (req, res) => {
   try {
     const event = await event.findById(
       req.params.id,
-      "_id title description image form date"
+      '_id title description image form date'
     );
 
-    if (!event) return res.status(404).json({ error: "No Events Found" });
+    if (!event) return res.status(404).json({ error: 'No Events Found' });
 
     res.status(200).json(event);
   } catch (error) {
-    res.status(500).json({ error: "Cannot Find Event" });
+    res.status(500).json({ error: 'Cannot Find Event' });
   }
 };
 
@@ -21,12 +21,12 @@ exports.getAll = async (req, res) => {
   try {
     const events = await event.find(
       {},
-      "_id title description image form date"
+      '_id title description image form date'
     );
 
     res.status(200).json({ events, length: events.length });
   } catch (error) {
-    res.status(500).json({ error: "Cannot Find Events" });
+    res.status(500).json({ error: 'Cannot Find Events' });
   }
 };
 
@@ -49,7 +49,7 @@ exports.add = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ success: false, token: true, error: "Cannot Create Event" });
+      .json({ success: false, token: true, error: 'Cannot Create Event' });
   }
 };
 
@@ -60,7 +60,7 @@ exports.update = async (req, res) => {
     if (error)
       return res
         .status(406)
-        .json({ success: false, token: true, error: "Invalid Event Data" });
+        .json({ success: false, token: true, error: 'Invalid Event Data' });
 
     const updatedEvent = await event.findByIdAndUpdate(
       req.params.id,
@@ -71,7 +71,7 @@ exports.update = async (req, res) => {
     if (!updatedEvent)
       return res
         .status(404)
-        .json({ success: false, token: true, message: "Cannot Find Event" });
+        .json({ success: false, token: true, message: 'Cannot Find Event' });
 
     res.status(200).json({
       _id: updatedEvent._id,
@@ -84,7 +84,7 @@ exports.update = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ success: false, token: true, error: "Cannot Update Event" });
+      .json({ success: false, token: true, error: 'Cannot Update Event' });
   }
 };
 
@@ -96,7 +96,7 @@ exports.deletevent = async (req, res) => {
     if (!deletedEvent)
       return res
         .status(404)
-        .json({ success: false, token: true, message: "Cannot Find Event" });
+        .json({ success: false, token: true, message: 'Cannot Find Event' });
 
     res.status(200).json({
       success: true,
@@ -111,7 +111,7 @@ exports.deletevent = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       token: true,
-      error: "Cannot Delete Event",
+      error: 'Cannot Delete Event',
     });
   }
 };
@@ -127,7 +127,7 @@ exports.registerevent = async (req, res) => {
       return res.status(400).json({
         success: false,
         token: true,
-        message: "You are Already Registered for the Event",
+        message: 'You are Already Registered for the Event',
       });
     }
     const updateuser = await User.updateOne(
@@ -136,7 +136,7 @@ exports.registerevent = async (req, res) => {
     );
     return res
       .status(200)
-      .json({ success: true, token: true, message: "Event Added", updateuser });
+      .json({ success: true, token: true, message: 'Event Added', updateuser });
   } catch (error) {
     return res
       .status(401)
