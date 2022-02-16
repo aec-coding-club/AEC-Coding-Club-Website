@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Axios from "axios";
-import Cookies from "js-cookie";
-import { Api } from "../../backend";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Axios from 'axios';
+import Cookies from 'js-cookie';
+import { Api } from '../../backend';
 
 const Signupform = () => {
   const [registerdata, setRegisterdata] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    email: '',
     contact_no: 0,
-    branch: "",
+    branch: '',
     batch: 0,
-    password: "",
-    confirmPassword: "",
-    linkedin: "",
-    github: "",
+    password: '',
+    confirmPassword: '',
+    linkedin: '',
+    github: '',
   });
-  console.log("API is :- ", Api);
+  console.log('API is :- ', Api);
   let navigate = useNavigate();
 
   async function submit(e) {
     e.preventDefault();
-    console.log("Data Submitted");
+    console.log('Data Submitted');
     const dataposted = await Axios.post(`${Api}register`, {
       firstName: registerdata.firstName,
       lastName: registerdata.lastName,
@@ -37,12 +37,12 @@ const Signupform = () => {
     });
 
     if (dataposted.data.success) {
-      console.log("User Created Successfully");
-      localStorage.setItem("token", dataposted.data.token); // setting token to localstorage
-      Cookies.set("token", dataposted.data.token); // setting token to cookies
-      navigate("/verify");
+      console.log('User Created Successfully');
+      localStorage.setItem('token', dataposted.data.token); // setting token to localstorage
+      Cookies.set('token', dataposted.data.token); // setting token to cookies
+      navigate('/verify');
     } else {
-      console.log("User Not Created Successfully");
+      console.log('User Not Created Successfully');
     }
     console.log(dataposted);
   }
@@ -59,216 +59,235 @@ const Signupform = () => {
       <form onSubmit={(e) => submit(e)}>
         <h1>Sign Up For An Account</h1>
 
-        <div className="name">
-          <div className="details">
-            <label htmlFor="firstName">First Name :</label>
+        <div className='name'>
+          <div className='details'>
+            <label htmlFor='firstName'>
+              First Name :<span className='asterik'>*</span>
+            </label>
             <br />
             <input
-              type="text"
-              name="firstName"
-              id="firstName"
-              className="input__field head-input"
-              placeholder="Enter your firstname"
+              type='text'
+              name='firstName'
+              id='firstName'
+              className='input__field head-input'
+              placeholder='Enter your firstname'
               value={registerdata.firstName}
               onChange={(e) => handelChange(e)}
               required
-              autoComplete="off"
+              autoComplete='off'
             ></input>
           </div>
 
-          <div className="details">
-            <label htmlFor="lastName">Last Name :</label>
+          <div className='details'>
+            <label htmlFor='lastName'>
+              Last Name :<span className='asterik'>*</span>
+            </label>
             <br />
             <input
-              type="text"
-              name="lastName"
-              id="lastName"
-              className="input__field head-input"
-              placeholder="Enter your lastname"
+              type='text'
+              name='lastName'
+              id='lastName'
+              className='input__field head-input'
+              placeholder='Enter your lastname'
               value={registerdata.lastName}
               onChange={(e) => handelChange(e)}
               required
-              autoComplete="off"
+              autoComplete='off'
             ></input>
           </div>
         </div>
 
-        <div className="details">
-          <label htmlFor="email">Email :</label>
+        <div className='details'>
+          <label htmlFor='email'>
+            Email :<span className='asterik'>*</span>
+          </label>
           <br />
           <input
-            type="email"
-            name="email"
-            id="email"
-            className="input__field input-data"
-            placeholder="Enter your email"
+            type='email'
+            name='email'
+            id='email'
+            className='input__field input-data'
+            placeholder='Enter your email'
             onChange={(e) => handelChange(e)}
             value={registerdata.email}
             required
-            autoComplete="off"
+            autoComplete='off'
           ></input>
         </div>
 
-        <div className="details">
-          <label htmlFor="contact_no">Contact Number :</label>
+        <div className='details'>
+          <label htmlFor='contact_no'>
+            Contact Number :<span className='asterik'>*</span>
+          </label>
           <br />
           <input
-            type="number"
-            name="contact_no"
-            id="contact_no"
-            className="input__field input-data"
-            placeholder="Enter your contact number"
+            type='number'
+            name='contact_no'
+            id='contact_no'
+            className='input__field input-data'
+            placeholder='Enter your contact number'
             onChange={(e) => handelChange(e)}
             value={registerdata.contact_no}
             required
-            autoComplete="off"
+            autoComplete='off'
             maxLength={10}
           ></input>
         </div>
 
-        <div className="name">
-          <div className="details">
-            <label htmlFor="branch">Branch :</label>
-            <br />
+        <div className='name'>
+          <div className='details'>
+            <label htmlFor='branch'>
+              Branch :<span className='asterik'>*</span>
+              <br />
+              <select
+                name='branch'
+                id='branch'
+                value={registerdata.branch}
+                onChange={(e) => handelChange(e)}
+                className='head-input input__field'
+              >
+                <option selected hidden>
+                  Choose your branch
+                </option>
+                <option value='CSE'>CSE</option>
+                <option value='IT'>IT</option>
+                <option value='AIML'>AIML</option>
+                <option value='CSBS'>CSBS</option>
+                <option value='ECE'>ECE</option>
+                <option value='AEIE'>AEIE</option>
+                <option value='EE'>EE</option>
+                <option value='CE'>CE</option>
+                <option value='ME'>ME</option>
+              </select>
+            </label>
 
-            <div className="dropdown">
-              <button className="input__field  head-input ">
-                Select Branch
-              </button>
-              <div className="dropdown-content">
-                <p>AIML</p>
-                <p>CSE</p>
-                <p>IT</p>
-                <p>CSBS</p>
-                <p>ECE</p>
-                <p>AEIE</p>
-                <p>EE</p>
-                <p>ME</p>
-                <p>CE</p>
-              </div>
-            </div>
-
-            <input
-              type="text"
-              name="branch"
-              id="branch"
-              className=" input__field  head-input"
-              placeholder="Enter your branch"
+            {/* <input
+              type='text'
+              name='branch'
+              id='branch'
+              className=' input__field  head-input'
+              placeholder='Enter your branch'
               onChange={(e) => handelChange(e)}
               value={registerdata.branch}
               required
-              autoComplete="off"
-            ></input>
-            <div className="dropdown-content"></div>
+              autoComplete='off'
+            ></input> */}
           </div>
 
-          
+          <div className='details'>
+            <label htmlFor='batch'>
+              Passout Batch :<span className='asterik'>*</span>
+              <br />
+              <select
+                name='batch'
+                id='batch'
+                value={registerdata.batch}
+                onChange={(e) => handelChange(e)}
+                className='head-input input__field'
+              >
+                <option value='' selected hidden>
+                  Choose your batch
+                </option>
+                <option value='2022'>2022</option>
+                <option value='2023'>2023</option>
+                <option value='2024'>2024</option>
+                <option value='2025'>2025</option>
+              </select>
+            </label>
 
-          <div className="details">
-            <label htmlFor="batch">Batch :</label>
-            <br />
-
-            <div className="dropdown">
-            <button className="input__field  head-input ">Select Batch</button>
-            <div className="dropdown-content">
-              <p>2022</p>
-              <p>2023</p>
-              <p>2024</p>
-              <p>2025</p>
-              <p>2026</p>
-             
-            </div>
-          </div>
-
-            <input
-              type="text"
-              name="batch"
-              id="batch"
-              className="input__field head-input dropdown"
-              placeholder="Enter your batch Year"
+            {/* <input
+              type='text'
+              name='batch'
+              id='batch'
+              className='input__field head-input'
+              placeholder='Enter your batch Year'
               onChange={(e) => handelChange(e)}
               value={registerdata.batch}
               required
-              autoComplete="off"
-            ></input>
+              autoComplete='off'
+            ></input> */}
           </div>
         </div>
 
-        <div className="name">
-          <div className="details">
-            <label htmlFor="password">Password :</label>
+        <div className='name'>
+          <div className='details'>
+            <label htmlFor='password'>
+              Password :<span className='asterik'>*</span>
+            </label>
             <br />
             <input
-              type="password"
-              name="password"
-              id="password"
-              className="input__field head-input"
-              placeholder="Enter your password"
+              type='password'
+              name='password'
+              id='password'
+              className='input__field head-input'
+              placeholder='Enter your password'
               onChange={(e) => handelChange(e)}
               value={registerdata.password}
               required
-              autoComplete="off"
+              autoComplete='off'
             ></input>
           </div>
 
-          <div className="details">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+          <div className='details'>
+            <label htmlFor='confirmPassword'>
+              Confirm Password :<span className='asterik'>*</span>
+            </label>
             <br />
             <input
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              className="input__field head-input"
-              placeholder="Confirm your password"
+              type='password'
+              name='confirmPassword'
+              id='confirmPassword'
+              className='input__field head-input'
+              placeholder='Confirm your password'
               onChange={(e) => handelChange(e)}
               value={registerdata.confirmPassword}
               required
-              autoComplete="off"
+              autoComplete='off'
             ></input>
           </div>
         </div>
 
-        <div className="details">
-          <label htmlFor="linkedin">LinkedIn URL :</label>
+        <div className='details'>
+          <label htmlFor='linkedin'>LinkedIn URL :</label>
           <br />
           <input
-            type="text"
-            name="linkedin"
-            id="linkedin"
-            className="input__field input-data"
-            placeholder="Enter your LinkedIn URL"
+            type='text'
+            name='linkedin'
+            id='linkedin'
+            className='input__field input-data'
+            placeholder='Enter your LinkedIn URL'
             onChange={(e) => handelChange(e)}
             value={registerdata.linkedin}
-            autoComplete="off"
+            autoComplete='off'
           ></input>
         </div>
 
-        <div className="details">
-          <label htmlFor="github">Github URL :</label>
+        <div className='details'>
+          <label htmlFor='github'>Github URL :</label>
           <br />
           <input
-            type="text"
-            name="github"
-            id="github"
-            className="input__field input-data"
-            placeholder="Enter your Github URL"
+            type='text'
+            name='github'
+            id='github'
+            className='input__field input-data'
+            placeholder='Enter your Github URL'
             onChange={(e) => handelChange(e)}
             value={registerdata.github}
-            autoComplete="off"
+            autoComplete='off'
           ></input>
         </div>
 
-        <button className="btn login-signup-btn">Sign Up</button>
+        <button className='btn login-signup-btn'>Sign Up</button>
 
         <div>
           <p>
-            <Link to="/" className="links">
+            <Link to='/' className='links'>
               Explore More
             </Link>
           </p>
           <p>
-            Already have an account?{" "}
-            <Link to="/signin" className="links">
+            Already have an account?{' '}
+            <Link to='/signin' className='links'>
               Sign In Here
             </Link>
           </p>
