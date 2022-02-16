@@ -6,6 +6,7 @@ import Logo from "../Assets/logo.svg";
 import UserImage from "../Assets/members/member.png"
 import NavbarSvg from "../Assets/navbarsvg.svg";
 import SideBar from "./SideBar";
+import Cookies from 'js-cookie'
 import "./styles/Navbar.css";
 
 const NavCompoA = () => {
@@ -25,13 +26,16 @@ const NavCompoA = () => {
 };
 
 const NavCompoB = ({userImg, userNameText}) => {
+  const navigate = useNavigate();
   console.log(userNameText);
   return (
     <>
       <div className="nav-btn-wrapper">
         <img className="logged-user-image" src={userImg} />
         <div className="user-name-text">{userNameText}</div>
-        
+        <button className="btn sign-in">
+          Sign Out
+        </button>
       </div>
     </>
   );
