@@ -1,12 +1,13 @@
 import React from 'react';
 import loginImg from '../Assets/login.png';
+import Navbar from '../Components/Navbar';
 import Siginform from './Components/Siginform';
 import './styles/SigninSignup.css';
 
 const Signin = () => {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <div className='user-login'>
         <div className='user-img'>
           <img alt='' src={loginImg}></img>
