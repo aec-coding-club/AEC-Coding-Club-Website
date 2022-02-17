@@ -125,3 +125,37 @@ h1 {
     left: 20vw;
   }
 }
+
+/* For Mobile Use ---> */
+@media (max-width : 425px){
+  .user-login {
+    padding: 0;
+    margin-left: 0;
+  }
+  h1{
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  form{
+    padding: 0;
+  }
+  .user-img img {
+    width: 175px;
+  }
+  .details{
+    margin-bottom: 10px;
+  }
+  .name{
+    justify-content:space-between;
+  }
+}
+@media (max-width : 354px){
+  form{
+    width: 280px;
+    overflow-x: hidden;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+}

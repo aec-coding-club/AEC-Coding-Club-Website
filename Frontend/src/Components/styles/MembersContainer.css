@@ -27,3 +27,8 @@
     grid-template-columns: repeat(2, 150px);
   }
 }
+@media (max-width : 425px){
+  .members-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
