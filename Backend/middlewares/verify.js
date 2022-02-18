@@ -64,12 +64,22 @@ exports.isAdmin = async (req, res, next) => {
     console.log(user);
     if (user.role === 3) {
       req.role = "admin"; //! Teachers Privilage
+       next();
     } else if (user.role === 2) {
       req.role = "core"; //! Core Committee Member
+       next();
     } else if (user.role === 1) {
       req.role = "sub"; //! Sub Committee Member
+      return res.json({
+        success: false,
+        message: "Protected Route Only For Admins",
+      });
     } else {
       req.role = "user"; //! Normal User or Student
+      return res.json({
+        success: false,
+        message: "Protected Route Only For Admins",
+      });
     }
   } catch (error) {
     console.log(error.message);

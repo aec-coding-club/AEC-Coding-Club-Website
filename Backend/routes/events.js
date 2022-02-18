@@ -1,7 +1,7 @@
 // const { Router } = require("express");
 var express = require('express');
 var router = express.Router();
-const { isAuthenticated, isActivated } = require('../middlewares/verify');
+const { isAuthenticated, isActivated, isAdmin } = require('../middlewares/verify');
 
 const {
   getAll,
@@ -21,13 +21,13 @@ router.get('/events', getAll);
 router.get('/:id', isAuthenticated, isActivated, get);
 
 // Create New Event
-router.post('/add', isAuthenticated, isActivated, add);
+router.post('/add', isAuthenticated, isActivated, isAdmin, add);
 
 // Update Specific Event Based On It's ID
-router.put('/update/:id', isAuthenticated, isActivated, update);
+router.put('/update/:id', isAuthenticated, isActivated, isAdmin, update);
 
 // Dete Specifit Event Based On It's ID
-router.delete('/delete/:id', isAuthenticated, isActivated, deletevent);
+router.delete('/delete/:id', isAuthenticated, isActivated, isAdmin, deletevent);
 
 router.post('/registerevent/:id', isAuthenticated, isActivated, registerevent);
 

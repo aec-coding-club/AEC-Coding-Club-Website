@@ -45,6 +45,8 @@ exports.add = async (req, res) => {
       image: newEvent.image,
       form: newEvent.form,
       date: newEvent.date,
+      role: req.role,
+      success: true,
     });
   } catch (error) {
     res
@@ -80,6 +82,8 @@ exports.update = async (req, res) => {
       image: updatedEvent.image,
       form: updatedEvent.form,
       date: updatedEvent.date,
+      role: req.role,
+      success: true,
     });
   } catch (error) {
     res
@@ -107,6 +111,8 @@ exports.deletevent = async (req, res) => {
       image: deletedEvent.image,
       form: deletedEvent.form,
       date: deletedEvent.date,
+      role: req.role,
+      success: true,
     });
   } catch (error) {
     res.status(500).json({
