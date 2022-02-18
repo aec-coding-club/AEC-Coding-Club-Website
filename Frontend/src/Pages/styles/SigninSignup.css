@@ -6,6 +6,21 @@
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
+  position: relative;
+}
+.user-login::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-image:url(https://images.pexels.com/photos/3861976/pexels-photo-3861976.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500) ;
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.25;
+  z-index: -1111;
 }
 .user-img img {
   width: 500px;
@@ -130,7 +145,7 @@ h1 {
 @media (max-width : 425px){
   .user-login {
     padding: 0;
-    margin-left: 0;
+    margin: 0 0;
   }
   h1{
     font-size: 1.75rem;
@@ -147,15 +162,29 @@ h1 {
     margin-bottom: 10px;
   }
   .name{
-    justify-content:space-between;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(1fr, 2) ;
+  }
+  .head-input{
+    margin-right: 0;
+    width: 100%;
   }
 }
 @media (max-width : 354px){
+  .user-login{
+    display: block;
+  }
   form{
-    width: 280px;
+    padding: 0 0.9rem;
     overflow-x: hidden;
   }
   h1{
     font-size: 1.5rem;
+  }
+  .input-data{
+    width: 100%;
+  }
+  .user-img{
+    text-align: center;
   }
 }
