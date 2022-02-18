@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 exports.isAuthenticated = (req, res, next) => {
   try {
     const token =
-      req.cookies.token || req.header('Authorization').replace('Bearer ', '');
+      req.cookies.token || req.header("Authorization").replace("Bearer ", "");
     if (!token || token == undefined) {
       return res.status(403).json({
         success: false,
         token: false,
-        message: 'Token is Missing Please Sign In to Continue',
+        message: "Token is Missing Please Sign In to Continue",
       });
     }
     try {
@@ -20,7 +20,7 @@ exports.isAuthenticated = (req, res, next) => {
       return res.json({
         success: false,
         token: false,
-        message: 'Invalid Token',
+        message: "Invalid Token",
       });
     }
     next();
@@ -43,9 +43,9 @@ exports.isActivated = async (req, res, next) => {
     // console.log(req.user);
     if (user.active == false) {
       return res.json({
-        success: 'false',
+        success: "false",
         token: true,
-        message: 'E-Mail is Not Verified',
+        message: "E-Mail is Not Verified",
       });
       ///should be res.redirect()
     } else {
@@ -54,5 +54,25 @@ exports.isActivated = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     return res.json({ success: false, token: true, error: error.message });
+  }
+};
+
+exports.isAdmin = async (req, res, next) => {
+  try {
+    uid = req.user.user_id; // getting the User Details from the Middleware as isAuthenticated middleware is invoked before this
+    let user = await User.findOne({ uid: uid });
+    console.log(user);
+    if (user.role === 3) {
+      req.role = "admin"; //! Teachers Privilage
+    } else if (user.role === 2) {
+      req.role = "core"; //! Core Committee Member
+    } else if (user.role === 1) {
+      req.role = "sub"; //! Sub Committee Member
+    } else {
+      req.role = "user"; //! Normal User or Student
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
   }
 };

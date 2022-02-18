@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require("../models/User");
 
 exports.dashboard = async (req, res) => {
   const uid = req.user.user_id;

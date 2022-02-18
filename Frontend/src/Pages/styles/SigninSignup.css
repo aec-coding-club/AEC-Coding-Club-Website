@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
+  position: relative;
 }
 .user-img img {
   width: 500px;
@@ -123,5 +124,50 @@ h1 {
   .login-signup-btn {
     position: relative;
     left: 20vw;
+  }
+}
+
+/* For Mobile Use ---> */
+@media (max-width : 425px){
+  .user-login {
+    padding: 0;
+    margin: 0 0;
+  }
+  h1{
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .user-img img {
+    width: 175px;
+  }
+  .details{
+    margin-bottom: 10px;
+  }
+  .name{
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(1fr, 2) ;
+  }
+  .head-input{
+    margin-right: 0;
+    width: 100%;
+  }
+}
+@media (max-width : 354px){
+  .user-login{
+    display: block;
+  }
+  form{
+    padding: 0 0.9rem;
+    overflow-x: hidden;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
+  .input-data{
+    width: 100%;
+  }
+  .user-img{
+    text-align: center;
   }
 }
