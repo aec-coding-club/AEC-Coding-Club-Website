@@ -1,43 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './styles/Events.css';
 import Navbar from '../Components/Navbar';
+import EventModal from '../Components/EventModal';
 import EventsContainer from '../Components/EventsContainer';
 import UserContext from './Context/LoggedUserContext';
 
-const Events = () => {
-  // when user is logged in
-  const user = false;
+const Events = ({tokenChecker}) => {
 
-  const details = useContext(UserContext);
-  console.log('details', details);
-  const [tokenChecker, setTokenChecker] = useState(false);
-  const checkToken = () => {
-    const token = localStorage.getItem('token');
-    console.log(token);
-    if (token) {
-      setTokenChecker(true);
-    }
-  };
+  const [modalShow, setModalShow] = React.useState(false);
 
-  useEffect(() => {
-    checkToken();
-  }, []);
+  function onHide() {
+    setModalShow(false);
+  }
 
   return (
     <>
-      {tokenChecker ? (
-        <Navbar
-          userImage={details.userInfo.pimage}
-          userNameText={details.userInfo.name}
-        />
-      ) : (
-        <Navbar />
-      )}
       <main className='events-main'>
-        {user && (
+        {tokenChecker && (
           <div className='events-header'>
             <div className='events-header-left'>
-              <p>Hi, Saikat Mukherjee</p>
+              <p>Hi, {tokenChecker[1]}</p>
             </div>
             <div className='events-header-right'>
               <img
@@ -50,6 +32,8 @@ const Events = () => {
         )}
         <div className='events-section'>
           <h3 className='events-section-header'>Upcoming Events</h3>
+          <button classname='btn' onClick={() => setModalShow(true)}>Add Events</button>
+          <EventModal addEvent={true} modalShow={modalShow} onHide={onHide} />
           <EventsContainer />
         </div>
       </main>

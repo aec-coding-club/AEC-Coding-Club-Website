@@ -7,7 +7,7 @@ import './styles/SigninSignup.css';
 const Signin = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className='user-login'>
         <div className='user-img'>
           <img alt='' src={loginImg}></img>

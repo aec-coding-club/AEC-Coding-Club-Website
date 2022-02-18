@@ -15,8 +15,10 @@ const Otpforum = () => {
     const data = {
       otp: registerdata.otp,
     };
+    const authToken = localStorage.getItem('token');
     const dataposted = await Axios.post(`${Api}verify`, data, {
       withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
     });
     if (dataposted.data.success) {
       console.log('User Created Successfully');

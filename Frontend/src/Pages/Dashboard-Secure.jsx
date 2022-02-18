@@ -11,8 +11,10 @@ const Home = () => {
   let navigate = useNavigate();
 
   async function fetchdata() {
+    const authToken = localStorage.getItem('token');
     const parseddata = await axios.get(`${Api}dashboard`, {
       withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
     });
     if (!parseddata.data.token) {
       console.log('Navigating');

@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { FaBars } from 'react-icons/fa';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { FaBars } from "react-icons/fa";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import Logo from "../Assets/logo.svg";
-import UserImage from "../Assets/members/member.png"
-import NavbarSvg from "../Assets/navbarsvg.svg";
+import UserImage from "../Assets/members/member.png";
+// import NavbarSvg from "../Assets/navbarsvg.svg";
 import SideBar from "./SideBar";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import "./styles/Navbar.css";
 
 const NavCompoA = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className='nav-btn-wrapper'>
-        <button className='btn sign-up' onClick={() => navigate('/signup')}>
+      <div className="nav-btn-wrapper">
+        <button className="btn sign-up" onClick={() => navigate("/signup")}>
           Sign Up
         </button>
-        <button className='btn sign-in' onClick={() => navigate('/signin')}>
+        <button className="btn sign-in" onClick={() => navigate("/signin")}>
           Sign In
         </button>
       </div>
@@ -25,15 +25,24 @@ const NavCompoA = () => {
   );
 };
 
-const NavCompoB = ({userImg, userNameText}) => {
+const NavCompoB = ({ userImg, userNameText }) => {
   const navigate = useNavigate();
   console.log(userNameText);
+
+  const signOut = () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <>
       <div className="nav-btn-wrapper">
         <img className="logged-user-image" src={userImg} />
-        <div className="user-name-text">{userNameText}</div>
-        <button className="btn sign-in">
+        <NavLink to="/dashboard">
+          <div className="user-name-text">{userNameText}</div>
+        </NavLink>
+        <button className="btn sign-in" onClick={signOut}>
           Sign Out
         </button>
       </div>
@@ -43,8 +52,8 @@ const NavCompoB = ({userImg, userNameText}) => {
 
 const Navbar = ({ userImage, userNameText }) => {
   const [tokenChecker, setTokenChecker] = useState(false);
-  const checkToken = () => {
-    const token = localStorage.getItem('token');
+  const checkToken = async () => {
+    const token = localStorage.getItem("token");
     console.log(token);
     if (token) {
       setTokenChecker(true);
@@ -61,25 +70,25 @@ const Navbar = ({ userImage, userNameText }) => {
 
   useEffect(() => {
     checkToken();
-  }, []);
+  });
 
   return (
     <nav>
-      <div className='logo' onClick={() => navigate('/')}>
-        <img src={Logo} alt='AECCC-LOGO' className='logo-image' />
-        <div className='logo-text'>
-          <p className='logo-name'>aec coding club</p>
-          <p className='logo-motto'>Always Top Of The Heap</p>
+      <div className="logo" onClick={() => navigate("/")}>
+        <img src={Logo} alt="AECCC-LOGO" className="logo-image" />
+        <div className="logo-text">
+          <p className="logo-name">aec coding club</p>
+          <p className="logo-motto">Always Top Of The Heap</p>
         </div>
       </div>
-      <div className='nav-link-wrapper'>
-        <NavLink to='/' className='nav-link'>
+      <div className="nav-link-wrapper">
+        <NavLink to="/" className="nav-link">
           Home
         </NavLink>
-        <NavLink to='/events' className='nav-link'>
+        <NavLink to="/events" className="nav-link">
           Events
         </NavLink>
-        <NavLink to='/members' className='nav-link'>
+        <NavLink to="/members" className="nav-link">
           Members
         </NavLink>
       </div>
@@ -89,7 +98,7 @@ const Navbar = ({ userImage, userNameText }) => {
         <NavCompoA />
       )}
 
-      <div className='menu-toggle-icon' onClick={() => handleSideBar(true)}>
+      <div className="menu-toggle-icon" onClick={() => handleSideBar(true)}>
         <FaBars />
       </div>
       <SideBar sidebarOpen={sidebarOpen} handleSideBar={handleSideBar} />

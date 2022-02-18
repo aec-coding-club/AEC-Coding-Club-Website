@@ -6,7 +6,7 @@ import './styles/Error.css';
 const Errorpage = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className='error-main'>
         <img className='error-image' alt='' src={errorPage}></img>
         <h1 className='error-message'>404 | Page Can't Be Found</h1>

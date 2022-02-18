@@ -7,7 +7,7 @@ import Navbar from '../Components/Navbar';
 const Signup = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className='user-login '>
         <div className='user-img'>
           <img alt='' src={signupImg}></img>

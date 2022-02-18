@@ -39,7 +39,9 @@ const Signupform = () => {
     if (dataposted.data.success) {
       console.log('User Created Successfully');
       localStorage.setItem('token', dataposted.data.token); // setting token to localstorage
-      Cookies.set('token', dataposted.data.token); // setting token to cookies
+      localStorage.setItem('name' , `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`)
+      localStorage.setItem('pimage' , `${dataposted.data.user.profilePicture}`)
+      // Cookies.set('token', dataposted.data.token); // setting token to cookies
       navigate('/verify');
     } else {
       console.log('User Not Created Successfully');

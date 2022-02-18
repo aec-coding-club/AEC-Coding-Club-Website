@@ -13,31 +13,31 @@ const Members = () => {
     setMemberFilter(selectedFilter);
   }
 
-  const details = useContext(UserContext);
-  console.log('details', details);
-  const [tokenChecker, setTokenChecker] = useState(false);
-  const checkToken = () => {
-    const token = localStorage.getItem('token');
-    console.log(token);
-    if (token) {
-      setTokenChecker(true);
-    }
-  };
+  // const details = useContext(UserContext);
+  // console.log('details', details);
+  // const [tokenChecker, setTokenChecker] = useState(false);
+  // const checkToken = () => {
+  //   const token = localStorage.getItem('token');
+  //   console.log(token);
+  //   if (token) {
+  //     setTokenChecker(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    checkToken();
-  }, []);
+  // useEffect(() => {
+  //   checkToken();
+  // }, []);
 
   return (
     <>
-      {tokenChecker ? (
+      {/* {tokenChecker ? (
         <Navbar
           userImage={details.userInfo.pimage}
           userNameText={details.userInfo.name}
         />
       ) : (
         <Navbar />
-      )}
+      )} */}
       <main className='members'>
         <header className='members-header'>
           <h1>The Team</h1>

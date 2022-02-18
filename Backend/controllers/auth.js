@@ -154,7 +154,7 @@ exports.register = async (req, res) => {
       user,
     };
     // setcookie("token", token, options);
-    return res.status(200).cookie("token", token, options).json({
+    return res.status(200).json({
       success: true,
       // token: true,
       token,
@@ -199,7 +199,7 @@ exports.login = async (req, res) => {
         token,
         user,
       };
-      return res.status(200).cookie("token", token, options).json({
+      return res.status(200).json({
         success: true,
         token,
         user,
