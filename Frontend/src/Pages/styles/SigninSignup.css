@@ -13,6 +13,7 @@
 }
 
 form {
+  width: 420px;
   margin: 20px 30px;
   padding: 10px;
 }
@@ -31,17 +32,19 @@ h1 {
 }
 
 .name {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(calc(8.2rem + 5vw), 0.3fr));
+  /* display: grid;
+  grid-template-columns: repeat(2, minmax(calc(8.2rem + 5vw), 0.3fr)); */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
 .head-input {
   width: calc(9rem + 3vw);
-  margin-right: 4rem;
 }
 
 .input-data {
-  width: calc(21.4rem + 3vw);
+  /* width: calc(21.4rem + 3vw); */
+  width: 100%;
 }
 .input__field {
   height: 2.2rem;
@@ -129,14 +132,17 @@ h1 {
 
 /* For Mobile Use ---> */
 @media (max-width : 425px){
+  form{
+    width: 370px;
+  }
   .user-login {
     padding: 0;
     margin: 0 0;
   }
   h1{
-    font-size: 1.75rem;
+    font-size: 1.55rem;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
   .user-img img {
     width: 175px;
@@ -152,17 +158,21 @@ h1 {
     margin-right: 0;
     width: 100%;
   }
+  .login-signup-btn{
+    position: static;
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
 }
 @media (max-width : 354px){
-  .user-login{
-    display: block;
-  }
   form{
-    padding: 0 0.9rem;
+    width: 250px;
+    padding: 0;
     overflow-x: hidden;
   }
   h1{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .input-data{
     width: 100%;
