@@ -745,6 +745,10 @@ async function sendOTP(email, otp) {
                                                                                     style="font-family: Arial; font-size: 16px; padding: 15px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"
                                                                                     align="center" valign="middle">
                                                                                     <a class="mcnButton "
+<<<<<<< HEAD
+=======
+                                                                                        title="     Try Aeon for FREE      "
+>>>>>>> 4f5ab96ab932b79ecb53bdbd1b696ed2d3a099d5
                                                                                         href="http://localhost:3000/verify"
                                                                                         target="_blank"
                                                                                         style="font-weight: bold; letter-spacing: 1px; line-height: 100%; text-align: center; text-decoration: none; color: #ffffff; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block;"

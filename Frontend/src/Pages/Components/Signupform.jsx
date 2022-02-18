@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 import { Api } from '../../backend';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const Signupform = () => {
   const [registerdata, setRegisterdata] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    contact_no: 0,
+    contact_no: '',
     branch: '',
     batch: 0,
     password: '',
@@ -39,8 +40,11 @@ const Signupform = () => {
     if (dataposted.data.success) {
       console.log('User Created Successfully');
       localStorage.setItem('token', dataposted.data.token); // setting token to localstorage
-      localStorage.setItem('name' , `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`)
-      localStorage.setItem('pimage' , `${dataposted.data.user.profilePicture}`)
+      localStorage.setItem(
+        'name',
+        `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
+      );
+      localStorage.setItem('pimage', `${dataposted.data.user.profilePicture}`);
       // Cookies.set('token', dataposted.data.token); // setting token to cookies
       navigate('/verify');
     } else {
@@ -55,6 +59,15 @@ const Signupform = () => {
     setRegisterdata(newdata);
     console.table(newdata);
   }
+
+  const [viewPasswordOne, setViewPasswordOne] = useState(false);
+  const togglePasswordOne = () => {
+    setViewPasswordOne(!viewPasswordOne);
+  };
+  const [viewPasswordTwo, setViewPasswordTwo] = useState(false);
+  const togglePasswordTwo = () => {
+    setViewPasswordTwo(!viewPasswordTwo);
+  };
 
   return (
     <>
@@ -123,7 +136,7 @@ const Signupform = () => {
           </label>
           <br />
           <input
-            type='number'
+            type='text'
             name='contact_no'
             id='contact_no'
             className='input__field input-data'
@@ -218,7 +231,7 @@ const Signupform = () => {
             </label>
             <br />
             <input
-              type='password'
+              type={viewPasswordOne ? 'text' : 'password'}
               name='password'
               id='password'
               className='input__field head-input'
@@ -228,6 +241,9 @@ const Signupform = () => {
               required
               autoComplete='off'
             ></input>
+            <span onClick={togglePasswordOne}>
+              {viewPasswordOne ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </span>
           </div>
 
           <div className='details'>
@@ -236,7 +252,7 @@ const Signupform = () => {
             </label>
             <br />
             <input
-              type='password'
+              type={viewPasswordTwo ? 'text' : 'password'}
               name='confirmPassword'
               id='confirmPassword'
               className='input__field head-input'
@@ -246,6 +262,9 @@ const Signupform = () => {
               required
               autoComplete='off'
             ></input>
+            <span onClick={togglePasswordTwo}>
+              {viewPasswordTwo ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </span>
           </div>
         </div>
 
