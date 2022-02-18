@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import { Api } from "../backend";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import { Api } from '../backend';
+import { useNavigate } from 'react-router-dom';
 
 const Otpform = () => {
   const [registerdata, setRegisterdata] = useState({
-    otp: "",
+    otp: '',
   });
   let navigate = useNavigate();
 
-  console.log("Api is : ", Api);
+  console.log('Api is : ', Api);
 
   async function submit(e) {
     e.preventDefault();
-    console.log("Data Submitted");
+    console.log('Data Submitted');
     const data = {
       otp: registerdata.otp,
     };
@@ -21,11 +21,11 @@ const Otpform = () => {
       withCredentials: true,
     });
     if (dataposted.data.success) {
-      console.log("User Created Successfully");
-      navigate("/dashboard");
+      console.log('User Created Successfully');
+      navigate('/dashboard');
     } else {
-      console.log("User Not Created Successfully");
-      navigate("/verify");
+      console.log('User Not Created Successfully');
+      navigate('/verify');
     }
     console.log(dataposted);
   }
@@ -37,17 +37,16 @@ const Otpform = () => {
     console.log(newdata);
   }
 
-
   return (
     <>
       <form onSubmit={(e) => submit(e)}>
         <input
-          type="text"
-          name="otp"
-          id="otp"
+          type='text'
+          name='otp'
+          id='otp'
           onChange={(e) => handelChange(e)}
           value={registerdata.otp}
-          placeholder="Enter your OTP"
+          placeholder='Enter your OTP'
           maxLength={6}
         />
 

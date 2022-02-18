@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import { FaTimes } from 'react-icons/fa'
-
-import './styles/Event-Modal.css'
+import React, { useState, useEffect } from 'react';
+import { FaTimes } from 'react-icons/fa';
+import './styles/Event-Modal.css';
 
 const EventModal = (props) => {
-  const { modal, modalShow, onHide } = props
+  const { modal, modalShow, onHide } = props;
   const [modalContainerClass, setModalContainerClass] = useState(
     'event-modal-container'
-  )
-  const [modalClass, setModalClass] = useState('event-modal')
+  );
+  const [modalClass, setModalClass] = useState('event-modal');
 
-  console.log(modal)
+  console.log(modal);
 
   useEffect(() => {
     if (modalShow) {
-      setModalContainerClass('event-modal-container show')
-      setModalClass('event-modal modal-show')
+      setModalContainerClass('event-modal-container show');
+      setModalClass('event-modal modal-show');
     } else {
-      setModalContainerClass('event-modal-container')
-      setModalClass('event-modal')
+      setModalContainerClass('event-modal-container');
+      setModalClass('event-modal');
     }
-  }, [modalShow])
+  }, [modalShow]);
 
   return (
     <div className={modalContainerClass}>
@@ -40,7 +39,7 @@ const EventModal = (props) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EventModal
+export default EventModal;

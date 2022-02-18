@@ -1,9 +1,9 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { SECRET } = process.env;
-const User = require("../models/User");
-const otpSender = require("./mailsender.js");
-const Counter = require("../models/Counter");
+const User = require('../models/User');
+const otpSender = require('./mailsender.js');
+const Counter = require('../models/Counter');
 
 //? MARK : Register Route
 
@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
     ) {
       return res.json({
         success: false,
-        error: "All Fields Are Required",
+        error: 'All Fields Are Required',
       });
     }
 
@@ -44,7 +44,7 @@ exports.register = async (req, res) => {
     if (password != confirmPassword) {
       return res.json({
         success: false,
-        error: "Password and Confirm Password Does not Match",
+        error: 'Password and Confirm Password Does not Match',
       });
     }
 
@@ -55,7 +55,7 @@ exports.register = async (req, res) => {
     if (existingUserP || existingUserE) {
       return res.json({
         success: false,
-        error: "User Already Exists",
+        error: 'User Already Exists',
       });
     }
     const myEncryPassword = await bcrypt.hash(password, 10);
@@ -69,19 +69,19 @@ exports.register = async (req, res) => {
         branch: branch,
         batch: batch,
       });
-      console.log("New Counter Created", countfresh);
+      console.log('New Counter Created', countfresh);
       const countfreshfind = await Counter.findOne({
         branch: branch,
         batch: batch,
       });
-      console.log("Here is my Counter : ", countfreshfind);
+      console.log('Here is my Counter : ', countfreshfind);
       countupdate = await Counter.findByIdAndUpdate(
         { _id: countfreshfind._id },
         { $inc: { seq: 1 } }
       );
       console.log(countupdate);
     } else {
-      console.log("Here is my Counter : ", count);
+      console.log('Here is my Counter : ', count);
       countupdate = await Counter.findByIdAndUpdate(
         { _id: count._id },
         { $inc: { seq: 1 } }
@@ -141,7 +141,7 @@ exports.register = async (req, res) => {
       },
       SECRET,
       {
-        expiresIn: "24h",
+        expiresIn: '24h',
       }
     );
     user.token = token;
@@ -152,7 +152,7 @@ exports.register = async (req, res) => {
       user,
     };
     // setcookie("token", token, options);
-    return res.status(200).cookie("token", token, options).json({
+    return res.status(200).cookie('token', token, options).json({
       success: true,
       // token: true,
       token,
@@ -175,7 +175,7 @@ exports.login = async (req, res) => {
     if (!uid || !password) {
       return res.json({
         success: false,
-        error: "Field is Missing",
+        error: 'Field is Missing',
       });
     }
     const user = await User.findOne({ uid });
@@ -187,7 +187,7 @@ exports.login = async (req, res) => {
         },
         SECRET,
         {
-          expiresIn: "24h",
+          expiresIn: '24h',
         }
       );
       user.token = token;
@@ -197,7 +197,7 @@ exports.login = async (req, res) => {
         token,
         user,
       };
-      return res.status(200).cookie("token", token, options).json({
+      return res.status(200).cookie('token', token, options).json({
         success: true,
         token,
         user,
@@ -205,7 +205,7 @@ exports.login = async (req, res) => {
     } else {
       return res.json({
         success: false,
-        error: "ID or Password is incorrect",
+        error: 'ID or Password is incorrect',
       });
     }
   } catch (error) {
@@ -251,7 +251,7 @@ exports.verifyOTP = async (req, res) => {
           res.send({
             success: true,
             token: true,
-            msg: "otp has been expired, new OTP has sent",
+            msg: 'otp has been expired, new OTP has sent',
           });
         } else if (docs.otpstatus.wrongTry > 5) {
           if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
@@ -280,7 +280,7 @@ exports.verifyOTP = async (req, res) => {
             res.send({
               success: true,
               token: true,
-              msg: "otp has been expired, new OTP has sent",
+              msg: 'otp has been expired, new OTP has sent',
             });
           } else if (docs.otpstatus.otpRequest < 5) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
@@ -309,29 +309,32 @@ exports.verifyOTP = async (req, res) => {
             res.send({
               success: true,
               token: true,
-              msg: "otp has been expired, new OTP has sent",
+              msg: 'otp has been expired, new OTP has sent',
             });
           } else {
             return res.send({
               success: false,
               token: true,
-              message: "maximum attempt exeeded",
+              message: 'maximum attempt exeeded',
             });
           }
         } else if (docs.otpstatus.otp != otp) {
           console.log(docs.otpstatus.wrongTry);
-          console.log("uid: " + uid);
+          console.log('uid: ' + uid);
 
           User.updateOne(
             { uid: uid },
-            { $set: { "otpstatus.wrongTry": docs.otpstatus.wrongTry + 1 } }
+            { $set: { 'otpstatus.wrongTry': docs.otpstatus.wrongTry + 1 } }
           )
             .then((msg) => {})
             .catch((err) => {
               console.log(err);
             });
-          return res
-            .send({ success: false, token: true, message: "wrong otp" });
+          return res.send({
+            success: false,
+            token: true,
+            message: 'wrong otp',
+          });
         } else {
           User.updateOne(
             { uid: uid },
@@ -343,10 +346,10 @@ exports.verifyOTP = async (req, res) => {
             });
           return res
             .status(200)
-            .send({ success: true, token: true, message: "account activated" });
+            .send({ success: true, token: true, message: 'account activated' });
         }
       } else {
-        res.redirect("/api/v1/dashboard");
+        res.redirect('/api/v1/dashboard');
       }
     });
   }

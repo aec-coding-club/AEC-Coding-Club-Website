@@ -2,7 +2,7 @@
   margin: 10px 0;
   padding: 10px 3%;
   display: flex;
-  width:100vw;
+  width: 100vw;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
@@ -14,35 +14,36 @@
 form {
   margin: 20px 30px;
   padding: 10px;
-  
 }
 
-h1{
+h1 {
   margin-bottom: 20px;
 }
 
 .details {
   margin-bottom: 20px;
   font-size: 1.1rem;
-  
 }
 
-.name{
+.asterik {
+  color: rgba(214, 40, 40, 1);
+}
+
+.name {
   display: grid;
-  grid-template-columns:  repeat(2, minmax(calc(8.2rem + 5vw),0.3fr));;
+  grid-template-columns: repeat(2, minmax(calc(8.2rem + 5vw), 0.3fr));
 }
 
-.head-input{
+.head-input {
   width: calc(9rem + 3vw);
   margin-right: 4rem;
 }
 
-.input-data{
+.input-data {
   width: calc(21.4rem + 3vw);
 }
 .input__field {
   height: 2.2rem;
-  
   padding: 0.3rem 0.5rem;
   margin-top: 0.3rem;
   font-size: 0.9rem;
@@ -61,30 +62,9 @@ h1{
   box-shadow: 0 0 3px 1px rgba(214, 40, 40, 1);
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+.signin__input__field {
+  width: calc(15rem + 3vw);
 }
-
-.dropdown button{
-  background-color: #fff;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #000;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
-  
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown-content p:hover {background-color: rgb(195, 83, 83);}
 
 .details-input {
   width: 200px;
@@ -131,19 +111,17 @@ h1{
     padding: 20px;
   }
 
-  .name{
+  .name {
     display: grid;
-    grid-template-columns:  repeat(2, minmax(calc(9rem + 5vw),0.3fr));;
+    grid-template-columns: repeat(2, minmax(calc(9rem + 5vw), 0.3fr));
   }
 
- .details{
-   font-size: 0.8rem;
- }
+  .details {
+    font-size: 0.8rem;
+  }
 
-
- 
-.login-signup-btn {
- position: relative;
- left: 20vw;
-}
+  .login-signup-btn {
+    position: relative;
+    left: 20vw;
+  }
 }

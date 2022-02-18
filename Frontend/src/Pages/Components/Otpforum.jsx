@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Axios from "axios";
-import { Api } from "../../backend";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Axios from 'axios';
+import { Api } from '../../backend';
 
 const Otpforum = () => {
   const [registerdata, setRegisterdata] = useState({
-    otp: "",
+    otp: '',
   });
   let navigate = useNavigate();
 
   async function submit(e) {
     e.preventDefault();
-    console.log("Data Submitted");
+    console.log('Data Submitted');
     const data = {
       otp: registerdata.otp,
     };
@@ -19,15 +19,15 @@ const Otpforum = () => {
       withCredentials: true,
     });
     if (dataposted.data.success) {
-      console.log("User Created Successfully");
-      navigate("/dashboard");
+      console.log('User Created Successfully');
+      navigate('/dashboard');
       window.location.reload();
     } else {
-      console.log("User Not Created Successfully");
+      console.log('User Not Created Successfully');
       setRegisterdata({
-          otp : ""
-      })
-      navigate("/verify");
+        otp: '',
+      });
+      navigate('/verify');
     }
     console.log(dataposted);
   }
@@ -42,22 +42,22 @@ const Otpforum = () => {
     <>
       <form onSubmit={(e) => submit(e)}>
         <h1>Enter your OTP here to Verify your Account</h1>
-        <div className="details">
+        <div className='details'>
           <input
-            type="text"
-            name="otp"
-            id="otp"
-            className="input__field"
-            placeholder="Enter your OTP here to verify"
+            type='text'
+            name='otp'
+            id='otp'
+            className='input__field'
+            placeholder='Enter your OTP here to verify'
             onChange={(e) => handelChange(e)}
             value={registerdata.otp}
             required
-            autoComplete="off"
+            autoComplete='off'
             maxLength={6}
           ></input>
         </div>
 
-        <button className="btn login-signup-btn">Verify OTP</button>
+        <button className='btn login-signup-btn'>Verify OTP</button>
       </form>
     </>
   );
