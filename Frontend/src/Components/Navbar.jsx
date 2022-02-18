@@ -13,11 +13,11 @@ const NavCompoA = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="nav-btn-wrapper">
-        <button className="btn sign-up" onClick={() => navigate("/signup")}>
+      <div className='nav-btn-wrapper'>
+        <button className='btn sign-up' onClick={() => navigate("/signup")}>
           Sign Up
         </button>
-        <button className="btn sign-in" onClick={() => navigate("/signin")}>
+        <button className='btn sign-in' onClick={() => navigate("/signin")}>
           Sign In
         </button>
       </div>
@@ -37,12 +37,17 @@ const NavCompoB = ({ userImg, userNameText }) => {
 
   return (
     <>
-      <div className="nav-btn-wrapper">
-        <img className="logged-user-image" src={userImg} />
-        <NavLink to="/dashboard">
-          <div className="user-name-text">{userNameText}</div>
+      <div className='nav-btn-wrapper'>
+        <img className='logged-user-image' src={userImg} />
+        <NavLink to='/dashboard' className='nav-link'>
+          <div
+            className='user-name-text'
+            style={{ textDecoration: "none", color: "#D62828" }}
+          >
+            {userNameText}
+          </div>
         </NavLink>
-        <button className="btn sign-in" onClick={signOut}>
+        <button className='btn sign-in' onClick={signOut}>
           Sign Out
         </button>
       </div>
@@ -74,21 +79,21 @@ const Navbar = ({ userImage, userNameText }) => {
 
   return (
     <nav>
-      <div className="logo" onClick={() => navigate("/")}>
-        <img src={Logo} alt="AECCC-LOGO" className="logo-image" />
-        <div className="logo-text">
-          <p className="logo-name">aec coding club</p>
-          <p className="logo-motto">Always Top Of The Heap</p>
+      <div className='logo' onClick={() => navigate("/")}>
+        <img src={Logo} alt='AECCC-LOGO' className='logo-image' />
+        <div className='logo-text'>
+          <p className='logo-name'>aec coding club</p>
+          <p className='logo-motto'>Always Top Of The Heap</p>
         </div>
       </div>
-      <div className="nav-link-wrapper">
-        <NavLink to="/" className="nav-link">
+      <div className='nav-link-wrapper'>
+        <NavLink to='/' className='nav-link'>
           Home
         </NavLink>
-        <NavLink to="/events" className="nav-link">
+        <NavLink to='/events' className='nav-link'>
           Events
         </NavLink>
-        <NavLink to="/members" className="nav-link">
+        <NavLink to='/members' className='nav-link'>
           Members
         </NavLink>
       </div>
@@ -98,7 +103,7 @@ const Navbar = ({ userImage, userNameText }) => {
         <NavCompoA />
       )}
 
-      <div className="menu-toggle-icon" onClick={() => handleSideBar(true)}>
+      <div className='menu-toggle-icon' onClick={() => handleSideBar(true)}>
         <FaBars />
       </div>
       <SideBar sidebarOpen={sidebarOpen} handleSideBar={handleSideBar} />
