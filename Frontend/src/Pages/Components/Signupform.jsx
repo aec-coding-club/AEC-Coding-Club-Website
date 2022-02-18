@@ -137,7 +137,7 @@ const Signupform = () => {
         </div>
 
         <div className='name'>
-          <div className='details'>
+          <div className='details '>
             <label htmlFor='branch'>
               Branch :<span className='asterik'>*</span>
               <br />
