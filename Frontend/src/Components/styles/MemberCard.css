@@ -82,3 +82,32 @@
     min-height: 150px;
   }
 }
+
+/*Mobile View*/
+@media (max-width : 425px){
+  .card-name{
+    text-align: center;
+  }
+  .member-card{
+    /* border-radius: 50%; */
+    background-color: rgba(0, 0, 0, 0.308);
+  }
+  .card-img-container {
+    border-radius: 50%;
+    height: auto;
+  }
+  .card-links {
+    height: 2.5rem;
+    opacity: 1;
+    position: initial;
+    background-color:transparent;
+  }
+}
+
+@media (max-width : 350px){
+  .member-card{
+    padding: 12px 8px;
+    width: 130px;
+    min-height: 85px;
+  }
+}

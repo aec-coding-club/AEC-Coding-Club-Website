@@ -19,3 +19,17 @@
 .member-filter .btn:hover {
   transform: scale(1.05);
 }
+
+/*Mobile View*/
+@media screen and (min-width : 320px) and (max-width : 425px){
+  .member-filter{
+    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+@media screen and (max-width : 347px) {
+  .member-filter .core{
+    padding: 8px 9px;
+  }
+}

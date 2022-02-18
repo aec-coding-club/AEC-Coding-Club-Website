@@ -27,3 +27,15 @@
     grid-template-columns: repeat(2, 150px);
   }
 }
+/*Mobile View*/
+@media (max-width : 425px){
+  .members-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 0;
+  }
+}
+@media (max-width : 350px){
+  .members-container{
+    gap: 2rem 0.7rem;
+  }
+}
