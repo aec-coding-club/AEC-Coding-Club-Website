@@ -20,6 +20,7 @@
   transform: scale(1.05);
 }
 
+/*Mobile View*/
 @media screen and (min-width : 320px) and (max-width : 425px){
   .member-filter{
     margin: 0 auto;
