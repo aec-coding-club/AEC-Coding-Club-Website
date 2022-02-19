@@ -230,6 +230,7 @@ const Signupform = () => {
               Password :<span className='asterik'>*</span>
             </label>
             <br />
+            <div className="inline-input-svg">
             <input
               type={viewPasswordOne ? 'text' : 'password'}
               name='password'
@@ -244,6 +245,7 @@ const Signupform = () => {
             <span onClick={togglePasswordOne}>
               {viewPasswordOne ? <AiFillEyeInvisible /> : <AiFillEye />}
             </span>
+            </div>
           </div>
 
           <div className='details'>
@@ -251,6 +253,7 @@ const Signupform = () => {
               Confirm Password :<span className='asterik'>*</span>
             </label>
             <br />
+            <div className="inline-input-svg">
             <input
               type={viewPasswordTwo ? 'text' : 'password'}
               name='confirmPassword'
@@ -265,6 +268,7 @@ const Signupform = () => {
             <span onClick={togglePasswordTwo}>
               {viewPasswordTwo ? <AiFillEyeInvisible /> : <AiFillEye />}
             </span>
+            </div>
           </div>
         </div>
 
