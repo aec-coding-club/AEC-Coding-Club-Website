@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import './styles/Events.css';
-import Navbar from '../Components/Navbar';
-import EventModal from '../Components/EventModal';
-import EventsContainer from '../Components/EventsContainer';
-import UserContext from './Context/LoggedUserContext';
+import React, { useContext, useEffect, useState } from 'react'
+import { FaEdit } from 'react-icons/fa'
+import './styles/Events.css'
+import Navbar from '../Components/Navbar'
+import EventModal from '../Components/EventModal'
+import EventsContainer from '../Components/EventsContainer'
+import UserContext from './Context/LoggedUserContext'
 
-const Events = ({tokenChecker}) => {
-
-  const [modalShow, setModalShow] = React.useState(false);
+const Events = ({ tokenChecker }) => {
+  const [modalShow, setModalShow] = React.useState(false)
 
   function onHide() {
-    setModalShow(false);
+    setModalShow(false)
   }
 
   return (
@@ -31,14 +31,21 @@ const Events = ({tokenChecker}) => {
           </div>
         )}
         <div className='events-section'>
-          <h3 className='events-section-header'>Upcoming Events</h3>
-          <button classname='btn' onClick={() => setModalShow(true)}>Add Events</button>
+          <div className='header-wrapper'>
+            <h3 className='events-section-header'>Upcoming Events</h3>
+            <button className='event-btn' onClick={() => setModalShow(true)}>
+              <div>Add Event</div>{' '}
+              <div>
+                <FaEdit />
+              </div>
+            </button>
+          </div>
           <EventModal addEvent={true} modalShow={modalShow} onHide={onHide} />
           <EventsContainer />
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Events;
+export default Events

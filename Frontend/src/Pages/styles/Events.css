@@ -27,9 +27,36 @@
 
 .events-section-header {
   margin-top: 1.5rem;
-
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.event-btn {
+  margin-top: 1.5rem;
+  border: none;
+  outline: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: unset;
+  color: #fff;
+  border: 1px solid var(--btn-bg);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+  transition: 200ms ease;
+}
+.event-btn:hover {
+  background-color: var(--btn-bg);
 }
 
 @media (min-width: 700px) {

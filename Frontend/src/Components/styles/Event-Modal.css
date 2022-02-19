@@ -63,9 +63,30 @@
   box-shadow: unset;
 }
 
-.modal-textarea, .modal-inp{
+.modal-textarea,
+.modal-inp {
   width: 100% !important;
   border: none;
   outline: none;
+  margin: 0 !important;
   padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-family: Poppins, sans-serif;
+}
+.modal-textarea:focus,
+.modal-inp:focus {
+  outline: 1px solid var(--btn-bg);
+}
+
+.modal-textarea {
+  min-height: 80px;
+}
+
+.input-wrapper {
+  margin-top: 0.5rem;
+}
+
+.add-event {
+  margin-top: 0.5rem;
+  border-radius: 0.25rem !important;
 }
