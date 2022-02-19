@@ -17,6 +17,7 @@ Welcome to the code for AECCC's website.
 - Soumya Banerjee
 - Soumali Gorai
 - Debdeep Banerjee
+- Aritra Biswas
 
 ### Setup Instructions
 
