@@ -50,7 +50,7 @@ h1 {
   height: 2.2rem;
   padding: 0.3rem 0.5rem;
   margin-top: 0.3rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   border: 1.5px solid rgba(214, 40, 40, 1);
   box-sizing: border-box;
   border-radius: 5px;
@@ -97,6 +97,19 @@ h1 {
 .links:hover {
   color: rgba(214, 40, 40, 1);
 }
+
+#password+span svg, #confirmPassword+span svg{
+  margin-top: 0.4rem;
+  position: absolute;
+  top: .4rem;
+  right: .3rem;
+  z-index: 1111;
+  color: rgba(151, 151, 151, 0.692);
+}
+.inline-input-svg{
+  position: relative;
+}
+
 
 @media (max-width: 868px) {
   .user-login {
@@ -148,7 +161,7 @@ h1 {
     width: 175px;
   }
   .details{
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .name{
     grid-template-columns: 1fr;
@@ -163,6 +176,11 @@ h1 {
     display: block;
     margin: auto;
     margin-bottom: 1rem;
+  }
+  #password+span svg, #confirmPassword+span svg{
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.3rem;
   }
 }
 @media (max-width : 354px){
