@@ -45,6 +45,28 @@ const EventModal = (props) => {
                 />
               </label>
             </div>
+            <div className='input-wrapper date-time'>
+              <div className='date'>
+                <label>
+                  <div className='label'>Date & Time:</div>
+                  <input
+                    type='datetime-local'
+                    className='modal-inp date-inp'
+                    placeholder='Event date...'
+                  />
+                </label>
+              </div>
+              <div className='duration'>
+                <label>
+                  <div className='label'>Duration(Hrs):</div>
+                  <input
+                    type='number'
+                    className='modal-inp'
+                    placeholder='Event Duration...'
+                  />
+                </label>
+              </div>
+            </div>
             <div className='input-wrapper'>
               <label>
                 <div className='label'>Image:</div>

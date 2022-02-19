@@ -90,3 +90,35 @@
   margin-top: 0.5rem;
   border-radius: 0.25rem !important;
 }
+
+.date-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date {
+  width: 65%;
+}
+.duartion {
+  width: 35%;
+}
+
+.date-inp {
+  background-color: #fff !important;
+}
+
+@media (max-width: 500px) {
+  .date-time {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .date {
+    width: 100%;
+  }
+  .duartion {
+    width: 100% !important;
+  }
+}
