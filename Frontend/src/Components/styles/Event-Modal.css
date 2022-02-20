@@ -137,3 +137,20 @@
     width: 100% !important;
   }
 }
+
+/*  Mobile View ---> */
+@media (max-width: 425px) {
+  .event-wrapper {
+    justify-content: center;
+  }
+  .event-inputs {
+    width: 90%;
+  }
+  .modal-header {
+    text-align: center;
+  }
+  .add-event {
+    display: block;
+    margin: 0.5rem auto;
+  }
+}

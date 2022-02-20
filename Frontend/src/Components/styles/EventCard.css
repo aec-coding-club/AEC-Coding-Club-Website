@@ -144,3 +144,22 @@
   color: #fff;
   font-size: 0.85rem;
 }
+.event-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/*  Mobile View ---> */
+@media (min-width: 425px) {
+  .event-card-btn {
+    padding: 0.5rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 354px) {
+  .event-card-btn {
+    padding: 0.3rem 0.9rem !important;
+  }
+}
