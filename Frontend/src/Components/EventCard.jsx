@@ -1,25 +1,50 @@
-import React from "react";
+import React from 'react'
+import './styles/EventCard.css'
+import EventModal from './EventModal'
 
-import "./styles/EventCard.css";
-import EventModal from "./EventModal";
+export const EventCard = ({ cardData, setModalShow, cardEditData }) => {
+  const { eventImage, eventTitle, eventDetails, eventTime } = cardData
 
-export const EventCard = ({ cardData }) => {
-  const [modalShow, setModalShow] = React.useState(false);
-  const { eventImage, eventTitle } = cardData;
+  const {
+    setEditEventTitle,
+    setEditEventTime,
+    setEditEventImage,
+    setEditEventDetails,
+    setAddEvent,
+  } = cardEditData || {}
 
-  function onHide() {
-    setModalShow(false);
+  function onEdit() {
+    setModalShow(true)
+    setAddEvent(false)
+    setEditEventTitle(eventTitle)
+    setEditEventTime(eventTime)
+    setEditEventImage(eventImage)
+    setEditEventDetails(eventDetails)
   }
 
   return (
     <>
-      <div className='event-card' onClick={() => setModalShow(true)}>
+      <div className={`event-card`}>
         <div className='event-card-img-container'>
-          <img src={eventImage} alt='card-img' className='event-card-img' />
+          <img src={eventImage} alt='event-img' className='event-card-img' />
         </div>
-        <p className='event-card-title'>{eventTitle}</p>
+        <div className='card-text-details'>
+          <p className='event-card-title'>{eventTitle}</p>
+          <p className='event-card-date'>
+            Date: <span>{eventTime.split('T')[0]}</span>
+          </p>
+          <div className='event-card-desc'>
+            <p>{eventDetails}</p>
+          </div>
+          <div className='event-btn-wrapper'>
+            <button className='btn'>Register</button>
+            <button className='btn' onClick={onEdit}>
+              Edit
+            </button>
+            <button className='btn'>Delete</button>
+          </div>
+        </div>
       </div>
-      <EventModal modal={cardData} modalShow={modalShow} onHide={onHide} />
     </>
-  );
-};
+  )
+}

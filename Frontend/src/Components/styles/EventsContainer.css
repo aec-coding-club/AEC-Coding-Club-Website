@@ -3,7 +3,7 @@
   margin: 2.5rem auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 2rem;
 }
