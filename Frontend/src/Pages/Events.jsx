@@ -64,12 +64,14 @@ const Events = ({ tokenChecker }) => {
         <div className='events-section'>
           <div className='header-wrapper'>
             <h3 className='events-section-header'>Upcoming Events</h3>
-            <button className='event-btn' onClick={handleEditClick}>
-              <div>Add Event</div>{' '}
-              <div>
-                <FaEdit />
-              </div>
-            </button>
+            {tokenChecker && (
+              <button className='event-btn' onClick={handleEditClick}>
+                <div>Add Event</div>{' '}
+                <div>
+                  <FaEdit />
+                </div>
+              </button>
+            )}
           </div>
           <EventModal
             cardEditData={cardEditData}
