@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes, FaRegEye } from 'react-icons/fa'
+import PreviewEventCard from './PreviewEventCard'
 import './styles/Event-Modal.css'
 
 const EventModal = (props) => {
-  const { modal, modalShow, onHide, addEvent } = props
+  const { modalShow, onHide, cardEditData } = props
   const [modalContainerClass, setModalContainerClass] = useState(
     'event-modal-container'
   )
   const [modalClass, setModalClass] = useState('event-modal')
 
-  console.log(modal)
+  const {
+    editEventTitle,
+    editEventImage,
+    editEventTime,
+    editEventDetails,
+    addEvent,
+    setEditEventTitle,
+    setEditEventTime,
+    setEditEventImage,
+    setEditEventDetails,
+  } = cardEditData
 
   useEffect(() => {
     if (modalShow) {
@@ -23,91 +34,90 @@ const EventModal = (props) => {
 
   return (
     <div className={modalContainerClass}>
-      {/* // event title, details, image, time */}
       <div className={modalClass}>
-        {addEvent ? (
-          <>
-            <div className='close-btn' onClick={() => onHide()}>
-              {<FaTimes />}
-            </div>
-            <h3 className='modal-header' style={{ marginBottom: '1rem' }}>
-              Add Event
-            </h3>
-            <hr />
-            <div className='input-wrapper'>
-              <label>
-                <div className='label'>Title:</div>
-
-                <input
-                  placeholder='Add Event Title...'
-                  type='text'
-                  className='modal-inp'
-                />
-              </label>
-            </div>
-            <div className='input-wrapper date-time'>
-              <div className='date'>
+        <>
+          <div className='close-btn' onClick={() => onHide()}>
+            {<FaTimes />}
+          </div>
+          <h3 className='modal-header' style={{ marginBottom: '1rem' }}>
+            Add Event
+          </h3>
+          <hr />
+          <div className='event-wrapper'>
+            <div className='event-inputs'>
+              <div className='input-wrapper'>
                 <label>
-                  <div className='label'>Date & Time:</div>
+                  <div className='label'>Title:</div>
                   <input
-                    type='datetime-local'
-                    className='modal-inp date-inp'
-                    placeholder='Event date...'
-                  />
-                </label>
-              </div>
-              <div className='duration'>
-                <label>
-                  <div className='label'>Duration(Hrs):</div>
-                  <input
-                    type='number'
+                    value={editEventTitle}
+                    onChange={(e) => setEditEventTitle(e.target.value)}
+                    placeholder='Add Event Title...'
+                    type='url'
                     className='modal-inp'
-                    placeholder='Event Duration...'
+                    maxLength='50'
                   />
                 </label>
               </div>
-            </div>
-            <div className='input-wrapper'>
-              <label>
-                <div className='label'>Image:</div>
+              <div className='input-wrapper date-time'>
+                <div className='date'>
+                  <label>
+                    <div className='label'>Date & Time:</div>
+                    <input
+                      value={editEventTime}
+                      onChange={(e) => setEditEventTime(e.target.value)}
+                      type='datetime-local'
+                      className='modal-inp date-inp'
+                      placeholder='Event date...'
+                    />
+                  </label>
+                </div>
+                <div className='duration'>
+                  <label>
+                    <div className='label'>Duration(Hrs):</div>
+                    <input
+                      type='number'
+                      className='modal-inp'
+                      placeholder='Event Duration...'
+                    />
+                  </label>
+                </div>
+              </div>
+              <div className='input-wrapper'>
+                <label>
+                  <div className='label'>Image:</div>
 
-                <input
-                  placeholder='Add Event Image Link...'
-                  type='text'
-                  className='modal-inp'
-                />
-              </label>
-            </div>
-            <div className='input-wrapper'>
-              <label>
-                <div className='label'>Details:</div>
+                  <input
+                    value={editEventImage}
+                    onChange={(e) => setEditEventImage(e.target.value)}
+                    placeholder='Add Event Image Link...'
+                    type='text'
+                    className='modal-inp'
+                  />
+                </label>
+              </div>
+              <div className='input-wrapper'>
+                <label>
+                  <div className='label'>Details:</div>
 
-                <textarea
-                  placeholder='Add Event Description...'
-                  className='modal-textarea'
-                  style={{ resize: 'none' }}
-                />
-              </label>
+                  <textarea
+                    value={editEventDetails}
+                    onChange={(e) => setEditEventDetails(e.target.value)}
+                    placeholder='Add Event Description...'
+                    className='modal-textarea'
+                    style={{ resize: 'none' }}
+                    maxLength='150'
+                  />
+                </label>
+              </div>
+              <button className='btn add-event'>
+                {addEvent ? 'Add Event' : 'Edit Event'}
+              </button>
             </div>
-            <button className='btn add-event'>Add Event</button>
-          </>
-        ) : (
-          <>
-            <div className='close-btn' onClick={() => onHide()}>
-              {<FaTimes />}
+            <div className='preview'>
+              <PreviewEventCard cardEditData={cardEditData} />
             </div>
-            <h3 className='modal-header'>{modal.eventTitle}</h3>
-            <p className='modal-date'>{modal.eventTime}</p>
-            <hr />
-            <p className='modal-text'>{modal.eventDetails}</p>
-            <button
-              className={`btn modal-btn ${!modal.register && 'btn-disabled'}`}
-              disabled={modal.register}
-            >
-              {modal.register ? 'Register' : 'Already Registered'}
-            </button>
-          </>
-        )}
+          </div>
+        </>
       </div>
     </div>
   )

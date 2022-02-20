@@ -8,7 +8,7 @@
   opacity: 0;
   visibility: hidden;
   width: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.432);
 }
 .show {
   opacity: 1;
@@ -20,8 +20,7 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%) scale(0);
   width: 90%;
-  max-width: 600px;
-  min-height: 300px;
+
   background-color: var(--nav-body);
   z-index: 10;
   position: relative;
@@ -33,6 +32,16 @@
 }
 .modal-show {
   transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.event-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.event-inputs {
+  height: 100%;
 }
 
 .close-btn {
@@ -79,7 +88,7 @@
 }
 
 .modal-textarea {
-  min-height: 80px;
+  min-height: 100px;
 }
 
 .input-wrapper {
@@ -107,6 +116,12 @@
 
 .date-inp {
   background-color: #fff !important;
+}
+
+@media (max-width: 800px) {
+  .preview {
+    display: none;
+  }
 }
 
 @media (max-width: 500px) {
