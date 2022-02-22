@@ -2,7 +2,13 @@ import React from "react";
 import "./styles/EventCard.css";
 import EventModal from "./EventModal";
 
-export const EventCard = ({ cardData, setModalShow, cardEditData }) => {
+export const EventCard = ({
+  cardData,
+  setModalShow,
+  cardEditData,
+  tokenChecker,
+  userRole,
+}) => {
   const { eventImage, eventTitle, eventDetails, eventTime } = cardData;
 
   const {
@@ -38,10 +44,20 @@ export const EventCard = ({ cardData, setModalShow, cardEditData }) => {
           </div>
           <div className='event-btn-wrapper'>
             <button className='btn event-card-btn'>Register</button>
-            <button className='btn event-card-btn' onClick={onEdit}>
-              Edit
-            </button>
-            <button className='btn event-card-btn'>Delete</button>
+            {tokenChecker && (
+              <>
+                {userRole >= 2 ? (
+                  <>
+                    <button className='btn event-card-btn' onClick={onEdit}>
+                      Edit
+                    </button>
+                    <button className='btn event-card-btn'>Delete</button>
+                  </>
+                ) : (
+                  ""
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>

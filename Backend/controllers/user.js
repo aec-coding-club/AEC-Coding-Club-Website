@@ -13,6 +13,7 @@ exports.dashboard = async (req, res) => {
     batch: user.batch,
     email: user.email,
     success: true,
+    role: user.role,
   };
   return res.json({ user_data, token: true });
 };

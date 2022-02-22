@@ -5,9 +5,23 @@ import Navbar from "../Components/Navbar";
 import EventModal from "../Components/EventModal";
 import EventsContainer from "../Components/EventsContainer";
 import UserContext from "./Context/LoggedUserContext";
+import { Api } from "../backend";
+import axios from "axios";
 
 const Events = ({ tokenChecker }) => {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [userRole, setUserRole] = useState(0);
+
+  const fetchUserData = async () => {
+    const authToken = localStorage.getItem("token");
+    const parseddata = await axios.get(`${Api}dashboard`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    console.log("User data :- ", parseddata);
+    console.log("User Role :- ", parseddata.data.user_data.role);
+    setUserRole(parseddata.data.user_data.role);
+  };
 
   function onHide() {
     setModalShow(false);
@@ -43,6 +57,10 @@ const Events = ({ tokenChecker }) => {
     setEditEventImage,
     setEditEventDetails,
   };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
   return (
     <>
@@ -83,6 +101,8 @@ const Events = ({ tokenChecker }) => {
         <EventsContainer
           setModalShow={setModalShow}
           cardEditData={cardEditData}
+          tokenChecker={tokenChecker}
+          userRole={userRole}
         />
       </main>
     </>
