@@ -9,7 +9,11 @@ const MemberCard = ({ member }) => {
   return (
     <div className='member-card'>
       <div className='card-img-container'>
-        <img src={img ? img : DefaultImg} alt='profile' className='card-img' />
+        <img
+          src={img ? img : DefaultImg}
+          alt='member-profile-img'
+          className='card-img'
+        />
       </div>
       <h3 className='card-name'>{name}</h3>
       {(linkedin || github || additional) && (
