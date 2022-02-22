@@ -41,7 +41,6 @@ const MembersContainer = ({ memberFilter }) => {
         );
       });
   }
-
   return <div className='members-container'>{allMembers}</div>;
 };
 
