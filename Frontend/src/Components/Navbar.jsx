@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { FaBars } from 'react-icons/fa';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-import Logo from "../Assets/logo.svg";
-import UserImage from "../Assets/members/member.png";
+import Logo from '../Assets/logo.svg';
+import UserImage from '../Assets/members/member.png';
 // import NavbarSvg from "../Assets/navbarsvg.svg";
-import SideBar from "./SideBar";
-import Cookies from "js-cookie";
-import "./styles/Navbar.css";
+import SideBar from './SideBar';
+import Cookies from 'js-cookie';
+import './styles/Navbar.css';
 
 const NavCompoA = () => {
   const navigate = useNavigate();
   return (
     <>
       <div className='nav-btn-wrapper'>
-        <button className='btn sign-up' onClick={() => navigate("/signup")}>
+        <button className='btn sign-up' onClick={() => navigate('/signup')}>
           Sign Up
         </button>
-        <button className='btn sign-in' onClick={() => navigate("/signin")}>
+        <button className='btn sign-in' onClick={() => navigate('/signin')}>
           Sign In
         </button>
       </div>
@@ -42,7 +42,7 @@ const NavCompoB = ({ userImg, userNameText }) => {
         <NavLink to='/dashboard' className='nav-link'>
           <div
             className='user-name-text'
-            style={{ textDecoration: "none", color: "#D62828" }}
+            style={{ textDecoration: 'none', color: '#D62828' }}
           >
             {userNameText}
           </div>
@@ -58,7 +58,7 @@ const NavCompoB = ({ userImg, userNameText }) => {
 const Navbar = ({ userImage, userNameText }) => {
   const [tokenChecker, setTokenChecker] = useState(false);
   const checkToken = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     console.log(token);
     if (token) {
       setTokenChecker(true);
@@ -79,7 +79,7 @@ const Navbar = ({ userImage, userNameText }) => {
 
   return (
     <nav>
-      <div className='logo' onClick={() => navigate("/")}>
+      <div className='logo' onClick={() => navigate('/')}>
         <img src={Logo} alt='AECCC-LOGO' className='logo-image' />
         <div className='logo-text'>
           <p className='logo-name'>aec coding club</p>

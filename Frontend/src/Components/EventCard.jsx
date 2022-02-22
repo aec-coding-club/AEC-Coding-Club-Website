@@ -1,6 +1,6 @@
-import React from "react";
-import "./styles/EventCard.css";
-import EventModal from "./EventModal";
+import React from 'react';
+import './styles/EventCard.css';
+import EventModal from './EventModal';
 
 export const EventCard = ({
   cardData,
@@ -37,7 +37,7 @@ export const EventCard = ({
         <div className='card-text-details'>
           <p className='event-card-title'>{eventTitle}</p>
           <p className='event-card-date'>
-            Date: <span>{eventTime.split("T")[0]}</span>
+            Date: <span>{eventTime.split('T')[0]}</span>
           </p>
           <div className='event-card-desc'>
             <p>{eventDetails}</p>

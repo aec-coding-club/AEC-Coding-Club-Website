@@ -1,66 +1,285 @@
 [
   {
-    "name": "Saikat Mukherjee",
-    "batch": 2024,
-    "role": 2,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
     "name": "Pranay Gupta",
     "batch": 2024,
-    "role": 2,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1VHX7piS_fkCTWki4c65P7IH0RdDALxyp",
+    "linkedin": "https://www.linkedin.com/in/thepranaygupta/",
+    "github": "https://github.com/thepranaygupta",
+    "additional": "https://thepranaygupta.github.io/"
   },
   {
-    "name": "Soumya Banerjee",
+    "name": "Saikat Mukherjee",
     "batch": 2024,
-    "role": 2,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
-  },
-  {
-    "name": "Souvik Mandal",
-    "batch": 2024,
-    "role": 2,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1X3Ophbf0XYq3LmQ-mzC0sseyejk0ehSs",
+    "linkedin": "https://www.linkedin.com/in/saikat-mukherjee-2a925b1b7/",
+    "github": "https://github.com/saikatmu31"
   },
   {
     "name": "Abir Pal",
     "batch": 2024,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=19yeDscjdJnAHOq83EhKWWSduq2a1iOzu",
+    "linkedin": "https://www.linkedin.com/in/abir-pal/",
+    "github": "https://github.com/Abirpal202049"
+  },
+  {
+    "name": "Soumya Banerjee",
+    "batch": 2024,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1aBFyeAiam1YdEmhztOiu1JqZAFoxSZI1",
+    "linkedin": "https://www.linkedin.com/in/soumya-banerjee-94428a1a1/",
+    "github": "https://github.com/soumya495",
+    "additional": "https://soumya495.github.io/Soumya-Portfolio/"
+  },
+  {
+    "name": "Souvik Mandal",
+    "batch": 2024,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1beWn5DuHmAQcudr7PKMxa-zyrXMd7RqY",
+    "linkedin": "https://www.linkedin.com/in/8bitsouvik",
+    "github": "https://github.com/8-bit-souvik",
+    "additional": "https://8-bit-souvik.github.io"
+  },
+  {
+    "name": "Soumali Gorai",
+    "batch": 2025,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1SaD-TvOgyYpTXC-PkK5EpF9uZiM5__0S",
+    "linkedin": "https://www.linkedin.com/in/soumali-gorai-566b01220/",
+    "github": "https://github.com/soumali28"
+  },
+  {
+    "name": "Soumyajit Das",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1v3EH7NPsXbbVo8KRWNPby0Jv8ZBMhwk8",
+    "linkedin": "https://www.linkedin.com/in/pioneiro/",
+    "github": "https://github.com/pioneiro",
+    "additional": "https://pioneiro.github.io/pioneiro/"
+  },
+  {
+    "name": "Rahul Mahato",
+    "batch": 2022,
     "role": 2,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
+    "img": "https://drive.google.com/uc?export=view&id=1esGeKPhJGsyCmNUMSO1VWcUBk1FLXQlS",
+    "linkedin": "https://www.linkedin.com/in/rahul-mahato-3274831a7/"
   },
   {
-    "name": "Jane Doe",
-    "batch": 2024,
-    "role": 1,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
+    "name": "Rubina Das",
+    "batch": 2023,
+    "role": 2,
+    "img": "https://drive.google.com/uc?export=view&id=1NQB9XkQEakrm__pDeVDL8riQdCoOAZav",
+    "linkedin": "https://www.linkedin.com/in/rubina-das-43a824169"
   },
   {
-    "name": "Peter Parker",
-    "batch": 2024,
+    "name": "Debdeep Banerjee",
+    "batch": 2025,
     "role": 1,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
+    "img": "https://drive.google.com/uc?export=view&id=1zB40mQHt_t1RmkAi5RtfWk0OerTENwxJ",
+    "linkedin": "https://www.linkedin.com/in/debdeep-banerjee-04b39b220/",
+    "github": "https://github.com/Debdeep1"
   },
   {
-    "name": "Mary Jane",
+    "name": "Debosmit Choudhury",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1oe3_-cRGVovqzCg4gyDSUWWRCbKIlRX3",
+    "linkedin": "https://www.linkedin.com/in/debosmit-choudhury-38387287/",
+    "github": "https://github.com/debosmithoney"
+  },
+  {
+    "name": "Aritra Biswas",
+    "batch": 2025,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1puUPZMLi_69tUdUqkcu2tNwsN2BL9npW",
+    "github": "https://github.com/Aritra777"
+  },
+  {
+    "name": "Shubh kumar",
+    "batch": 2025,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1RntbYEH3HkNwDbIGx0751-FqOaWfIoYF"
+  },
+
+  {
+    "name": "Jayanta Pandit",
+    "batch": 2025,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1nOwGqukSJPmEQL8AosAaxznqHMfyg-0E",
+    "linkedin": "https://www.linkedin.com/in/panditjay/",
+    "github": "https://github.com/jay-io/"
+  },
+  {
+    "name": "AMAN KHAN",
+    "batch": 2023,
+    "role": 2,
+    "img": "https://drive.google.com/uc?export=view&id=1AiRP4Ok4g9ssVHPku64VOVG-aglSd5Ce",
+    "linkedin": "www.linkedin.com/in/amankhan0701",
+    "github": "https://github.com/Kissuuu",
+    "additional": "https://www.instagram.com/__.k.i.s.s.u.__/"
+  },
+  {
+    "name": "Udhavi verma",
+    "batch": 2023,
+    "role": 2,
+    "img": "https://drive.google.com/uc?export=view&id=1vCamnUt-CxXTI--45s-31nQUz48rAE7m",
+    "linkedin": "https://www.linkedin.com/in/udhavi-verma-uv"
+  },
+  {
+    "name": "Akash Mukherjee",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1Txjv9h64ANH_LDabjA2cslU6-cMnUQr2",
+    "linkedin": "https://www.linkedin.com/in/memukherjee",
+    "github": "https://github.com/memukherjee",
+    "additional": "https://www.hackerrank.com/memukherjee"
+  },
+  {
+    "name": "Anupriya Kumari",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=12waaLNdN5gJEhEqTdmjtYssix6N7Kuan",
+    "linkedin": "linkedin.com/in/anupriya-kumari-25ab621b",
+    "github": "https://github.com/AnupriyaKumari"
+  },
+  {
+    "name": "JAYA GUPTA",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1S-afS5xxMnHFK3N2G8uAUqGXcsR-3Xho",
+    "linkedin": "https://www.linkedin.com/in/jaya-gupta-9746331b0"
+  },
+  {
+    "name": "Ujjwal Kumar",
+    "batch": 2023,
+    "role": 2,
+    "img": "https://drive.google.com/uc?export=view&id=1KGkh6qo-sN_Z70meGPQrSyKKBAFfbvHo",
+    "linkedin": "https://www.linkedin.com/in/ujjwal-kumar-5994121b6",
+    "github": "https://github.com/triggeredujjwal"
+  },
+  {
+    "name": "MAHARGHYA HAZRA",
     "batch": 2024,
     "role": 1,
-    "img": "../Assets/members/member.png",
-    "linkedin": "https://www.linkedin.com",
-    "github": "https://github.com/"
+    "img": "https://drive.google.com/uc?export=view&id=1A4vwbow5ukftQXOVz7GutJF75a8_4sUK"
+  },
+  {
+    "name": "Saurav Mukherjee",
+    "batch": 2024,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1q6r5u5d0u-ucVW_j6AXON__SgmFXLpaF",
+    "linkedin": "https://www.linkedin.com/in/sauravmukherjee44/",
+    "github": "https://github.com/SauravMukherjee44",
+    "additional": "https://saurav-mukherjee.netlify.app/"
+  },
+  {
+    "name": "Gaurav Gupta",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1_Y5IGQN124oHqLgvkmREqcT7LRVlEsWg",
+    "linkedin": "https://www.linkedin.com/mwlite/in/gaurav-gupta-658602224",
+    "github": "https://github.com/Gauravgupta113"
+  },
+  {
+    "name": "Simran kumari",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1Au4H4QJHW8Vrc45ZNil2MI3FXwvN85BH"
+  },
+  {
+    "name": "Upama Mukhopadhyay",
+    "batch": 2024,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1Lsa_q4vGlD9iR3ZRniug4j-FosnOSzL-",
+    "linkedin": "https://www.linkedin.com/in/upama-m-8b6848204"
+  },
+  {
+    "name": "Purbayan Majumder",
+    "batch": 2023,
+    "role": 2,
+    "img": "https://drive.google.com/uc?export=view&id=1rRabLzA8ObG6x-x6dy3kKuS0GLLB3PlG",
+    "linkedin": "https://www.linkedin.com/in/purbayan-majumder-2799631a3/",
+    "github": "https://github.com/Purbayan2014",
+    "additional": "https://app.hackthebox.com/profile/289496"
+  },
+  {
+    "name": "Sayantanee Sinha",
+    "batch": 2025,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1fC96wBOLJx7FaxRwT0JG3w-oXYIHrQi3",
+    "linkedin": "https://www.linkedin.com/in/sayantanee-sinha-407b9b230"
+  },
+  {
+    "name": "Bibek Chakraborty",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1bJLFW0L-LbckKWrIfGT3nIS-kRm3PX6l",
+    "linkedin": "https://www.linkedin.com/in/bibek-chakraborty-014a551b7/",
+    "github": "https://github.com/BibekChakraborty"
+  },
+  {
+    "name": "Siddharth Keshri",
+    "batch": 2023,
+    "role": 2,
+    "img": "https://drive.google.com/uc?export=view&id=1DCutCxOLZo1G9TzGpOVkNaQ2tir-3W9n",
+    "linkedin": "https://www.linkedin.com/in/siddharth-k-8113b999"
+  },
+  {
+    "name": "Aryan Kumar Tiwari",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1oRR4n1cXKsyOMu1iVwabKn5y6He9O3n5",
+    "linkedin": "www.linkedin.com/in/aryan-tiwari-636943207/",
+    "github": "github.com/Gitter-Aryan"
+  },
+  {
+    "name": "Mayank Kumar Singh",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=14F7nEHv08DuD2b2VAkXBSNo_dgFnG-tn",
+    "linkedin": "https://www.linkedin.com/in/mayank-kumar-singh-8830871b6",
+    "github": "https://github.com/mksss51",
+    "additional": "https://auth.geeksforgeeks.org/user/mayankkumarsingh51/practice/"
+  },
+  {
+    "name": "Debjeet Upadhyay",
+    "batch": 2025,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1ABtDCTqhE6sD0ILd1TGc6KJgnZorj-7r",
+    "linkedin": "https://www.linkedin.com/in/debjeet-upadhyay-a4762322a",
+    "github": "https://github.com/Deb666/Deb666/blob/bc832fbf6b2d25235e50796a6214804542d32c64/README.md"
+  },
+  {
+    "name": "Abhishek Singh",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1dq1mehQQNaPuTv1IhreMyT5Gvnw3Gjd4",
+    "linkedin": "linkedin.com/in/abhishek-singh-16bbb9205",
+    "github": "https://github.com/abhisingh38203"
+  },
+  {
+    "name": "NILAVA BEPARI",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1DNkHmDFVQLYKVBcKg0bu7lMSfs2Gi56H",
+    "linkedin": "linkedin.com/in/nilava-bepari-26a885191",
+    "github": "https://github.com/NILAVABEAPRI"
+  },
+  {
+    "name": "Ayan Karmakar",
+    "batch": 2023,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1f6_olFUgL2aDQe6qG58VFFpfy9ztGmjU"
+  },
+  {
+    "name": "Subham Sharma",
+    "batch": 2024,
+    "role": 1,
+    "img": "https://drive.google.com/uc?export=view&id=1cuEpkiZ9PRm4aq0glgJctYHGnx5yg5HE",
+    "linkedin": "https://www.linkedin.com/in/subhamengine/",
+    "github": "https://github.com/subhamengine",
+    "additional": "https://bio.link/subhamengine"
   }
 ]

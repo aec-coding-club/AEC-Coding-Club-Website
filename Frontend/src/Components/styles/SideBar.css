@@ -47,7 +47,7 @@
 }
 
 /*Mobile View*/
-@media (max-width : 425px){
+@media (max-width: 425px) {
   .nav-sidebar .btn {
     font-size: 1rem;
   }
