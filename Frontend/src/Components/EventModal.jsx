@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { FaTimes, FaRegEye } from 'react-icons/fa'
-import PreviewEventCard from './PreviewEventCard'
-import './styles/Event-Modal.css'
+import React, { useState, useEffect } from 'react';
+import { FaTimes, FaRegEye } from 'react-icons/fa';
+import PreviewEventCard from './PreviewEventCard';
+import './styles/Event-Modal.css';
 
 const EventModal = (props) => {
-  const { modalShow, onHide, cardEditData } = props
+  const { modalShow, onHide, cardEditData } = props;
   const [modalContainerClass, setModalContainerClass] = useState(
     'event-modal-container'
-  )
-  const [modalClass, setModalClass] = useState('event-modal')
+  );
+  const [modalClass, setModalClass] = useState('event-modal');
 
   const {
     editEventTitle,
@@ -20,17 +20,17 @@ const EventModal = (props) => {
     setEditEventTime,
     setEditEventImage,
     setEditEventDetails,
-  } = cardEditData
+  } = cardEditData;
 
   useEffect(() => {
     if (modalShow) {
-      setModalContainerClass('event-modal-container show')
-      setModalClass('event-modal modal-show')
+      setModalContainerClass('event-modal-container show');
+      setModalClass('event-modal modal-show');
     } else {
-      setModalContainerClass('event-modal-container')
-      setModalClass('event-modal')
+      setModalContainerClass('event-modal-container');
+      setModalClass('event-modal');
     }
-  }, [modalShow])
+  }, [modalShow]);
 
   return (
     <div className={modalContainerClass}>
@@ -120,7 +120,7 @@ const EventModal = (props) => {
         </>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default EventModal
+export default EventModal;

@@ -4,7 +4,6 @@ import UserContext from './Context/LoggedUserContext';
 import './styles/Home.css';
 
 const Home = () => {
-  
   return (
     <>
       <main className='home-main'>

@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 const PreviewEventCard = ({ cardEditData }) => {
   const { editEventTitle, editEventImage, editEventTime, editEventDetails } =
-    cardEditData
+    cardEditData;
 
   return (
     <>
@@ -39,7 +39,7 @@ const PreviewEventCard = ({ cardEditData }) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PreviewEventCard
+export default PreviewEventCard;

@@ -1,34 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { FaEdit } from 'react-icons/fa'
-import './styles/Events.css'
-import Navbar from '../Components/Navbar'
-import EventModal from '../Components/EventModal'
-import EventsContainer from '../Components/EventsContainer'
-import UserContext from './Context/LoggedUserContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { FaEdit } from 'react-icons/fa';
+import './styles/Events.css';
+import Navbar from '../Components/Navbar';
+import EventModal from '../Components/EventModal';
+import EventsContainer from '../Components/EventsContainer';
+import UserContext from './Context/LoggedUserContext';
 
 const Events = ({ tokenChecker }) => {
-  const [modalShow, setModalShow] = React.useState(false)
+  const [modalShow, setModalShow] = React.useState(false);
 
   function onHide() {
-    setModalShow(false)
+    setModalShow(false);
   }
 
   // card edit data
-  const [editEventTitle, setEditEventTitle] = useState('')
-  const [editEventTime, setEditEventTime] = useState('')
-  const [editEventImage, setEditEventImage] = useState('')
-  const [editEventDetails, setEditEventDetails] = useState('')
+  const [editEventTitle, setEditEventTitle] = useState('');
+  const [editEventTime, setEditEventTime] = useState('');
+  const [editEventImage, setEditEventImage] = useState('');
+  const [editEventDetails, setEditEventDetails] = useState('');
 
   // on add event
-  const [addEvent, setAddEvent] = useState(false)
+  const [addEvent, setAddEvent] = useState(false);
 
   function handleEditClick() {
-    setModalShow(true)
-    setAddEvent(true)
-    setEditEventTitle('')
-    setEditEventTime('')
-    setEditEventImage('')
-    setEditEventDetails('')
+    setModalShow(true);
+    setAddEvent(true);
+    setEditEventTitle('');
+    setEditEventTime('');
+    setEditEventImage('');
+    setEditEventDetails('');
   }
 
   const cardEditData = {
@@ -42,7 +42,7 @@ const Events = ({ tokenChecker }) => {
     setEditEventTime,
     setEditEventImage,
     setEditEventDetails,
-  }
+  };
 
   return (
     <>
@@ -86,7 +86,7 @@ const Events = ({ tokenChecker }) => {
         />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Events
+export default Events;
