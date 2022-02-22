@@ -1,6 +1,6 @@
 .member-card {
-  width: 200px;
-  min-height: 200px;
+  width: 210px;
+  height: 210px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +30,7 @@
 .card-name {
   font-weight: 600;
   margin-block: 0.5rem;
+  text-align: center;
 }
 
 .card-links {
