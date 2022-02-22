@@ -59,6 +59,59 @@ exports.register = async (req, res) => {
       });
     }
     const myEncryPassword = await bcrypt.hash(password, 10);
+    // !################################################################
+    // *################################################################
+    // ! OVERWRITING NOT VERIFIED USERS
+    const count = await Counter.findOne({ branch: branch, batch: batch });
+    user = await User.findOne(count.notActive[0]);
+    if (user) {
+      if ((user.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1) {
+        const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
+        let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
+        let msg = `${otp}`;
+        otpSender(email, msg);
+        const filter = { uid: user.uid };
+        const update = {
+          firstName,
+          lastName,
+          email: email.toLowerCase(),
+          contact_no,
+          batch,
+          branch,
+          password: myEncryPassword,
+          uid: user.uid,
+          linkedin: linkedin,
+          profilePicture,
+          github: github,
+          active: false,
+          otpstatus: {
+            otp: otp,
+            wrongTry: 0,
+            timeStamp: Date.now(),
+            otpRequest: 1,
+            initialTimeStamp: Date.now(),
+          },
+        };
+        await user.findOneAndUpdate(filter, update);
+        const token = jwt.sign(
+          {
+            user_id: user.uid,
+            email: user.email,
+          },
+          SECRET,
+          {
+            expiresIn: "24h",
+          }
+        );
+        user.token = token;
+      }
+      return res.status(200).json({
+        success: true,
+        // token: true,
+        token,
+        user,
+      });
+    }
 
     // ! Injecting the Counter Part
     let countupdate;
@@ -153,6 +206,7 @@ exports.register = async (req, res) => {
       token,
       user,
     };
+    // TODO: ADD THE CREATED USER TO notActive Array in Counter
     // setcookie("token", token, options);
     return res.status(200).json({
       success: true,
@@ -189,7 +243,7 @@ exports.login = async (req, res) => {
         },
         SECRET,
         {
-          expiresIn: "24h",
+          expiresIn: "2h",
         }
       );
       user.token = token;
@@ -220,7 +274,7 @@ exports.login = async (req, res) => {
 };
 
 exports.verifyOTP = async (req, res) => {
-  const otp = req.body.otp;
+  const otp = req.body.otp || req.params.otp;
   const uid = req.user.user_id;
   const email = req.user.email;
   if (otp) {
@@ -341,6 +395,7 @@ exports.verifyOTP = async (req, res) => {
           User.updateOne(
             { uid: uid },
             { $set: { active: true, otpstatus: null } }
+            // TODO: Remove the Activated User from Unactivated Array in Counter
           )
             .then((msg) => {})
             .catch((err) => {
