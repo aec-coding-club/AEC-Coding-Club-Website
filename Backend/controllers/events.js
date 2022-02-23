@@ -1,18 +1,15 @@
 const event = require("../models/Event");
 const User = require("../models/User");
 
-exports.get = async (req, res) => {
+exports.getevent = async (req, res) => {
   try {
-    const event = await event.findById(
-      req.params.id,
-      "_id title description image form date"
-    );
+    const Event = await event.findOne({ _id: req.params.id });
 
-    if (!event) return res.status(404).json({ error: "No Events Found" });
+    if (!Event) return res.status(404).json({ error: "No Events Found" });
 
-    res.status(200).json(event);
+    return res.status(200).json(Event);
   } catch (error) {
-    res.status(500).json({ error: "Cannot Find Event" });
+    res.status(500).json({ error: error.message });
   }
 };
 

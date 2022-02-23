@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/EventCard.css";
 import EventModal from "./EventModal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Api } from "../backend";
 import axios from "axios";
 
@@ -14,7 +14,7 @@ export const EventCard = ({
 }) => {
   const { eventImage, eventTitle, eventDetails, eventTime, _id } = cardData;
   console.log(cardData);
-
+  let navigate = useNavigate();
   const {
     setEditEventTitle,
     setEditEventTime,
@@ -40,11 +40,13 @@ export const EventCard = ({
     console.log(`Events added to the user page ${id}`);
     const authToken = localStorage.getItem("token");
     console.log("AuthToken :- ", authToken);
-    const parseddata = await axios.post(`${Api}registerevent/${id}`, {
+    let parseddata = await axios.post(`${Api}registerevent/${id}`, "", {
       withCredentials: true,
+      crossorigin: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
     console.log("User data :- ", parseddata);
+    navigate("/dashboard");
   };
 
   return (
@@ -63,12 +65,18 @@ export const EventCard = ({
           </div>
           <div className='event-btn-wrapper'>
             {tokenChecker ? (
-              <button
-                className='btn event-card-btn'
-                onClick={() => registerToEvent(_id)}
-              >
-                Register
-              </button>
+              userRole >= 3 ? (
+                <></>
+              ) : (
+                <>
+                  <button
+                    className='btn event-card-btn'
+                    onClick={() => registerToEvent(_id)}
+                  >
+                    Register
+                  </button>
+                </>
+              )
             ) : (
               <button
                 className='btn event-card-btn'

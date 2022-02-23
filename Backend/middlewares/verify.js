@@ -3,8 +3,8 @@ const User = require("../models/User");
 
 exports.isAuthenticated = (req, res, next) => {
   try {
-    const token =
-      req.cookies.token || req.header("Authorization").replace("Bearer ", "");
+    const token = req.header("Authorization").replace("Bearer ", "");
+    console.log("token --------------------------------->", token);
     if (!token || token == undefined) {
       return res.status(403).json({
         success: false,
@@ -64,10 +64,10 @@ exports.isAdmin = async (req, res, next) => {
     console.log(user);
     if (user.role === 3) {
       req.role = "admin"; //! Teachers Privilage
-       next();
+      next();
     } else if (user.role === 2) {
       req.role = "core"; //! Core Committee Member
-       next();
+      next();
     } else if (user.role === 1) {
       req.role = "sub"; //! Sub Committee Member
       return res.json({
