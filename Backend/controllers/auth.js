@@ -62,10 +62,12 @@ exports.register = async (req, res) => {
     // !################################################################
     // *################################################################
     // ! OVERWRITING NOT VERIFIED USERS
-    const count = await Counter.findOne({ branch: branch, batch: batch });
-    user = await User.findOne(count.notActive[0]);
-    if (user) {
-      if ((user.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1) {
+    console.log("before find");
+    let count = await Counter.findOne({ branch: branch, batch: batch });
+    user_notActive = await User.findOne(count.notActive[0]);
+    if (user_notActive) {
+      console.log("After find");
+      if ((user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1) {
         const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
         let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
         let msg = `${otp}`;
@@ -79,7 +81,7 @@ exports.register = async (req, res) => {
           batch,
           branch,
           password: myEncryPassword,
-          uid: user.uid,
+          uid: user_notActive.uid,
           linkedin: linkedin,
           profilePicture,
           github: github,
@@ -92,30 +94,31 @@ exports.register = async (req, res) => {
             initialTimeStamp: Date.now(),
           },
         };
-        await user.findOneAndUpdate(filter, update);
+        await user_notActive.findOneAndUpdate(filter, update);
         const token = jwt.sign(
           {
-            user_id: user.uid,
-            email: user.email,
+            user_id: user_notActive.uid,
+            email: user_notActive.email,
           },
           SECRET,
           {
             expiresIn: "24h",
           }
         );
-        user.token = token;
+        user_notActive.token = token;
+      
+        return res.status(200).json({
+          success: true,
+          // token: true,
+          token,
+          user_notActive,
+        });
       }
-      return res.status(200).json({
-        success: true,
-        // token: true,
-        token,
-        user,
-      });
     }
 
     // ! Injecting the Counter Part
     let countupdate;
-    const count = await Counter.findOne({ branch: branch, batch: batch });
+     count = await Counter.findOne({ branch: branch, batch: batch });
     if (!count) {
       const countfresh = await Counter.create({
         seq: 1,
@@ -166,7 +169,7 @@ exports.register = async (req, res) => {
 
     // ! Creating User in DB
     const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
-    const user = await User.create({
+    let user = await User.create({
       firstName,
       lastName,
       email: email.toLowerCase(),
@@ -207,6 +210,10 @@ exports.register = async (req, res) => {
       user,
     };
     // TODO: ADD THE CREATED USER TO notActive Array in Counter
+    Counter.updateOne(
+      { branch: branch },
+      { $push: { notActive: user.uid } }
+    );
     // setcookie("token", token, options);
     return res.status(200).json({
       success: true,
@@ -215,6 +222,7 @@ exports.register = async (req, res) => {
       user,
     });
   } catch (error) {
+    console.log(error);
     return res.json({
       success: false,
       error: error.message,
@@ -299,7 +307,7 @@ exports.verifyOTP = async (req, res) => {
               },
             }
           )
-            .then((msg) => {})
+            .then((msg) => { })
             .catch((err) => {
               console.log(err);
             });
@@ -329,7 +337,7 @@ exports.verifyOTP = async (req, res) => {
                 },
               }
             )
-              .then((msg) => {})
+              .then((msg) => { })
               .catch((err) => {
                 console.log(err);
               });
@@ -357,7 +365,7 @@ exports.verifyOTP = async (req, res) => {
                 },
               }
             )
-              .then((msg) => {})
+              .then((msg) => { })
               .catch((err) => {
                 console.log(err);
               });
@@ -382,7 +390,7 @@ exports.verifyOTP = async (req, res) => {
             { uid: uid },
             { $set: { "otpstatus.wrongTry": docs.otpstatus.wrongTry + 1 } }
           )
-            .then((msg) => {})
+            .then((msg) => { })
             .catch((err) => {
               console.log(err);
             });
@@ -397,7 +405,12 @@ exports.verifyOTP = async (req, res) => {
             { $set: { active: true, otpstatus: null } }
             // TODO: Remove the Activated User from Unactivated Array in Counter
           )
-            .then((msg) => {})
+            .then((msg) => { 
+               Counter.updateOne(
+                { branch: branch },
+                { $pull: { notActive: uid } }
+              );
+             })
             .catch((err) => {
               console.log(err);
             });
