@@ -44,7 +44,11 @@ const EventsContainer = ({
           ))}
         </div>
       ) : (
-        <img src='../Assets/loader.gif' alt='loading...' />
+        <img
+          id='event-loading-img'
+          src='../Assets/loader.gif'
+          alt='loading...'
+        />
       )}
     </>
   );
