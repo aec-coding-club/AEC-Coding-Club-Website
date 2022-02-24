@@ -65,11 +65,12 @@ exports.register = async (req, res) => {
     try {
       console.log("before find");
       let count = await Counter.findOne({ branch: branch, batch: batch });
-      user_notActive = await User.findOne({ uid: count.notActive[0] });
+      const user_notActive = await User.findOne({ uid: count.notActive[0] });
+      const userid = count.notActive[0];
       console.log(
         (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1
       );
-      if (user_notActive != null) {
+      if (user_notActive) {
         console.log("After find");
         if (
           (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >=
@@ -79,7 +80,7 @@ exports.register = async (req, res) => {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
           otpSender(email, msg);
-          const filter = { uid: user.uid };
+          const filter = { uid: user_notActive.uid };
           const update = {
             firstName,
             lastName,
@@ -88,7 +89,7 @@ exports.register = async (req, res) => {
             batch,
             branch,
             password: myEncryPassword,
-            uid: user_notActive.uid,
+            uid: userid,
             linkedin: linkedin,
             profilePicture,
             github: github,
@@ -101,7 +102,7 @@ exports.register = async (req, res) => {
               initialTimeStamp: Date.now(),
             },
           };
-          await user_notActive.findOneAndUpdate(filter, update);
+          const valuereturn = await User.findOneAndUpdate(filter, update);
           const token = jwt.sign(
             {
               user_id: user_notActive.uid,
@@ -118,7 +119,7 @@ exports.register = async (req, res) => {
             success: true,
             // token: true,
             token,
-            user_notActive,
+            valuereturn,
           });
         }
       }
@@ -321,7 +322,7 @@ exports.verifyOTP = async (req, res) => {
           )
             .then((msg) => {})
             .catch((err) => {
-              console.log(err);
+              console.log(err.message);
             });
 
           res.send({
@@ -379,7 +380,7 @@ exports.verifyOTP = async (req, res) => {
             )
               .then((msg) => {})
               .catch((err) => {
-                console.log(err);
+                console.log(err.message);
               });
 
             res.send({
@@ -417,15 +418,23 @@ exports.verifyOTP = async (req, res) => {
             { $set: { active: true, otpstatus: null } }
             // TODO: Remove the Activated User from Unactivated Array in Counter
           )
-            .then((msg) => {
-              Counter.updateOne(
-                { branch: branch },
-                { $pull: { notActive: uid } }
-              );
-            })
+            .then((msg) => {})
             .catch((err) => {
               console.log(err);
             });
+          // try {
+          //   userupdate = User.findOne({ uid: uid });
+          //   console.log(userupdate);
+          //   console.log(
+          //     `branch: ${userupdate.branch}, batch: ${userupdate.batch}`
+          //   );
+          //   Counter.updateOne(
+          //     { branch: userupdate.branch, batch: userupdate.batch },
+          //     { $pull: { notActive: req.user.uid } }
+          //   );
+          // } catch (error) {
+          //   return res.json({ success: false, message: error.message });
+          // }
           return res
             .status(200)
             .send({ success: true, token: true, message: "account activated" });
