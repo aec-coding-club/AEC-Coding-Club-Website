@@ -11,7 +11,7 @@ const CounterSchema = new mongoose.Schema({
   batch: {
     type: Number,
   },
-  notActive: [{ id: String }],
+  notActive: [],
 });
 
 module.exports = mongoose.model("Counter", CounterSchema);

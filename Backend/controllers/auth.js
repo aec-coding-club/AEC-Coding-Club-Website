@@ -62,63 +62,72 @@ exports.register = async (req, res) => {
     // !################################################################
     // *################################################################
     // ! OVERWRITING NOT VERIFIED USERS
-    console.log("before find");
-    let count = await Counter.findOne({ branch: branch, batch: batch });
-    user_notActive = await User.findOne(count.notActive[0]);
-    if (user_notActive) {
-      console.log("After find");
-      if ((user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1) {
-        const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
-        let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
-        let msg = `${otp}`;
-        otpSender(email, msg);
-        const filter = { uid: user.uid };
-        const update = {
-          firstName,
-          lastName,
-          email: email.toLowerCase(),
-          contact_no,
-          batch,
-          branch,
-          password: myEncryPassword,
-          uid: user_notActive.uid,
-          linkedin: linkedin,
-          profilePicture,
-          github: github,
-          active: false,
-          otpstatus: {
-            otp: otp,
-            wrongTry: 0,
-            timeStamp: Date.now(),
-            otpRequest: 1,
-            initialTimeStamp: Date.now(),
-          },
-        };
-        await user_notActive.findOneAndUpdate(filter, update);
-        const token = jwt.sign(
-          {
-            user_id: user_notActive.uid,
-            email: user_notActive.email,
-          },
-          SECRET,
-          {
-            expiresIn: "24h",
-          }
-        );
-        user_notActive.token = token;
-      
-        return res.status(200).json({
-          success: true,
-          // token: true,
-          token,
-          user_notActive,
-        });
-      }
-    }
+    try {
+      console.log("before find");
+      let count = await Counter.findOne({ branch: branch, batch: batch });
+      user_notActive = await User.findOne({ uid: count.notActive[0] });
+      console.log(
+        (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1
+      );
+      if (user_notActive != null) {
+        console.log("After find");
+        if (
+          (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >=
+          1
+        ) {
+          const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
+          let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
+          let msg = `${otp}`;
+          otpSender(email, msg);
+          const filter = { uid: user.uid };
+          const update = {
+            firstName,
+            lastName,
+            email: email.toLowerCase(),
+            contact_no,
+            batch,
+            branch,
+            password: myEncryPassword,
+            uid: user_notActive.uid,
+            linkedin: linkedin,
+            profilePicture,
+            github: github,
+            active: false,
+            otpstatus: {
+              otp: otp,
+              wrongTry: 0,
+              timeStamp: Date.now(),
+              otpRequest: 1,
+              initialTimeStamp: Date.now(),
+            },
+          };
+          await user_notActive.findOneAndUpdate(filter, update);
+          const token = jwt.sign(
+            {
+              user_id: user_notActive.uid,
+              email: user_notActive.email,
+            },
+            SECRET,
+            {
+              expiresIn: "24h",
+            }
+          );
+          user_notActive.token = token;
 
+          return res.status(200).json({
+            success: true,
+            // token: true,
+            token,
+            user_notActive,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
     // ! Injecting the Counter Part
     let countupdate;
-     count = await Counter.findOne({ branch: branch, batch: batch });
+    count = await Counter.findOne({ branch: branch, batch: batch });
     if (!count) {
       const countfresh = await Counter.create({
         seq: 1,
@@ -210,10 +219,13 @@ exports.register = async (req, res) => {
       user,
     };
     // TODO: ADD THE CREATED USER TO notActive Array in Counter
-    Counter.updateOne(
-      { branch: branch },
+    const notActive = await Counter.updateOne(
+      { branch: branch, batch: batch },
       { $push: { notActive: user.uid } }
     );
+    console.log(notActive);
+    // Counter.notActive.push({ id: user.uid });
+    // Counter.save(done);
     // setcookie("token", token, options);
     return res.status(200).json({
       success: true,
@@ -307,7 +319,7 @@ exports.verifyOTP = async (req, res) => {
               },
             }
           )
-            .then((msg) => { })
+            .then((msg) => {})
             .catch((err) => {
               console.log(err);
             });
@@ -337,7 +349,7 @@ exports.verifyOTP = async (req, res) => {
                 },
               }
             )
-              .then((msg) => { })
+              .then((msg) => {})
               .catch((err) => {
                 console.log(err);
               });
@@ -365,7 +377,7 @@ exports.verifyOTP = async (req, res) => {
                 },
               }
             )
-              .then((msg) => { })
+              .then((msg) => {})
               .catch((err) => {
                 console.log(err);
               });
@@ -390,7 +402,7 @@ exports.verifyOTP = async (req, res) => {
             { uid: uid },
             { $set: { "otpstatus.wrongTry": docs.otpstatus.wrongTry + 1 } }
           )
-            .then((msg) => { })
+            .then((msg) => {})
             .catch((err) => {
               console.log(err);
             });
@@ -405,12 +417,12 @@ exports.verifyOTP = async (req, res) => {
             { $set: { active: true, otpstatus: null } }
             // TODO: Remove the Activated User from Unactivated Array in Counter
           )
-            .then((msg) => { 
-               Counter.updateOne(
+            .then((msg) => {
+              Counter.updateOne(
                 { branch: branch },
                 { $pull: { notActive: uid } }
               );
-             })
+            })
             .catch((err) => {
               console.log(err);
             });
