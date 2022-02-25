@@ -4,6 +4,7 @@
     <img src="https://img.shields.io/bitbucket/pr/aec-coding-club/AEC-Coding-Club-Website">
     <img src="https://img.shields.io/github/license/aec-coding-club/AEC-Coding-Club-Website">
     <img src="https://img.shields.io/github/last-commit/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/badge/react-%5E17.0.2-blue">
 </p>
 
 <h6 align="center"><img src="assets/aeccc.png" height="250" /></p></h6>
