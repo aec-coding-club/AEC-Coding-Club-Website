@@ -1,14 +1,34 @@
-# AEC Coding Club Website
+<p>
+    <img src="https://img.shields.io/bitbucket/issues-raw/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/github/contributors/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/bitbucket/pr/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/github/license/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/github/last-commit/aec-coding-club/AEC-Coding-Club-Website">
+</p>
 
-Welcome to the code for AECCC's website.
+<h6 align="center"><img src="assets/aeccc.png" height="250" /></p></h6>
+<h1 align="center"><code>&nbsp;AECCC Community Website&nbsp;</code></h1>
+This is the student-run community site and event management webapp for the Coding Club of Asansol Engineering College using ReactJS framework and MongoDB.
 
-### General Instructions
+## Getting started
+This project was bootstrapped with Create React App. In the [`Frontend`](./Frontend) directory, run `npm install` to install all project dependencies. Next, run `npm start` to start the developmental server which will trigger open your default browser to address `localhost:3000` with a preview of the current state.
 
-1. _Keep the code clean_ : AECCC members will have to read your code long after you've graduated. Don't hurt their eyes.
-2. _Comments are the best_ : Make it clear what hacks you've used to keep this website afloat.
-3. _Keep the Contributors section up-to-date_ : Just so everyone knows whos fault it is if things screw up.
+## Tools and Frameworks
+<h6 align="center"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-CC6699?style=for-the-badge&logo=CSS3&logoColor=white"> <img src="https://img.shields.io/badge/bootstrap-640864?style=for-the-badge&logo=bootstrap&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/VSCode-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white"></h6>
 
-### Contributors
+## Contributing
+By contributing to this repository, you adhere to your responsibiltites in our [Code of Conduct](./.github/CODE_OF_CONDUCT.md). Here are a few general instructions for people willing to develop onto the codebase.
+
+### • Create issues to discuss your ideas with the maintainers
+   Creating issues before starting to work on your pull request helps you stay on the right track. Discuss your proposal well with the current maintainers.
+### • Keep the code clean
+   AECCC members will read your code long after you've graduated. Don't hurt their eyes. Follow the code formatting standards of the repository by referring to existing source files.
+### • Comments are the best
+   Make it clear what hacks you've used to keep this website afloat. Your work needs to be understood first, before getting appreciated (or criticised).
+### • Keep the Contributors section up-to-date
+   Just so that everyone knows whose fault it is if things get screwed up.
+
+## Contributors
 
 - Pranay Gupta
 - Abir Pal
@@ -17,197 +37,11 @@ Welcome to the code for AECCC's website.
 - Soumya Banerjee
 - Soumali Gorai
 - Debdeep Banerjee
+- Jayanta Pandit
 - Aritra Biswas
 
-### Setup Instructions
+## Repository structure
+Prettyprinted ASCII project directory tree in [`docs/TREE.md`](./docs/TREE.md)
 
-1. Clone the repo
-2. Serve
-
-### Repository Structure
-
-```
-│   .gitignore
-│   README.md
-│
-├───Backend
-│   │   .gitignore
-│   │   app.js
-│   │   index.js
-│   │   package-lock.json
-│   │   package.json
-│   │   README.md
-│   │
-│   ├───config
-│   │       database.js
-│   │
-│   ├───controllers
-│   │       auth.js
-│   │       events.js
-│   │       mailsender.js
-│   │       user.js
-│   │
-│   ├───middlewares
-│   │       istoken.js
-│   │       verify.js
-│   │
-│   ├───models
-│   │       Counter.js
-│   │       Event.js
-│   │       User.js
-│   │
-│   └───routes
-│           auth.js
-│           events.js
-│
-├───Frontend
-│   │   .env
-│   │   package-lock.json
-│   │   package.json
-│   │
-│   ├───public
-│   │   │   index.html
-│   │   │   manifest.json
-│   │   │   robots.txt
-│   │   │
-│   │   ├───Assets
-│   │   │   │   logo.svg
-│   │   │   │   navbarsvg.svg
-│   │   │   │
-│   │   │   ├───events
-│   │   │   │       event-card-1.jpg
-│   │   │   │       events-header.jpg
-│   │   │   │
-│   │   │   └───members
-│   │   │           member.png
-│   │   │
-│   │   └───favicon
-│   │           android-chrome-192x192.png
-│   │           android-chrome-512x512.png
-│   │           apple-touch-icon.png
-│   │           favicon-16x16.png
-│   │           favicon-32x32.png
-│   │           favicon.ico
-│   │           site.webmanifest
-│   │
-│   └───src
-│       │   App.css
-│       │   App.jsx
-│       │   backend.js
-│       │   index.css
-│       │   index.js
-│       │
-│       ├───Assets
-│       │   │   404-error.png
-│       │   │   login.png
-│       │   │   logo.svg
-│       │   │   otp.png
-│       │   │   sign-up.png
-│       │   │
-│       │   ├───events
-│       │   │       event-card-1.jpeg
-│       │   │       events-header.jpg
-│       │   │
-│       │   └───members
-│       │           member.png
-│       │
-│       ├───Components
-│       │   │   EventCard.jsx
-│       │   │   EventModal.jsx
-│       │   │   EventsContainer.jsx
-│       │   │   Footer.jsx
-│       │   │   MemberCard.jsx
-│       │   │   MemberFilter.jsx
-│       │   │   MembersContainer.jsx
-│       │   │   Navbar.jsx
-│       │   │   SideBar.jsx
-│       │   │
-│       │   └───styles
-│       │           Event-Modal.css
-│       │           EventCard.css
-│       │           EventsContainer.css
-│       │           MemberCard.css
-│       │           MemberFilter.css
-│       │           MembersContainer.css
-│       │           Navbar.css
-│       │           SideBar.css
-│       │
-│       ├───data
-│       │       eventData.json
-│       │       members.json
-│       │
-│       └───Pages
-│           │   Dashboard-Secure.jsx
-│           │   Errorpage.jsx
-│           │   EventRegister.jsx
-│           │   Events.jsx
-│           │   Home.jsx
-│           │   Members.jsx
-│           │   OTP.jsx
-│           │   Signin.jsx
-│           │   Signup.jsx
-│           │
-│           ├───Components
-│           │   │   Otpforum.jsx
-│           │   │   Siginform.jsx
-│           │   │   Signupform.jsx
-│           │   │
-│           │   └───User-Secure-Route
-│           │           Dashboad.jsx
-│           │
-│           ├───Context
-│           │       LoggedUserContext.js
-│           │
-│           └───styles
-│                   Error.css
-│                   Events.css
-│                   Home.css
-│                   Members.css
-│                   SigninSignup.css
-│
-└───testfrontend
-    │   .env
-    │   .gitignore
-    │   package-lock.json
-    │   package.json
-    │   README.md
-    │
-    ├───public
-    │       favicon.ico
-    │       index.html
-    │       logo192.png
-    │       logo512.png
-    │       manifest.json
-    │       robots.txt
-    │
-    └───src
-        │   App.js
-        │   backend.js
-        │   index.js
-        │
-        ├───Components
-        │       DummyComponent.js
-        │       Navbar.js
-        │       OTPform.js
-        │       Signin.js
-        │       Signup.js
-        │
-        ├───Context
-        │       authContext.js
-        │
-        ├───Pages
-        │       Dashboard.js
-        │       ErrorPage.js
-        │       Events.js
-        │       Home.js
-        │       login.js
-        │       Members.js
-        │       OTPVerify.js
-        │       Register.js
-        │
-        └───style
-                home.css
-                login.css
-```
-
-Copyleft AECCC 2022
+## License
+[`MIT License`](./LICENSE) Copyright (c) 2022 AEC Coding Club
