@@ -1,4 +1,58 @@
-```#
+```
+#
+├── aeccc-website.code-workspace
+├── assets
+│   └── aeccc.png
+├── Backend
+│   ├── app.js
+│   ├── config
+│   │   └── database.js
+│   ├── controllers
+│   │   ├── auth.js
+│   │   ├── events.js
+│   │   ├── mailsender.js
+│   │   └── user.js
+│   ├── index.js
+│   ├── middlewares
+│   │   ├── istoken.js
+│   │   └── verify.js
+│   ├── models
+│   │   ├── Counter.js
+│   │   ├── Event.js
+│   │   └── User.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── README.md
+│   └── routes
+│       ├── auth.js
+│       └── events.js
+├── docs
+│   └── TREE.md
+├── Frontend
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── Assets
+│   │   │   ├── events
+│   │   │   │   ├── demo-event.jpg
+│   │   │   │   ├── event-card-1.jpg
+│   │   │   │   └── events-header.jpg
+│   │   │   ├── loader.gif
+│   │   │   ├── logo.svg
+│   │   │   ├── members
+│   │   │   │   └── member.png
+│   │   │   └── navbarsvg.svg
+│   │   ├── favicon
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   ├── android-chrome-512x512.png
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── favicon-16x16.png
+│   │   │   ├── favicon-32x32.png
+│   │   │   ├── favicon.ico
+│   │   │   └── site.webmanifest
+│   │   ├── index.html
+│   │   ├── manifest.json
+│   │   └── robots.txt
 │   └── src
 │       ├── App.css
 │       ├── App.jsx
@@ -100,5 +154,6 @@
         └── style
             ├── home.css
             └── login.css
-            
-33 directories, 121 files```
+
+33 directories, 121 files
+```
