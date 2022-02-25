@@ -17,7 +17,7 @@ const DashboadComponent = ({ details }) => {
         withCredentials: true,
         headers: { Authorization: `Bearer ${authToken}` },
       });
-      temp.push(data.data.eventTitle);
+      temp.push(data.data);
     });
     console.log("Temp :", temp);
     setEventArray([...eventArray, temp]);
