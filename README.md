@@ -32,16 +32,6 @@ By contributing to this repository, you adhere to your responsibiltites in our [
 ## Contributors
 For an exhaustive list of AUTHORS and people who've contributed significantly, go to [`CONTRIBUTORS`](./CONTRIBUTORS).
 
-- Pranay Gupta
-- Abir Pal
-- Saikat Mukherjee
-- Souvik Mandal
-- Soumya Banerjee
-- Soumali Gorai
-- Debdeep Banerjee
-- Jayanta Pandit
-- Aritra Biswas
-
 ## Repository structure
 Prettyprinted ASCII project directory tree in [`docs/TREE.md`](./docs/TREE.md)
 
