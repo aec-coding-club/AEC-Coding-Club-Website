@@ -1,53 +1,55 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Api } from "../../../backend";
-import { EventCard } from "../../../Components/EventCard";
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { Api } from '../../../backend'
+import PreviewEventCard from '../../../Components/PreviewEventCard'
 
 const DashboadComponent = ({ details }) => {
-  const events = details.userInfo.events;
-  console.log(events);
+  const [events, setEvents] = useState([])
 
-  const [eventArray, setEventArray] = useState([]);
-
-  const fetchevents = async () => {
-    const authToken = localStorage.getItem("token");
-    let temp = [];
-    events.map(async (ele) => {
-      const data = await axios.get(`${Api}${ele}`, {
+  const fetchEvents = async () => {
+    const allEvents = details.userInfo.events.map(async (id) => {
+      const response = await axios.get(`${Api}${id}`, {
         withCredentials: true,
-        headers: { Authorization: `Bearer ${authToken}` },
-      });
-      temp.push(data.data);
-    });
-    console.log("Temp :", temp);
-    setEventArray([...eventArray, temp]);
-  };
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+      return response.data
+    })
+    setEvents(await Promise.all(allEvents))
+  }
 
   useEffect(() => {
-    fetchevents();
-    console.log(eventArray);
-  }, []);
+    fetchEvents()
+  }, [])
 
   return (
     <>
       <div className='home-main'>
-        <h1>
-          You are Verified and Authorized Welcome to Dashboard Route
-          {eventArray[0]?.eventTitle}
-        </h1>
+        {console.log('Events Array: ', events && events)}
+        <h1>You are Verified and Authorized Welcome to Dashboard Route</h1>
         <br />
         <br />
       </div>
       <div>
-        <ol>
-          {events.map((value) => (
-            <li key={value?._id}>{value}</li>
-          ))}
-        </ol>
+        {events.length > 0 ? (
+          events.map((event) => (
+            <PreviewEventCard
+              key={event._id}
+              cardEditData={{
+                editEventTitle: event.eventTitle,
+                editEventImage: event.eventImage,
+                editEventTime: event.eventTime,
+                editEventDetails: event.eventDetails,
+                dashboardEvents: true,
+              }}
+            />
+          ))
+        ) : (
+          <h3>You have not registered to any events</h3>
+        )}
       </div>
       <br />
     </>
-  );
-};
+  )
+}
 
-export default DashboadComponent;
+export default DashboadComponent
