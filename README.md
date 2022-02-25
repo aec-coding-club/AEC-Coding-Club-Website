@@ -30,6 +30,7 @@ By contributing to this repository, you adhere to your responsibiltites in our [
    Just so that everyone knows whose fault it is if things get screwed up.
 
 ## Contributors
+For an exhaustive list of AUTHORS and people who've contributed significantly, go to [`CONTRIBUTORS`](./CONTRIBUTORS).
 
 - Pranay Gupta
 - Abir Pal
