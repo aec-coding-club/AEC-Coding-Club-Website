@@ -1,8 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 const PreviewEventCard = ({ cardEditData }) => {
-  const { editEventTitle, editEventImage, editEventTime, editEventDetails } =
-    cardEditData;
+  const {
+    editEventTitle,
+    editEventImage,
+    editEventTime,
+    editEventDetails,
+    dashboardEvents,
+  } = cardEditData
 
   return (
     <>
@@ -31,15 +36,17 @@ const PreviewEventCard = ({ cardEditData }) => {
           <div className='event-card-desc'>
             <p>{editEventDetails || 'Default Description'}</p>
           </div>
-          <div className='event-btn-wrapper'>
-            <button className='btn'>Register</button>
-            <button className='btn'>Edit</button>
-            <button className='btn'>Delete</button>
-          </div>
+          {!dashboardEvents && (
+            <div className='event-btn-wrapper'>
+              <button className='btn'>Register</button>
+              <button className='btn'>Edit</button>
+              <button className='btn'>Delete</button>
+            </div>
+          )}
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PreviewEventCard;
+export default PreviewEventCard
