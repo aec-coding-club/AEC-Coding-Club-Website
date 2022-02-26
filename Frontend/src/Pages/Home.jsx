@@ -8,7 +8,10 @@ import CarouselPic1 from "../Assets/home/image.jpg";
 import HomeCard from "./Components/HomeCard";
 import Winners from "../data/homeCard";
 
+
 const Home = () => {
+  const [show,setShow]=useState(true);
+
   return (
     <>
       <div className='home-main'>
@@ -17,6 +20,11 @@ const Home = () => {
         </div>
 
         <div className='content'>
+        <button onClick={()=>setShow(!show)} id='btntogglediv'>Coding Club Objective</button>
+        
+        {
+          show?<section>
+        
           <div className='grid'>
             <div className='objective'>
               <h2>Coding Club </h2>
@@ -31,10 +39,14 @@ const Home = () => {
               </p>
             </div>
 
-            <div className='event-img'>
+            {/* <div className='event-img'>
               <img src='https://res.cloudinary.com/sahebcloud/image/upload/v1645215868/AIML_zwljm7.png'></img>
-            </div>
+            </div> */}
           </div>
+         
+          </section>
+          :null
+        }
 
           <div className='winners'>
             <h2>Last Event Winners</h2>
