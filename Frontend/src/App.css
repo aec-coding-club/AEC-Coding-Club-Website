@@ -23,6 +23,17 @@ body {
   background-color: var(--background-bg);
   color: #fff;
 }
+body::-webkit-scrollbar{
+  width: 8px;
+}
+body::-webkit-scrollbar-track{
+  background: transparent;
+  padding: 0 2px;
+}
+body::-webkit-scrollbar-thumb{
+  background: var(--nav-body);
+  border-radius: 0 0 10px 10px;
+}
 
 .btn {
   border: none;
