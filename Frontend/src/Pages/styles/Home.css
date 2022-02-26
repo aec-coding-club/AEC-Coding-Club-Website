@@ -1,7 +1,7 @@
 .home-main {
   width: 100%;
   height: 100%;
-  padding: 3rem;
+
   align-items: center;
   justify-content: center;
 }
@@ -11,10 +11,30 @@
 }
 
 .home-pic img {
-  width: 98%;
-  height: 50vh;
-  margin: 2rem 0 4rem;
-  border-radius: 30px;
+  object-fit: cover;
+  height: 100%;
+}
+
+.home-pic {
+  position: relative;
+  background-image: linear-gradient(to bottom, transparent 70%, #111);
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.home-pic::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to bottom, transparent 70%, #111);
+}
+
+.content {
+  padding: 3rem;
 }
 
 .grid {
@@ -49,46 +69,67 @@ h2 {
 
 .winner-cards {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.card {
-  float: left;
+.cards {
+  height: 180px;
+  width: 600px;
+  text-align: center;
   margin: 2rem 1rem;
-  width: 25rem;
-  padding: 10px;
-}
-.card img {
-  float: right;
-  height: 130px;
-  width: 130px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  position: relative;
-  bottom: 70px;
-  right: 25px;
-}
-.top {
-  padding: 35px;
-  background-color: #d62828;
-  border-radius: 30px 30px 0 0;
-}
-
-.top h3 {
-  font-size: calc(1rem + 1vw);
-  color: rgb(213, 245, 255);
-  font-weight: 900;
-}
-.bottom {
-  padding: 25px;
+  padding: 1.5rem 1rem 1rem;
   background-color: #eae2b7;
-  border-radius: 0 0 30px 30px;
-  color: #333;
+  box-shadow: 0 8px 16px 0 rgba(90, 90, 90, 0.2);
+  border-radius: 15px;
 }
 
-.bottom span {
-  font-weight: 550;
+.cards-content {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+}
+
+.cards img {
+  width: 9vw;
+  height: 9vw;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.trophy {
+  font-size: 5rem;
+}
+
+.cards h3 {
+  color: #000;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.cards h4 {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 600;
+}
+
+.cards span {
+  color: rgb(46, 44, 44);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.rank {
+  background-color: #d62828;
+  padding: 10px 0.5rem;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+.rank span {
+  color: #eae2b7;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 998px) {
@@ -108,9 +149,29 @@ h2 {
     flex-direction: column;
   }
 
-  .card {
-    width: 15rem;
+  .cards {
+    padding: 0.8rem;
+    height: 120px;
+    width: 325px;
   }
+
+  .cards img {
+    width: 19vw;
+    height: 19vw;
+  }
+
+  .trophy {
+    font-size: 3rem;
+  }
+  .cards h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .cards h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
   .grid {
     display: block;
   }

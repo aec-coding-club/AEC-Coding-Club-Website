@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
-import Home from './Pages/Home';
-import Navbar from './Components/Navbar';
-import Events from './Pages/Events';
-import Members from './Pages/Members';
-import Signup from './Pages/Signup';
-import Signin from './Pages/Signin';
-import Otpverify from './Pages/OTP';
-import Dashboard from './Pages/Dashboard-Secure';
-import Errorpage from './Pages/Errorpage';
-import './App.css';
-import { Api } from './backend';
-import UserContext from './Pages/Context/LoggedUserContext';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
+
+import Home from "./Pages/Home";
+import Navbar from "./Components/Navbar";
+import Events from "./Pages/Events";
+import Members from "./Pages/Members";
+import Signup from "./Pages/Signup";
+import Signin from "./Pages/Signin";
+import Otpverify from "./Pages/OTP";
+import Dashboard from "./Pages/Dashboard-Secure";
+import Errorpage from "./Pages/Errorpage";
+import "./App.css";
+import { Api } from "./backend";
+import UserContext from "./Pages/Context/LoggedUserContext";
 
 const getFromLocalStorage = () => {
-  const token = localStorage.getItem('token');
-  const name = localStorage.getItem('name');
-  const pimage = localStorage.getItem('pimage');
+  const token = localStorage.getItem("token");
+  const name = localStorage.getItem("name");
+  const pimage = localStorage.getItem("pimage");
   if (!token) return null;
   else return [token, name, pimage];
 };
