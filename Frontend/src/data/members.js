@@ -53,13 +53,11 @@ export const membersData = [
     github: 'https://github.com/soumali28',
   },
   {
-    name: 'Soumyajit Das',
-    batch: 2023,
+    name: 'Aritra Biswas',
+    batch: 2025,
     role: 1,
-    img: require('../Assets/members/SoumyajitDas.JPG'),
-    linkedin: 'https://www.linkedin.com/in/pioneiro/',
-    github: 'https://github.com/pioneiro',
-    additional: 'https://pioneiro.github.io/pioneiro/',
+    img: require('../Assets/members/AritraBiswas.jpg'),
+    github: 'https://github.com/Aritra777',
   },
   {
     name: 'Rahul Mahato',
@@ -90,13 +88,6 @@ export const membersData = [
     img: require('../Assets/members/DebosmitChoudhury.jpeg'),
     linkedin: 'https://www.linkedin.com/in/debosmit-choudhury-38387287/',
     github: 'https://github.com/debosmithoney',
-  },
-  {
-    name: 'Aritra Biswas',
-    batch: 2025,
-    role: 1,
-    img: require('../Assets/members/AritraBiswas.jpg'),
-    github: 'https://github.com/Aritra777',
   },
   {
     name: 'Shubh kumar',
@@ -284,5 +275,14 @@ export const membersData = [
     linkedin: 'https://www.linkedin.com/in/subhamengine/',
     github: 'https://github.com/subhamengine',
     additional: 'https://bio.link/subhamengine',
+  },
+  {
+    name: 'Soumyajit Das',
+    batch: 2023,
+    role: 1,
+    img: require('../Assets/members/SoumyajitDas.JPG'),
+    linkedin: 'https://www.linkedin.com/in/pioneiro/',
+    github: 'https://github.com/pioneiro',
+    additional: 'https://pioneiro.github.io/pioneiro/',
   },
 ];
