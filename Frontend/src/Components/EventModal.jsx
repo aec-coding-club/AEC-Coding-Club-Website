@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FaTimes, FaRegEye } from 'react-icons/fa';
 import PreviewEventCard from './PreviewEventCard';
+import { useNavigate } from "react-router-dom";
 import './styles/Event-Modal.css';
+import { Api } from "../backend";
+import axios from "axios";
 
 const EventModal = (props) => {
   const { modalShow, onHide, cardEditData } = props;
@@ -9,6 +12,7 @@ const EventModal = (props) => {
     'event-modal-container'
   );
   const [modalClass, setModalClass] = useState('event-modal');
+  let navigate = useNavigate();
 
   const {
     editEventTitle,
@@ -21,6 +25,51 @@ const EventModal = (props) => {
     setEditEventImage,
     setEditEventDetails,
   } = cardEditData;
+
+  const addNewEvent = async() =>{
+    console.log("New Event Added");
+    const Data = {
+      eventTitle : editEventTitle,
+      eventTime : editEventTime,
+      eventImage : editEventImage,
+      eventDetails : editEventDetails
+    }
+    console.log("Event Data :- ", Data);
+
+
+    const authToken = localStorage.getItem("token");
+    const {data} = await axios.post(`${Api}add`, Data, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+
+    if(data.success){
+      window.location.reload();
+    }
+
+    console.log(data);
+  }
+
+  const editExistingEvent = async () => {
+    console.log("Editing Event");
+    const Data = {
+      eventTitle : editEventTitle,
+      eventTime : editEventTime,
+      eventImage : editEventImage,
+      eventDetails : editEventDetails
+    }
+    console.log("Event Data :- ", Data);
+
+    // const authToken = localStorage.getItem("token");
+    // const data = await axios.put(`${Api}add`, Data, {
+    //   withCredentials: true,
+    //   headers: { Authorization: `Bearer ${authToken}` },
+    // });
+
+    // if(data.success){
+    //   window.location.reload();
+    // }
+  }
 
   useEffect(() => {
     if (modalShow) {
@@ -58,6 +107,7 @@ const EventModal = (props) => {
                   />
                 </label>
               </div>
+
               <div className='input-wrapper date-time'>
                 <div className='date'>
                   <label>
@@ -71,6 +121,7 @@ const EventModal = (props) => {
                     />
                   </label>
                 </div>
+
                 <div className='duration'>
                   <label>
                     <div className='label'>Duration(Hrs):</div>
@@ -82,6 +133,7 @@ const EventModal = (props) => {
                   </label>
                 </div>
               </div>
+
               <div className='input-wrapper'>
                 <label>
                   <div className='label'>Image:</div>
@@ -95,6 +147,7 @@ const EventModal = (props) => {
                   />
                 </label>
               </div>
+
               <div className='input-wrapper'>
                 <label>
                   <div className='label'>Details:</div>
@@ -109,9 +162,7 @@ const EventModal = (props) => {
                   />
                 </label>
               </div>
-              <button className='btn add-event'>
-                {addEvent ? 'Add Event' : 'Edit Event'}
-              </button>
+                {addEvent ? <button className='btn add-event' onClick={addNewEvent}>Add Event</button> : <button className='btn add-event' onClick={editExistingEvent}>Edit Event</button> }
             </div>
             <div className='preview'>
               <PreviewEventCard cardEditData={cardEditData} />
