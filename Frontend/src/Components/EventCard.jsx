@@ -13,7 +13,7 @@ export const EventCard = ({
   userRole,
 }) => {
   const { eventImage, eventTitle, eventDetails, eventTime, _id } = cardData;
-  console.log(cardData);
+  // console.log("Card data :- ", cardData);
   let navigate = useNavigate();
   const {
     setEditEventTitle,
@@ -23,7 +23,8 @@ export const EventCard = ({
     setAddEvent,
   } = cardEditData || {};
 
-  function onEdit() {
+  function onEdit(id) {
+    console.log(id);
     setModalShow(true);
     setAddEvent(false);
     setEditEventTitle(eventTitle);
@@ -47,6 +48,23 @@ export const EventCard = ({
     });
     console.log("User data :- ", parseddata);
     navigate("/dashboard");
+  };
+
+
+  const onDelete = async (id) => {
+    console.log(`Deleting the event with id ${id}`);
+    const authToken = localStorage.getItem("token");
+    console.log("AuthToken :- ", authToken);
+    let {data} = await axios.delete(`${Api}delete/${id}`, {
+      withCredentials: true,
+      crossorigin: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    console.log("User data :- ", data);
+    if(data.success){
+      window.location.reload();
+    }
+    
   };
 
   return (
@@ -91,10 +109,10 @@ export const EventCard = ({
               <>
                 {userRole >= 2 ? (
                   <>
-                    <button className='btn event-card-btn' onClick={onEdit}>
+                    <button className='btn event-card-btn' onClick={() => onEdit(_id)}>
                       Edit
                     </button>
-                    <button className='btn event-card-btn'>Delete</button>
+                    <button className='btn event-card-btn' onClick={() => onDelete(_id)}>Delete</button>
                   </>
                 ) : (
                   ""
