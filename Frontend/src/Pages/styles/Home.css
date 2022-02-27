@@ -37,11 +37,9 @@
   padding: 3rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 50% 50%;
+/* .grid {
   margin: 1rem 0.5rem 0;
-}
+} */
 
 h2 {
   font-size: calc(1.2rem + 1.5vw);
@@ -49,14 +47,24 @@ h2 {
   text-align: center;
 }
 
-.objective h2 {
-  text-align: left;
+.objective {
+  width: 40vw;
+  margin-left: 30%;
+  position: relative;
+  top: 8rem;
+  text-align: center;
+}
+
+.objective span {
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 .objective p {
-  font-size: calc(0.3rem + 1.1vw);
-  color: rgb(211, 202, 202);
+  font-size: 1rem;
+  color: #000;
 }
+
 .event-img img {
   width: 70%;
   height: 60%;
@@ -185,7 +193,7 @@ h2 {
   }
 }
 
-section{
+section {
   position: relative;
   justify-content: center;
   align-items: center;
@@ -194,32 +202,26 @@ section{
   height: 500px;
   width: 110%;
   left: -13vh;
-  background-image: linear-gradient(to bottom,rgb(68, 65, 65), #eee, #eee, rgb(68, 65, 65));
+  background-image: linear-gradient(
+    to bottom,
+    rgb(68, 65, 65),
+    #eee,
+    #eee,
+    rgb(68, 65, 65)
+  );
   -webkit-clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
-clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
-   -webkit-background-size: cover;
+  clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;  
-}
-section .grid{
-  position: relative;
-  left: 22rem;
-  top: 7rem;
-}
-.grid h2{
-  position: relative;
-  left: 10rem;
-}
-.grid p{
-  color: #000;
+  background-size: cover;
 }
 
-#btntogglediv{
-  position: relative;
+#btntogglediv {
   height: 50px;
   width: 350px;
-  left: 25rem;
+  position: relative;
+  left: 36%;
   font-weight: 600;
   font-size: 1.5rem;
   border-radius: 10px;
@@ -227,34 +229,66 @@ section .grid{
   border-color: transparent;
 }
 
-@media (max-width:900px) {
-  #btntogglediv{
-    left: 37px;
+@media (max-width: 768px) {
+  #btntogglediv {
+    left: 28%;
+    height: 3rem;
+    width: 20rem;
+    margin-bottom: 1rem;
+  }
+  section {
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    width: 95vw;
+    left: -6vh;
+  }
+  .objective {
+    top: 8rem;
+    left: -13%;
+    width: 60vw;
+  }
+
+  .objective span {
+    font-size: 1.8rem;
+  }
+
+  .objective p {
+    font-size: 1rem;
+  }
+}
+/* mobile view */
+
+@media (max-width: 468px) {
+  #btntogglediv {
+    left: 23%;
     height: 2rem;
     width: 12rem;
     font-size: 1rem;
     margin-bottom: 1rem;
   }
-  section{
+  section {
     justify-content: center;
     align-items: center;
-    height: 286px;
-    width: 56vh;
-    left: -7vh;
+    height: 300px;
+    width: 93vw;
+    left: -6vh;
   }
-  section .grid{
+  section .grid {
     left: 0;
     top: 2.9rem;
   }
-  .grid h2{
-    left: 87px;
+  .objective {
+    top: 5rem;
+    left: -13%;
+    width: 60vw;
   }
-  .objective p{
-    position: relative;
-    font-size: 0.6rem;
-  }
-}
 
-*{
-  overflow-x: hidden;
+  .objective span {
+    font-size: 1.5rem;
+  }
+
+  .objective p {
+    font-size: 0.5rem;
+  }
 }
