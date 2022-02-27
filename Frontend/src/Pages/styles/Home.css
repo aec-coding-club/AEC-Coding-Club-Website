@@ -254,7 +254,3 @@ section .grid{
     font-size: 0.6rem;
   }
 }
-
-*{
-  overflow-x: hidden;
-}
