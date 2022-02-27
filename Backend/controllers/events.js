@@ -17,7 +17,7 @@ exports.getevent = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     const events = await event.find({});
-    res.status(200).json({ events, length: events.length });
+    res.status(200).json({ events : events.reverse(), length: events.length });
   } catch (error) {
     res.status(500).json({ error: "Cannot Find Events" });
   }

@@ -43,7 +43,7 @@ exports.isActivated = async (req, res, next) => {
     // console.log(req.user);
     if (user.active == false) {
       return res.json({
-        success: "false",
+        success: false,
         token: true,
         message: "E-Mail is Not Verified",
       });

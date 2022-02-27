@@ -43,7 +43,7 @@ const DashboadComponent = ({ details }) => {
         <div className='events-container'>
           {events.length > 0 && userRole <= 2 ? (
             events.reverse().map((event) => (
-              <>
+              
                 <PreviewEventCard
                   key={event._id}
                   cardEditData={{
@@ -54,7 +54,7 @@ const DashboadComponent = ({ details }) => {
                     dashboardEvents: true,
                   }}
                 />
-              </>
+              
             ))
           ) : (
             <>

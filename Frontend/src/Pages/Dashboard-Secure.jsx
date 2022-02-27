@@ -7,6 +7,7 @@ import "./styles/Home.css";
 
 const Home = () => {
   const [auth, setAuth] = useState(false);
+  const [successDecision, setSuccessDecision] = useState(false);
   const [userdata, setUserdata] = useState({});
   let navigate = useNavigate();
 
@@ -17,27 +18,35 @@ const Home = () => {
       headers: { Authorization: `Bearer ${authToken}` },
     });
     if (!parseddata.data.token) {
-      console.log("Navigating");
+      console.log("Navigating1");
       navigate("/");
     }
+    
     console.log(Api);
     console.log("Parsed data :- ", parseddata);
     setUserdata({
       userInfo: parseddata.data.user_data,
     });
     setAuth(parseddata.data.token);
+    setSuccessDecision(parseddata.data.success)
+    if(!parseddata.data.success){
+      console.log("Navigating2");
+      navigate("/verify");
+    }
   }
 
   useEffect(() => {
     fetchdata();
+    console.log("Token" , auth);
+    console.log("Success", successDecision);
   }, []);
 
   return (
     <>
-      {auth ? (
+      {auth && successDecision ? (
         <DashboadComponent details={userdata} />
       ) : (
-        `Dashboard can't be Accessed`
+        <h1></h1>
       )}
     </>
   );
