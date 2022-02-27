@@ -75,6 +75,7 @@ h2 {
 }
 
 .cards {
+  overflow: hidden;
   height: 180px;
   width: 600px;
   text-align: center;
