@@ -19,7 +19,7 @@ const Home = () => {
         </div>
 
         <div className='content'>
-          <button onClick={() => setShow(!show)} id='btntogglediv'>
+          <button onClick={() => setShow(!show)} id='btntogglediv' className='btn'>
             Coding Club Objective
           </button>
 
