@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import UserContext from "./Context/LoggedUserContext";
 import "./styles/Home.css";
-import CarouselPic1 from "../Assets/home/image.jpg";
 
 import HomeCard from "./Components/HomeCard";
 import Winners from "../data/homeCard";
+import Slider from "./Components/Slider";
 
 const Home = () => {
   const [show, setShow] = useState(true);
@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <div className='home-main'>
         <div className='home-pic'>
-          <img src={CarouselPic1}></img>
+          <Slider />
         </div>
 
         <div className='content'>
