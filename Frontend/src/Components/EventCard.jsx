@@ -1,9 +1,10 @@
-import React from "react";
-import "./styles/EventCard.css";
-import EventModal from "./EventModal";
-import { Link, useNavigate } from "react-router-dom";
-import { Api } from "../backend";
-import axios from "axios";
+import React from 'react'
+import './styles/EventCard.css'
+import ConfirmModal from './ConfirmModal'
+import { Link, useNavigate } from 'react-router-dom'
+import { Api } from '../backend'
+import axios from 'axios'
+import { useState } from 'react'
 
 export const EventCard = ({
   cardData,
@@ -12,60 +13,67 @@ export const EventCard = ({
   tokenChecker,
   userRole,
 }) => {
-  const { eventImage, eventTitle, eventDetails, eventTime, _id } = cardData;
+  const { eventImage, eventTitle, eventDetails, eventTime, _id } = cardData
   // console.log("Card data :- ", cardData);
-  let navigate = useNavigate();
+  let navigate = useNavigate()
+
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [confirmId, setConfirmId] = useState('')
+
   const {
     setEditEventTitle,
     setEditEventTime,
     setEditEventImage,
     setEditEventDetails,
     setAddEvent,
-  } = cardEditData || {};
+  } = cardEditData || {}
 
   function onEdit(id) {
-    console.log(id);
-    setModalShow(true);
-    setAddEvent(false);
-    setEditEventTitle(eventTitle);
-    setEditEventTime(eventTime);
-    setEditEventImage(eventImage);
-    setEditEventDetails(eventDetails);
+    console.log(id)
+    setModalShow(true)
+    setAddEvent(false)
+    setEditEventTitle(eventTitle)
+    setEditEventTime(eventTime)
+    setEditEventImage(eventImage)
+    setEditEventDetails(eventDetails)
   }
   const signInFirst = () => {
-    console.log("Log In to your account to Register in this event");
-  };
+    console.log('Log In to your account to Register in this event')
+  }
 
   // This will register the user for the event
   const registerToEvent = async (id) => {
-    console.log(`Events added to the user page ${id}`);
-    const authToken = localStorage.getItem("token");
-    console.log("AuthToken :- ", authToken);
-    let parseddata = await axios.post(`${Api}registerevent/${id}`, "", {
+    console.log(`Events added to the user page ${id}`)
+    const authToken = localStorage.getItem('token')
+    console.log('AuthToken :- ', authToken)
+    let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
       withCredentials: true,
       crossorigin: true,
       headers: { Authorization: `Bearer ${authToken}` },
-    });
-    console.log("User data :- ", parseddata);
-    navigate("/dashboard");
-  };
-
+    })
+    console.log('User data :- ', parseddata)
+    navigate('/dashboard')
+  }
 
   const onDelete = async (id) => {
-    console.log(`Deleting the event with id ${id}`);
-    const authToken = localStorage.getItem("token");
-    console.log("AuthToken :- ", authToken);
-    let {data} = await axios.delete(`${Api}delete/${id}`, {
+    console.log(`Deleting the event with id ${id}`)
+    const authToken = localStorage.getItem('token')
+    console.log('AuthToken :- ', authToken)
+    let { data } = await axios.delete(`${Api}delete/${id}`, {
       withCredentials: true,
       crossorigin: true,
       headers: { Authorization: `Bearer ${authToken}` },
-    });
-    console.log("User data :- ", data);
-    if(data.success){
-      window.location.reload();
+    })
+    console.log('User data :- ', data)
+    if (data.success) {
+      window.location.reload()
     }
-    
-  };
+  }
+
+  function handleConfirmModal(id) {
+    setConfirmId(id)
+    setShowConfirm((prev) => !prev)
+  }
 
   return (
     <>
@@ -76,7 +84,7 @@ export const EventCard = ({
         <div className='card-text-details'>
           <p className='event-card-title'>{eventTitle}</p>
           <p className='event-card-date'>
-            Date: <span>{eventTime.split("T")[0]}</span>
+            Date: <span>{eventTime.split('T')[0]}</span>
           </p>
           <div className='event-card-desc'>
             <p>{eventDetails}</p>
@@ -98,7 +106,7 @@ export const EventCard = ({
             ) : (
               <button
                 className='btn event-card-btn'
-                style={{ display: "block", alignItems: "center" }}
+                style={{ display: 'block', alignItems: 'center' }}
                 onClick={signInFirst}
               >
                 Register
@@ -109,13 +117,30 @@ export const EventCard = ({
               <>
                 {userRole >= 2 ? (
                   <>
-                    <button className='btn event-card-btn' onClick={() => onEdit(_id)}>
+                    <button
+                      className='btn event-card-btn'
+                      onClick={() => onEdit(_id)}
+                    >
                       Edit
                     </button>
-                    <button className='btn event-card-btn' onClick={() => onDelete(_id)}>Delete</button>
+                    <button
+                      className='btn event-card-btn'
+                      onClick={() => handleConfirmModal(_id)}
+                    >
+                      Delete
+                    </button>
+                    {confirmId && confirmId === _id && (
+                      <ConfirmModal
+                        showConfirm={showConfirm}
+                        eventTitle={eventTitle}
+                        handleConfirmModal={handleConfirmModal}
+                        eventId={_id}
+                        onDelete={onDelete}
+                      />
+                    )}
                   </>
                 ) : (
-                  ""
+                  ''
                 )}
               </>
             )}
@@ -123,5 +148,5 @@ export const EventCard = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}

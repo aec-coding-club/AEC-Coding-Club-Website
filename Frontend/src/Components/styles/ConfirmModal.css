@@ -1,0 +1,52 @@
+.confirm-wrapper {
+  position: fixed;
+  width: 100vw;
+  min-height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.432);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.confirm-modal {
+  width: 90%;
+  max-width: 400px;
+  background-color: var(--nav-body);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  opacity: 0;
+  transform: scale(0);
+  transition: 200ms ease;
+}
+
+.show-confirm {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+}
+
+.confirm-modal .btn {
+  border-radius: 0.25rem !important;
+}
+
+.btn-cancel {
+  background-color: rgb(117, 117, 117) !important;
+}
+
+.confirm-modal .name-title {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.85px;
+  font-style: italic;
+  color: rgb(65, 65, 65);
+}
+
+.confirm-message {
+  line-height: 1.5rem;
+  margin-block: 1rem;
+  letter-spacing: 0.85px;
+}
