@@ -7,7 +7,7 @@ import { Api } from '../backend'
 import axios from 'axios'
 
 const EventModal = (props) => {
-  const { modalShow, onHide, cardEditData } = props
+  const { modalShow, onHide, cardEditData, editEventID } = props
   const [modalContainerClass, setModalContainerClass] = useState(
     'event-modal-container'
   )
@@ -59,15 +59,16 @@ const EventModal = (props) => {
     }
     console.log('Event Data :- ', Data)
 
-    // const authToken = localStorage.getItem("token");
-    // const data = await axios.put(`${Api}add`, Data, {
-    //   withCredentials: true,
-    //   headers: { Authorization: `Bearer ${authToken}` },
-    // });
+    const authToken = localStorage.getItem('token')
+    const data = await axios.put(`${Api}update/${editEventID}`, Data, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    })
 
-    // if(data.success){
-    //   window.location.reload();
-    // }
+    if (data.success) {
+      window.location.reload()
+    }
+    console.log(data)
   }
 
   useEffect(() => {
@@ -79,6 +80,8 @@ const EventModal = (props) => {
       setModalClass('event-modal')
     }
   }, [modalShow])
+
+  console.log('edit event id: ', editEventID)
 
   return (
     <div className={modalContainerClass}>

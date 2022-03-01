@@ -10,6 +10,7 @@ import axios from 'axios'
 
 const Events = ({ tokenChecker }) => {
   const [modalShow, setModalShow] = useState(false)
+  const [editEventID, setEditEventID] = useState('')
   const [userRole, setUserRole] = useState(0)
 
   const fetchUserData = async () => {
@@ -96,6 +97,7 @@ const Events = ({ tokenChecker }) => {
             addEvent={true}
             modalShow={modalShow}
             onHide={onHide}
+            editEventID={editEventID}
           />
         </div>
         <EventsContainer
@@ -103,6 +105,7 @@ const Events = ({ tokenChecker }) => {
           cardEditData={cardEditData}
           tokenChecker={tokenChecker}
           userRole={userRole}
+          setEditEventID={setEditEventID}
         />
       </main>
     </>

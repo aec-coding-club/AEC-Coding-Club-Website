@@ -12,6 +12,7 @@ export const EventCard = ({
   cardEditData,
   tokenChecker,
   userRole,
+  setEditEventID,
 }) => {
   const { eventImage, eventTitle, eventDetails, eventTime, _id } = cardData
   // console.log("Card data :- ", cardData);
@@ -30,6 +31,7 @@ export const EventCard = ({
 
   function onEdit(id) {
     console.log(id)
+    setEditEventID(id)
     setModalShow(true)
     setAddEvent(false)
     setEditEventTitle(eventTitle)
