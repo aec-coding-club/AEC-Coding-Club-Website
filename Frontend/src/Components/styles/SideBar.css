@@ -46,6 +46,7 @@
 
 .sidebar-btn-wrapper {
   margin-bottom: 2rem;
+  flex-direction: column;
 }
 
 .nav-sidebar .btn {
