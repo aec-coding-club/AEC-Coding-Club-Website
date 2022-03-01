@@ -46,7 +46,7 @@ const App = () => {
           <Route exact path='/signup' element={<Signup />} />
           <Route exact path='/signin' element={<Signin />} />
           <Route exact path='/verify' element={<Otpverify />} />
-          <Route exact path='/dashboard' element={<Dashboard />} />
+          <Route exact path='/dashboard' element={<Dashboard tokenChecker={tokenChecker} />} />
           <Route exact path='*' element={<Errorpage />} />
         </Routes>
       </Router>
