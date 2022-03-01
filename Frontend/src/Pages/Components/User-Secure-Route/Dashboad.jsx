@@ -4,7 +4,7 @@ import { Api } from "../../../backend";
 import PreviewEventCard from "../../../Components/PreviewEventCard";
 import "../../../Components/styles/EventsContainer.css";
 
-const DashboadComponent = ({ details }) => {
+const DashboadComponent = ({ details, tokenChecker }) => {
   const [events, setEvents] = useState([]);
   const [userRole, setUserRole] = useState(0);
 
@@ -40,6 +40,20 @@ const DashboadComponent = ({ details }) => {
         <br />
       </div>
       <main className='events-main'>
+      {tokenChecker && (
+          <div className='events-header'>
+            <div className='events-header-left'>
+              <p>Hi, {tokenChecker[1]}</p>
+            </div>
+            <div className='events-header-right'>
+              <img
+                src='../Assets/events/events-header.jpg'
+                alt='events'
+                className='events-header-img'
+              />
+            </div>
+          </div>
+        )}
         <div className='events-container'>
           {events.length > 0 && userRole <= 2 ? (
             events.reverse().map((event) => (

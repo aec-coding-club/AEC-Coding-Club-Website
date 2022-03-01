@@ -5,7 +5,7 @@ import { Api } from "../backend";
 import DashboadComponent from "./Components/User-Secure-Route/Dashboad";
 import "./styles/Home.css";
 
-const Home = () => {
+const Home = ({tokenChecker}) => {
   const [auth, setAuth] = useState(false);
   const [successDecision, setSuccessDecision] = useState(false);
   const [userdata, setUserdata] = useState({});
@@ -44,7 +44,7 @@ const Home = () => {
   return (
     <>
       {auth && successDecision ? (
-        <DashboadComponent details={userdata} />
+        <DashboadComponent details={userdata} tokenChecker={tokenChecker}/>
       ) : (
         <h1></h1>
       )}
