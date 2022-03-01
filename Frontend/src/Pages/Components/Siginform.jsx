@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { Api } from "../../backend";
@@ -43,6 +43,13 @@ const Siginform = () => {
     console.log(dataposted);
   }
 
+  async function tokenCheker(){
+    const authToken = localStorage.getItem('token');
+    if(authToken){
+      navigate('/')
+    }
+  }
+
   function handelChange(e) {
     const newdata = { ...registerdata };
     newdata[e.target.id] = e.target.value;
@@ -54,6 +61,11 @@ const Siginform = () => {
   const togglePassword = () => {
     setViewPassword(!viewPassword);
   };
+
+  useEffect(() => {
+    tokenCheker();
+  }, [])
+  
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
@@ -68,6 +68,17 @@ const Signupform = () => {
   const togglePasswordTwo = () => {
     setViewPasswordTwo(!viewPasswordTwo);
   };
+
+  async function tokenCheker(){
+    const authToken = localStorage.getItem('token');
+    if(authToken){
+      navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    tokenCheker();
+  }, [])
 
   return (
     <>
