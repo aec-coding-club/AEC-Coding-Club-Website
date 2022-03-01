@@ -60,7 +60,7 @@ const EventModal = (props) => {
     console.log('Event Data :- ', Data)
 
     const authToken = localStorage.getItem('token')
-    const data = await axios.put(`${Api}update/${editEventID}`, Data, {
+    const {data} = await axios.put(`${Api}update/${editEventID}`, Data, {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
