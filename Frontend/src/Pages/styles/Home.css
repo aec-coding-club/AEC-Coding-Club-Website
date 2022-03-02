@@ -307,3 +307,8 @@ section {
     font-size: 0.5rem;
   }
 }
+
+footer{
+  position: relative;
+  top: -4rem;
+}

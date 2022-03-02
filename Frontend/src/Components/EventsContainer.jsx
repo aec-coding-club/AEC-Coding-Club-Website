@@ -1,32 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import "./styles/EventsContainer.css";
-import { EventCard } from "./EventCard";
-import eventData from "../data/eventData.json";
-import axios from "axios";
-import { Api } from "../backend";
+import React, { useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import './styles/EventsContainer.css'
+import { EventCard } from './EventCard'
+import eventData from '../data/eventData.json'
+import axios from 'axios'
+import { Api } from '../backend'
 
 const EventsContainer = ({
   setModalShow,
   cardEditData,
   tokenChecker,
   userRole,
+  setEditEventID,
 }) => {
-  const [allEvents, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [allEvents, setEvents] = useState([])
+  const [loading, setLoading] = useState(false)
   async function fetchdata() {
-    setLoading(true);
+    setLoading(true)
     const parseddata = await axios.get(`${Api}events`, {
       withCredentials: true,
-    });
-    setLoading(false);
-    setEvents(parseddata.data.events);
-    console.log(allEvents);
+    })
+    setLoading(false)
+    setEvents(parseddata.data.events)
+    console.log(allEvents)
   }
 
   useEffect(() => {
-    fetchdata();
-  }, []);
+    fetchdata()
+  }, [])
 
   return (
     <>
@@ -40,6 +41,7 @@ const EventsContainer = ({
               setModalShow={setModalShow}
               tokenChecker={tokenChecker}
               userRole={userRole}
+              setEditEventID={setEditEventID}
             />
           ))}
         </div>
@@ -51,7 +53,7 @@ const EventsContainer = ({
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default EventsContainer;
+export default EventsContainer
