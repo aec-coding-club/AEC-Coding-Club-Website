@@ -8,6 +8,9 @@ import HomeCard from "./Components/HomeCard";
 import Winners from "../data/homeCard";
 import Slider from "./Components/Slider";
 
+import Polygon from "./Components/Polygon";
+import { polyData } from "../data/polygonData";
+
 const Home = () => {
   const [show, setShow] = useState(true);
 
@@ -55,6 +58,11 @@ const Home = () => {
               })}
             </div>
           </div>
+          <span className="polyspan">
+          {polyData.map((props) => {
+                return <Polygon key={props.id} num={props.num} caption={props.caption} />;
+              })}
+          </span>
         </div>
 
         <footer style={{ textAlign: "center" }}>
