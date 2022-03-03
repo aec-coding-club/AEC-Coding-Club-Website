@@ -68,12 +68,12 @@ exports.register = async (req, res) => {
       const user_notActive = await User.findOne({ uid: count.notActive[0] });
       const userid = count.notActive[0];
       console.log(
-        (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >= 1
+        (Date.now() - user_notActive.timeStamp) / (1000 * 24 * 60 * 60)
       );
       if (user_notActive) {
         console.log("After find");
         if (
-          (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >=
+          (Date.now() - user_notActive.timeStamp) / (1000 * 24 * 60 * 60) >=
           1
         ) {
           const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
@@ -101,8 +101,10 @@ exports.register = async (req, res) => {
               otpRequest: 1,
               initialTimeStamp: Date.now(),
             },
+            timeStamp: Date.now(),
           };
           const valuereturn = await User.findOneAndUpdate(filter, update);
+          console.log(valuereturn);
           const token = jwt.sign(
             {
               user_id: user_notActive.uid,
@@ -114,12 +116,22 @@ exports.register = async (req, res) => {
             }
           );
           user_notActive.token = token;
+          const removefromarray = await Counter.updateOne(
+            { branch: branch, batch: batch },
+            { $pull: { notActive: userid } }
+          );
+          console.log(removefromarray);
+          const notActive = await Counter.updateOne(
+            { branch: branch, batch: batch },
+            { $push: { notActive: user_notActive.uid } }
+          );
+          console.log(notActive);
 
           return res.status(200).json({
             success: true,
             // token: true,
             token,
-            valuereturn,
+            update,
           });
         }
       }
@@ -299,7 +311,7 @@ exports.verifyOTP = async (req, res) => {
   const uid = req.user.user_id;
   const email = req.user.email;
   if (otp) {
-    docs = await User.findOne({ uid: uid })
+    docs = await User.findOne({ uid: uid });
 
     if (docs.otpstatus && docs.active == false) {
       if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
@@ -321,7 +333,7 @@ exports.verifyOTP = async (req, res) => {
             },
           }
         )
-          .then((msg) => { })
+          .then((msg) => {})
           .catch((err) => {
             console.log(err.message);
           });
@@ -351,7 +363,7 @@ exports.verifyOTP = async (req, res) => {
               },
             }
           )
-            .then((msg) => { })
+            .then((msg) => {})
             .catch((err) => {
               console.log(err);
             });
@@ -379,7 +391,7 @@ exports.verifyOTP = async (req, res) => {
               },
             }
           )
-            .then((msg) => { })
+            .then((msg) => {})
             .catch((err) => {
               console.log(err.message);
             });
@@ -404,7 +416,7 @@ exports.verifyOTP = async (req, res) => {
           { uid: uid },
           { $set: { "otpstatus.wrongTry": docs.otpstatus.wrongTry + 1 } }
         )
-          .then((msg) => { })
+          .then((msg) => {})
           .catch((err) => {
             console.log(err);
           });
@@ -414,12 +426,11 @@ exports.verifyOTP = async (req, res) => {
           message: "wrong otp",
         });
       } else {
-
         User.updateOne(
           { uid: uid },
           { $set: { active: true, otpstatus: null } }
           // TODO: Remove the Activated User from Unactivated Array in Counter
-        )
+        );
         // .then((msg) => {})
         // .catch((err) => {
         //   console.log(err);
@@ -427,26 +438,32 @@ exports.verifyOTP = async (req, res) => {
         // try {
         userupdate = await User.findOne({ uid: uid });
         // console.log(userupdate);
+        console.log(`branch: ${userupdate.branch}, batch: ${userupdate.batch}`);
         console.log(
-          `branch: ${userupdate.branch}, batch: ${userupdate.batch}`
+          " +++++++++++++++++++++++====================++++++++++++++++++++++"
         );
-        console.log(" +++++++++++++++++++++++====================++++++++++++++++++++++");
         Counter.updateOne(
           { branch: userupdate.branch, batch: userupdate.batch },
           { $pull: { notActive: uid } }
         )
-        .then(() => {console.log(`notActive uid: ${uid} found in ${userupdate.branch}-${userupdate.batch}`);})
-        .catch(() =>{});
+          .then(() => {
+            console.log(
+              `notActive uid: ${uid} found in ${userupdate.branch}-${userupdate.batch}`
+            );
+          })
+          .catch(() => {});
         // } catch (error) {
         //   return res.json({ success: false, message: error.message });
         // }
-        console.log("-------------------++++++++++++__________++++++===================_-_-_-_-");
+        console.log(
+          "-------------------++++++++++++__________++++++===================_-_-_-_-"
+        );
         return res
           .status(200)
           .send({ success: true, token: true, message: "account activated" });
       }
     } else {
       res.redirect("/api/v1/dashboard");
-    };
+    }
   }
 };
