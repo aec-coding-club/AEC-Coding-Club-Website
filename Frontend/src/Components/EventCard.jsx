@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Api } from '../backend'
 import axios from 'axios'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const EventCard = ({
   cardData,
@@ -45,16 +46,21 @@ export const EventCard = ({
 
   // This will register the user for the event
   const registerToEvent = async (id) => {
-    console.log(`Events added to the user page ${id}`)
-    const authToken = localStorage.getItem('token')
-    console.log('AuthToken :- ', authToken)
-    let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
-      withCredentials: true,
-      crossorigin: true,
-      headers: { Authorization: `Bearer ${authToken}` },
-    })
-    console.log('User data :- ', parseddata)
-    navigate('/dashboard')
+    try {
+      console.log(`Events added to the user page ${id}`)
+      const authToken = localStorage.getItem('token')
+      console.log('AuthToken :- ', authToken)
+      let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
+        withCredentials: true,
+        crossorigin: true,
+        headers: { Authorization: `Bearer ${authToken}` },
+      })
+      console.log('User data :- ', parseddata)
+      navigate('/dashboard')
+      toast.success('You have successfully registered')
+    } catch {
+      toast.error('Failed to Register')
+    }
   }
 
   const onDelete = async (id) => {
