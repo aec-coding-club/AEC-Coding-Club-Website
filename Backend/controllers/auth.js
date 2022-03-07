@@ -68,12 +68,12 @@ exports.register = async (req, res) => {
       const user_notActive = await User.findOne({ uid: count.notActive[0] });
       const userid = count.notActive[0];
       console.log(
-        (Date.now() - user_notActive.timeStamp) / (1000 * 24 * 60 * 60)
+        (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60)
       );
       if (user_notActive) {
         console.log("After find");
         if (
-          (Date.now() - user_notActive.timeStamp) / (1000 * 24 * 60 * 60) >=
+          (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >=
           1
         ) {
           const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
