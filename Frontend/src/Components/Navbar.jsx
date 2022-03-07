@@ -76,7 +76,7 @@ const Navbar = ({ userImage, userNameText }) => {
 
   useEffect(() => {
     checkToken()
-  })
+  }, [])
 
   return (
     <nav>
