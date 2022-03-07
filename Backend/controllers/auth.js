@@ -426,7 +426,7 @@ exports.verifyOTP = async (req, res) => {
           message: "wrong otp",
         });
       } else {
-        User.updateOne(
+        await User.updateOne(
           { uid: uid },
           { $set: { active: true, otpstatus: null } }
           // TODO: Remove the Activated User from Unactivated Array in Counter
