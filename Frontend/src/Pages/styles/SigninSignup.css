@@ -98,18 +98,19 @@ h1 {
   color: rgba(214, 40, 40, 1);
 }
 
-#password+span svg, #confirmPassword+span svg{
+#password + span svg,
+#confirmPassword + span svg {
   margin-top: 0.4rem;
   position: absolute;
-  top: .4rem;
-  right: .3rem;
+  top: 0.48rem;
+  right: 0.3rem;
   z-index: 1111;
   color: rgba(151, 151, 151, 0.692);
 }
-.inline-input-svg{
+.inline-input-svg {
   position: relative;
+  width: fit-content;
 }
-
 
 @media (max-width: 868px) {
   .user-login {
@@ -144,15 +145,15 @@ h1 {
 }
 
 /* For Mobile Use ---> */
-@media (max-width : 425px){
-  form{
+@media (max-width: 425px) {
+  form {
     width: 370px;
   }
   .user-login {
     padding: 0;
     margin: 0 0;
   }
-  h1{
+  h1 {
     font-size: 1.55rem;
     text-align: center;
     margin-bottom: 15px;
@@ -160,42 +161,61 @@ h1 {
   .user-img img {
     width: 175px;
   }
-  .details{
+  .details {
     margin-bottom: 8px;
   }
-  .name{
+  .name {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(1fr, 2) ;
+    grid-template-rows: repeat(1fr, 2);
   }
-  .head-input{
+  .head-input {
     margin-right: 0;
     width: 100%;
   }
-  .login-signup-btn{
+  .login-signup-btn {
     position: static;
     display: block;
-    margin: auto;
+    margin: 0.4rem auto !important;
     margin-bottom: 1rem;
   }
-  #password+span svg, #confirmPassword+span svg{
+  #password + span svg,
+  #confirmPassword + span svg {
     width: 1.2rem;
     height: 1.2rem;
     margin-top: 0.3rem;
   }
+  /*for signin page ----> */
+  .useridPass {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .useridPass .details {
+    width: fit-content;
+  }
+  #signin-heading {
+    font-size: 1.15rem;
+  }
+  .user-login p {
+    font-size: 0.9rem;
+  }
 }
-@media (max-width : 354px){
-  form{
+@media (max-width: 354px) {
+  form {
     width: 250px;
     padding: 0;
     overflow-x: hidden;
   }
-  h1{
+  h1 {
     font-size: 1.2rem;
   }
-  .input-data{
+  .input-data {
     width: 100%;
   }
-  .user-img{
+  .user-img {
     text-align: center;
+  }
+  /*for signin page ----> */
+  #signin-heading {
+    font-size: 0.87rem;
   }
 }

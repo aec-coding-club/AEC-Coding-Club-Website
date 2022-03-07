@@ -1,12 +1,91 @@
-import React from "react";
-import Navbar from "../../../Components/Navbar";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Api } from "../../../backend";
+import PreviewEventCard from "../../../Components/PreviewEventCard";
+import "../../../Components/styles/EventsContainer.css";
+import AdminPanel from "./Admin Panel";
 
-const DashboadComponent = () => {
+const DashboadComponent = ({ details, tokenChecker }) => {
+  const [events, setEvents] = useState([]);
+  const [userRole, setUserRole] = useState(0);
+
+  const fetchEvents = async () => {
+    const allEvents = details.userInfo.events.map(async (id) => {
+      const response = await axios.get(`${Api}${id}`, {
+        withCredentials: true,
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      return response.data;
+    });
+    setEvents(await Promise.all(allEvents));
+
+    // TODO: Set the Role of the user
+    const authToken = localStorage.getItem("token");
+    const parseddata = await axios.get(`${Api}dashboard`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    setUserRole(parseddata.data.user_data.role);
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
   return (
     <>
       <div className='home-main'>
-        <h1>You are Verified and Authorized Welcome to Dashboard Route</h1>
+        {console.log("Events Array: ", events && events)}
+
+        <br />
+        <br />
       </div>
+      <main className='events-main'>
+      {tokenChecker && (
+          <div className='events-header'>
+            <div className='events-header-left'>
+              <p>Hi, {tokenChecker[1]}</p>
+            </div>
+            <div className='events-header-right'>
+              <img
+                src='../Assets/events/events-header.jpg'
+                alt='events'
+                className='events-header-img'
+              />
+            </div>
+          </div>
+        )}
+        <div className='events-container'>
+          {events.length > 0 && userRole <= 2 ? (
+            events.reverse().map((event) => (
+              
+                <PreviewEventCard
+                  key={event._id}
+                  cardEditData={{
+                    editEventTitle: event.eventTitle,
+                    editEventImage: event.eventImage,
+                    editEventTime: event.eventTime,
+                    editEventDetails: event.eventDetails,
+                    dashboardEvents: true,
+                  }}
+                />
+              
+            ))
+          ) : (
+            <>
+              {userRole >= 3 ? (
+                <>
+                  {/* <h2>Welcome to the Admin Panel</h2> */}
+                  <AdminPanel />
+                  {/* TODO: Admin Panel Here */}
+                </>
+              ) : (
+                <h2>You Have Not Registered To Any Events</h2>
+              )}
+            </>
+          )}
+        </div>
+      </main>
       <br />
     </>
   );

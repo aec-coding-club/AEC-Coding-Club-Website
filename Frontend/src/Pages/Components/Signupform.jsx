@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
@@ -68,6 +68,17 @@ const Signupform = () => {
   const togglePasswordTwo = () => {
     setViewPasswordTwo(!viewPasswordTwo);
   };
+
+  async function tokenCheker(){
+    const authToken = localStorage.getItem('token');
+    if(authToken){
+      navigate('/')
+    }
+  }
+
+  useEffect(() => {
+    tokenCheker();
+  }, [])
 
   return (
     <>
@@ -230,21 +241,21 @@ const Signupform = () => {
               Password :<span className='asterik'>*</span>
             </label>
             <br />
-            <div className="inline-input-svg">
-            <input
-              type={viewPasswordOne ? 'text' : 'password'}
-              name='password'
-              id='password'
-              className='input__field head-input'
-              placeholder='Enter your password'
-              onChange={(e) => handelChange(e)}
-              value={registerdata.password}
-              required
-              autoComplete='off'
-            ></input>
-            <span onClick={togglePasswordOne}>
-              {viewPasswordOne ? <AiFillEyeInvisible /> : <AiFillEye />}
-            </span>
+            <div className='inline-input-svg'>
+              <input
+                type={viewPasswordOne ? 'text' : 'password'}
+                name='password'
+                id='password'
+                className='input__field head-input'
+                placeholder='Enter your password'
+                onChange={(e) => handelChange(e)}
+                value={registerdata.password}
+                required
+                autoComplete='off'
+              ></input>
+              <span onClick={togglePasswordOne}>
+                {viewPasswordOne ? <AiFillEyeInvisible /> : <AiFillEye />}
+              </span>
             </div>
           </div>
 
@@ -253,21 +264,21 @@ const Signupform = () => {
               Confirm Password :<span className='asterik'>*</span>
             </label>
             <br />
-            <div className="inline-input-svg">
-            <input
-              type={viewPasswordTwo ? 'text' : 'password'}
-              name='confirmPassword'
-              id='confirmPassword'
-              className='input__field head-input'
-              placeholder='Confirm your password'
-              onChange={(e) => handelChange(e)}
-              value={registerdata.confirmPassword}
-              required
-              autoComplete='off'
-            ></input>
-            <span onClick={togglePasswordTwo}>
-              {viewPasswordTwo ? <AiFillEyeInvisible /> : <AiFillEye />}
-            </span>
+            <div className='inline-input-svg'>
+              <input
+                type={viewPasswordTwo ? 'text' : 'password'}
+                name='confirmPassword'
+                id='confirmPassword'
+                className='input__field head-input'
+                placeholder='Confirm your password'
+                onChange={(e) => handelChange(e)}
+                value={registerdata.confirmPassword}
+                required
+                autoComplete='off'
+              ></input>
+              <span onClick={togglePasswordTwo}>
+                {viewPasswordTwo ? <AiFillEyeInvisible /> : <AiFillEye />}
+              </span>
             </div>
           </div>
         </div>

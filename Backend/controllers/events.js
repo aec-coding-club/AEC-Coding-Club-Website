@@ -1,18 +1,15 @@
 const event = require("../models/Event");
 const User = require("../models/User");
 
-exports.get = async (req, res) => {
+exports.getevent = async (req, res) => {
   try {
-    const event = await event.findById(
-      req.params.id,
-      "_id title description image form date"
-    );
+    const Event = await event.findOne({ _id: req.params.id });
 
-    if (!event) return res.status(404).json({ error: "No Events Found" });
+    if (!Event) return res.status(404).json({ error: "No Events Found" });
 
-    res.status(200).json(event);
+    return res.status(200).json(Event);
   } catch (error) {
-    res.status(500).json({ error: "Cannot Find Event" });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -20,7 +17,7 @@ exports.get = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     const events = await event.find({});
-    res.status(200).json({ events, length: events.length });
+    res.status(200).json({ events: events.reverse(), length: events.length });
   } catch (error) {
     res.status(500).json({ error: "Cannot Find Events" });
   }
@@ -54,38 +51,68 @@ exports.add = async (req, res) => {
 // Update Specific Event Based On It's ID
 exports.update = async (req, res) => {
   try {
-    const { error } = validator.event(req.body);
-    if (error)
-      return res
-        .status(406)
-        .json({ success: false, token: true, error: "Invalid Event Data" });
+    const eventid = req.params.id;
+    console.log(eventid);
 
-    const updatedEvent = await event.findByIdAndUpdate(
-      req.params.id,
-      req.body
-      // { new: true, runValidators: true }
-    );
+    const Event = await event.findByIdAndUpdate(eventid, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
-    if (!updatedEvent)
-      return res
-        .status(404)
-        .json({ success: false, token: true, message: "Cannot Find Event" });
+    if (!Event) {
+      return res.status(400).json({
+        Message: "Can't find any user like this",
+      });
+    }
 
-    res.status(200).json({
-      _id: updatedEvent._id,
-      title: updatedEvent.title,
-      description: updatedEvent.description,
-      image: updatedEvent.image,
-      form: updatedEvent.form,
-      date: updatedEvent.date,
-      role: req.role,
+    return res.status(200).json({
+      Message: "Data Updated Successfully",
+      Event: Event,
       success: true,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, token: true, error: "Cannot Update Event" });
+    return res.status(400).json({
+      Error: "Something Went Wrong",
+      Message: error.message,
+      success: false,
+      token: true,
+    });
   }
+
+  // try {
+  //   const { error } = validator.event(req.body);
+  //   console.log(error);
+  //   if (error)
+  //     return res
+  //       .status(406)
+  //       .json({ success: false, token: true, error: "Invalid Event Data" });
+
+  //   const updatedEvent = await event.findByIdAndUpdate(
+  //     req.params.id,
+  //     req.body
+  //    { new: true, runValidators: true }
+  //   );
+
+  //   if (!updatedEvent)
+  //     return res
+  //       .status(404)
+  //       .json({ success: false, token: true, message: "Cannot Find Event" });
+
+  //   res.status(200).json({
+  //     _id: updatedEvent._id,
+  //     title: updatedEvent.title,
+  //     description: updatedEvent.description,
+  //     image: updatedEvent.image,
+  //     form: updatedEvent.form,
+  //     date: updatedEvent.date,
+  //     role: req.role,
+  //     success: true,
+  //   });
+  // } catch (error) {
+  //   res
+  //     .status(500)
+  //     .json({ success: false, token: true, error: "Cannot Update Event" });
+  // }
 };
 
 // Dete Specifit Event Based On It's ID

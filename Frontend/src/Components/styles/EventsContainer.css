@@ -7,3 +7,19 @@
   flex-wrap: wrap;
   gap: 2rem;
 }
+#event-loading-img {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+@media (max-width: 500px) {
+  #event-loading-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media (max-width: 425px) {
+  #event-loading-img {
+    left: 30%;
+  }
+}

@@ -6,7 +6,13 @@ import eventData from '../data/eventData.json'
 import axios from 'axios'
 import { Api } from '../backend'
 
-const EventsContainer = ({ setModalShow, cardEditData }) => {
+const EventsContainer = ({
+  setModalShow,
+  cardEditData,
+  tokenChecker,
+  userRole,
+  setEditEventID,
+}) => {
   const [allEvents, setEvents] = useState([])
   const [loading, setLoading] = useState(false)
   async function fetchdata() {
@@ -33,11 +39,18 @@ const EventsContainer = ({ setModalShow, cardEditData }) => {
               cardData={data}
               cardEditData={cardEditData}
               setModalShow={setModalShow}
+              tokenChecker={tokenChecker}
+              userRole={userRole}
+              setEditEventID={setEditEventID}
             />
           ))}
         </div>
       ) : (
-        <img src='../Assets/loader.gif' alt='loading...' />
+        <img
+          id='event-loading-img'
+          src='../Assets/loader.gif'
+          alt='loading...'
+        />
       )}
     </>
   )
