@@ -8,8 +8,7 @@ import HomeCard from "./Components/HomeCard";
 import Winners from "../data/homeCard";
 import Slider from "./Components/Slider";
 
-import Polygon from "./Components/Polygon";
-import { polyData } from "../data/polygonData";
+import SvgComponent from "./Components/Hexagon";
 
 const Home = () => {
   const [show, setShow] = useState(true);
@@ -22,7 +21,11 @@ const Home = () => {
         </div>
 
         <div className='content'>
-          <button onClick={() => setShow(!show)} id='btntogglediv' className='btn'>
+          <button
+            onClick={() => setShow(!show)}
+            id='btntogglediv'
+            className='btn'
+          >
             Coding Club Objective
           </button>
 
@@ -58,11 +61,13 @@ const Home = () => {
               })}
             </div>
           </div>
-          <span className="polyspan">
-          {polyData.map((props) => {
-                return <Polygon key={props.id} num={props.num} caption={props.caption} />;
-              })}
-          </span>
+
+          <div>
+            <SvgComponent />
+            <SvgComponent />
+            <SvgComponent />
+            <SvgComponent />
+          </div>
         </div>
 
         <footer style={{ textAlign: "center" }}>
