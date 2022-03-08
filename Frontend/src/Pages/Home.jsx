@@ -35,14 +35,7 @@ const Home = () => {
               <div className='objective'>
                 <span>Coding Club </span>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  The AEC Coding Club started its journey on 11 April 2021. Its major objective is to motivate students' interest in learning various technologies and to obtain information about how technology will be used to project work. The club’s goal is to encourage students to solve various challenging problems using demanding technologies which include Python, Java, C, C++, etc. Our approach will help students to become Industry Ready. This will boost them to get Job. The AEC Coding Club actively organizes various activities like Online Coding Contest, Online Quiz Contest, etc. Other events like Expert's Talk, Alumni Talk, and Hands-on practical workshops for various programming basics are planned for the future..
                 </p>
               </div>
 
