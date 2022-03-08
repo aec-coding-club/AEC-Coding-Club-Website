@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Api } from "../../../backend";
 import PreviewEventCard from "../../../Components/PreviewEventCard";
 import "../../../Components/styles/EventsContainer.css";
+import AdminPanel from "./Admin Panel";
 
 const DashboadComponent = ({ details, tokenChecker }) => {
   const [events, setEvents] = useState([]);
@@ -74,7 +75,8 @@ const DashboadComponent = ({ details, tokenChecker }) => {
             <>
               {userRole >= 3 ? (
                 <>
-                  <h2>Welcome to the Admin Panel</h2>
+                  {/* <h2>Welcome to the Admin Panel</h2> */}
+                  <AdminPanel />
                   {/* TODO: Admin Panel Here */}
                 </>
               ) : (

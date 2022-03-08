@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Api } from '../backend'
 import axios from 'axios'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export const EventCard = ({
   cardData,
@@ -41,20 +42,33 @@ export const EventCard = ({
   }
   const signInFirst = () => {
     console.log('Log In to your account to Register in this event')
+    toast.error('Sign In To Register To The Event', {
+      theme: "dark",
+      onClick : () => navigate('/signin') 
+    })
   }
 
   // This will register the user for the event
   const registerToEvent = async (id) => {
-    console.log(`Events added to the user page ${id}`)
-    const authToken = localStorage.getItem('token')
-    console.log('AuthToken :- ', authToken)
-    let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
-      withCredentials: true,
-      crossorigin: true,
-      headers: { Authorization: `Bearer ${authToken}` },
-    })
-    console.log('User data :- ', parseddata)
-    navigate('/dashboard')
+    try {
+      console.log(`Events added to the user page ${id}`)
+      const authToken = localStorage.getItem('token')
+      console.log('AuthToken :- ', authToken)
+      let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
+        withCredentials: true,
+        crossorigin: true,
+        headers: { Authorization: `Bearer ${authToken}` },
+      })
+      console.log('User data :- ', parseddata)
+      navigate('/dashboard')
+      toast.success('You have successfully registered', {
+        theme: "dark"
+      })
+    } catch {
+      toast.error('You are already Registered', {
+        theme: "dark"
+      })
+    }
   }
 
   const onDelete = async (id) => {

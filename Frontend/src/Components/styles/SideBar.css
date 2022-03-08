@@ -12,7 +12,7 @@
   transform: translateX(100%);
   transition: all 300ms ease;
   opacity: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 .open {
   transform: translateX(0);
@@ -40,7 +40,7 @@
   flex-wrap: wrap;
 }
 
-.sidebar-link-wrapper{
+.sidebar-link-wrapper {
   flex-direction: column;
 }
 

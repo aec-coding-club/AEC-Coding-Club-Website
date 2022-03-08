@@ -66,6 +66,7 @@ const userSchema = new mongoose.Schema({
     otpRequest: { type: Number },
     initialTimeStamp: { type: Number },
   },
+  timeStamp: { type: Number, default: Date.now() },
 });
 
 module.exports = mongoose.model("user", userSchema);

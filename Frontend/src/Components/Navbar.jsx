@@ -8,6 +8,7 @@ import UserImage from '../Assets/members/member.png'
 import SideBar from './SideBar'
 import Cookies from 'js-cookie'
 import './styles/Navbar.css'
+import { toast } from 'react-toastify'
 
 const NavCompoA = () => {
   const navigate = useNavigate()
@@ -75,7 +76,7 @@ const Navbar = ({ userImage, userNameText }) => {
 
   useEffect(() => {
     checkToken()
-  })
+  }, [])
 
   return (
     <nav>
@@ -106,7 +107,13 @@ const Navbar = ({ userImage, userNameText }) => {
       <div className='menu-toggle-icon' onClick={() => handleSideBar(true)}>
         <FaBars />
       </div>
-      <SideBar tokenChecker={tokenChecker} userImg={userImage} userNameText={userNameText}  sidebarOpen={sidebarOpen} handleSideBar={handleSideBar} />
+      <SideBar
+        tokenChecker={tokenChecker}
+        userImg={userImage}
+        userNameText={userNameText}
+        sidebarOpen={sidebarOpen}
+        handleSideBar={handleSideBar}
+      />
       {/* <div className='nav-curve-wrapper'>
         <img src={NavbarSvg} alt='curve' />
       </div> */}

@@ -1,71 +1,105 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Axios from "axios";
-import { Api } from "../../backend";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import Axios from 'axios'
+import { Api } from '../../backend'
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { toast } from 'react-toastify'
 
 const Siginform = () => {
   const [registerdata, setRegisterdata] = useState({
-    uid: "",
-    password: "",
-  });
-  let navigate = useNavigate();
+    uid: '',
+    password: '',
+  })
+  let navigate = useNavigate()
 
   async function submit(e) {
-    e.preventDefault();
-    console.log("Data Submitted");
+    e.preventDefault()
+    console.log('Data Submitted')
     const data = {
       uid: registerdata.uid,
       password: registerdata.password,
-    };
+    }
     const dataposted = await Axios.post(`${Api}login`, data, {
       withCredentials: true,
       crossorigin: true,
-    });
+    })
 
     if (dataposted.data.success) {
-      console.log("Logged In Successfully");
-      localStorage.setItem("token", dataposted.data.token);
+      console.log('Logged In Successfully')
+      localStorage.setItem('token', dataposted.data.token)
       localStorage.setItem(
-        "name",
+        'name',
         `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
-      );
-      localStorage.setItem("pimage", `${dataposted.data.user.profilePicture}`);
-      navigate("/dashboard");
-      window.location.reload();
+      )
+      localStorage.setItem('pimage', `${dataposted.data.user.profilePicture}`)
+      navigate('/dashboard')
+      window.location.reload()
     } else {
-      console.log("Access Denied");
+      console.log('Access Denied')
       setRegisterdata({
-        uid: "",
-        password: "",
-      });
+        uid: '',
+        password: '',
+      })
+      toast.error(dataposted.data.error, {
+        theme: "dark"
+      })
     }
-    console.log(dataposted);
+    console.log(dataposted)
   }
+  // async function submit(e) {
+  //   e.preventDefault();
+  //   console.log("Data Submitted");
+  //   const data = {
+  //     uid: registerdata.uid,
+  //     password: registerdata.password,
+  //   };
+  //   const dataposted = await Axios.post(`${Api}login`, data, {
+  //     withCredentials: true,
+  //     crossorigin: true,
+  //   });
 
-  async function tokenCheker(){
-    const authToken = localStorage.getItem('token');
-    if(authToken){
+  //   if (dataposted.data.success) {
+  //     console.log("Logged In Successfully");
+  //     localStorage.setItem("token", dataposted.data.token);
+  //     localStorage.setItem(
+  //       "name",
+  //       `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
+  //     );
+  //     localStorage.setItem("pimage", `${dataposted.data.user.profilePicture}`);
+  //     navigate("/dashboard");
+  //     window.location.reload();
+  //   } else {
+  //     console.log("Access Denied");
+  //     setRegisterdata({
+  //       uid: "",
+  //       password: "",
+  //     });
+  //   }
+  //   console.log(dataposted);
+  // }
+
+  async function tokenCheker() {
+    const authToken = localStorage.getItem('token')
+    if (authToken) {
       navigate('/')
     }
   }
 
   function handelChange(e) {
-    const newdata = { ...registerdata };
-    newdata[e.target.id] = e.target.value;
-    setRegisterdata(newdata);
-    console.log(newdata);
+    const newdata = { ...registerdata }
+    newdata[e.target.id] = e.target.value
+    setRegisterdata(newdata)
+    console.log(newdata)
   }
 
-  const [viewPassword, setViewPassword] = useState(false);
+  const [viewPassword, setViewPassword] = useState(false)
   const togglePassword = () => {
-    setViewPassword(!viewPassword);
-  };
+    setViewPassword(!viewPassword)
+  }
 
   useEffect(() => {
-    tokenCheker();
+    tokenCheker()
   }, [])
-  
 
   return (
     <>
@@ -93,7 +127,7 @@ const Siginform = () => {
             <br />
             <div className='inline-input-svg'>
               <input
-                type={viewPassword ? "text" : "password"}
+                type={viewPassword ? 'text' : 'password'}
                 name='password'
                 id='password'
                 className='input__field signin__input__field'
@@ -119,7 +153,7 @@ const Siginform = () => {
             </Link>
           </p>
           <p>
-            Don't have an account?{" "}
+            Don't have an account?{' '}
             <Link to='/signup' className='links'>
               Register Here
             </Link>
@@ -127,7 +161,7 @@ const Siginform = () => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default Siginform;
+export default Siginform
