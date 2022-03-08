@@ -59,10 +59,88 @@ exports.register = async (req, res) => {
       });
     }
     const myEncryPassword = await bcrypt.hash(password, 10);
+    // !################################################################
+    // *################################################################
+    // ! OVERWRITING NOT VERIFIED USERS
+    try {
+      console.log("before find");
+      let count = await Counter.findOne({ branch: branch, batch: batch });
+      const user_notActive = await User.findOne({ uid: count.notActive[0] });
+      const userid = count.notActive[0];
+      console.log(
+        (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60)
+      );
+      if (user_notActive) {
+        console.log("After find");
+        if (
+          (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >=
+          1
+        ) {
+          const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
+          let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
+          let msg = `${otp}`;
+          otpSender(email, msg);
+          const filter = { uid: user_notActive.uid };
+          const update = {
+            firstName,
+            lastName,
+            email: email.toLowerCase(),
+            contact_no,
+            batch,
+            branch,
+            password: myEncryPassword,
+            uid: userid,
+            linkedin: linkedin,
+            profilePicture,
+            github: github,
+            active: false,
+            otpstatus: {
+              otp: otp,
+              wrongTry: 0,
+              timeStamp: Date.now(),
+              otpRequest: 1,
+              initialTimeStamp: Date.now(),
+            },
+            timeStamp: Date.now(),
+          };
+          const valuereturn = await User.findOneAndUpdate(filter, update);
+          console.log(valuereturn);
+          const token = jwt.sign(
+            {
+              user_id: user_notActive.uid,
+              email: user_notActive.email,
+            },
+            SECRET,
+            {
+              expiresIn: "24h",
+            }
+          );
+          user_notActive.token = token;
+          const removefromarray = await Counter.updateOne(
+            { branch: branch, batch: batch },
+            { $pull: { notActive: userid } }
+          );
+          console.log(removefromarray);
+          const notActive = await Counter.updateOne(
+            { branch: branch, batch: batch },
+            { $push: { notActive: user_notActive.uid } }
+          );
+          console.log(notActive);
 
+          return res.status(200).json({
+            success: true,
+            // token: true,
+            token,
+            update,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
     // ! Injecting the Counter Part
     let countupdate;
-    const count = await Counter.findOne({ branch: branch, batch: batch });
+    count = await Counter.findOne({ branch: branch, batch: batch });
     if (!count) {
       const countfresh = await Counter.create({
         seq: 1,
@@ -113,7 +191,7 @@ exports.register = async (req, res) => {
 
     // ! Creating User in DB
     const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
-    const user = await User.create({
+    let user = await User.create({
       firstName,
       lastName,
       email: email.toLowerCase(),
@@ -153,6 +231,14 @@ exports.register = async (req, res) => {
       token,
       user,
     };
+    // TODO: ADD THE CREATED USER TO notActive Array in Counter
+    const notActive = await Counter.updateOne(
+      { branch: branch, batch: batch },
+      { $push: { notActive: user.uid } }
+    );
+    console.log(notActive);
+    // Counter.notActive.push({ id: user.uid });
+    // Counter.save(done);
     // setcookie("token", token, options);
     return res.status(200).json({
       success: true,
@@ -161,6 +247,7 @@ exports.register = async (req, res) => {
       user,
     });
   } catch (error) {
+    console.log(error);
     return res.json({
       success: false,
       error: error.message,
@@ -189,7 +276,7 @@ exports.login = async (req, res) => {
         },
         SECRET,
         {
-          expiresIn: "24h",
+          expiresIn: "2h",
         }
       );
       user.token = token;
@@ -220,13 +307,44 @@ exports.login = async (req, res) => {
 };
 
 exports.verifyOTP = async (req, res) => {
-  const otp = req.body.otp;
+  const otp = req.body.otp || req.params.otp;
   const uid = req.user.user_id;
   const email = req.user.email;
   if (otp) {
-    User.findOne({ uid: uid }, function (err, docs) {
-      if (docs.otpstatus && docs.active == false) {
-        if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
+    docs = await User.findOne({ uid: uid });
+
+    if (docs.otpstatus && docs.active == false) {
+      if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
+        let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
+        let msg = `${otp}`;
+        otpSender(email, msg);
+
+        User.updateOne(
+          { uid: uid },
+          {
+            $set: {
+              otpstatus: {
+                otp: otp,
+                wrongTry: 0,
+                timeStamp: Date.now(),
+                otpRequest: 1,
+                initialTimeStamp: Date.now(),
+              },
+            },
+          }
+        )
+          .then((msg) => {})
+          .catch((err) => {
+            console.log(err.message);
+          });
+
+        res.send({
+          success: true,
+          token: true,
+          msg: "otp has been expired, new OTP has sent",
+        });
+      } else if (docs.otpstatus.wrongTry > 5) {
+        if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
           otpSender(email, msg);
@@ -249,7 +367,6 @@ exports.verifyOTP = async (req, res) => {
             .catch((err) => {
               console.log(err);
             });
-
           res.send({
             success: true,
             token: true,
@@ -323,36 +440,98 @@ exports.verifyOTP = async (req, res) => {
         } else if (docs.otpstatus.otp != otp) {
           console.log(docs.otpstatus.wrongTry);
           console.log("uid: " + uid);
+        } else if (docs.otpstatus.otpRequest < 5) {
+          let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
+          let msg = `${otp}`;
+          otpSender(email, msg);
 
           User.updateOne(
             { uid: uid },
-            { $set: { "otpstatus.wrongTry": docs.otpstatus.wrongTry + 1 } }
+            {
+              $set: {
+                otpstatus: {
+                  otp: otp,
+                  wrongTry: 0,
+                  timeStamp: Date.now(),
+                  otpRequest: docs.otpstatus.otpRequest + 1,
+                  initialTimeStamp: docs.otpstatus.initialTimeStamp,
+                },
+              },
+            }
           )
             .then((msg) => {})
             .catch((err) => {
-              console.log(err);
+              console.log(err.message);
             });
+
+          res.send({
+            success: true,
+            token: true,
+            msg: "otp has been expired, new OTP has sent",
+          });
+        } else {
           return res.send({
             success: false,
             token: true,
-            message: "Wrong otp",
+            message: "maximum attempt exeeded",
           });
-        } else {
-          User.updateOne(
-            { uid: uid },
-            { $set: { active: true, otpstatus: null } }
-          )
-            .then((msg) => {})
-            .catch((err) => {
-              console.log(err);
-            });
-          return res
-            .status(200)
-            .send({ success: true, token: true, message: "account activated" });
         }
+      } else if (docs.otpstatus.otp != otp) {
+        console.log(docs.otpstatus.wrongTry);
+        console.log("uid: " + uid);
+
+        User.updateOne(
+          { uid: uid },
+          { $set: { "otpstatus.wrongTry": docs.otpstatus.wrongTry + 1 } }
+        )
+          .then((msg) => {})
+          .catch((err) => {
+            console.log(err);
+          });
+        return res.send({
+          success: false,
+          token: true,
+          message: "wrong otp",
+        });
       } else {
-        res.redirect("/api/v1/dashboard");
+        await User.updateOne(
+          { uid: uid },
+          { $set: { active: true, otpstatus: null } }
+          // TODO: Remove the Activated User from Unactivated Array in Counter
+        );
+        // .then((msg) => {})
+        // .catch((err) => {
+        //   console.log(err);
+        // });
+        // try {
+        userupdate = await User.findOne({ uid: uid });
+        // console.log(userupdate);
+        console.log(`branch: ${userupdate.branch}, batch: ${userupdate.batch}`);
+        console.log(
+          " +++++++++++++++++++++++====================++++++++++++++++++++++"
+        );
+        Counter.updateOne(
+          { branch: userupdate.branch, batch: userupdate.batch },
+          { $pull: { notActive: uid } }
+        )
+          .then(() => {
+            console.log(
+              `notActive uid: ${uid} found in ${userupdate.branch}-${userupdate.batch}`
+            );
+          })
+          .catch(() => {});
+        // } catch (error) {
+        //   return res.json({ success: false, message: error.message });
+        // }
+        console.log(
+          "-------------------++++++++++++__________++++++===================_-_-_-_-"
+        );
+        return res
+          .status(200)
+          .send({ success: true, token: true, message: "account activated" });
       }
-    });
+    } else {
+      res.redirect("/api/v1/dashboard");
+    }
   }
 };
