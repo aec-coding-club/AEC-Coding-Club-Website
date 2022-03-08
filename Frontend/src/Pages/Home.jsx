@@ -8,7 +8,7 @@ import HomeCard from "./Components/HomeCard";
 import Winners from "../data/homeCard";
 import Slider from "./Components/Slider";
 
-import SvgComponent from "./Components/Hexagon";
+import Numbers from "../Components/Numbers";
 
 const Home = () => {
   const [show, setShow] = useState(true);
@@ -30,31 +30,29 @@ const Home = () => {
           </button>
 
           {show ? (
-            <section>
-              {/* <div className='grid'> */}
+            <section className='objective-section'>
               <div className='objective'>
                 <span>Coding Club </span>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                  The AEC Coding Club started its journey on 11 April 2021. Its
+                  major objective is to motivate students' interest in learning
+                  various technologies and to obtain information about how
+                  technology will be used to project work. The club's goal is to
+                  encourage students to solve various challenging problems using
+                  demanding technologies which include Python, Java, C, C++,
+                  etc. Our approach will help students to become Industry Ready.
+                  This will boost them to get Job. The AEC Coding Club actively
+                  organizes various activities like Online Coding Contest,
+                  Online Quiz Contest, etc. Other events like Expert's Talk,
+                  Alumni Talk, and Hands-on practical workshops for various
+                  programming basics are planned for the future.
                 </p>
               </div>
-
-              {/* <div className='event-img'>
-              <img src='https://res.cloudinary.com/sahebcloud/image/upload/v1645215868/AIML_zwljm7.png'></img>
-            </div> */}
-              {/* </div> */}
             </section>
           ) : null}
 
           <div className='winners'>
-            <h2>Last Event Winners</h2>
+            <h2 className='winners-heading'>Last Event Winners</h2>
             <div className='winner-cards'>
               {Winners.map((props) => {
                 return <HomeCard key={props.id} data={props} />;
@@ -62,12 +60,9 @@ const Home = () => {
             </div>
           </div>
 
-          <div>
-            <SvgComponent />
-            <SvgComponent />
-            <SvgComponent />
-            <SvgComponent />
-          </div>
+          <section className='aeccc-numbers'>
+            <Numbers />
+          </section>
         </div>
 
         <footer style={{ textAlign: "center" }}>
