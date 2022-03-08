@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import './styles/Event-Modal.css'
 import { Api } from '../backend'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const EventModal = (props) => {
   const { modalShow, onHide, cardEditData, editEventID } = props
@@ -42,11 +43,18 @@ const EventModal = (props) => {
       headers: { Authorization: `Bearer ${authToken}` },
     })
 
+    console.log("DATA :- ",data)
     if (data.success) {
       window.location.reload()
     }
+    else{
+      console.log("error data:- ", data);
+      toast.error(data.error, {
+        theme: "dark",
+        onClick : () => navigate('/signin') 
+      })
+    }
 
-    console.log(data)
   }
 
   const editExistingEvent = async () => {
@@ -68,7 +76,7 @@ const EventModal = (props) => {
     if (data.success) {
       window.location.reload()
     }
-    console.log(data)
+    console.log("Data :- ", data)
   }
 
   useEffect(() => {
@@ -94,6 +102,7 @@ const EventModal = (props) => {
             Add Event
           </h3>
           <div className='event-wrapper'>
+          {/* <form style={{all : 'revert'}}> */}
             <div className='event-inputs'>
               <div className='input-wrapper'>
                 <label>
@@ -105,6 +114,7 @@ const EventModal = (props) => {
                     type='url'
                     className='modal-inp'
                     maxLength='50'
+                    required
                   />
                 </label>
               </div>
@@ -173,6 +183,7 @@ const EventModal = (props) => {
                 </button>
               )}
             </div>
+            {/* </form> */}
             <div className='preview'>
               <PreviewEventCard cardEditData={cardEditData} />
             </div>

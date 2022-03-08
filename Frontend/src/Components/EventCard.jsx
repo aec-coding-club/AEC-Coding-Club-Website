@@ -42,6 +42,10 @@ export const EventCard = ({
   }
   const signInFirst = () => {
     console.log('Log In to your account to Register in this event')
+    toast.error('Sign In To Register To The Event', {
+      theme: "dark",
+      onClick : () => navigate('/signin') 
+    })
   }
 
   // This will register the user for the event
@@ -57,9 +61,13 @@ export const EventCard = ({
       })
       console.log('User data :- ', parseddata)
       navigate('/dashboard')
-      toast.success('You have successfully registered')
+      toast.success('You have successfully registered', {
+        theme: "dark"
+      })
     } catch {
-      toast.error('Failed to Register')
+      toast.error('You are already Registered', {
+        theme: "dark"
+      })
     }
   }
 

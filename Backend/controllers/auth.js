@@ -207,7 +207,7 @@ exports.login = async (req, res) => {
     } else {
       return res.json({
         success: false,
-        error: "ID or Password is incorrect",
+        error: "User Id or Password is incorrect",
       });
     }
   } catch (error) {
@@ -311,13 +311,13 @@ exports.verifyOTP = async (req, res) => {
             res.send({
               success: true,
               token: true,
-              msg: "otp has been expired, new OTP has sent",
+              msg: "OTP has been expired, New OTP has sent",
             });
           } else {
             return res.send({
               success: false,
               token: true,
-              message: "maximum attempt exeeded",
+              message: "Maximum Attempt Exeeded",
             });
           }
         } else if (docs.otpstatus.otp != otp) {
@@ -335,7 +335,7 @@ exports.verifyOTP = async (req, res) => {
           return res.send({
             success: false,
             token: true,
-            message: "wrong otp",
+            message: "Wrong otp",
           });
         } else {
           User.updateOne(

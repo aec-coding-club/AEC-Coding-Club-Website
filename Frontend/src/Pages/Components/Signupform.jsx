@@ -4,6 +4,7 @@ import Axios from 'axios';
 import Cookies from 'js-cookie';
 import { Api } from '../../backend';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { toast } from 'react-toastify'
 
 const Signupform = () => {
   const [registerdata, setRegisterdata] = useState({
@@ -49,6 +50,10 @@ const Signupform = () => {
       navigate('/verify');
     } else {
       console.log('User Not Created Successfully');
+      console.log("Error data - ", dataposted.data);
+      toast.error(dataposted.data.error, {
+        theme: "dark"
+      })
     }
     console.log(dataposted);
   }
