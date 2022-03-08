@@ -60,7 +60,14 @@ exports.update = async (req, res) => {
   try {
     const eventid = req.params.id;
     console.log(eventid);
-
+    
+    if(!req.body.eventTitle || !req.body.eventTime || !req.body.eventImage || !req.body.eventDetails){
+      return res.json({
+        success: false,
+        token: true,
+        error: "All Fields Are Required",
+      });
+    }
     const Event = await event.findByIdAndUpdate(eventid, req.body, {
       new: true,
       runValidators: true,

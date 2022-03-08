@@ -51,7 +51,6 @@ const EventModal = (props) => {
       console.log("error data:- ", data);
       toast.error(data.error, {
         theme: "dark",
-        onClick : () => navigate('/signin') 
       })
     }
 
@@ -75,6 +74,12 @@ const EventModal = (props) => {
 
     if (data.success) {
       window.location.reload()
+    }
+    else{
+      console.log("error data:- ", data);
+      toast.error(data.error, {
+        theme: "dark",
+      })
     }
     console.log("Data :- ", data)
   }
