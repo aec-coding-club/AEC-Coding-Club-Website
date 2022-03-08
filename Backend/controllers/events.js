@@ -119,6 +119,10 @@ exports.update = async (req, res) => {
 exports.deletevent = async (req, res) => {
   try {
     const deletedEvent = await event.findByIdAndDelete(req.params.id);
+    const deletedUser = await User.updateMany(
+      { event: req.params.id },
+      { $pull: { event: req.params.id } }
+    );
 
     if (!deletedEvent)
       return res
