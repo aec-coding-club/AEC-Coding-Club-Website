@@ -40,7 +40,9 @@ const Siginform = () => {
         uid: '',
         password: '',
       })
-      toast.error(dataposted.data.error)
+      toast.error(dataposted.data.error, {
+        theme: "dark"
+      })
     }
     console.log(dataposted)
   }

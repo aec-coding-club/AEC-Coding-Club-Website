@@ -28,7 +28,14 @@ exports.add = async (req, res) => {
   try {
     // const { error } = validator.event(req.body);
     // if (error) return res.status(406).json({ error: "Invalid Event Data" });
-
+    console.log("data - ", req.body);
+    if(!req.body.eventTitle || !req.body.eventTime || !req.body.eventImage || !req.body.eventDetails){
+      return res.json({
+        success: false,
+        token: true,
+        error: "All Fields Are Required",
+      });
+    }
     const newEvent = await event.create(req.body);
 
     res.status(200).json({
@@ -53,7 +60,14 @@ exports.update = async (req, res) => {
   try {
     const eventid = req.params.id;
     console.log(eventid);
-
+    
+    if(!req.body.eventTitle || !req.body.eventTime || !req.body.eventImage || !req.body.eventDetails){
+      return res.json({
+        success: false,
+        token: true,
+        error: "All Fields Are Required",
+      });
+    }
     const Event = await event.findByIdAndUpdate(eventid, req.body, {
       new: true,
       runValidators: true,
