@@ -1,7 +1,7 @@
 "use strict";
 const nodemailer = require("nodemailer");
 
-async function sendOTP(email, otp) {
+async function sendOTP(email, otp, user) {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
@@ -35,9 +35,9 @@ async function sendOTP(email, otp) {
                                 auto;background-color:#ffffff;text-align:left">
                                     <div style="padding:40px 8% 5px">
                                         <div style="font-weight:bold">Dear User,</div>
-                                        <div style="margin-top:16px">Your UID is: <b>AECCC/XX/XXXX/XXXX</b> <br> The
+                                        <div style="margin-top:16px">Your UID is: <b>${user}</b> <br> The
                                             OTP for your Email Verification is <b>${otp}</b>. This OTP is valid for 30
-                                            minutes.</div>
+                                            minutes.<br><b>Not Verifying the Account within 24 hours of Registration can lead to Permanent deletion of Account.</b></div>
                                         <div style="margin-top:24px">Happy Coding!
                                             <br>AECCC
                                         </div>
@@ -47,10 +47,6 @@ async function sendOTP(email, otp) {
                                                 target="_blank">aecincodingclub@gmail.com</a>
                                         </div>
                                     </div>
-                                </div>
-                                <div style="text-align:center;border-top:1px solid #eee;padding:2=5px 0px 32px">
-                                    <div style="color:#aaaaaa;font-size:11px;margin:10px 0px">This
-                                        is a system generated email. Please do not reply.</div>
                                 </div>
                             </div>
                         </div>
