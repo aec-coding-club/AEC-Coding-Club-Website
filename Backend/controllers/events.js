@@ -32,7 +32,12 @@ exports.add = async (req, res) => {
     // const { error } = validator.event(req.body);
     // if (error) return res.status(406).json({ error: "Invalid Event Data" });
     console.log("data - ", req.body);
-    if (!req.body.eventTitle || !req.body.eventTime || !req.body.eventImage || !req.body.eventDetails) {
+    if (
+      !req.body.eventTitle ||
+      !req.body.eventTime ||
+      !req.body.eventImage ||
+      !req.body.eventDetails
+    ) {
       return res.json({
         success: false,
         token: true,
@@ -40,20 +45,25 @@ exports.add = async (req, res) => {
       });
     }
     const newEvent = await event.create(req.body);
-
+    console.log(newEvent);
     const user_id = req.user.user_id;
 
-    const logData = await Elog.create(
-      {
-        history: [{ modifier: user_id, content: { title: req.body.eventTitle, data: req.body.eventDetails, media: req.body.eventImage, scheduleTime: req.body.eventTitle }, timestamps: Date() }]
-      }
+    const logData = await Elog.create({
+      Operation: "Event Addition",
+      updatedby: user_id,
+      eventTitle: req.body.eventTitle,
+      eventDescription: req.body.eventDetails,
+      image: req.body.eventImage,
+      updatedAt: Date(),
+    });
+
+    console.log(
+      "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     );
-
-
-
-    console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log(logData);
-    console.log("------------------------------------------------------------------------------------");
+    console.log(
+      "------------------------------------------------------------------------------------"
+    );
 
     res.status(200).json({
       _id: newEvent._id,
@@ -77,7 +87,12 @@ exports.update = async (req, res) => {
     const eventid = req.params.id;
     console.log(eventid);
 
-    if (!req.body.eventTitle || !req.body.eventTime || !req.body.eventImage || !req.body.eventDetails) {
+    if (
+      !req.body.eventTitle ||
+      !req.body.eventTime ||
+      !req.body.eventImage ||
+      !req.body.eventDetails
+    ) {
       return res.json({
         success: false,
         token: true,
@@ -89,24 +104,25 @@ exports.update = async (req, res) => {
       runValidators: true,
     });
 
+    const user_id = req.user.user_id;
+    // const modification = ;
+    const logData = await Elog.create({
+      Operation: "Event Updation",
+      updatedby: user_id,
+      eventTitle: req.body.eventTitle,
+      eventDescription: req.body.eventDetails,
+      image: req.body.eventImage,
+      updatedAt: Date(),
+    });
 
-    const user_id = req.user;
-
-    const logData = await Elog.updateOne(
-      { _id: eventid },
-      {
-        $push: {
-          history: { modifier: user_id, content: { title: req.body.eventTitle, data: req.body.eventDetails, media: req.body.eventImage, scheduleTime: req.body.eventTime }, timestamps: Date() }
-        }
-      }
+    console.log(
+      "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     );
-
-
-    console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log(eventid);
     console.log(logData);
-    console.log("------------------------------------------------------------------------------------");
-
+    console.log(
+      "------------------------------------------------------------------------------------"
+    );
 
     if (!Event) {
       return res.json({
@@ -160,7 +176,7 @@ exports.update = async (req, res) => {
   //   });
   // } catch (error) {
   //   res
-  // 
+  //
   //     .json({ success: false, token: true, error: "Cannot Update Event" });
   // }
 };
@@ -168,8 +184,18 @@ exports.update = async (req, res) => {
 // Dete Specifit Event Based On It's ID
 exports.deletevent = async (req, res) => {
   try {
+    // const modification = ;
 
     const deletedEvent = await event.findByIdAndDelete(req.params.id);
+    const user_id = req.user.user_id;
+    const logData = await Elog.create({
+      Operation: "Delete Operation",
+      updatedby: user_id,
+      eventTitle: deletedEvent.eventTitle,
+      eventDescription: deletedEvent.eventDescription,
+      image: deletedEvent.image,
+      updatedAt: Date(),
+    });
     const deletedUser = await User.updateMany(
       { event: req.params.id },
       { $pull: { event: req.params.id } }
@@ -179,24 +205,34 @@ exports.deletevent = async (req, res) => {
       return res
         .status(404)
         .json({ success: false, token: true, message: "Cannot Find Event" });
-
     }
 
-    const user_id = req.user.user_id;
+    // const logData = await Elog.updateOne(
+    //   { _id: req.params.id },
+    //   {
+    //     $push: {
+    //       history: {
+    //         modifier: user_id,
+    //         content: {
+    //           title: req.body.eventTitle,
+    //           data: req.body.eventDetails,
+    //           media: req.body.eventImage,
+    //           scheduleTime: req.body.eventTitle,
+    //         },
+    //         timestamps: Date(),
+    //       },
+    //     },
+    //   }
+    // );
 
-    const logData = await Elog.updateOne(
-      { _id: req.params.id },
-      {
-        $push: { history: { modifier: user_id, content: { title: req.body.eventTitle, data: req.body.eventDetails, media: req.body.eventImage, scheduleTime: req.body.eventTitle }, timestamps: Date() } }
-      }
+    console.log(
+      "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     );
-
-    console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log(req.user.user_id);
     console.log(logData);
-    console.log("------------------------------------------------------------------------------------");
-
-
+    console.log(
+      "------------------------------------------------------------------------------------"
+    );
 
     res.status(200).json({
       success: true,
