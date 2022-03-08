@@ -66,6 +66,7 @@ exports.register = async (req, res) => {
       console.log("before find");
       let count = await Counter.findOne({ branch: branch, batch: batch });
       const user_notActive = await User.findOne({ uid: count.notActive[0] });
+      console.log(`USER_NOTACTIVE : ${user_notActive}`);
       const userid = count.notActive[0];
       console.log(
         (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60)
@@ -136,10 +137,10 @@ exports.register = async (req, res) => {
       }
     } catch (error) {
       console.log(error.message);
-      return res.json({
-        success: false,
-        error: error.message,
-      });
+      // return res.json({
+      //   success: false,
+      //   error: error.message,
+      // });
     }
     // ! Injecting the Counter Part
     let countupdate;
@@ -246,7 +247,7 @@ exports.register = async (req, res) => {
     return res.status(200).json({
       success: true,
       token,
-      user,
+      user: user,
     });
   } catch (error) {
     console.log(error);
