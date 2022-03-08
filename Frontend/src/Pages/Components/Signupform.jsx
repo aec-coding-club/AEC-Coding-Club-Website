@@ -1,30 +1,30 @@
-import React, { useState,useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Axios from 'axios';
-import Cookies from 'js-cookie';
-import { Api } from '../../backend';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { toast } from 'react-toastify'
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Axios from "axios";
+import Cookies from "js-cookie";
+import { Api } from "../../backend";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Signupform = () => {
   const [registerdata, setRegisterdata] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    contact_no: '',
-    branch: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    contact_no: "",
+    branch: "",
     batch: 0,
-    password: '',
-    confirmPassword: '',
-    linkedin: '',
-    github: '',
+    password: "",
+    confirmPassword: "",
+    linkedin: "",
+    github: "",
   });
-  console.log('API is :- ', Api);
+  console.log("API is :- ", Api);
   let navigate = useNavigate();
 
   async function submit(e) {
     e.preventDefault();
-    console.log('Data Submitted');
+    console.log("Data Submitted");
     const dataposted = await Axios.post(`${Api}register`, {
       firstName: registerdata.firstName,
       lastName: registerdata.lastName,
@@ -38,22 +38,23 @@ const Signupform = () => {
       github: registerdata.github,
     });
 
+    console.log(dataposted);
     if (dataposted.data.success) {
-      console.log('User Created Successfully');
-      localStorage.setItem('token', dataposted.data.token); // setting token to localstorage
+      console.log("User Created Successfully");
+      localStorage.setItem("token", dataposted.data.token); // setting token to localstorage
       localStorage.setItem(
-        'name',
+        "name",
         `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
       );
-      localStorage.setItem('pimage', `${dataposted.data.user.profilePicture}`);
+      localStorage.setItem("pimage", `${dataposted.data.user.profilePicture}`);
       // Cookies.set('token', dataposted.data.token); // setting token to cookies
-      navigate('/verify');
+      navigate("/verify");
     } else {
-      console.log('User Not Created Successfully');
+      console.log("User Not Created Successfully");
       console.log("Error data - ", dataposted.data);
       toast.error(dataposted.data.error, {
-        theme: "dark"
-      })
+        theme: "dark",
+      });
     }
     console.log(dataposted);
   }
@@ -74,16 +75,16 @@ const Signupform = () => {
     setViewPasswordTwo(!viewPasswordTwo);
   };
 
-  async function tokenCheker(){
-    const authToken = localStorage.getItem('token');
-    if(authToken){
-      navigate('/')
+  async function tokenCheker() {
+    const authToken = localStorage.getItem("token");
+    if (authToken) {
+      navigate("/");
     }
   }
 
   useEffect(() => {
     tokenCheker();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -248,7 +249,7 @@ const Signupform = () => {
             <br />
             <div className='inline-input-svg'>
               <input
-                type={viewPasswordOne ? 'text' : 'password'}
+                type={viewPasswordOne ? "text" : "password"}
                 name='password'
                 id='password'
                 className='input__field head-input'
@@ -271,7 +272,7 @@ const Signupform = () => {
             <br />
             <div className='inline-input-svg'>
               <input
-                type={viewPasswordTwo ? 'text' : 'password'}
+                type={viewPasswordTwo ? "text" : "password"}
                 name='confirmPassword'
                 id='confirmPassword'
                 className='input__field head-input'
@@ -327,7 +328,7 @@ const Signupform = () => {
             </Link>
           </p>
           <p>
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link to='/signin' className='links'>
               Sign In Here
             </Link>

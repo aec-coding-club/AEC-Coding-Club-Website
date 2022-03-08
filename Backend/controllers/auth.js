@@ -81,7 +81,7 @@ exports.register = async (req, res) => {
           let msg = `${otp}`;
           otpSender(email, msg);
           const filter = { uid: user_notActive.uid };
-          const update = {
+          const data = {
             firstName,
             lastName,
             email: email.toLowerCase(),
@@ -103,7 +103,7 @@ exports.register = async (req, res) => {
             },
             timeStamp: Date.now(),
           };
-          const valuereturn = await User.findOneAndUpdate(filter, update);
+          const valuereturn = await User.findOneAndUpdate(filter, data);
           console.log(valuereturn);
           const token = jwt.sign(
             {
@@ -129,14 +129,17 @@ exports.register = async (req, res) => {
 
           return res.status(200).json({
             success: true,
-            // token: true,
             token,
-            update,
+            user: data,
           });
         }
       }
     } catch (error) {
       console.log(error.message);
+      return res.json({
+        success: false,
+        error: error.message,
+      });
     }
     // ! Injecting the Counter Part
     let countupdate;
@@ -242,7 +245,6 @@ exports.register = async (req, res) => {
     // setcookie("token", token, options);
     return res.status(200).json({
       success: true,
-      // token: true,
       token,
       user,
     });
