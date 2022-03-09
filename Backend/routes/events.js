@@ -1,6 +1,7 @@
 // const { Router } = require("express");
 var express = require("express");
 var router = express.Router();
+const getlogs  = require("../controllers/alllogs")
 const {
   isAuthenticated,
   isActivated,
