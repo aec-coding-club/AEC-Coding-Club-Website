@@ -25,12 +25,13 @@ const Otpverify = () => {
 
   async function fetchdata() {
     const authToken = localStorage.getItem('token')
+    if (!authToken) window.location = '/'
     const parseddata = await Axios.get(`${Api}verify`, {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
     if (!parseddata.data.token) {
-      navigate('/')
+      window.location = '/'
     }
     console.log('Api is :- ', Api)
     console.log(parseddata)
