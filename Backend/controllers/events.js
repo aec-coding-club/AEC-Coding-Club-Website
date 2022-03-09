@@ -260,6 +260,7 @@ exports.registerevent = async (req, res) => {
     const id = req.params.id;
     const user_id = req.user.user_id;
 
+
     const tempuser = await User.findOne({ uid: user_id });
     console.log(tempuser);
     if (tempuser.event.includes(id)) {
@@ -269,6 +270,11 @@ exports.registerevent = async (req, res) => {
         message: "You are Already Registered for the Event",
       });
     }
+    const updateevent = await event.updateOne(
+      { _id: id },
+      { $push: { email: req.user.email, userId: user_id } }
+    );
+    console.log(updateevent);
     const updateuser = await User.updateOne(
       { uid: user_id },
       { $push: { event: id } }
