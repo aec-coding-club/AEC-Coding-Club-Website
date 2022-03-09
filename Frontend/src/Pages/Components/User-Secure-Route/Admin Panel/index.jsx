@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
+import axios from "axios";
+import {Api} from "../../../../backend"
 import {
   PieChart,
   Pie,
@@ -40,6 +42,21 @@ const Index = () => {
     },
   ];
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+  const fetchLogs = async () => {
+    const authToken = localStorage.getItem("token");
+    const {data} = await axios.get(`${Api}logger`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    console.log("Fethcing the event Logs - ", data);
+  }
+
+  useEffect(() => {
+    
+    fetchLogs();
+  }, [])
+  
 
   return (
     <>
