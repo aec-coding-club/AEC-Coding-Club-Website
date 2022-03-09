@@ -43,17 +43,15 @@ const EventModal = (props) => {
       headers: { Authorization: `Bearer ${authToken}` },
     })
 
-    console.log("DATA :- ",data)
+    console.log('DATA :- ', data)
     if (data.success) {
       window.location.reload()
-    }
-    else{
-      console.log("error data:- ", data);
+    } else {
+      console.log('error data:- ', data)
       toast.error(data.error, {
-        theme: "dark",
+        theme: 'dark',
       })
     }
-
   }
 
   const editExistingEvent = async () => {
@@ -67,30 +65,31 @@ const EventModal = (props) => {
     console.log('Event Data :- ', Data)
 
     const authToken = localStorage.getItem('token')
-    const {data} = await axios.put(`${Api}update/${editEventID}`, Data, {
+    const { data } = await axios.put(`${Api}update/${editEventID}`, Data, {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
 
     if (data.success) {
       window.location.reload()
-    }
-    else{
-      console.log("error data:- ", data);
+    } else {
+      console.log('error data:- ', data)
       toast.error(data.error, {
-        theme: "dark",
+        theme: 'dark',
       })
     }
-    console.log("Data :- ", data)
+    console.log('Data :- ', data)
   }
 
   useEffect(() => {
     if (modalShow) {
       setModalContainerClass('event-modal-container show')
       setModalClass('event-modal modal-show')
+      document.body.classList.add('modal-showed')
     } else {
       setModalContainerClass('event-modal-container')
       setModalClass('event-modal')
+      document.body.classList.remove('modal-showed')
     }
   }, [modalShow])
 
@@ -107,7 +106,7 @@ const EventModal = (props) => {
             Add Event
           </h3>
           <div className='event-wrapper'>
-          {/* <form style={{all : 'revert'}}> */}
+            {/* <form style={{all : 'revert'}}> */}
             <div className='event-inputs'>
               <div className='input-wrapper'>
                 <label>
@@ -124,30 +123,17 @@ const EventModal = (props) => {
                 </label>
               </div>
 
-              <div className='input-wrapper date-time'>
-                <div className='date'>
-                  <label>
-                    <div className='label'>Date & Time:</div>
-                    <input
-                      value={editEventTime}
-                      onChange={(e) => setEditEventTime(e.target.value)}
-                      type='datetime-local'
-                      className='modal-inp date-inp'
-                      placeholder='Event date...'
-                    />
-                  </label>
-                </div>
-
-                <div className='duration'>
-                  <label>
-                    <div className='label'>Duration(Hrs):</div>
-                    <input
-                      type='number'
-                      className='modal-inp'
-                      placeholder='Event Duration...'
-                    />
-                  </label>
-                </div>
+              <div className='input-wrapper date'>
+                <label>
+                  <div className='label'>Date & Time:</div>
+                  <input
+                    value={editEventTime}
+                    onChange={(e) => setEditEventTime(e.target.value)}
+                    type='datetime-local'
+                    className='modal-inp date-inp'
+                    placeholder='Event date...'
+                  />
+                </label>
               </div>
 
               <div className='input-wrapper'>
