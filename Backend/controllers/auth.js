@@ -66,6 +66,7 @@ exports.register = async (req, res) => {
       console.log("before find");
       let count = await Counter.findOne({ branch: branch, batch: batch });
       const user_notActive = await User.findOne({ uid: count.notActive[0] });
+      console.log(`USER_NOTACTIVE : ${user_notActive}`);
       const userid = count.notActive[0];
       console.log(
         (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60)
@@ -79,9 +80,9 @@ exports.register = async (req, res) => {
           const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, msg);
+          otpSender(email, msg, userid);
           const filter = { uid: user_notActive.uid };
-          const update = {
+          const data = {
             firstName,
             lastName,
             email: email.toLowerCase(),
@@ -103,7 +104,7 @@ exports.register = async (req, res) => {
             },
             timeStamp: Date.now(),
           };
-          const valuereturn = await User.findOneAndUpdate(filter, update);
+          const valuereturn = await User.findOneAndUpdate(filter, data);
           console.log(valuereturn);
           const token = jwt.sign(
             {
@@ -129,14 +130,17 @@ exports.register = async (req, res) => {
 
           return res.status(200).json({
             success: true,
-            // token: true,
             token,
-            update,
+            user: data,
           });
         }
       }
     } catch (error) {
       console.log(error.message);
+      // return res.json({
+      //   success: false,
+      //   error: error.message,
+      // });
     }
     // ! Injecting the Counter Part
     let countupdate;
@@ -187,7 +191,7 @@ exports.register = async (req, res) => {
 
     let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
     let msg = `${otp}`;
-    otpSender(email, msg);
+    otpSender(email, msg,uid);
 
     // ! Creating User in DB
     const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
@@ -242,9 +246,8 @@ exports.register = async (req, res) => {
     // setcookie("token", token, options);
     return res.status(200).json({
       success: true,
-      // token: true,
       token,
-      user,
+      user: user,
     });
   } catch (error) {
     console.log(error);
@@ -317,7 +320,7 @@ exports.verifyOTP = async (req, res) => {
       if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
         let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
         let msg = `${otp}`;
-        otpSender(email, msg);
+        otpSender(email, msg, req.user);
 
         User.updateOne(
           { uid: uid },
@@ -347,7 +350,7 @@ exports.verifyOTP = async (req, res) => {
         if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, msg);
+          otpSender(email, msg, req.user);
 
           User.updateOne(
             { uid: uid },
@@ -376,7 +379,7 @@ exports.verifyOTP = async (req, res) => {
           if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
-            otpSender(email, msg);
+            otpSender(email, msg, req.user);
 
             User.updateOne(
               { uid: uid },
@@ -404,7 +407,7 @@ exports.verifyOTP = async (req, res) => {
           } else if (docs.otpstatus.otpRequest < 5) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
-            otpSender(email, msg);
+            otpSender(email, msg, req.user);
 
             User.updateOne(
               { uid: uid },
@@ -443,7 +446,7 @@ exports.verifyOTP = async (req, res) => {
         } else if (docs.otpstatus.otpRequest < 5) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, msg);
+          otpSender(email, msg, req.user);
 
           User.updateOne(
             { uid: uid },

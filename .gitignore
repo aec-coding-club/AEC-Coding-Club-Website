@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+build/
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
