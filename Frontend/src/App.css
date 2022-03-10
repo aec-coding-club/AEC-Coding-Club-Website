@@ -25,7 +25,7 @@ body {
   color: #fff;
 }
 ::-webkit-scrollbar {
-  width: 25px;
+  width: 12px;
   background-color: transparent;
 }
 ::-webkit-scrollbar-track {
@@ -36,7 +36,7 @@ body {
   background: var(--nav-body);
   border-radius: 16px;
   background-clip: content-box;
-  border: 9px solid transparent;
+  border: 3px solid transparent;
   max-height: 20px;
 }
 
