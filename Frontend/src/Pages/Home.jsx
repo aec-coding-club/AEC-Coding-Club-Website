@@ -46,6 +46,7 @@ const Home = () => {
                   Online Quiz Contest, etc. Other events like Expert's Talk,
                   Alumni Talk, and Hands-on practical workshops for various
                   programming basics are planned for the future.
+
                 </p>
               </div>
             </section>
