@@ -75,9 +75,7 @@ const DashboadComponent = ({ details, tokenChecker }) => {
             <>
               {userRole >= 3 ? (
                 <>
-                  {/* <h2>Welcome to the Admin Panel</h2> */}
                   <AdminPanel />
-                  {/* TODO: Admin Panel Here */}
                 </>
               ) : (
                 <h2>You Have Not Registered To Any Events</h2>

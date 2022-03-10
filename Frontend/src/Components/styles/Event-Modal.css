@@ -2,36 +2,34 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw !important;
-  height: 100vh;
-  z-index: 100;
+  right: 0;
+  width: 100%;
   opacity: 0;
   visibility: hidden;
-  width: 0;
+  max-height: 100%;
   background-color: rgba(0, 0, 0, 0.432);
 }
 .show {
   opacity: 1;
   visibility: visible;
+  display: block;
+  z-index: 1000;
+  overflow-y: auto;
 }
 .event-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%) scale(0);
+  transform: scale(0);
+  margin: 2rem auto;
   width: 90%;
   max-width: 900px;
   background-color: var(--nav-body);
-  z-index: 10;
   position: relative;
   color: #333;
   padding: 1.5rem;
   border-radius: 0.5rem;
   transition: 200ms ease;
-  overflow: hidden;
 }
 .modal-show {
-  transform: translateX(-50%) translateY(-50%) scale(1);
+  transform: scale(1);
 }
 
 .event-wrapper {
@@ -106,7 +104,7 @@
   border-radius: 0.25rem !important;
 }
 
-.date-time {
+/* .date-time {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,7 +116,7 @@
 }
 .duartion {
   width: 35%;
-}
+} */
 
 .date-inp {
   background-color: #fff !important;

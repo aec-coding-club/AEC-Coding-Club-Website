@@ -1,6 +1,7 @@
 const express = require("express");
 const auth = require("./routes/auth");
 const events = require("./routes/events");
+const alllogs = require("./routes/alllogs");
 const app = express();
 const cookieparser = require("cookie-parser");
 require("dotenv").config();
@@ -20,6 +21,7 @@ app.use(
 );
 
 // ! AUTHENTICATION ROUTE
+app.use("/api/v1", alllogs);
 app.use("/api/v1", auth);
 app.use("/api/v1", events);
 app.use("/*", (req, res) => {

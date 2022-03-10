@@ -1,68 +1,97 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { Api } from "../../../../backend";
 import {
-  PieChart,
-  Pie,
-  Cell,
-  BarChart,
-  Bar,
+  ResponsiveContainer,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
-  Tooltip,
-  Legend,
   CartesianGrid,
+  Legend,
+  Tooltip,
 } from "recharts";
 
 const Index = () => {
-  const data02 = [
+  const linedata = [
     {
-      name: "Group A",
-      value: 2400,
+      name: "Java",
+      students: 15,
+      fees: 10,
     },
     {
-      name: "Group B",
-      value: 4567,
+      name: "Python",
+      students: 26,
+      fees: 35,
     },
     {
-      name: "Group C",
-      value: 1398,
+      name: "C++",
+      students: 11,
+      fees: 6,
     },
     {
-      name: "Group D",
-      value: 9800,
+      name: "Javascript",
+      students: 41,
+      fees: 25,
     },
     {
-      name: "Group E",
-      value: 3908,
+      name: "C",
+      students: 18,
+      fees: 10,
     },
     {
-      name: "Group F",
-      value: 4256,
+      name: "GoLang",
+      students: 14,
+      fees: 10,
     },
   ];
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+  const fetchLogs = async () => {
+    const authToken = localStorage.getItem("token");
+    const { data } = await axios.get(`${Api}logger`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    console.log("Fethcing the event Logs - ", data);
+  };
+
+  useEffect(() => {
+    fetchLogs();
+  }, []);
 
   return (
     <>
       <h2>Admin Panel</h2>
       <br />
-      <div>
-        <PieChart width={730} height={250}>
-          <Pie
-            data={data02}
-            dataKey="value"
-            nameKey="name"
-            cx="30%"
-            cy="50%"
-            innerRadius={50}
-            outerRadius={90}
-            label
-            fill="#FF6666"
+      <ResponsiveContainer width="100%" aspect={2}>
+        <LineChart
+          data={linedata}
+          width={100}
+          height={100}
+          margin={{ top: 10, left: 10, bottom: 0, right: 50 }}
+        >
+          <CartesianGrid strokeDasharray="3 15" />
+          <XAxis dataKey="name" interval={"preserveStartEnd"} />
+          <YAxis />
+          <Tooltip contentStyle={{ backgroundColor: "black" }} />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="students"
+            stroke="#EAE2B7"
+            legendType="wye"
+            activeDot={{ stroke: "red", strokeWidth: 2, r: 7 }}
+            strokeWidth={5}
           />
-          {data02.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-        </PieChart>
-      </div>
+          <Line
+            type="monotone"
+            dataKey="fees"
+            stroke="#D93E39"
+            activeDot={{ r: 7 }}
+            strokeWidth={3}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </>
   );
 };
