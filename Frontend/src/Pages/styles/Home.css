@@ -55,8 +55,8 @@
 
 .objective {
   width: 40vw;
-  margin-left: 30%;
-  position: relative;
+  /* margin-left: 30%;
+  position: relative; */
   top: 8rem;
   text-align: center;
 }
@@ -209,6 +209,7 @@
 
 .objective-section {
   /* position: relative; */
+  display: flex;
   justify-content: center;
   align-items: center;
   color: #000;
@@ -255,15 +256,11 @@
     margin-bottom: 1rem;
   }
   .objective-section {
-    justify-content: center;
-    align-items: center;
     height: 30rem;
     width: 100%;
     /* left: -6vh; */
   }
   .objective {
-    top: 8rem;
-    left: -13%;
     width: 60vw;
   }
 
@@ -290,15 +287,11 @@
     margin-bottom: 1rem;
   }
   .objective-section {
-    justify-content: center;
-    align-items: center;
     height: 300px;
     /* width: 93vw;
     left: -6vh; */
   }
   .objective {
-    top: 5rem;
-    left: -13%;
     width: 60vw;
   }
 

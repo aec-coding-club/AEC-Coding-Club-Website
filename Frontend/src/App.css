@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
 *,
 *::before,
@@ -20,24 +20,28 @@ body {
   min-height: 100vh;
   overflow: overlay;
   overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--background-bg);
   color: #fff;
 }
-::-webkit-scrollbar{
-  width: 25px;
+::-webkit-scrollbar {
+  width: 12px;
   background-color: transparent;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   padding: 0 15px;
   border-radius: 16px;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background: var(--nav-body);
   border-radius: 16px;
   background-clip: content-box;
-  border: 9px solid transparent;
+  border: 3px solid transparent;
   max-height: 20px;
+}
+
+.modal-showed {
+  overflow-y: hidden;
 }
 
 .btn {
