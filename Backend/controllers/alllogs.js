@@ -1,5 +1,6 @@
 const Elog = require("../models/Eventlog");
 const Counter = require("../models/Counter");
+const events = require("../models/Event");
 const User = require("../models/User");
 exports.getlogs = async (req, res) => {
   try {
@@ -73,3 +74,41 @@ exports.yeardata = async (req, res) => {
   }
 };
 
+exports.alluser = async (req, res) => {
+  const allusers = await User.find(
+    {},
+    {
+      _id: false,
+      uid: true,
+      firstName: true,
+      lastName: true,
+      email: true,
+      role: true,
+      batch: true,
+      branch: true,
+    }
+  );
+  console.log(allusers);
+  res.json({ users: allusers });
+};
+
+exports.eventsdata = async (req, res) => {
+  try {
+    const eventdata = await events.find(
+      {},
+      {
+        // _id: false,
+        eventDetails: false,
+        eventImage: false,
+        // eventTime: false,
+        // userId: true,
+        email: false,
+        createdAt: false,
+        updatedAt: false,
+      }
+    );
+    res.json({ eventdata });
+  } catch (error) {
+    return res.json({ error: error.message });
+  }
+};
