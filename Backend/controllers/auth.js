@@ -192,7 +192,7 @@ exports.register = async (req, res) => {
 
     let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
     let msg = `${otp}`;
-    otpSender(email, msg,uid);
+    otpSender(email, otpTemplate(uid, msg));
 
     // ! Creating User in DB
     const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
@@ -321,7 +321,7 @@ exports.verifyOTP = async (req, res) => {
       if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
         let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
         let msg = `${otp}`;
-        otpSender(email, otpTemplate(userid, msg));
+        otpSender(email, otpTemplate(uid, msg));
 
         User.updateOne(
           { uid: uid },
@@ -351,7 +351,7 @@ exports.verifyOTP = async (req, res) => {
         if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, otpTemplate(userid, msg));
+          otpSender(email, otpTemplate(uid, msg));
 
           User.updateOne(
             { uid: uid },
@@ -380,7 +380,7 @@ exports.verifyOTP = async (req, res) => {
           if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
-            otpSender(email, otpTemplate(userid, msg));
+            otpSender(email, otpTemplate(uid, msg));
 
             User.updateOne(
               { uid: uid },
@@ -408,7 +408,7 @@ exports.verifyOTP = async (req, res) => {
           } else if (docs.otpstatus.otpRequest < 5) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
-            otpSender(email, otpTemplate(userid, msg));
+            otpSender(email, otpTemplate(uid, msg));
 
             User.updateOne(
               { uid: uid },
@@ -447,7 +447,7 @@ exports.verifyOTP = async (req, res) => {
         } else if (docs.otpstatus.otpRequest < 5) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, otpTemplate(userid, msg));
+          otpSender(email, otpTemplate(uid, msg));
 
           User.updateOne(
             { uid: uid },
