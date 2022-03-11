@@ -31,7 +31,7 @@ const Admin = ({ userImage, userNameText }) => {
     <>
       <div className='admin-details'>
         <div className='left'>
-          <img src={userImage} alt='user-image' className='logged-user-image' />
+          <img src={userImage} alt='user-image' className='logged-user-image dashboard-image' />
           <div className='user-details'>
             <p className='logged-user logged-user-text'>
               <span>Name: </span>

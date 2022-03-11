@@ -70,8 +70,14 @@ nav {
 
 .logged-user-image {
   width: 50px;
-  border: 1px solid #111111;
+  /* border: 2px solid #1111111e; */
   border-radius: 100%;
+  box-shadow:2px 2px 4px #1111119c;
+}
+.dashboard-image{
+  border: none;
+  width: 75px;
+  box-shadow:2px 2px 4px 1px #6b686865;
 }
 .user-name-text {
   font-size: 1.2rem;
