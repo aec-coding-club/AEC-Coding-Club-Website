@@ -3,7 +3,12 @@ const jwt = require("jsonwebtoken");
 const { SECRET } = process.env;
 const User = require("../models/User");
 const otpSender = require("./mailsender.js");
-const { otpTemplate, announceall, notifyall, custom } = require("./emailTemplates");
+const {
+  otpTemplate,
+  announceall,
+  notifyall,
+  custom,
+} = require("./emailTemplates");
 const Counter = require("../models/Counter");
 
 //? MARK : Register Route
@@ -70,12 +75,12 @@ exports.register = async (req, res) => {
       console.log(`USER_NOTACTIVE : ${user_notActive}`);
       const userid = count.notActive[0];
       console.log(
-        (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60)
+        (Date.now() - user_notActive.timeStamp) / (1000 * 24 * 60 * 60)
       );
       if (user_notActive) {
         console.log("After find");
         if (
-          (user_notActive.timeStamp - Date.now()) / (1000 * 24 * 60 * 60) >=
+          (Date.now() - user_notActive.timeStamp) / (1000 * 24 * 60 * 60) >=
           1
         ) {
           const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
@@ -192,7 +197,7 @@ exports.register = async (req, res) => {
 
     let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
     let msg = `${otp}`;
-    otpSender(email, msg,uid);
+    otpSender(email, msg, uid);
 
     // ! Creating User in DB
     const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
