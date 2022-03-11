@@ -1,0 +1,63 @@
+.log-data-container {
+  width: 100%;
+  min-height: 600px;
+  /* border: 1px solid var(--btn-bg); */
+  border-radius: 0.5rem;
+}
+
+.log-data {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #fff;
+  background-color: rgba(128, 128, 128, 0.219);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow-y: scroll;
+}
+
+.log-data svg {
+  align-self: center;
+}
+
+.log-user {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+}
+
+/* .log-del {
+  background-color: #f35252ab;
+}
+
+.log-upd {
+  background-color: #e9f81875;
+}
+
+.log-add {
+  background-color: #388b2977;
+} */
+
+/* pagination */
+
+.paginationBttns {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  margin-block: 1rem;
+  margin-top: 1.75rem;
+}
+
+.paginationActive a {
+  background: var(--btn-bg);
+  font-weight: 600;
+}
+
+.paginationBttns li a {
+  cursor: pointer;
+  border: 1px solid var(--btn-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}

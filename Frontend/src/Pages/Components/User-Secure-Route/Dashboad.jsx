@@ -1,47 +1,49 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Api } from "../../../backend";
-import PreviewEventCard from "../../../Components/PreviewEventCard";
-import "../../../Components/styles/EventsContainer.css";
-import AdminPanel from "./Admin Panel";
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Api } from '../../../backend'
+import PreviewEventCard from '../../../Components/PreviewEventCard'
+import '../../../Components/styles/EventsContainer.css'
 
 const DashboadComponent = ({ details, tokenChecker }) => {
-  const [events, setEvents] = useState([]);
-  const [userRole, setUserRole] = useState(0);
+  const [events, setEvents] = useState([])
+
+  const navigate = useNavigate()
 
   const fetchEvents = async () => {
+    // Check Role for redirects
+    const token = localStorage.getItem('token')
+    console.log(token)
+    const parseddata = await axios.get(`${Api}dashboard`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    if (parseddata.data.user_data.role > 2) navigate('/admin/overview')
+
     const allEvents = details.userInfo.events.map(async (id) => {
       const response = await axios.get(`${Api}${id}`, {
         withCredentials: true,
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      return response.data;
-    });
-    setEvents(await Promise.all(allEvents));
-
-    // TODO: Set the Role of the user
-    const authToken = localStorage.getItem("token");
-    const parseddata = await axios.get(`${Api}dashboard`, {
-      withCredentials: true,
-      headers: { Authorization: `Bearer ${authToken}` },
-    });
-    setUserRole(parseddata.data.user_data.role);
-  };
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+      return response.data
+    })
+    setEvents(await Promise.all(allEvents))
+  }
 
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    fetchEvents()
+  }, [])
 
   return (
     <>
       <div className='home-main'>
-        {console.log("Events Array: ", events && events)}
+        {console.log('Events Array: ', events && events)}
 
         <br />
         <br />
       </div>
       <main className='events-main'>
-      {tokenChecker && (
+        {tokenChecker && (
           <div className='events-header'>
             <div className='events-header-left'>
               <p>Hi, {tokenChecker[1]}</p>
@@ -56,37 +58,27 @@ const DashboadComponent = ({ details, tokenChecker }) => {
           </div>
         )}
         <div className='events-container'>
-          {events.length > 0 && userRole <= 2 ? (
+          {events.length > 0 ? (
             events.reverse().map((event) => (
-              
-                <PreviewEventCard
-                  key={event._id}
-                  cardEditData={{
-                    editEventTitle: event.eventTitle,
-                    editEventImage: event.eventImage,
-                    editEventTime: event.eventTime,
-                    editEventDetails: event.eventDetails,
-                    dashboardEvents: true,
-                  }}
-                />
-              
+              <PreviewEventCard
+                key={event._id}
+                cardEditData={{
+                  editEventTitle: event.eventTitle,
+                  editEventImage: event.eventImage,
+                  editEventTime: event.eventTime,
+                  editEventDetails: event.eventDetails,
+                  dashboardEvents: true,
+                }}
+              />
             ))
           ) : (
-            <>
-              {userRole >= 3 ? (
-                <>
-                  <AdminPanel />
-                </>
-              ) : (
-                <h2>You Have Not Registered To Any Events</h2>
-              )}
-            </>
+            <h2>You have not Participated in Any Events</h2>
           )}
         </div>
       </main>
       <br />
     </>
-  );
-};
+  )
+}
 
-export default DashboadComponent;
+export default DashboadComponent

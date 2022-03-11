@@ -9,6 +9,7 @@ function SideBar({
   tokenChecker,
   userImg,
   userNameText,
+  userRole,
 }) {
   const navigate = useNavigate()
 
@@ -31,7 +32,11 @@ function SideBar({
         {tokenChecker ? (
           <div className='sidebar-btn-wrapper'>
             <img className='logged-user-image' src={userImg} />
-            <NavLink to='/dashboard' className='nav-link' onClick={hideSidebar}>
+            <NavLink
+              to={userRole <= 2 ? '/dashboard' : '/admin'}
+              className='nav-link'
+              onClick={hideSidebar}
+            >
               <div
                 className='user-name-text'
                 style={{ textDecoration: 'none', color: '#D62828' }}
