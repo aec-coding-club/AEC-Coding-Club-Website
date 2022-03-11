@@ -5,6 +5,7 @@ const Elog = new mongoose.Schema({
     type: String,
   },
   updatedby: { type: String },
+  userName: { type: String },
   eventTitle: { type: String },
   eventDescription: { type: String },
   image: { type: String },

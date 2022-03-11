@@ -47,10 +47,14 @@ exports.add = async (req, res) => {
     const newEvent = await event.create(req.body);
     console.log(newEvent);
     const user_id = req.user.user_id;
+    const userDetails = await User.findOne({ uid: req.user.user_id });
+    const userName = userDetails.firstName + " " + userDetails.lastName;
+    console.log(userName);
 
     const logData = await Elog.create({
       Operation: "Event Addition",
       updatedby: user_id,
+      userName: userName,
       eventTitle: req.body.eventTitle,
       eventDescription: req.body.eventDetails,
       image: req.body.eventImage,
@@ -105,10 +109,13 @@ exports.update = async (req, res) => {
     });
 
     const user_id = req.user.user_id;
+    const userDetails = await User.findOne({ uid: req.user.user_id });
+    const userName = userDetails.firstName + " " + userDetails.lastName;
     // const modification = ;
     const logData = await Elog.create({
       Operation: "Event Updation",
       updatedby: user_id,
+      userName: userName,
       eventTitle: req.body.eventTitle,
       eventDescription: req.body.eventDetails,
       image: req.body.eventImage,
@@ -188,9 +195,12 @@ exports.deletevent = async (req, res) => {
 
     const deletedEvent = await event.findByIdAndDelete(req.params.id);
     const user_id = req.user.user_id;
+    const userDetails = await User.findOne({ uid: req.user.user_id });
+    const userName = userDetails.firstName + " " + userDetails.lastName;
     const logData = await Elog.create({
       Operation: "Delete Operation",
       updatedby: user_id,
+      userName: userName,
       eventTitle: deletedEvent.eventTitle,
       eventDescription: deletedEvent.eventDescription,
       image: deletedEvent.image,
@@ -259,7 +269,6 @@ exports.registerevent = async (req, res) => {
   try {
     const id = req.params.id;
     const user_id = req.user.user_id;
-
 
     const tempuser = await User.findOne({ uid: user_id });
     console.log(tempuser);
