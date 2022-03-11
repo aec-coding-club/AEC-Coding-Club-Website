@@ -31,7 +31,11 @@ const Admin = ({ userImage, userNameText }) => {
     <>
       <div className='admin-details'>
         <div className='left'>
-          <img src={userImage} alt='user-image' className='logged-user-image dashboard-image' />
+          <img
+            src={userImage}
+            alt='user-image'
+            className='admin-user-img logged-user-image'
+          />
           <div className='user-details'>
             <p className='logged-user logged-user-text'>
               <span>Name: </span>

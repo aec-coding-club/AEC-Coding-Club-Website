@@ -3,6 +3,8 @@ import { FaEdit } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import { FaPlus } from 'react-icons/fa'
 
+import moment from 'moment'
+
 const Log = ({ log }) => {
   const logType = log.Operation.includes('Delete')
     ? 'log-del'
@@ -12,16 +14,36 @@ const Log = ({ log }) => {
     ? 'log-add'
     : 'Log'
 
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+
   return (
     <div className={`log-data ${logType}`}>
-      {logType === 'log-del' && <FaTrash fill='#eb4511' />}
-      {logType === 'log-upd' && <FaEdit fill='#ffdd00' />}
-      {logType === 'log-add' && <FaPlus fill='#5aff15' />}
-      <div className='log-data-detail'>
-        <div className='log-data-top'>
-          <p className='log-user'>{log.userName || 'User Name'}</p>
-          <p className='log-type'>{log.Operation}</p>
+      {logType === 'log-del' && <FaTrash fill='#eb4511' fontSize='1.35rem' />}
+      {logType === 'log-upd' && <FaEdit fill='#ffdd00' fontSize='1.35rem' />}
+      {logType === 'log-add' && <FaPlus fill='#5aff15' fontSize='1.35rem' />}
+      <div className='log-wrapper'>
+        <div className='log-data-detail'>
+          <div className='log-data-top'>
+            <p className='log-description'>
+              <span className='log-user'>{log.userName || 'User Name'}</span>
+              <span className='log-uid'>{log.updatedby}</span>
+            </p>
+          </div>
+          <div className='log-bottom'>
+            <span className={`log-type log-type-${logType}`}>
+              {(logType === 'log-upd' && 'Updated') ||
+                (logType === 'log-add' && 'Added') ||
+                (logType === 'log-del' && 'Deleted')}
+            </span>
+            <span className='log-event-name'>"{log.eventTitle}"</span>
+          </div>
         </div>
+        <p className='log-date'>{moment(log.updatedAt).format('lll')}</p>
       </div>
     </div>
   )
