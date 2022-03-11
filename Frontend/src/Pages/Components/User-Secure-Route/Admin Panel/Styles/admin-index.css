@@ -12,6 +12,10 @@
   gap: 1rem;
 }
 
+.admin-user-img {
+  width: 4.5rem;
+}
+
 .logged-user-text {
   font-size: 1.25rem;
 }
@@ -64,6 +68,7 @@
 .admin-container h3 {
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: 1.45rem;
 }
 
 @media (max-width: 900px) {
@@ -74,6 +79,14 @@
 
   .admin-details h2 {
     display: none;
+  }
+
+  .admin-container {
+    padding: 1rem 2rem;
+  }
+
+  .admin-details {
+    padding: 1rem 2rem;
   }
 }
 

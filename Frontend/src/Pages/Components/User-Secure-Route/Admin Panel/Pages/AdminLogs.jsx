@@ -49,7 +49,7 @@ const AdminLogs = () => {
 
   return (
     <div className='admin-container'>
-      <h3>Logs</h3>
+      <h3>Activity Feed (LOGS)</h3>
       <div>
         {loading ? (
           <p>Loading</p>
