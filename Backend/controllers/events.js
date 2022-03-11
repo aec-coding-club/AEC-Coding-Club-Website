@@ -22,8 +22,9 @@ exports.announceall = async (req, res) => {
 
 
   otpSender(emaillist, announceall(eventName, date, "https://testaeccc.web.app/events"));
-    // res.json(emaillist)
-  // otpSender(emails, msg, userid);
+    
+
+  return res.json({success: true, msg: `email will be delivered to ${emails.length} participants`})
 }
 
 exports.getevent = async (req, res) => {

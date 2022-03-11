@@ -49,7 +49,7 @@ const announceall = ( event, date, url) => {
 
     return ` <body> 
               <div>
-              Dear student, AECCC is going to.... ${event} on ${date}. Please check it on official site here ${url}
+              Dear student, AECCC is going to host a <b>${event}</b> on ${date}. Please check it on official site here ${url}
               </div>
         </body>`
 
