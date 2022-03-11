@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const { SECRET } = process.env;
 const User = require("../models/User");
 const otpSender = require("./mailsender.js");
+const { otpTemplate, announceall, notifyall, custom } = require("./emailTemplates");
 const Counter = require("../models/Counter");
 
 //? MARK : Register Route
@@ -80,7 +81,7 @@ exports.register = async (req, res) => {
           const profilePicture = `https://avatars.dicebear.com/api/initials/${firstName} ${lastName}.svg`;
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, msg, userid);
+          otpSender(email, otpTemplate(userid, msg));
           const filter = { uid: user_notActive.uid };
           const data = {
             firstName,
@@ -320,7 +321,7 @@ exports.verifyOTP = async (req, res) => {
       if (Date.now() - docs.timeStamp > 5 * 60 * 60 * 1000) {
         let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
         let msg = `${otp}`;
-        otpSender(email, msg, req.user);
+        otpSender(email, otpTemplate(userid, msg));
 
         User.updateOne(
           { uid: uid },
@@ -350,7 +351,7 @@ exports.verifyOTP = async (req, res) => {
         if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, msg, req.user);
+          otpSender(email, otpTemplate(userid, msg));
 
           User.updateOne(
             { uid: uid },
@@ -379,7 +380,7 @@ exports.verifyOTP = async (req, res) => {
           if (Date.now() - docs.initialTimeStamp > 24 * 60 * 60 * 1000) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
-            otpSender(email, msg, req.user);
+            otpSender(email, otpTemplate(userid, msg));
 
             User.updateOne(
               { uid: uid },
@@ -407,7 +408,7 @@ exports.verifyOTP = async (req, res) => {
           } else if (docs.otpstatus.otpRequest < 5) {
             let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
             let msg = `${otp}`;
-            otpSender(email, msg, req.user);
+            otpSender(email, otpTemplate(userid, msg));
 
             User.updateOne(
               { uid: uid },
@@ -446,7 +447,7 @@ exports.verifyOTP = async (req, res) => {
         } else if (docs.otpstatus.otpRequest < 5) {
           let otp = Math.floor(10000 + (1 - Math.random()) * 100000);
           let msg = `${otp}`;
-          otpSender(email, msg, req.user);
+          otpSender(email, otpTemplate(userid, msg));
 
           User.updateOne(
             { uid: uid },

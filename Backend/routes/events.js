@@ -1,7 +1,7 @@
 // const { Router } = require("express");
 var express = require("express");
 var router = express.Router();
-const getlogs  = require("../controllers/alllogs")
+const getlogs = require("../controllers/alllogs")
 const {
   isAuthenticated,
   isActivated,
@@ -15,6 +15,7 @@ const {
   update,
   deletevent,
   registerevent,
+  announceall
 } = require("../controllers/events");
 
 // const router = Router();
@@ -35,5 +36,6 @@ router.put("/update/:id", isAuthenticated, isActivated, isAdmin, update);
 router.delete("/delete/:id", isAuthenticated, isActivated, isAdmin, deletevent);
 
 router.post("/registerevent/:id", isAuthenticated, isActivated, registerevent);
+router.post("/announceall", isAuthenticated, isActivated, isAdmin, announceall);
 
 module.exports = router;
