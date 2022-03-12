@@ -1,6 +1,31 @@
 const event = require("../models/Event");
 const User = require("../models/User");
 const Elog = require("../models/Eventlog");
+const otpSender = require("./mailsender.js");
+const { otpTemplate, announceall, notifyall, custom } = require("./emailTemplates");
+
+
+exports.announceall = async (req, res) => {
+  date = req.body.eventDate;
+  eventName = req.body.eventName;
+
+  if (!date || !eventName) {
+    date = 'Not Available';
+    eventName = 'Not Available';
+  }
+  let emails = await User.find({}, { _id: false, email: true })
+  let emaillist = []
+  for (i = 0; i < emails.length; i++) {
+    emaillist.push(emails[i].email)
+  }
+  console.log(emaillist);
+
+
+  otpSender(emaillist, announceall(eventName, date, "https://testaeccc.web.app/events"));
+    
+
+  return res.json({success: true, msg: `email will be delivered to ${emails.length} participants`})
+}
 
 exports.getevent = async (req, res) => {
   try {
@@ -47,10 +72,14 @@ exports.add = async (req, res) => {
     const newEvent = await event.create(req.body);
     console.log(newEvent);
     const user_id = req.user.user_id;
+    const userDetails = await User.findOne({ uid: req.user.user_id });
+    const userName = userDetails.firstName + " " + userDetails.lastName;
+    console.log(userName);
 
     const logData = await Elog.create({
       Operation: "Event Addition",
       updatedby: user_id,
+      userName: userName,
       eventTitle: req.body.eventTitle,
       eventDescription: req.body.eventDetails,
       image: req.body.eventImage,
@@ -105,10 +134,13 @@ exports.update = async (req, res) => {
     });
 
     const user_id = req.user.user_id;
+    const userDetails = await User.findOne({ uid: req.user.user_id });
+    const userName = userDetails.firstName + " " + userDetails.lastName;
     // const modification = ;
     const logData = await Elog.create({
       Operation: "Event Updation",
       updatedby: user_id,
+      userName: userName,
       eventTitle: req.body.eventTitle,
       eventDescription: req.body.eventDetails,
       image: req.body.eventImage,
@@ -188,9 +220,12 @@ exports.deletevent = async (req, res) => {
 
     const deletedEvent = await event.findByIdAndDelete(req.params.id);
     const user_id = req.user.user_id;
+    const userDetails = await User.findOne({ uid: req.user.user_id });
+    const userName = userDetails.firstName + " " + userDetails.lastName;
     const logData = await Elog.create({
       Operation: "Delete Operation",
       updatedby: user_id,
+      userName: userName,
       eventTitle: deletedEvent.eventTitle,
       eventDescription: deletedEvent.eventDescription,
       image: deletedEvent.image,
@@ -260,7 +295,6 @@ exports.registerevent = async (req, res) => {
     const id = req.params.id;
     const user_id = req.user.user_id;
 
-
     const tempuser = await User.findOne({ uid: user_id });
     console.log(tempuser);
     if (tempuser.event.includes(id)) {
@@ -288,3 +322,5 @@ exports.registerevent = async (req, res) => {
       .json({ success: false, token: true, message: error.message });
   }
 };
+
+

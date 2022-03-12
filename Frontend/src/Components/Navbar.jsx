@@ -10,6 +10,9 @@ import Cookies from 'js-cookie'
 import './styles/Navbar.css'
 import { toast } from 'react-toastify'
 
+import axios from 'axios'
+import { Api } from '../backend'
+
 const NavCompoA = () => {
   const navigate = useNavigate()
   return (
@@ -26,8 +29,7 @@ const NavCompoA = () => {
   )
 }
 
-const NavCompoB = ({ userImg, userNameText }) => {
-  const navigate = useNavigate()
+const NavCompoB = ({ userImg, userNameText, userRole }) => {
   console.log(userNameText)
 
   const signOut = () => {
@@ -40,7 +42,10 @@ const NavCompoB = ({ userImg, userNameText }) => {
     <>
       <div className='nav-btn-wrapper'>
         <img className='logged-user-image' src={userImg} />
-        <NavLink to='/dashboard' className='nav-link'>
+        <NavLink
+          to={userRole <= 2 ? '/dashboard' : '/admin/overview'}
+          className='nav-link'
+        >
           <div
             className='user-name-text'
             style={{ textDecoration: 'none', color: '#D62828' }}
@@ -58,11 +63,19 @@ const NavCompoB = ({ userImg, userNameText }) => {
 
 const Navbar = ({ userImage, userNameText }) => {
   const [tokenChecker, setTokenChecker] = useState(false)
+  const [userRole, setUserRole] = useState(0)
+
   const checkToken = async () => {
     const token = localStorage.getItem('token')
     console.log(token)
     if (token) {
       setTokenChecker(true)
+      // TODO: Set the Role of the user
+      const parseddata = await axios.get(`${Api}dashboard`, {
+        withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      setUserRole(parseddata.data.user_data.role)
     }
   }
   // @TODO: Add user styles and pop up Component
@@ -99,7 +112,11 @@ const Navbar = ({ userImage, userNameText }) => {
         </NavLink>
       </div>
       {tokenChecker ? (
-        <NavCompoB userImg={userImage} userNameText={userNameText} />
+        <NavCompoB
+          userImg={userImage}
+          userRole={userRole}
+          userNameText={userNameText}
+        />
       ) : (
         <NavCompoA />
       )}
@@ -113,6 +130,7 @@ const Navbar = ({ userImage, userNameText }) => {
         userNameText={userNameText}
         sidebarOpen={sidebarOpen}
         handleSideBar={handleSideBar}
+        userRole={userRole}
       />
       {/* <div className='nav-curve-wrapper'>
         <img src={NavbarSvg} alt='curve' />

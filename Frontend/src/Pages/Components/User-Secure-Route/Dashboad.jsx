@@ -1,47 +1,73 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Api } from "../../../backend";
-import PreviewEventCard from "../../../Components/PreviewEventCard";
-import "../../../Components/styles/EventsContainer.css";
-import AdminPanel from "./Admin Panel";
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Api } from '../../../backend'
+import PreviewEventCard from '../../../Components/PreviewEventCard'
+import '../../../Components/styles/EventsContainer.css'
 
 const DashboadComponent = ({ details, tokenChecker }) => {
-  const [events, setEvents] = useState([]);
-  const [userRole, setUserRole] = useState(0);
+  const [events, setEvents] = useState([])
+  const [userId, setUserId] = useState(null)
+
+  const navigate = useNavigate()
 
   const fetchEvents = async () => {
+    // Check Role for redirects
+    const token = localStorage.getItem('token')
+    console.log(token)
+    const parseddata = await axios.get(`${Api}dashboard`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    if (parseddata.data.user_data.role > 2) navigate('/admin/overview')
+    setUserId(parseddata.data.user_data.uid)
+
     const allEvents = details.userInfo.events.map(async (id) => {
       const response = await axios.get(`${Api}${id}`, {
         withCredentials: true,
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-      return response.data;
-    });
-    setEvents(await Promise.all(allEvents));
-
-    // TODO: Set the Role of the user
-    const authToken = localStorage.getItem("token");
-    const parseddata = await axios.get(`${Api}dashboard`, {
-      withCredentials: true,
-      headers: { Authorization: `Bearer ${authToken}` },
-    });
-    setUserRole(parseddata.data.user_data.role);
-  };
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+      return response.data
+    })
+    setEvents(await Promise.all(allEvents))
+  }
 
   useEffect(() => {
-    fetchEvents();
-  }, []);
+    fetchEvents()
+  }, [])
 
   return (
     <>
-      <div className='home-main'>
-        {console.log("Events Array: ", events && events)}
+      {/* <div className='home-main'>
+        {console.log('Events Array: ', events && events)}
 
         <br />
         <br />
+      </div> */}
+      <div className='admin-details'>
+        <div className='left'>
+          <img
+            src={tokenChecker && tokenChecker[2]}
+            alt='user-image'
+            className='admin-user-img logged-user-image'
+          />
+          <div className='user-details'>
+            <p className='logged-user logged-user-text'>
+              <span>Name: </span>
+              {tokenChecker && tokenChecker[1]}
+            </p>
+            <p className='logged-user logged-user-id'>
+              <span>UID: </span>
+              <span className='admin-uid'>
+                {userId ? userId : 'Loading...'}
+              </span>
+            </p>
+          </div>
+        </div>
+        <h2>Welcome to Dashboard</h2>
       </div>
       <main className='events-main'>
-      {tokenChecker && (
+        {/* {tokenChecker && (
           <div className='events-header'>
             <div className='events-header-left'>
               <p>Hi, {tokenChecker[1]}</p>
@@ -54,11 +80,15 @@ const DashboadComponent = ({ details, tokenChecker }) => {
               />
             </div>
           </div>
-        )}
-        <div className='events-container'>
-          {events.length > 0 && userRole <= 2 ? (
-            events.reverse().map((event) => (
-              
+        )} */}
+
+        {events.length > 0 ? (
+          <>
+            <h3 className='dashboard-events-header'>
+              Events You Have Registered In
+            </h3>
+            <div className='events-container'>
+              {events.reverse().map((event) => (
                 <PreviewEventCard
                   key={event._id}
                   cardEditData={{
@@ -69,24 +99,16 @@ const DashboadComponent = ({ details, tokenChecker }) => {
                     dashboardEvents: true,
                   }}
                 />
-              
-            ))
-          ) : (
-            <>
-              {userRole >= 3 ? (
-                <>
-                  <AdminPanel />
-                </>
-              ) : (
-                <h2>You Have Not Registered To Any Events</h2>
-              )}
-            </>
-          )}
-        </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <h2>You have not Participated in Any Events</h2>
+        )}
       </main>
       <br />
     </>
-  );
-};
+  )
+}
 
-export default DashboadComponent;
+export default DashboadComponent

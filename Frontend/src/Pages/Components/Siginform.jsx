@@ -32,7 +32,8 @@ const Siginform = () => {
         `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
       )
       localStorage.setItem('pimage', `${dataposted.data.user.profilePicture}`)
-      navigate('/dashboard')
+      if (dataposted.data.user.role <= 2) navigate('/dashboard')
+      else navigate('/admin/overview')
       window.location.reload()
     } else {
       console.log('Access Denied')
@@ -41,7 +42,7 @@ const Siginform = () => {
         password: '',
       })
       toast.error(dataposted.data.error, {
-        theme: "dark"
+        theme: 'dark',
       })
     }
     console.log(dataposted)

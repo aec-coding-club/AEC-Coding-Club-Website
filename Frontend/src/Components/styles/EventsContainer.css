@@ -1,3 +1,9 @@
+.dashboard-events-header {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
 .events-container {
   width: 100%;
   margin: 2.5rem auto;
