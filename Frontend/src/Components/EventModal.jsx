@@ -13,6 +13,9 @@ const EventModal = (props) => {
     'event-modal-container'
   )
   const [modalClass, setModalClass] = useState('event-modal')
+
+  const [imgError, setImgError] = useState(false)
+
   let navigate = useNavigate()
 
   const {
@@ -28,6 +31,12 @@ const EventModal = (props) => {
   } = cardEditData
 
   const addNewEvent = async () => {
+    if (imgError) {
+      toast.error('Invalid Image Link!', {
+        theme: 'dark',
+      })
+      return
+    }
     console.log('New Event Added')
     const Data = {
       eventTitle: editEventTitle,
@@ -55,6 +64,12 @@ const EventModal = (props) => {
   }
 
   const editExistingEvent = async () => {
+    if (imgError) {
+      toast.error('Invalid Image Link!', {
+        theme: 'dark',
+      })
+      return
+    }
     console.log('Editing Event')
     const Data = {
       eventTitle: editEventTitle,
@@ -176,7 +191,11 @@ const EventModal = (props) => {
             </div>
             {/* </form> */}
             <div className='preview'>
-              <PreviewEventCard cardEditData={cardEditData} />
+              <PreviewEventCard
+                cardEditData={cardEditData}
+                imgError={imgError}
+                setImgError={setImgError}
+              />
             </div>
           </div>
         </>
