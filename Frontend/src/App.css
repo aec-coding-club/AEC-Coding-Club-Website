@@ -13,6 +13,10 @@
   --nav-body: rgba(234, 226, 183, 1);
   --btn-bg: rgba(214, 40, 40, 1);
   --nav-drop-shadow: rgba(19, 19, 19, 0.548);
+
+  /* for admin page */
+  --background-1: rgba(128, 128, 128, 0.219);
+  --background-2: #485461;
 }
 
 body {
