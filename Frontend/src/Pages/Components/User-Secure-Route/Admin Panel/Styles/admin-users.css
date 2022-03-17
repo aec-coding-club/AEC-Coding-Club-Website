@@ -54,6 +54,30 @@
   overflow-wrap: break-word;
 }
 
+.admin-user-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-user-icons svg {
+  cursor: pointer;
+}
+
+.user-image {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.user-profile {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .user-name {
   font-weight: 600;
   overflow-wrap: break-word;
@@ -106,6 +130,7 @@
   .admin-user {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.5rem;
   }
 }
