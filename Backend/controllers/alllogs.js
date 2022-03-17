@@ -90,7 +90,7 @@ exports.alluser = async (req, res) => {
   );
   allusers.reverse();
   console.log(allusers);
-  res.json({ users: allusers, length: allusers.length });
+  res.json({ users: allusers.reverse() });
 };
 
 exports.eventsdata = async (req, res) => {

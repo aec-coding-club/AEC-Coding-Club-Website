@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PreviewEventCard = ({ cardEditData }) => {
+const PreviewEventCard = ({ cardEditData, imgError, setImgError }) => {
   const {
     editEventTitle,
     editEventImage,
@@ -17,6 +17,14 @@ const PreviewEventCard = ({ cardEditData }) => {
             src={editEventImage || '../Assets/events/demo-event.jpg'}
             alt='event-img'
             className='event-card-img'
+            onLoad={(e) => {
+              if (e.target.src.includes('invalid-image')) setImgError(true)
+              else setImgError(false)
+            }}
+            onError={(e) => {
+              e.target.src = '../Assets/invalid-image.jpg'
+              setImgError(true)
+            }}
           />
         </div>
         <div className='card-text-details'>
