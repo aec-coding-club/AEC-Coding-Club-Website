@@ -1,11 +1,7 @@
-const marked = require('marked')
-const createDomPurify = require('dompurify')
-const { JSDOM } = require('jsdom')
-const dompurify = createDomPurify(new JSDOM().window)
 
 
 const otpTemplate = (user, otp) => {
-  return `<body>
+    return `<body>
 <div>
     <div style="background-color:rgb(238,238,238)">
         <div style="margin:0px auto;font-family:arial;padding-bottom:30px;padding-top:45px;max-width:520px">
@@ -43,25 +39,35 @@ const otpTemplate = (user, otp) => {
         </div>
     </div>
 </div>
-</body>`;
-};
+</body>`
+}
 
-const announceall = (event, date, image, description, url) => {
-    description = dompurify.sanitize(marked.parse(description))
-  return ` <body> 
+
+
+
+const announceall = ( event, date, url) => {
+
+    return ` <body> 
               <div>
-              Dear student, AECCC is going to host <b>${event}</b> on ${date}.
-              <img src=${image} alt="Event Image">
-              ${description}
-              Please check it on official site here ${url}
+              Dear student, AECCC is going to host a <b>${event}</b> on ${date}. Please check it on official site here ${url}
               </div>
-        </body>`;
-};
+        </body>`
 
-const notifyall = (event, date, url) => {
-  return `Dear participant ${event} is going to start from ${date} link of the event ${url}`;
-};
 
-const custom = (msg) => {};
+}
 
-module.exports = { otpTemplate, announceall, notifyall, custom };
+
+const notifyall = ( event, date, url) => {
+
+    return `Dear participant ${event} is going to start from ${date} link of the event ${url}`
+
+}
+
+
+
+const custom = (msg) => {
+
+}
+
+
+module.exports = { otpTemplate, announceall, notifyall, custom }

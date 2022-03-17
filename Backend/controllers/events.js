@@ -2,46 +2,30 @@ const event = require("../models/Event");
 const User = require("../models/User");
 const Elog = require("../models/Eventlog");
 const otpSender = require("./mailsender.js");
-const {
-  otpTemplate,
-  announceall,
-  notifyall,
-  custom,
-} = require("./emailTemplates");
+const { otpTemplate, announceall, notifyall, custom } = require("./emailTemplates");
+
 
 exports.announceall = async (req, res) => {
-  // date = req.body.eventDate;
-  const { eventTitle, eventTime, eventImage, eventDetails } = req.body;
+  date = req.body.eventDate;
+  eventName = req.body.eventName;
 
-  if (!eventTitle || !eventTime || !eventImage || !eventDetails) {
-    res.json({
-      message: "All Data is required",
-      success: false,
-    });
+  if (!date || !eventName) {
+    date = 'Not Available';
+    eventName = 'Not Available';
   }
-  let emails = await User.find({}, { _id: false, email: true });
-  let emaillist = [];
+  let emails = await User.find({}, { _id: false, email: true })
+  let emaillist = []
   for (i = 0; i < emails.length; i++) {
-    emaillist.push(emails[i].email);
+    emaillist.push(emails[i].email)
   }
   console.log(emaillist);
 
-  otpSender(
-    emaillist,
-    announceall(
-      eventTitle,
-      eventTime,
-      eventImage,
-      eventDetails,
-      "https://testaeccc.web.app/events"
-    )
-  );
 
-  return res.json({
-    success: true,
-    msg: `email will be delivered to ${emails.length} participants`,
-  });
-};
+  otpSender(emaillist, announceall(eventName, date, "https://testaeccc.web.app/events"));
+    
+
+  return res.json({success: true, msg: `email will be delivered to ${emails.length} participants`})
+}
 
 exports.getevent = async (req, res) => {
   try {
@@ -338,3 +322,5 @@ exports.registerevent = async (req, res) => {
       .json({ success: false, token: true, message: error.message });
   }
 };
+
+

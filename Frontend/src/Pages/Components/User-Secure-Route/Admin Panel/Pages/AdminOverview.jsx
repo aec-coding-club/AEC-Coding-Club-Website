@@ -3,6 +3,8 @@ import { Api } from "../../../../../backend";
 import axios from "axios";
 import {
   ResponsiveContainer,
+  PieChart,
+  Pie,
   LineChart,
   Line,
   XAxis,
@@ -11,12 +13,10 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-import Log from "../Components/Log";
 
 const AdminOverview = () => {
   const [yeardata, setYeardata] = useState([]);
   const [batchdata, setBatchdata] = useState([]);
-  const [userData, setuserdata] = useState([]);
 
   const fetchBatchdata = async () => {
     const authToken = localStorage.getItem("token");
@@ -37,16 +37,6 @@ const AdminOverview = () => {
     console.log("Year data - ", data);
     setBatchdata(await data);
   };
-
-  const fetchUser = async () => {
-    const authToken = localStorage.getItem("token");
-    const { data } = await axios.get(`${Api}alluser`, {
-      withCredentials: true,
-      headers: { Authorization: `Bearer ${authToken}` },
-    });
-    console.log("User data -------------------- ", data.users);
-    setuserdata(await data);
-  }
 
   const yerarDataSet = [
     { name: "AEIE", value: yeardata.AEIE },
@@ -73,7 +63,6 @@ const AdminOverview = () => {
   useEffect(() => {
     fetchBatchdata();
     fetchYeardata();
-    fetchUser();
   }, []);
 
   return (
@@ -81,15 +70,13 @@ const AdminOverview = () => {
       {console.log("Whats your year", yeardata)}
       {console.log("Whats your branch", batchdata)}
       {console.log("Whats your branch", yerarDataSet)}
-      {console.log("Whats your User bro=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-", userData)}
-      <h1>Overview</h1>
 
       <ResponsiveContainer width="100%" aspect={4}>
         <LineChart
           data={yerarDataSet}
           width={100}
           height={100}
-          margin={{ top: 10, left: 10, bottom: 0, right: 50 }}
+          margin={{ top: 10, left: 10, bottom: 0, right: 900 }}
         >
           <CartesianGrid strokeDasharray="3 15" />
           <XAxis dataKey="name" interval={"preserveStartEnd"} />
@@ -112,7 +99,7 @@ const AdminOverview = () => {
           data={batchDataSet}
           width={100}
           height={100}
-          margin={{ top: 10, left: 10, bottom: 0, right: 50 }}
+          margin={{ top: 10, left: 10, bottom: 0, right: 900 }}
         >
           <CartesianGrid strokeDasharray="3 15" />
           <XAxis dataKey="name" interval={"preserveStartEnd"} />
@@ -129,12 +116,7 @@ const AdminOverview = () => {
           />
         </LineChart>
       </ResponsiveContainer>
-
-      <div>
-      {/* {userData.map((value) => {
-        <h2 key={value._id}>{value.email}</h2>
-      })} */}
-      </div>
+      <h1>Overview</h1>
     </>
   );
 };
