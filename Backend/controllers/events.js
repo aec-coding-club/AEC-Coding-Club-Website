@@ -37,6 +37,20 @@ exports.announceall = async (req, res) => {
     )
   );
 
+  const user_id = req.user.user_id;
+  const userDetails = await User.findOne({ uid: req.user.user_id });
+  const userName = userDetails.firstName + " " + userDetails.lastName;
+
+  const logData = await Elog.create({
+    Operation: "Email Announcement",
+    updatedby: user_id,
+    userName: userName,
+    eventTitle: eventTitle,
+    eventDescription: `${eventDetails} -- ${eventTime}`,
+    image: eventImage,
+    updatedAt: Date(),
+  });
+
   return res.json({
     success: true,
     msg: `email will be delivered to ${emails.length} participants`,
