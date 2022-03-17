@@ -40,15 +40,145 @@ const otpTemplate = (user, otp) => {
 </body>`;
 };
 
+// const announceall = (event, date, image, description, url) => {
+//   return ` <body> 
+//               <div>
+//               Dear student,
+//              AECCC is going to host <b>${event}</b> on ${date}.
+//               <img src=${image} alt="Event Image">
+//               <br>
+//               ${description}
+//               <br>
+//               Please check it on official site here ${url}
+//               </div>
+//         </body>`;
+// };
 const announceall = (event, date, image, description, url) => {
-  return ` <body> 
-              <div>
-              Dear student, AECCC is going to host <b>${event}</b> on ${date}.
-              <img src=${image} alt="Event Image">
-              ${description}
-              Please check it on official site here ${url}
-              </div>
-        </body>`;
+  return `
+  <body>
+  <style>
+  .event-card {
+    width: 90%;
+    max-width: 350px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 1rem;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+      hsla(240, 30%, 28%, 0.25) 0px 50px 100px -20px,
+      hsla(0, 0%, 0%, 0.7) 0px 30px 60px -30px;
+    overflow: hidden;
+    transition: all 300ms ease;
+    background-color: var(--nav-body);
+    padding: 0.75rem;
+    color: #111;
+  }
+  
+  .preview .event-card {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
+  
+  .event-card-img-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .event-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    transition: all 300ms ease;
+  }
+  
+  .card-text-details {
+    width: 100%;
+  }
+  
+  .event-card-title {
+    font-weight: 600;
+    min-height: 45px;
+    font-size: 1.5rem;
+    line-height: 1.45rem;
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+  
+  .event-card-desc {
+    height: 100px;
+    overflow-y: scroll;
+    margin-block: 0.5rem;
+  }
+  
+  .event-card-desc p {
+    font-size: 0.85rem;
+    line-height: 1.2rem;
+    text-align: justify;
+  }
+  
+  .event-card-desc::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .event-card-date {
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  .event-card-date span {
+    font-weight: 400;
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.45rem;
+    background-color: #111;
+    color: #fff;
+    font-size: 0.85rem;
+  }
+  .event-btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  /*  Mobile View ---> */
+  @media (min-width: 425px) {
+    .event-card-btn {
+      padding: 0.5rem 1.5rem !important;
+    }
+  }
+  
+  @media (max-width: 354px) {
+    .event-card-btn {
+      padding: 0.3rem 0.9rem !important;
+    }
+  }
+  </style>
+  
+  <div class="event-card">
+  <div class ="event-card-img-container">
+  <img src=${image} alt="event-img" className="event-card-img" />
+  </div>
+  <div class="card-text-details">
+  <p class="event-card-title">${event}</p>
+  <p class="event-card-date">
+  Date: <span>${date}</span>
+  </p>
+  <div class="event-card-desc">
+  ${description}
+  </div>
+  </div>
+  </div>
+  </body>
+`;
 };
 
 const notifyall = (event, date, url) => {
