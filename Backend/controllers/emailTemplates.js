@@ -1,3 +1,9 @@
+const marked = require('marked')
+const createDomPurify = require('dompurify')
+const { JSDOM } = require('jsdom')
+const dompurify = createDomPurify(new JSDOM().window)
+
+
 const otpTemplate = (user, otp) => {
   return `<body>
 <div>
@@ -41,6 +47,7 @@ const otpTemplate = (user, otp) => {
 };
 
 const announceall = (event, date, image, description, url) => {
+    description = dompurify.sanitize(marked.parse(description))
   return ` <body> 
               <div>
               Dear student, AECCC is going to host <b>${event}</b> on ${date}.
