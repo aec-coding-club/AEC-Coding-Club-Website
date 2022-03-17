@@ -88,8 +88,9 @@ exports.alluser = async (req, res) => {
       branch: true,
     }
   );
+  allusers.reverse();
   console.log(allusers);
-  res.json({ users: allusers });
+  res.json({ users: allusers.reverse() });
 };
 
 exports.eventsdata = async (req, res) => {
@@ -110,5 +111,46 @@ exports.eventsdata = async (req, res) => {
     res.json({ eventdata });
   } catch (error) {
     return res.json({ error: error.message });
+  }
+};
+
+exports.userupdate = async (req, res) => {
+  try {
+    //!  Taking User ID from Frontend eg: AECCC/CSE....
+    const id = req.params.id;
+
+    const { firstName, lastName, email, contact_no, branch, batch, role } =
+      req.body;
+
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !contact_no ||
+      !branch ||
+      !batch ||
+      !role
+    ) {
+      return res.json({
+        success: false,
+        error: "All Fields Are Required",
+      });
+    }
+
+    const updateUser = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        firstName: firstName,
+        lastName: lastName,
+        contact_no: contact_no,
+        email: email,
+        role: role,
+        branch: branch,
+        batch: batch,
+      }
+    );
+    res.json(updateUser);
+  } catch (error) {
+    return res.json({ error: error.message, success: false });
   }
 };
