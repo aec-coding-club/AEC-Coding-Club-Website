@@ -6,6 +6,7 @@ const {
   yeardata,
   alluser,
   eventsdata,
+  userupdate,
 } = require("../controllers/alllogs");
 const {
   isAuthenticated,
@@ -18,5 +19,12 @@ router.get("/branchdata", isAuthenticated, isActivated, isAdmin, branchdata);
 router.get("/yeardata", isAuthenticated, isActivated, isAdmin, yeardata);
 router.get("/alluser", isAuthenticated, isActivated, isAdmin, alluser);
 router.get("/eventsdata", isAuthenticated, isActivated, isAdmin, eventsdata);
+router.get(
+  "/updateuser/:id",
+  isAuthenticated,
+  isActivated,
+  isAdmin,
+  userupdate
+);
 
 module.exports = router;
