@@ -11,13 +11,13 @@ const {
 
 exports.announceall = async (req, res) => {
   // date = req.body.eventDate;
-  const { eventTitle, eventDate, evenetImage, eventDescription } = req.body;
+  const { eventTitle, eventTime, eventImage, eventDetails } = req.body;
 
-  if (!eventTitle || !eventDate || !evenetImage || !eventDescription) {
-    eventTitle = "Not Available";
-    eventDate = "Not Available";
-    evenetImage = "Not Available";
-    eventDescription = "Not Available";
+  if (!eventTitle || !eventTime || !eventImage || !eventDetails) {
+    res.json({
+      message: "All Data is required",
+      success: false,
+    });
   }
   let emails = await User.find({}, { _id: false, email: true });
   let emaillist = [];
@@ -30,9 +30,9 @@ exports.announceall = async (req, res) => {
     emaillist,
     announceall(
       eventTitle,
-      eventDate,
-      evenetImage,
-      eventDescription,
+      eventTime,
+      eventImage,
+      eventDetails,
       "https://testaeccc.web.app/events"
     )
   );
