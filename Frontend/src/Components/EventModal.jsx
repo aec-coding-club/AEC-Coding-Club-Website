@@ -152,7 +152,7 @@ const EventModal = (props) => {
 
               <div className='input-wrapper'>
                 <label>
-                  <div className='label'>Details:</div>
+                  <div className='label label-details'>Details: <a href='https://www.markdownguide.org/basic-syntax/' style={{textDecoration: "none", color: "#D62828", textAlign: "right", position: "absolute", right: "0"}} target='_blank'><b title='Markdown Reference'>ⓘ</b></a></div>
 
                   <textarea
                     value={editEventDetails}

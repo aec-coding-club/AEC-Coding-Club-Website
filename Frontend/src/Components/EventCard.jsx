@@ -6,6 +6,7 @@ import { Api } from '../backend'
 import axios from 'axios'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import ReactMarkdown from 'react-markdown'
 
 export const EventCard = ({
   cardData,
@@ -103,7 +104,7 @@ export const EventCard = ({
             Date: <span>{eventTime.split('T')[0]}</span>
           </p>
           <div className='event-card-desc'>
-            <p>{eventDetails}</p>
+            <ReactMarkdown>{eventDetails}</ReactMarkdown>
           </div>
           <div className='event-btn-wrapper'>
             {tokenChecker ? (

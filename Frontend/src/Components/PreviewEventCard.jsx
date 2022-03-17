@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
 const PreviewEventCard = ({ cardEditData }) => {
   const {
@@ -34,7 +35,7 @@ const PreviewEventCard = ({ cardEditData }) => {
             </span>
           </p>
           <div className='event-card-desc'>
-            <p>{editEventDetails || 'Default Description'}</p>
+            <ReactMarkdown>{editEventDetails || 'Default Description'}</ReactMarkdown>
           </div>
           {!dashboardEvents && (
             <div className='event-btn-wrapper'>
