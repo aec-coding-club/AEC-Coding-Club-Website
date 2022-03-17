@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import ReactMarkdown from 'react-markdown'
+import moment from 'moment'
 
 export const EventCard = ({
   cardData,
@@ -41,11 +42,24 @@ export const EventCard = ({
     setEditEventImage(eventImage)
     setEditEventDetails(eventDetails)
   }
+
+  // this will notify all the users
+  function notify(id) {
+    const mailData = {
+      eventTitle,
+      eventImage,
+      eventDetails,
+      eventTime: moment(eventTime).format('lll'),
+    }
+
+    console.log('MAIL DATA: ', mailData)
+  }
+
   const signInFirst = () => {
     console.log('Log In to your account to Register in this event')
     toast.error('Sign In To Register To The Event', {
-      theme: "dark",
-      onClick : () => navigate('/signin') 
+      theme: 'dark',
+      onClick: () => navigate('/signin'),
     })
   }
 
@@ -63,11 +77,11 @@ export const EventCard = ({
       console.log('User data :- ', parseddata)
       navigate('/dashboard')
       toast.success('You have successfully registered', {
-        theme: "dark"
+        theme: 'dark',
       })
     } catch {
       toast.error('You are already Registered', {
-        theme: "dark"
+        theme: 'dark',
       })
     }
   }
@@ -139,6 +153,12 @@ export const EventCard = ({
                       onClick={() => onEdit(_id)}
                     >
                       Edit
+                    </button>
+                    <button
+                      className='btn event-card-btn'
+                      onClick={() => notify(_id)}
+                    >
+                      Notify
                     </button>
                     <button
                       className='btn event-card-btn'

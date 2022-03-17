@@ -43,13 +43,13 @@ const PreviewEventCard = ({ cardEditData, imgError, setImgError }) => {
             </span>
           </p>
           <div className='event-card-desc'>
-            <ReactMarkdown>{editEventDetails || 'Default Description'}</ReactMarkdown>
+            <ReactMarkdown>
+              {editEventDetails || 'Default Description'}
+            </ReactMarkdown>
           </div>
           {!dashboardEvents && (
             <div className='event-btn-wrapper'>
               <button className='btn'>Register</button>
-              <button className='btn'>Edit</button>
-              <button className='btn'>Delete</button>
             </div>
           )}
         </div>
