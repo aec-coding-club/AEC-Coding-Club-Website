@@ -1,8 +1,14 @@
 import React from 'react'
+import ReactMarkdown from 'react-markdown'
 
-const PreviewEventCard = ({ cardEditData }) => {
-  const { editEventTitle, editEventImage, editEventTime, editEventDetails } =
-    cardEditData
+const PreviewEventCard = ({ cardEditData, imgError, setImgError }) => {
+  const {
+    editEventTitle,
+    editEventImage,
+    editEventTime,
+    editEventDetails,
+    dashboardEvents,
+  } = cardEditData
 
   return (
     <>
@@ -12,6 +18,14 @@ const PreviewEventCard = ({ cardEditData }) => {
             src={editEventImage || '../Assets/events/demo-event.jpg'}
             alt='event-img'
             className='event-card-img'
+            onLoad={(e) => {
+              if (e.target.src.includes('invalid-image')) setImgError(true)
+              else setImgError(false)
+            }}
+            onError={(e) => {
+              e.target.src = '../Assets/invalid-image.jpg'
+              setImgError(true)
+            }}
           />
         </div>
         <div className='card-text-details'>
@@ -29,13 +43,15 @@ const PreviewEventCard = ({ cardEditData }) => {
             </span>
           </p>
           <div className='event-card-desc'>
-            <p>{editEventDetails || 'Default Description'}</p>
+            <ReactMarkdown>
+              {editEventDetails || 'Default Description'}
+            </ReactMarkdown>
           </div>
-          <div className='event-btn-wrapper'>
-            <button className='btn'>Register</button>
-            <button className='btn'>Edit</button>
-            <button className='btn'>Delete</button>
-          </div>
+          {!dashboardEvents && (
+            <div className='event-btn-wrapper'>
+              <button className='btn'>Register</button>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap');
 
 *,
 *::before,
@@ -13,15 +13,39 @@
   --nav-body: rgba(234, 226, 183, 1);
   --btn-bg: rgba(214, 40, 40, 1);
   --nav-drop-shadow: rgba(19, 19, 19, 0.548);
+
+  /* for admin page */
+  --background-1: rgba(128, 128, 128, 0.219);
+  --background-2: #485461;
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
+  overflow: overlay;
   overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   background-color: var(--background-bg);
   color: #fff;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track {
+  padding: 0 15px;
+  border-radius: 16px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--nav-body);
+  border-radius: 16px;
+  background-clip: content-box;
+  border: 3px solid transparent;
+  max-height: 20px;
+}
+
+.modal-showed {
+  overflow-y: hidden;
 }
 
 .btn {
@@ -35,6 +59,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 400ms ease;
+  margin: 0px 2px;
 }
 
 .btn:hover {

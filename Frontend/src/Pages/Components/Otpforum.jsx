@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import { Api } from '../../backend';
+import { toast } from 'react-toastify'
 
 const Otpforum = () => {
   const [registerdata, setRegisterdata] = useState({
@@ -29,6 +30,9 @@ const Otpforum = () => {
       setRegisterdata({
         otp: '',
       });
+      toast.error(dataposted.data.message, {
+        theme: "dark"
+      })
       navigate('/verify');
     }
     console.log(dataposted);

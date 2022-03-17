@@ -7,12 +7,12 @@ exports.dashboard = async (req, res) => {
   const user_data = {
     name: name,
     uid: uid,
-    events: user.event,
+    events: user.event.reverse(),
     pimage: user.profilePicture,
     branch: user.branch,
     batch: user.batch,
     email: user.email,
-    success: true,
+    role: user.role,
   };
-  return res.json({ user_data, token: true });
+  return res.json({ user_data, token: true, success: true, });
 };

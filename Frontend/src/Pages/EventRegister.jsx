@@ -1,6 +1,6 @@
 import React from 'react';
 
-// title, description, 
+// title, description,
 
 export const EventRegister = () => {
   return <div></div>;

@@ -1,3 +1,9 @@
+.dashboard-events-header {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
 .events-container {
   width: 100%;
   margin: 2.5rem auto;
@@ -6,4 +12,20 @@
   align-items: stretch;
   flex-wrap: wrap;
   gap: 2rem;
+}
+#event-loading-img {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+@media (max-width: 500px) {
+  #event-loading-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media (max-width: 425px) {
+  #event-loading-img {
+    left: 30%;
+  }
 }

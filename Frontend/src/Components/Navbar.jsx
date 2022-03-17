@@ -1,48 +1,54 @@
-import React, { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { FaBars } from 'react-icons/fa'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-import Logo from "../Assets/logo.svg";
-import UserImage from "../Assets/members/member.png";
+import Logo from '../Assets/logo.svg'
+import UserImage from '../Assets/members/member.png'
 // import NavbarSvg from "../Assets/navbarsvg.svg";
-import SideBar from "./SideBar";
-import Cookies from "js-cookie";
-import "./styles/Navbar.css";
+import SideBar from './SideBar'
+import Cookies from 'js-cookie'
+import './styles/Navbar.css'
+import { toast } from 'react-toastify'
+
+import axios from 'axios'
+import { Api } from '../backend'
 
 const NavCompoA = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <>
       <div className='nav-btn-wrapper'>
-        <button className='btn sign-up' onClick={() => navigate("/signup")}>
+        <button className='btn sign-up' onClick={() => navigate('/signup')}>
           Sign Up
         </button>
-        <button className='btn sign-in' onClick={() => navigate("/signin")}>
+        <button className='btn sign-in' onClick={() => navigate('/signin')}>
           Sign In
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-const NavCompoB = ({ userImg, userNameText }) => {
-  const navigate = useNavigate();
-  console.log(userNameText);
+const NavCompoB = ({ userImg, userNameText, userRole }) => {
+  console.log(userNameText)
 
   const signOut = () => {
-    localStorage.clear();
-    sessionStorage.clear();
-    window.location.reload();
-  };
+    localStorage.clear()
+    sessionStorage.clear()
+    window.location.reload()
+  }
 
   return (
     <>
       <div className='nav-btn-wrapper'>
         <img className='logged-user-image' src={userImg} />
-        <NavLink to='/dashboard' className='nav-link'>
+        <NavLink
+          to={userRole <= 2 ? '/dashboard' : '/admin/overview'}
+          className='nav-link'
+        >
           <div
             className='user-name-text'
-            style={{ textDecoration: "none", color: "#D62828" }}
+            style={{ textDecoration: 'none', color: '#D62828' }}
           >
             {userNameText}
           </div>
@@ -52,34 +58,42 @@ const NavCompoB = ({ userImg, userNameText }) => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
 const Navbar = ({ userImage, userNameText }) => {
-  const [tokenChecker, setTokenChecker] = useState(false);
+  const [tokenChecker, setTokenChecker] = useState(false)
+  const [userRole, setUserRole] = useState(0)
+
   const checkToken = async () => {
-    const token = localStorage.getItem("token");
-    console.log(token);
+    const token = localStorage.getItem('token')
+    console.log(token)
     if (token) {
-      setTokenChecker(true);
+      setTokenChecker(true)
+      // TODO: Set the Role of the user
+      const parseddata = await axios.get(`${Api}dashboard`, {
+        withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      setUserRole(parseddata.data.user_data.role)
     }
-  };
+  }
   // @TODO: Add user styles and pop up Component
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const navigate = useNavigate()
 
   function handleSideBar(sidebarState) {
-    setSidebarOpen(sidebarState);
+    setSidebarOpen(sidebarState)
   }
 
   useEffect(() => {
-    checkToken();
-  });
+    checkToken()
+  }, [])
 
   return (
     <nav>
-      <div className='logo' onClick={() => navigate("/")}>
+      <div className='logo' onClick={() => navigate('/')}>
         <img src={Logo} alt='AECCC-LOGO' className='logo-image' />
         <div className='logo-text'>
           <p className='logo-name'>aec coding club</p>
@@ -98,7 +112,11 @@ const Navbar = ({ userImage, userNameText }) => {
         </NavLink>
       </div>
       {tokenChecker ? (
-        <NavCompoB userImg={userImage} userNameText={userNameText} />
+        <NavCompoB
+          userImg={userImage}
+          userRole={userRole}
+          userNameText={userNameText}
+        />
       ) : (
         <NavCompoA />
       )}
@@ -106,12 +124,19 @@ const Navbar = ({ userImage, userNameText }) => {
       <div className='menu-toggle-icon' onClick={() => handleSideBar(true)}>
         <FaBars />
       </div>
-      <SideBar sidebarOpen={sidebarOpen} handleSideBar={handleSideBar} />
+      <SideBar
+        tokenChecker={tokenChecker}
+        userImg={userImage}
+        userNameText={userNameText}
+        sidebarOpen={sidebarOpen}
+        handleSideBar={handleSideBar}
+        userRole={userRole}
+      />
       {/* <div className='nav-curve-wrapper'>
         <img src={NavbarSvg} alt='curve' />
       </div> */}
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

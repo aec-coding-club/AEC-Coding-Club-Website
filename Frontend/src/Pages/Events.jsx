@@ -5,9 +5,24 @@ import Navbar from '../Components/Navbar'
 import EventModal from '../Components/EventModal'
 import EventsContainer from '../Components/EventsContainer'
 import UserContext from './Context/LoggedUserContext'
+import { Api } from '../backend'
+import axios from 'axios'
 
 const Events = ({ tokenChecker }) => {
-  const [modalShow, setModalShow] = React.useState(false)
+  const [modalShow, setModalShow] = useState(false)
+  const [editEventID, setEditEventID] = useState('')
+  const [userRole, setUserRole] = useState(0)
+
+  const fetchUserData = async () => {
+    const authToken = localStorage.getItem('token')
+    const parseddata = await axios.get(`${Api}dashboard`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    })
+    console.log('User data :- ', parseddata)
+    console.log('User Role :- ', parseddata.data.user_data.role)
+    setUserRole(parseddata.data.user_data.role)
+  }
 
   function onHide() {
     setModalShow(false)
@@ -44,6 +59,10 @@ const Events = ({ tokenChecker }) => {
     setEditEventDetails,
   }
 
+  useEffect(() => {
+    fetchUserData()
+  }, [])
+
   return (
     <>
       <main className='events-main'>
@@ -64,7 +83,7 @@ const Events = ({ tokenChecker }) => {
         <div className='events-section'>
           <div className='header-wrapper'>
             <h3 className='events-section-header'>Upcoming Events</h3>
-            {tokenChecker && (
+            {userRole >= 2 && (
               <button className='event-btn' onClick={handleEditClick}>
                 <div>Add Event</div>{' '}
                 <div>
@@ -78,11 +97,15 @@ const Events = ({ tokenChecker }) => {
             addEvent={true}
             modalShow={modalShow}
             onHide={onHide}
+            editEventID={editEventID}
           />
         </div>
         <EventsContainer
           setModalShow={setModalShow}
           cardEditData={cardEditData}
+          tokenChecker={tokenChecker}
+          userRole={userRole}
+          setEditEventID={setEditEventID}
         />
       </main>
     </>

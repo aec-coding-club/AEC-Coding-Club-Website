@@ -84,6 +84,11 @@
   color: #111;
 }
 
+.preview .event-card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
 .event-card-img-container {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -143,4 +148,23 @@
   background-color: #111;
   color: #fff;
   font-size: 0.85rem;
+}
+.event-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/*  Mobile View ---> */
+@media (min-width: 425px) {
+  .event-card-btn {
+    padding: 0.5rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 354px) {
+  .event-card-btn {
+    padding: 0.3rem 0.9rem !important;
+  }
 }

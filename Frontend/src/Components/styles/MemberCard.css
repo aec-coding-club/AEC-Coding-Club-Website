@@ -1,9 +1,9 @@
 .member-card {
-  width: 200px;
-  min-height: 200px;
+  width: 210px;
+  /* height: 210px; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   padding: 0.75rem;
   transition: 0.3s ease-in-out;
@@ -16,8 +16,8 @@
 }
 
 .card-img-container {
-  width: 80%;
-  height: 80%;
+  width: 160px;
+  height: 160px;
   border-radius: 10%;
   overflow: hidden;
   transition: 0.3s ease-in-out;
@@ -30,6 +30,7 @@
 .card-name {
   font-weight: 600;
   margin-block: 0.5rem;
+  text-align: center;
 }
 
 .card-links {
@@ -79,33 +80,35 @@
 @media (max-width: 500px) {
   .member-card {
     width: 150px;
-    min-height: 150px;
+    /* min-height: 150px; */
   }
 }
 
 /*Mobile View*/
-@media (max-width : 425px){
-  .card-name{
+@media (max-width: 425px) {
+  .card-name {
     text-align: center;
   }
-  .member-card{
-    /* border-radius: 50%; */
+  .member-card {
+    height: auto;
     background-color: rgba(0, 0, 0, 0.308);
   }
   .card-img-container {
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    height: auto;
   }
   .card-links {
     height: 2.5rem;
     opacity: 1;
     position: initial;
-    background-color:transparent;
+    background-color: transparent;
+    margin-top: auto;
   }
 }
 
-@media (max-width : 350px){
-  .member-card{
+@media (max-width: 350px) {
+  .member-card {
     padding: 12px 8px;
     width: 130px;
     min-height: 85px;
