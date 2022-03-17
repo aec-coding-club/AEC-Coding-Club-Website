@@ -46,6 +46,19 @@ const otpTemplate = (user, otp) => {
 </body>`;
 };
 
+// const announceall = (event, date, image, description, url) => {
+//   return ` <body> 
+//               <div>
+//               Dear student,
+//              AECCC is going to host <b>${event}</b> on ${date}.
+//               <img src=${image} alt="Event Image">
+//               <br>
+//               ${description}
+//               <br>
+//               Please check it on official site here ${url}
+//               </div>
+//         </body>`;
+// };
 const announceall = (event, date, image, description, url) => {
     description = dompurify.sanitize(marked.parse(description))
   return ` <body> 
