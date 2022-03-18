@@ -109,7 +109,7 @@ exports.eventsdata = async (req, res) => {
         updatedAt: false,
       }
     );
-    res.json({ eventdata });
+    res.json({ eventdata : eventdata.reverse()});
   } catch (error) {
     return res.json({ error: error.message });
   }

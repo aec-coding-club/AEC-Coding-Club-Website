@@ -190,7 +190,7 @@ const EventModal = (props) => {
                     placeholder="Add Event Description..."
                     className="modal-textarea"
                     style={{ resize: "none" }}
-                    maxLength="150"
+                    maxLength="5000"
                   />
                 </label>
               </div>
