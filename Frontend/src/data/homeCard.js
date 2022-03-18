@@ -48,7 +48,7 @@ const IntroCardsData = [
     title: 'Value',
     desc : "We believe that helping each other is the only way. We take care and always look to get the best out of everyone." 
   },
-  
+
 ]
 
 export {Winners, IntroCardsData};

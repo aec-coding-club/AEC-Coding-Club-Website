@@ -12,6 +12,7 @@
     color: var(--btn-bg);
     transform: translateY(25px);
 }
+
 .intro-card-icon{
     text-align: center;
 }

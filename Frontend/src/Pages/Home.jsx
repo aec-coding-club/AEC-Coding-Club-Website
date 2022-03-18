@@ -43,6 +43,8 @@ const Home = () => {
 
 
         <div className='content'>
+
+
           {/* <button
 
         <div className="content">
@@ -80,7 +82,9 @@ const Home = () => {
           <div className="sections">
             <p className="section-heading"  data-aos="fade-up">
               WHO ARE WE ?
+
               <hr className="intro-head-hr"/>
+
             </p>
             <div className="intro-cards">
               {IntroCardsData.map((items,index)=>{
@@ -90,10 +94,17 @@ const Home = () => {
               })}
             </div>
           </div>
+
           <div className="sections objective-sec" data-aos="fade-up">
             <p className="section-heading">
               Objectives
               <hr className="intro-head-hr"/>
+
+          <div className="sections" data-aos="fade-up">
+            <p className="section-heading">
+              Objectives
+              <hr id="inro-head-hr"/>
+
             </p>
             <div className="section-text">
               <p className="section-text-body">
