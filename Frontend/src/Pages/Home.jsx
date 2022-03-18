@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
+import Typed from "typed.js";
 import Navbar from "../Components/Navbar";
 import UserContext from "./Context/LoggedUserContext";
 import "./styles/Home.css";
@@ -7,12 +8,17 @@ import "./styles/Home.css";
 import HomeCard from "./Components/HomeCard";
 import {Winners, IntroCardsData} from "../data/homeCard";
 import Slider from "./Components/Slider";
+import Logo from "../Assets/logo.svg";
 
 import Numbers from "../Components/Numbers";
+
 import {IntroCards} from './Components/IntroCards';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+import TypedComponent from "./Components/Typed";
+
 
 const Home = () => {
   const [show, setShow] = useState(true);
@@ -20,25 +26,38 @@ const Home = () => {
     AOS.init({duration:1000});
   }, [])
 
+  const date = new Date();
+
+
   return (
     <>
-      <div className='home-main'>
-        <div className='home-pic'>
-          <Slider />
+      <div className="home-main">
+        <div className="header">
+          <div className="home-pic">
+            <img src={Logo}></img>
+          </div>
+          <div className="home-text">
+            <TypedComponent/>
+          </div>
         </div>
 
-        <div className='content'>
+
+//         <div className='content'>
           {/* <button
+
+        <div className="content">
+          <button
+
             onClick={() => setShow(!show)}
-            id='btntogglediv'
-            className='btn'
+            id="btntogglediv"
+            className="btn"
           >
             Coding Club Objective
           </button>
 
           {show ? (
-            <section className='objective-section'>
-              <div className='objective'>
+            <section className="objective-section">
+              <div className="objective">
                 <span>Coding Club </span>
                 <p>
                   The AEC Coding Club started its journey on 11 April 2021. Its
@@ -53,7 +72,6 @@ const Home = () => {
                   Online Quiz Contest, etc. Other events like Expert's Talk,
                   Alumni Talk, and Hands-on practical workshops for various
                   programming basics are planned for the future.
-
                 </p>
               </div>
             </section>
@@ -95,22 +113,22 @@ const Home = () => {
             </div>
           </div>
 
-          <div className='winners'>
+          {/* <div className='winners'>
             <h2 className='winners-heading'>Last Event Winners</h2>
             <div className='winner-cards'>
               {Winners.map((props) => {
                 return <HomeCard key={props.id} data={props} />;
               })}
             </div>
-          </div>
+          </div> */}
 
-          <section className='aeccc-numbers'>
+          <section className="aeccc-numbers">
             <Numbers />
           </section>
         </div>
 
         <footer style={{ textAlign: "center" }}>
-          <span>Copyright @AEC Coding Club</span>
+          <span>Copyright AEC Coding Club @{date.getFullYear()}</span>
         </footer>
       </div>
     </>
