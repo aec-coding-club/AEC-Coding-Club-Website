@@ -21,7 +21,7 @@ const AdminUsers = () => {
   const usersPerPage = 10
   const usersVisited = pageNumber * usersPerPage
 
-  const displayUsers = userData
+  const displayUsers = displayData
     .slice(usersVisited, usersVisited + usersPerPage)
     .map((user) => {
       return <AdminUser user={user} key={uuidv4()} />
