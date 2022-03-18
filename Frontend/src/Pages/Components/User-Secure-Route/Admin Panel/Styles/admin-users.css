@@ -140,6 +140,33 @@
   font-size: 1.25rem;
 }
 
+.admin-modal-container {
+  display: grid;
+  place-items: center;
+}
+
+.admin-modal-container .event-modal {
+  max-width: 600px;
+}
+
+.modal-admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--btn-bg);
+  margin-bottom: 0.5rem;
+}
+
+.modal-admin-header svg {
+  cursor: pointer;
+}
+
+.admin-modal-container .event-modal .btn {
+  margin-top: 1rem;
+  border-radius: 0.35rem;
+}
+
 @media (max-width: 900px) {
   .users-wrapper {
     padding: 1rem 2rem;
