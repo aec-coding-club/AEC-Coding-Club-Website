@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const EventBlock = ({eventdetails}) => {
+const EventBlock = ({ eventdetails }) => {
   return (
     <>
-        <h1>{eventdetails.eventTitle}</h1>
-        <h2>{eventdetails.eventTime.split("T")[0]}</h2>
-        <h3>{eventdetails.userId.length}</h3>
+      <div className="event-block">
+        <img className='event-profile' src={eventdetails.eventImage} />
+        <p>{eventdetails.eventTitle}</p>
+        <p>{eventdetails.eventTime.split("T")[0]}</p>
+        <p>{eventdetails.userId.length}</p>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default EventBlock
+export default EventBlock;

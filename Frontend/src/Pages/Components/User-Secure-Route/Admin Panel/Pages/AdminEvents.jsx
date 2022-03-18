@@ -3,6 +3,7 @@ import { Api } from "../../../../../backend";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid'
 import EventBlock from '../Components/EventBlock'
+import '../Styles/admin-event.css'
 
 const AdminEvents = () => {
   const [eventData, seteventdata] = useState([]);
@@ -29,15 +30,15 @@ const AdminEvents = () => {
 
   return (
     <>
-      <ol>
-        <div>
+      <div className='admin-users-wrapper'>
+        <div className='admin-users-container'>
           {loading ? (
             <p>Loading...</p>
           ) : (
             displayData.map((event) => <EventBlock key={uuidv4()} eventdetails={event} />)
           )}
         </div>
-      </ol>
+      </div>
     </>
   );
 };

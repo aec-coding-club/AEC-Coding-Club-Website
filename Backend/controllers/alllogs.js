@@ -101,7 +101,7 @@ exports.eventsdata = async (req, res) => {
       {
         // _id: false,
         eventDetails: false,
-        eventImage: false,
+        // eventImage: false,
         // eventTime: false,
         // userId: true,
         // email: false,
