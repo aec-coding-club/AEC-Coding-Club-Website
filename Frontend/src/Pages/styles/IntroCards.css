@@ -1,0 +1,21 @@
+.intro-Card{
+    max-width: 25%;
+    text-align: center;
+    padding: 1.5rem 1rem ;
+    line-height: 2;
+    margin-top: 2rem;
+    border-radius: .8rem;
+    transition: all 800ms !important ;
+}
+.intro-Card:hover{
+    background-color: var(--nav-body);
+    color: var(--btn-bg);
+    transform: translateY(25px);
+}
+.intro-card-icon svg{
+    width: 100px ;
+    height: 100px;
+}
+.intro-card-title{
+    font-size: 2rem;
+}
