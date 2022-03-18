@@ -25,6 +25,7 @@ h1 {
 .details {
   margin-bottom: 20px;
   font-size: 1.1rem;
+  align-items: center;
 }
 
 .asterik {
@@ -64,6 +65,11 @@ h1 {
   border: none;
   outline: 0.5px solid rgba(214, 40, 40, 1);
   box-shadow: 0 0 3px 1px rgba(214, 40, 40, 1);
+}
+
+.otp__input__field {
+  width: calc(10rem + 3vw);
+  align-self: center;
 }
 
 .signin__input__field {

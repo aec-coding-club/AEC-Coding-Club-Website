@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Axios from 'axios'
 import { Api } from '../backend'
-import otpImg from '../Assets/otp.png'
+import otpImg from '../Assets/otp.svg'
 import Otpforum from './Components/Otpforum'
 import './styles/SigninSignup.css'
 
