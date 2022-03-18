@@ -78,7 +78,7 @@ exports.alluser = async (req, res) => {
   const allusers = await User.find(
     {},
     {
-      _id: false,
+      _id: true,
       uid: true,
       profilePicture: true,
       firstName: true,
@@ -139,7 +139,7 @@ exports.userupdate = async (req, res) => {
         role: role,
       }
     );
-    res.json(updateUser);
+    res.json({updateUser, success : true});
   } catch (error) {
     return res.json({ error: error.message, success: false });
   }
