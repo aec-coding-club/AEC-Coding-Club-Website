@@ -87,10 +87,6 @@ const Home = () => {
           </div>
 
           <div className='sections objective-sec' data-aos='fade-up'>
-            <p className='section-heading'>
-              Objectives
-              <hr className='intro-head-hr' />
-            </p>
 
             <div className='sections' data-aos='fade-up'>
               <p className='section-heading'>
