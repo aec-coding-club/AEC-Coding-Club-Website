@@ -21,6 +21,9 @@ const eventSchema = new Schema(
       required: true,
       required: true,
     },
+    name: {
+      type: Array,
+    },
     userId: {
       type: Array,
     },

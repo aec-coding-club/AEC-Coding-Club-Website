@@ -336,7 +336,13 @@ exports.registerevent = async (req, res) => {
     }
     const updateevent = await event.updateOne(
       { _id: id },
-      { $push: { email: req.user.email, userId: user_id } }
+      {
+        $push: {
+          name: `${tempuser.firstName} ${tempuser.lastName}`,
+          email: req.user.email,
+          userId: user_id,
+        },
+      }
     );
     console.log(updateevent);
     const updateuser = await User.updateOne(
