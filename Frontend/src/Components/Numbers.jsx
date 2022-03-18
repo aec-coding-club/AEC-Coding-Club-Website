@@ -4,7 +4,7 @@ import "./styles/Numbers.css";
 const Numbers = () => {
   return (
     <>
-      <h2 className='aeccc-numbers-heading'>Some count that matters</h2>
+      <h2 className='aeccc-numbers-heading'>So far we have witnessed</h2>
       <div className='aeccc-count-container'>
         <div className='count-box'>
           <p id='downloads__count'>1000+</p>
@@ -19,8 +19,8 @@ const Numbers = () => {
           <p id='contri__description'>Events</p>
         </div>
         <div className='count-box'>
-          <p id='programs__count'>3+</p>
-          <p id='programs__description'>Hackathons</p>
+          <p id='programs__count'>10+</p>
+          <p id='programs__description'>Online/Offline contests</p>
         </div>
       </div>
     </>
