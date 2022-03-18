@@ -51,6 +51,7 @@ export const membersData = [
     img: require('../Assets/members/SoumaliGorai.jpg'),
     linkedin: 'https://www.linkedin.com/in/soumali-gorai-566b01220/',
     github: 'https://github.com/soumali28',
+    additional: "https://soumali.netlify.app/",
   },
   {
     name: 'Aritra Biswas',

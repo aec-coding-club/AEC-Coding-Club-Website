@@ -39,15 +39,16 @@ const IntroCardsData = [
     desc : "Working towards the improvement of campus's coding culture by organizing regular coding classes,coding contests and geeky sessions." 
   },
   {
-    icon: < BsHeartFill />,
-    title: 'Value',
-    desc : "We believe that helping each other is the only way. We take care and always look to get the best out of everyone." 
-  },
-  {
     icon: < FiUsers />,
     title: 'Vision',
     desc : "To grow as a strong community in the world of coding, to make impact in various fields and uphold the integrity of Asansol Engineering College as a technical institution." 
   },
+  {
+    icon: < BsHeartFill />,
+    title: 'Value',
+    desc : "We believe that helping each other is the only way. We take care and always look to get the best out of everyone." 
+  },
+
 ]
 
 export {Winners, IntroCardsData};
