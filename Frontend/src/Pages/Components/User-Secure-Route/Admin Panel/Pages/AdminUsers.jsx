@@ -8,10 +8,28 @@ import '../Styles/admin-users.css'
 
 import AdminUser from '../Components/AdminUser'
 
+import ReactPaginate from 'react-paginate'
+
 const AdminUsers = () => {
   const [userData, setuserdata] = useState([])
   const [displayData, setDisplayData] = useState([])
   const [loading, setLoading] = useState(false)
+
+  // for pagination
+  const [pageCount, setPageCount] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0)
+  const usersPerPage = 10
+  const usersVisited = pageNumber * usersPerPage
+
+  const displayUsers = userData
+    .slice(usersVisited, usersVisited + usersPerPage)
+    .map((user) => {
+      return <AdminUser user={user} key={uuidv4()} />
+    })
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected)
+  }
 
   const fetchUser = async () => {
     setLoading(true)
@@ -29,6 +47,8 @@ const AdminUsers = () => {
 
   useEffect(() => {
     fetchUser()
+    if (userData.length > 0)
+      setPageCount(Math.ceil(userData.length / usersPerPage))
   }, [])
 
   const onSearch = (e) => {
@@ -67,7 +87,20 @@ const AdminUsers = () => {
             <p>Enter Correct User Details</p>
           </div>
         ) : (
-          displayData.map((user) => <AdminUser key={uuidv4()} user={user} />)
+          <>
+            <div className='user-data-container'>{displayUsers}</div>
+            <ReactPaginate
+              previousLabel={'Previous'}
+              nextLabel={'Next'}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              containerClassName={'paginationBttns'}
+              previousLinkClassName={'previousBttn'}
+              nextLinkClassName={'nextBttn'}
+              disabledClassName={'paginationDisabled'}
+              activeClassName={'paginationActive'}
+            />
+          </>
         )}
       </div>
     </div>
