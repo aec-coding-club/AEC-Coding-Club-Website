@@ -7,7 +7,9 @@ const ConfirmModal = ({
   eventTitle,
   handleConfirmModal,
   eventId,
-  onDelete,
+  func,
+  type,
+  message,
 }) => {
   const [classs, setClasss] = useState('')
 
@@ -20,20 +22,20 @@ const ConfirmModal = ({
     <div className={`confirm-wrapper ${classs}`}>
       <div className={`confirm-modal ${classs}`}>
         <h3>
-          Delete Event <p className='name-title'>{eventTitle}</p>
+          {type === 'Delete'
+            ? 'Delete Event'
+            : (type = 'Notify' ? 'Notify Users' : '')}{' '}
+          <p className='name-title'>{eventTitle}</p>
         </h3>
-        <p className='confirm-message'>
-          Are you sure you want to delete this Event? This will remove the Event
-          and can't be undone.
-        </p>
+        <p className='confirm-message'>{message}</p>
         <button
           className='btn btn-cancel'
           onClick={() => handleConfirmModal('')}
         >
           No, Cancel
         </button>
-        <button className='btn btn-confirm' onClick={() => onDelete(eventId)}>
-          Yes, Delete
+        <button className='btn btn-confirm' onClick={() => func(eventId)}>
+          Yes, {type}
         </button>
       </div>
     </div>

@@ -2,6 +2,13 @@
   padding: 2rem 5rem;
 }
 
+.user-data-container {
+  max-width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
 .search-input-container {
   display: flex;
   justify-content: center;
@@ -42,10 +49,10 @@
 }
 
 .admin-user {
-  max-width: 900px;
+  max-width: 1000px;
   background-color: var(--background-1);
   margin: 0 auto;
-  margin-block: 1rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 0.35rem;
 }
@@ -63,6 +70,19 @@
 
 .admin-user-icons svg {
   cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.admin-user-icons svg:hover {
+  transform: scale(1.1);
+}
+
+.icon-edit:hover {
+  fill: yellow;
+}
+
+.icon-ban:hover {
+  fill: var(--btn-bg);
 }
 
 .user-image {

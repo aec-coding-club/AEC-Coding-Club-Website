@@ -1,18 +1,15 @@
 .aeccc-numbers {
   color: black;
-  padding: 5rem 0;
-  display: flex;
+  padding: 2rem 0;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.aeccc-numbers-heading {
-  margin-bottom: 2.5rem;
-  display: block;
-  text-align: center;
-  font-size: 2rem;
-  color: white;
+.intro-head-hr{
+  width: 170px;
+  margin: auto;
 }
 
 .aeccc-count-container {
