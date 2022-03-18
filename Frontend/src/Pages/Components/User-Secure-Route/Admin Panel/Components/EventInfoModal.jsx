@@ -12,6 +12,7 @@ export const EventInfoModal = ({ modalShow, onHide, event }) => {
     slNo: index + 1,
     email: data,
     userId: event.userId[index],
+    name: event.name[index]
   }))
 
   useEffect(() => {
@@ -31,11 +32,11 @@ export const EventInfoModal = ({ modalShow, onHide, event }) => {
       <div className={modalClass}>
         <div className='modal-admin-header'>
           <h3>
-            Participants<span> {event.eventTitle}</span>
+            Participants List - <span> {event.eventTitle}</span>
           </h3>
           <FaTimes onClick={onHide} fontSize='1.25rem' fill='#d62828' />
         </div>
-        <ExportReactCSV csvData={eventData} fileName={`Participants`} />
+        <ExportReactCSV csvData={eventData} fileName={event.eventTitle} />
       </div>
       {console.log('Modal Data', eventData)}
     </div>
