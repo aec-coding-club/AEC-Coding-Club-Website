@@ -12,7 +12,7 @@ const otpTemplate = (user, otp) => {
             <div style="border:1px solid rgb(204,204,204)">
                 <div
                     style="text-align:center;min-height:115px;background-image:url(https://storage.googleapis.com/vedantu-fos-qa/email-marketing/common/email-template-pattern.png);color:rgb(255,255,255);font-size:40px;line-height:10=0px;background-color:#EAE2B7">
-                    <img alt="vedantu"
+                    <img alt="AEC Coding Club"
                         src="https://user-images.githubusercontent.com/64855541/157268119-9f091622-b07b-42b8-b7c7-715359cd9f68.png"
                         style="margin-top:10px;width:280px">
                 </div>

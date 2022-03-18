@@ -4,10 +4,16 @@ const EventBlock = ({ eventdetails }) => {
   return (
     <>
       <div className="event-block">
-        <img className='event-profile' src={eventdetails.eventImage} />
+        <img className="event-profile" src={eventdetails.eventImage} />
         <p>{eventdetails.eventTitle}</p>
-        <p>{eventdetails.eventTime.split("T")[0]}</p>
-        <p>{eventdetails.userId.length}</p>
+        <div className="user-aeccc-info">
+          <p className="user-id">
+            <b>Event Date :</b> <span className="user-uid">{eventdetails.eventTime.split("T")[0]}</span>
+          </p>
+          <p className="user-role">
+            <b>Participants :</b> {eventdetails.userId.length}
+          </p>
+        </div>
       </div>
     </>
   );
