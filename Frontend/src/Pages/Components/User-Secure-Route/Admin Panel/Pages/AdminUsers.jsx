@@ -39,7 +39,7 @@ const AdminUsers = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
-    console.log('User data -------------------- ', data.users)
+    //console.log('User data -------------------- ', data.users)
     setuserdata(await data.users)
     setDisplayData(data.users)
     setPageCount(Math.ceil(data.users.length / usersPerPage))

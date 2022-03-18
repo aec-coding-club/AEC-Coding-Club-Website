@@ -19,8 +19,8 @@ const Events = ({ tokenChecker }) => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
-    console.log('User data :- ', parseddata)
-    console.log('User Role :- ', parseddata.data.user_data.role)
+    //console.log('User data :- ', parseddata)
+    //console.log('User Role :- ', parseddata.data.user_data.role)
     setUserRole(parseddata.data.user_data.role)
   }
 

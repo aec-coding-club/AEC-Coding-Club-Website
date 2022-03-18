@@ -22,7 +22,7 @@ const EventsContainer = ({
     })
     setLoading(false)
     setEvents(parseddata.data.events)
-    console.log(allEvents)
+    //console.log(allEvents)
   }
 
   useEffect(() => {

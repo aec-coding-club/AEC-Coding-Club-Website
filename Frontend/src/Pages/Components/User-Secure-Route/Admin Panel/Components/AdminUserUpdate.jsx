@@ -24,12 +24,12 @@ const AdminUserUpdate = ({ modalShow, onHide, user }) => {
       [e.target.id]: e.target.value,
     }));
   };
-  console.log("User Data -------> ", user);
+  //console.log("User Data -------> ", user);
 
   const updateUser = async (id) => {
-    console.log("Update User ======> ", id, formData);
+    //console.log("Update User ======> ", id, formData);
     const authToken = localStorage.getItem("token");
-    const {data}  = await axios.post(
+    const { data } = await axios.post(
       `${Api}updateuser/${id}`,
       {
         firstName: formData.firstName,
@@ -42,9 +42,9 @@ const AdminUserUpdate = ({ modalShow, onHide, user }) => {
         headers: { Authorization: `Bearer ${authToken}` },
       }
     );
-    console.log(data);
-    if(data.success){
-      window.location.reload()
+    //console.log(data);
+    if (data.success) {
+      window.location.reload();
     }
   };
   useEffect(() => {
@@ -63,7 +63,9 @@ const AdminUserUpdate = ({ modalShow, onHide, user }) => {
     <div className={`${modalContainerClass} admin-modal-container`}>
       {modalShow && (
         <div className={modalClass}>
-          {console.log("Modal Data: ", user)}
+          {
+            //console.log("Modal Data: ", user)
+          }
           <div className="modal-admin-header">
             <h3>Update User Details</h3>
             <FaTimes onClick={onHide} fontSize="1.25rem" fill="#d62828" />
