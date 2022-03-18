@@ -119,12 +119,22 @@
   justify-content: space-evenly;
   width: 100%;
 }
+
+.intro-head-hr{
+  width: 170px;
+  margin: auto;
+}
 .section-heading{
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 600;
-  letter-spacing: 1rem;
-  word-spacing: 2rem;
+    margin-bottom: 2.5rem;
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+    color: var(--btn-bg);
+    text-transform: uppercase;
+    line-height: 2;
+ 
 }
 
 /* Objective */
@@ -132,8 +142,14 @@
   max-width: 80%;
   text-align: center;
   padding: 2rem 0;
+  padding-top: 0;
   margin: 0 auto;
   line-height: 2;
+  text-align: justify;
+}
+.objective-sec{
+  margin: 2rem auto;
+  margin-bottom: 0;
 }
 
 /* Card Section */
@@ -360,7 +376,8 @@
   }
 }
 
-footer {
+.footer {
   position: relative;
-  top: -4rem;
+  top: -1.3rem;
+  color: var(--nav-body);
 }

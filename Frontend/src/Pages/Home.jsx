@@ -42,7 +42,7 @@ const Home = () => {
         </div>
 
 
-//         <div className='content'>
+        <div className='content'>
           {/* <button
 
         <div className="content">
@@ -80,7 +80,7 @@ const Home = () => {
           <div className="sections">
             <p className="section-heading"  data-aos="fade-up">
               WHO ARE WE ?
-              <hr id="inro-head-hr"/>
+              <hr className="intro-head-hr"/>
             </p>
             <div className="intro-cards">
               {IntroCardsData.map((items,index)=>{
@@ -90,10 +90,10 @@ const Home = () => {
               })}
             </div>
           </div>
-          <div className="sections" data-aos="fade-up">
+          <div className="sections objective-sec" data-aos="fade-up">
             <p className="section-heading">
               Objectives
-              <hr id="inro-head-hr"/>
+              <hr className="intro-head-hr"/>
             </p>
             <div className="section-text">
               <p className="section-text-body">
@@ -127,7 +127,7 @@ const Home = () => {
           </section>
         </div>
 
-        <footer style={{ textAlign: "center" }}>
+        <footer className="footer" style={{ textAlign: "center" }}>
           <span>Copyright AEC Coding Club @{date.getFullYear()}</span>
         </footer>
       </div>
