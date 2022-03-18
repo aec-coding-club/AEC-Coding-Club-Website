@@ -2,6 +2,13 @@
   padding: 2rem 5rem;
 }
 
+.user-data-container {
+  max-width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
 .search-input-container {
   display: flex;
   justify-content: center;
@@ -42,16 +49,53 @@
 }
 
 .admin-user {
-  max-width: 900px;
+  max-width: 1000px;
   background-color: var(--background-1);
   margin: 0 auto;
-  margin-block: 1rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 0.35rem;
 }
 
 .admin-user p {
   overflow-wrap: break-word;
+}
+
+.admin-user-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-user-icons svg {
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.admin-user-icons svg:hover {
+  transform: scale(1.1);
+}
+
+.icon-edit:hover {
+  fill: yellow;
+}
+
+.icon-ban:hover {
+  fill: var(--btn-bg);
+}
+
+.user-image {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.user-profile {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .user-name {
@@ -106,6 +150,7 @@
   .admin-user {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.5rem;
   }
 }

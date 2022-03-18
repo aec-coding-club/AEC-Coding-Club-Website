@@ -1,7 +1,7 @@
 // const { Router } = require("express");
 var express = require("express");
 var router = express.Router();
-const getlogs = require("../controllers/alllogs")
+const getlogs = require("../controllers/alllogs");
 const {
   isAuthenticated,
   isActivated,
@@ -15,7 +15,7 @@ const {
   update,
   deletevent,
   registerevent,
-  announceall
+  announceall,
 } = require("../controllers/events");
 
 // const router = Router();

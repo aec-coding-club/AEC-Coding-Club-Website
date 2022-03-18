@@ -1,8 +1,23 @@
-import React from 'react'
+import { FaUserEdit, FaBan } from 'react-icons/fa'
 
 const AdminUser = ({ user }) => {
   return (
     <div className='admin-user'>
+      <div className='user-image'>
+        <img
+          src={user.profilePicture}
+          alt='profilePicture'
+          className='user-profile'
+        />
+        <div className='admin-user-icons'>
+          <FaUserEdit
+            fontSize='1.15rem'
+            title='Edit User'
+            className='icon-edit'
+          />
+          <FaBan fontSize='1.15rem' title='Ban User' className='icon-ban' />
+        </div>
+      </div>
       <div className='user-specific-info'>
         <p className='user-name'>{`${user.firstName} ${user.lastName}`}</p>
         <p className='user-email'>{user.email}</p>

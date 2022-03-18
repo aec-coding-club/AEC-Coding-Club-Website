@@ -80,6 +80,7 @@ exports.alluser = async (req, res) => {
     {
       _id: false,
       uid: true,
+      profilePicture: true,
       firstName: true,
       lastName: true,
       email: true,
@@ -100,15 +101,15 @@ exports.eventsdata = async (req, res) => {
       {
         // _id: false,
         eventDetails: false,
-        eventImage: false,
+        // eventImage: false,
         // eventTime: false,
         // userId: true,
-        email: false,
+        // email: false,
         createdAt: false,
         updatedAt: false,
       }
     );
-    res.json({ eventdata });
+    res.json({ eventdata : eventdata.reverse()});
   } catch (error) {
     return res.json({ error: error.message });
   }
@@ -122,15 +123,7 @@ exports.userupdate = async (req, res) => {
     const { firstName, lastName, email, contact_no, branch, batch, role } =
       req.body;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !contact_no ||
-      !branch ||
-      !batch ||
-      !role
-    ) {
+    if (!firstName || !lastName || !email || !role) {
       return res.json({
         success: false,
         error: "All Fields Are Required",
@@ -142,11 +135,8 @@ exports.userupdate = async (req, res) => {
       {
         firstName: firstName,
         lastName: lastName,
-        contact_no: contact_no,
         email: email,
         role: role,
-        branch: branch,
-        batch: batch,
       }
     );
     res.json(updateUser);
