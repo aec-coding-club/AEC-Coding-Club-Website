@@ -10,20 +10,46 @@
   width: 100%;
 }
 
+.header {
+  height: 70vh;
+}
+
 .home-pic img {
-  object-fit: cover;
-  height: 100%;
+  width: 300px;
+  text-align: center;
 }
 
 .home-pic {
   position: relative;
-  background-image: linear-gradient(to bottom, transparent 70%, #111);
-  height: 80vh;
-  background-repeat: no-repeat;
-  background-size: contain;
+  /* background-image: linear-gradient(to bottom, transparent 70%, #111); */
+  padding: 80px 0 40px 0;
+  text-align: center;
+  animation: glow ease-in-out 3s infinite;
 }
 
-.home-pic::after {
+@keyframes glow {
+  0% {
+    opacity: 0.6;
+    filter: none;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(1px);
+  }
+}
+
+.home-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.type-wrap span {
+  font-size: 2rem;
+  color: rgba(234, 226, 183, 1);
+}
+
+/* .home-pic::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -31,7 +57,7 @@
   height: 100%;
   width: 100%;
   background-image: linear-gradient(to bottom, transparent 70%, #111);
-}
+} */
 
 .content {
   padding: 3rem 0;
@@ -77,6 +103,55 @@
   margin-left: calc(6rem + 5vw);
   border-radius: 30px;
   border: 5px solid #333;
+}
+
+.sections {
+  width: 80%;
+  margin: 3rem auto;
+  color: var(--nav-body);
+}
+
+/* IntroCards */
+.intro-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.intro-head-hr {
+  width: 170px;
+  margin: auto;
+}
+.section-heading {
+  margin-bottom: 2.5rem;
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  font-weight: 700;
+  color: var(--btn-bg);
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+/* Objective */
+.section-text {
+  max-width: 80%;
+  text-align: center;
+  padding: 2rem 0;
+
+  padding-top: 0;
+  margin: 0 auto;
+  line-height: 2;
+  text-align: justify;
+}
+.objective-sec {
+  margin: 2rem auto;
+  margin-bottom: 0;
+
+  margin: 0 auto;
+  line-height: 2;
 }
 
 /* Card Section */
@@ -279,6 +354,12 @@
 /* mobile view */
 
 @media (max-width: 468px) {
+  .intro-cards {
+    flex-direction: column;
+  }
+  .intro-Card {
+    max-width: 100% !important;
+  }
   #btntogglediv {
     /* left: 23%;
     height: 2rem;
@@ -303,7 +384,8 @@
   }
 }
 
-footer {
+.footer {
   position: relative;
-  top: -4rem;
+  top: -1.3rem;
+  color: var(--nav-body);
 }

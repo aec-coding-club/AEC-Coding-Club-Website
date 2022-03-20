@@ -2,30 +2,58 @@ const event = require("../models/Event");
 const User = require("../models/User");
 const Elog = require("../models/Eventlog");
 const otpSender = require("./mailsender.js");
-const { otpTemplate, announceall, notifyall, custom } = require("./emailTemplates");
-
+const {
+  otpTemplate,
+  announceall,
+  notifyall,
+  custom,
+} = require("./emailTemplates");
 
 exports.announceall = async (req, res) => {
   date = req.body.eventDate;
   eventName = req.body.eventName;
 
   if (!date || !eventName) {
-    date = 'Not Available';
-    eventName = 'Not Available';
+    date = "Not Available";
+    eventName = "Not Available";
   }
-  let emails = await User.find({}, { _id: false, email: true })
-  let emaillist = []
+  let emails = await User.find({}, { _id: false, email: true });
+  let emaillist = [];
   for (i = 0; i < emails.length; i++) {
-    emaillist.push(emails[i].email)
+    emaillist.push(emails[i].email);
   }
   console.log(emaillist);
 
+  otpSender(
+    emaillist,
+    announceall(
+      eventTitle,
+      eventTime,
+      eventImage,
+      eventDetails,
+      "https://testaeccc.web.app/events"
+    )
+  );
 
-  otpSender(emaillist, announceall(eventName, date, "https://testaeccc.web.app/events"));
-    
+  const user_id = req.user.user_id;
+  const userDetails = await User.findOne({ uid: req.user.user_id });
+  const userName = userDetails.firstName + " " + userDetails.lastName;
 
-  return res.json({success: true, msg: `email will be delivered to ${emails.length} participants`})
-}
+  const logData = await Elog.create({
+    Operation: "Email Announcement",
+    updatedby: user_id,
+    userName: userName,
+    eventTitle: eventTitle,
+    eventDescription: `${eventDetails} -- ${eventTime}`,
+    image: eventImage,
+    updatedAt: Date(),
+  });
+
+  return res.json({
+    success: true,
+    msg: `email will be delivered to ${emails.length} participants`,
+  });
+};
 
 exports.getevent = async (req, res) => {
   try {
@@ -44,7 +72,27 @@ exports.getevent = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     const events = await event.find({});
-    res.status(200).json({ events: events.reverse(), length: events.length });
+    // console.log(events);
+    var Upcomingevent = [];
+    var Previousevent = [];
+    events.map((event) => {
+      if (event.eventTime < new Date()) {
+        Previousevent.push(event);
+      } else {
+        Upcomingevent.push(event);
+      }
+    });
+
+    console.log("Previous Event : ------------------> ", Previousevent);
+    console.log("Upcoming Event : ==================> ", Upcomingevent);
+    res
+      .status(200)
+      .json({
+        events: events.reverse(),
+        length: events.length,
+        prevEvent: Previousevent,
+        upcomingEvent: Upcomingevent,
+      });
   } catch (error) {
     console.log(error);
     res.json({ error: "Cannot Find Events" });
@@ -306,7 +354,13 @@ exports.registerevent = async (req, res) => {
     }
     const updateevent = await event.updateOne(
       { _id: id },
-      { $push: { email: req.user.email, userId: user_id } }
+      {
+        $push: {
+          name: `${tempuser.firstName} ${tempuser.lastName}`,
+          email: req.user.email,
+          userId: user_id,
+        },
+      }
     );
     console.log(updateevent);
     const updateuser = await User.updateOne(
@@ -322,5 +376,3 @@ exports.registerevent = async (req, res) => {
       .json({ success: false, token: true, message: error.message });
   }
 };
-
-

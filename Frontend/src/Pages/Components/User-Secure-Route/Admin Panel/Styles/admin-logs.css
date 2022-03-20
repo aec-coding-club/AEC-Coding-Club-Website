@@ -51,6 +51,9 @@
 .log-type-log-add {
   border-bottom: 1px solid #5aff15;
 }
+.log-type-log-email {
+  border-bottom: 1px solid #ff8e00;
+}
 
 .log-bottom {
   display: flex;

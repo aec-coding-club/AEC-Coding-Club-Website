@@ -24,7 +24,7 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    console.log("Batch data - ", data);
+    //console.log("Batch data - ", data);
     setYeardata(await data);
   };
 
@@ -34,8 +34,18 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    console.log("Year data - ", data);
+    //console.log("Year data - ", data);
     setBatchdata(await data);
+  };
+
+  const fetchUser = async () => {
+    const authToken = localStorage.getItem("token");
+    const { data } = await axios.get(`${Api}alluser`, {
+      withCredentials: true,
+      headers: { Authorization: `Bearer ${authToken}` },
+    });
+    //console.log("User data -------------------- ", data.users);
+    setuserdata(await data);
   };
 
   const yerarDataSet = [
@@ -57,7 +67,7 @@ const AdminOverview = () => {
     { name: "First", value: batchdata.first },
     { name: "Second", value: batchdata.second },
     { name: "Third", value: batchdata.third },
-    { name: "Fourth", value: batchdata.fourth }
+    { name: "Fourth", value: batchdata.fourth },
   ];
 
   useEffect(() => {
@@ -67,56 +77,71 @@ const AdminOverview = () => {
 
   return (
     <>
-      {console.log("Whats your year", yeardata)}
-      {console.log("Whats your branch", batchdata)}
-      {console.log("Whats your branch", yerarDataSet)}
+      {
+        //console.log("Whats your year", yeardata)
+      }
+      {
+        //console.log("Whats your branch", batchdata)
+      }
+      {
+        //console.log("Whats your branch", yerarDataSet)
+      }
+      {
+        //console.log("Whats your User bro=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-", userData)
+      }
+      <h1>Overview</h1>
 
-      <ResponsiveContainer width="100%" aspect={4}>
+      <ResponsiveContainer width='100%' aspect={4}>
         <LineChart
           data={yerarDataSet}
           width={100}
           height={100}
           margin={{ top: 10, left: 10, bottom: 0, right: 900 }}
         >
-          <CartesianGrid strokeDasharray="3 15" />
-          <XAxis dataKey="name" interval={"preserveStartEnd"} />
+          <CartesianGrid strokeDasharray='3 15' />
+          <XAxis dataKey='name' interval={"preserveStartEnd"} />
           <YAxis />
           <Tooltip contentStyle={{ backgroundColor: "black" }} />
           <Legend />
           <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#EAE2B7"
-            legendType="wye"
+            type='monotone'
+            dataKey='value'
+            stroke='#EAE2B7'
+            legendType='wye'
             activeDot={{ stroke: "red", strokeWidth: 2, r: 7 }}
             strokeWidth={5}
           />
         </LineChart>
       </ResponsiveContainer>
 
-      <ResponsiveContainer width="100%" aspect={4}>
+      <ResponsiveContainer width='100%' aspect={4}>
         <LineChart
           data={batchDataSet}
           width={100}
           height={100}
           margin={{ top: 10, left: 10, bottom: 0, right: 900 }}
         >
-          <CartesianGrid strokeDasharray="3 15" />
-          <XAxis dataKey="name" interval={"preserveStartEnd"} />
+          <CartesianGrid strokeDasharray='3 15' />
+          <XAxis dataKey='name' interval={"preserveStartEnd"} />
           <YAxis />
           <Tooltip contentStyle={{ backgroundColor: "black" }} />
           <Legend />
           <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#D93E39"
-            legendType="wye"
+            type='monotone'
+            dataKey='value'
+            stroke='#D93E39'
+            legendType='wye'
             activeDot={{ stroke: "red", strokeWidth: 2, r: 7 }}
             strokeWidth={5}
           />
         </LineChart>
       </ResponsiveContainer>
-      <h1>Overview</h1>
+
+      <div>
+        {/* {userData.map((value) => {
+        <h2 key={value._id}>{value.email}</h2>
+      })} */}
+      </div>
     </>
   );
 };

@@ -1,14 +1,12 @@
-
-
 const otpTemplate = (user, otp) => {
-    return `<body>
+  return `<body>
 <div>
     <div style="background-color:rgb(238,238,238)">
         <div style="margin:0px auto;font-family:arial;padding-bottom:30px;padding-top:45px;max-width:520px">
             <div style="border:1px solid rgb(204,204,204)">
                 <div
                     style="text-align:center;min-height:115px;background-image:url(https://storage.googleapis.com/vedantu-fos-qa/email-marketing/common/email-template-pattern.png);color:rgb(255,255,255);font-size:40px;line-height:10=0px;background-color:#EAE2B7">
-                    <img alt="vedantu"
+                    <img alt="AEC Coding Club"
                         src="https://user-images.githubusercontent.com/64855541/157268119-9f091622-b07b-42b8-b7c7-715359cd9f68.png"
                         style="margin-top:10px;width:280px">
                 </div>
@@ -39,35 +37,36 @@ const otpTemplate = (user, otp) => {
         </div>
     </div>
 </div>
-</body>`
-}
+</body>`;
+};
 
-
-
-
-const announceall = ( event, date, url) => {
-
-    return ` <body> 
+const announceall = (event, date, image, description, url) => {
+  description = dompurify.sanitize(marked.parse(description));
+  return ` <body> 
               <div>
-              Dear student, AECCC is going to host a <b>${event}</b> on ${date}. Please check it on official site here ${url}
+              Dear student,
+             AECCC is going to host <b>${event}</b> on ${date}.
+              <img src=${image} alt="Event Image">
+              <br>
+              ${description}
+              <br>
+              Please check it on official site here ${url}
               </div>
-        </body>`
+        </body>`;
+};
+// const announceall = (event, date, image, description, url) => {
+//     description = dompurify.sanitize(marked.parse(description))
+//   return ` <body>
+//               <div>
+//               Dear student, AECCC is going to host a <b>${event}</b> on ${date}. Please check it on official site here ${url}
+//               </div>
+//         </body>`
+// }
 
+const notifyall = (event, date, url) => {
+  return `Dear participant ${event} is going to start from ${date} link of the event ${url}`;
+};
 
-}
+const custom = (msg) => {};
 
-
-const notifyall = ( event, date, url) => {
-
-    return `Dear participant ${event} is going to start from ${date} link of the event ${url}`
-
-}
-
-
-
-const custom = (msg) => {
-
-}
-
-
-module.exports = { otpTemplate, announceall, notifyall, custom }
+module.exports = { otpTemplate, announceall, notifyall, custom };

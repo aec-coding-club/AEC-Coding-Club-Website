@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Axios from 'axios';
-import { Api } from '../../backend';
-import { toast } from 'react-toastify'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
+import { Api } from "../../backend";
+import { toast } from "react-toastify";
 
 const Otpforum = () => {
   const [registerdata, setRegisterdata] = useState({
-    otp: '',
+    otp: "",
   });
   let navigate = useNavigate();
 
   async function submit(e) {
     e.preventDefault();
-    console.log('Data Submitted');
+    //console.log("Data Submitted");
     const data = {
       otp: registerdata.otp,
     };
-    const authToken = localStorage.getItem('token');
+    const authToken = localStorage.getItem("token");
     const dataposted = await Axios.post(`${Api}verify`, data, {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
     if (dataposted.data.success) {
-      console.log('User Created Successfully');
-      navigate('/dashboard');
+      //console.log("User Created Successfully");
+      navigate("/dashboard");
       window.location.reload();
     } else {
-      console.log('User Not Created Successfully');
+      //console.log("User Not Created Successfully");
       setRegisterdata({
-        otp: '',
+        otp: "",
       });
       toast.error(dataposted.data.message, {
-        theme: "dark"
-      })
-      navigate('/verify');
+        theme: "dark",
+      });
+      navigate("/verify");
     }
-    console.log(dataposted);
+    //console.log(dataposted);
   }
 
   function handelChange(e) {
     const newdata = { ...registerdata };
     newdata[e.target.id] = e.target.value;
     setRegisterdata(newdata);
-    console.log(newdata);
+    //console.log(newdata);
   }
   return (
     <>
@@ -53,7 +53,7 @@ const Otpforum = () => {
             type='text'
             name='otp'
             id='otp'
-            className='input__field'
+            className='input__field otp__input__field'
             placeholder='Enter your OTP here to verify'
             onChange={(e) => handelChange(e)}
             value={registerdata.otp}

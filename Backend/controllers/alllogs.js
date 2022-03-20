@@ -78,7 +78,7 @@ exports.alluser = async (req, res) => {
   const allusers = await User.find(
     {},
     {
-      _id: false,
+      _id: true,
       uid: true,
       profilePicture: true,
       firstName: true,
@@ -101,15 +101,15 @@ exports.eventsdata = async (req, res) => {
       {
         // _id: false,
         eventDetails: false,
-        eventImage: false,
+        // eventImage: false,
         // eventTime: false,
         // userId: true,
-        email: false,
+        // email: false,
         createdAt: false,
         updatedAt: false,
       }
     );
-    res.json({ eventdata });
+    res.json({ eventdata : eventdata.reverse()});
   } catch (error) {
     return res.json({ error: error.message });
   }
@@ -139,7 +139,7 @@ exports.userupdate = async (req, res) => {
         role: role,
       }
     );
-    res.json(updateUser);
+    res.json({updateUser, success : true});
   } catch (error) {
     return res.json({ error: error.message, success: false });
   }

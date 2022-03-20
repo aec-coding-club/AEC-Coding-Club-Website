@@ -1,8 +1,8 @@
-import React from 'react';
-import loginImg from '../Assets/login.png';
-import Navbar from '../Components/Navbar';
-import Siginform from './Components/Siginform';
-import './styles/SigninSignup.css';
+import React from "react";
+import loginImg from "../Assets/login.svg";
+import Navbar from "../Components/Navbar";
+import Siginform from "./Components/Siginform";
+import "./styles/SigninSignup.css";
 
 const Signin = () => {
   return (

@@ -19,7 +19,7 @@ router.get("/branchdata", isAuthenticated, isActivated, isAdmin, branchdata);
 router.get("/yeardata", isAuthenticated, isActivated, isAdmin, yeardata);
 router.get("/alluser", isAuthenticated, isActivated, isAdmin, alluser);
 router.get("/eventsdata", isAuthenticated, isActivated, isAdmin, eventsdata);
-router.get(
+router.post(
   "/updateuser/:id",
   isAuthenticated,
   isActivated,

@@ -1,0 +1,40 @@
+.admin-users-wrapper {
+  padding: 2rem 5rem;
+}
+
+.modal-admin-header h3 span {
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: rgb(83, 83, 83);
+  align-self: center;
+}
+
+.event-block {
+  max-width: 900px;
+  background-color: var(--background-1);
+  margin: 0 auto;
+  margin-block: 1rem;
+  padding: 1rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+.event-block p {
+  overflow-wrap: break-word;
+}
+
+.event-profile {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+@media (min-width: 1000px) {
+  .event-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+  }
+}
