@@ -33,10 +33,10 @@ const Otpverify = () => {
     if (!parseddata.data.token) {
       window.location = '/'
     }
-    console.log('Api is :- ', Api)
-    console.log(parseddata)
+    //console.log('Api is :- ', Api)
+    //console.log(parseddata)
     // setAuth(!parseddata.data.success);
-    console.log('Useeffet :- ', parseddata)
+    //console.log('Useeffet :- ', parseddata)
   }
 
   useEffect(() => {

@@ -62,41 +62,41 @@ export const EventCard = ({
         withCredentials: true,
         crossorigin: true,
         headers: { Authorization: `Bearer ${authToken}` },
-      });
-      console.log("MAIL SEND ........", parseddata);
-      console.log("MAIL DATA: ", mailData);
-      toast.success("Users Notified", {
-        theme: "dark",
-      });
+      })
+      //console.log('MAIL SEND ........', parseddata)
+      //console.log('MAIL DATA: ', mailData)
+      toast.success('Users Notified', {
+        theme: 'dark',
+      })
     } catch {
       toast.error("Failed To Notify Users");
     }
   }
 
   const signInFirst = () => {
-    console.log("Log In to your account to Register in this event");
-    toast.error("Sign In To Register To The Event", {
-      theme: "dark",
-      onClick: () => navigate("/signin"),
-    });
-  };
+    //console.log('Log In to your account to Register in this event')
+    toast.error('Sign In To Register To The Event', {
+      theme: 'dark',
+      onClick: () => navigate('/signin'),
+    })
+  }
 
   // This will register the user for the event
   const registerToEvent = async (id) => {
     try {
-      console.log(`Events added to the user page ${id}`);
-      const authToken = localStorage.getItem("token");
-      console.log("AuthToken :- ", authToken);
-      let parseddata = await axios.post(`${Api}registerevent/${id}`, "", {
+      //console.log(`Events added to the user page ${id}`)
+      const authToken = localStorage.getItem('token')
+      //console.log('AuthToken :- ', authToken)
+      let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
         withCredentials: true,
         crossorigin: true,
         headers: { Authorization: `Bearer ${authToken}` },
-      });
-      console.log("User data :- ", parseddata);
-      navigate("/dashboard");
-      toast.success("You have successfully registered", {
-        theme: "dark",
-      });
+      })
+      //console.log('User data :- ', parseddata)
+      navigate('/dashboard')
+      toast.success('You have successfully registered', {
+        theme: 'dark',
+      })
     } catch {
       toast.error("You are already Registered", {
         theme: "dark",
@@ -105,15 +105,15 @@ export const EventCard = ({
   };
 
   const onDelete = async (id) => {
-    console.log(`Deleting the event with id ${id}`);
-    const authToken = localStorage.getItem("token");
-    console.log("AuthToken :- ", authToken);
+    //console.log(`Deleting the event with id ${id}`)
+    const authToken = localStorage.getItem('token')
+    //console.log('AuthToken :- ', authToken)
     let { data } = await axios.delete(`${Api}delete/${id}`, {
       withCredentials: true,
       crossorigin: true,
       headers: { Authorization: `Bearer ${authToken}` },
-    });
-    console.log("User data :- ", data);
+    })
+    //console.log('User data :- ', data)
     if (data.success) {
       window.location.reload();
     }

@@ -37,14 +37,14 @@ const EventModal = (props) => {
       })
       return
     }
-    console.log('New Event Added')
+    //console.log('New Event Added')
     const Data = {
       eventTitle: editEventTitle,
       eventTime: editEventTime,
       eventImage: editEventImage,
       eventDetails: editEventDetails,
     }
-    console.log('Event Data :- ', Data)
+    //console.log('Event Data :- ', Data)
 
     const authToken = localStorage.getItem('token')
     const { data } = await axios.post(`${Api}add`, Data, {
@@ -52,11 +52,11 @@ const EventModal = (props) => {
       headers: { Authorization: `Bearer ${authToken}` },
     })
 
-    console.log('DATA :- ', data)
+    //console.log('DATA :- ', data)
     if (data.success) {
       window.location.reload()
     } else {
-      console.log('error data:- ', data)
+      //console.log('error data:- ', data)
       toast.error(data.error, {
         theme: 'dark',
       })
@@ -70,14 +70,14 @@ const EventModal = (props) => {
       })
       return
     }
-    console.log('Editing Event')
+    //console.log('Editing Event')
     const Data = {
       eventTitle: editEventTitle,
       eventTime: editEventTime,
       eventImage: editEventImage,
       eventDetails: editEventDetails,
     }
-    console.log('Event Data :- ', Data)
+    //console.log('Event Data :- ', Data)
 
     const authToken = localStorage.getItem('token')
     const { data } = await axios.put(`${Api}update/${editEventID}`, Data, {
@@ -88,12 +88,12 @@ const EventModal = (props) => {
     if (data.success) {
       window.location.reload()
     } else {
-      console.log('error data:- ', data)
+      //console.log('error data:- ', data)
       toast.error(data.error, {
         theme: 'dark',
       })
     }
-    console.log('Data :- ', data)
+    //console.log('Data :- ', data)
   }
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const EventModal = (props) => {
     }
   }, [modalShow])
 
-  console.log('edit event id: ', editEventID)
+  //console.log('edit event id: ', editEventID)
 
   return (
     <div className={modalContainerClass}>

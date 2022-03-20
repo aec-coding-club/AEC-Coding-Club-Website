@@ -18,27 +18,27 @@ const Home = ({tokenChecker}) => {
       headers: { Authorization: `Bearer ${authToken}` },
     });
     if (!parseddata.data.token) {
-      console.log("Navigating1");
+      //console.log("Navigating1");
       navigate("/");
     }
     
-    console.log(Api);
-    console.log("Parsed data :- ", parseddata);
+    //console.log(Api);
+    //console.log("Parsed data :- ", parseddata);
     setUserdata({
       userInfo: parseddata.data.user_data,
     });
     setAuth(parseddata.data.token);
     setSuccessDecision(parseddata.data.success)
     if(!parseddata.data.success){
-      console.log("Navigating2");
+      //console.log("Navigating2");
       navigate("/verify");
     }
   }
 
   useEffect(() => {
     fetchdata();
-    console.log("Token" , auth);
-    console.log("Success", successDecision);
+    //console.log("Token" , auth);
+    //console.log("Success", successDecision);
   }, []);
 
   return (

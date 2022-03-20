@@ -18,7 +18,7 @@ const AdminEvents = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
-    console.log('Event data ', data.eventdata)
+    //console.log('Event data ', data.eventdata)
     seteventdata(await data.eventdata)
     setDisplayData(data.eventdata)
     setLoading(false)

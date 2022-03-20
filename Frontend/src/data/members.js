@@ -6,7 +6,7 @@ export const membersData = [
     batch: 2023,
     role: 1,
     img: require("../Assets/members/AbhishekSingh.jpg"),
-    linkedin: "linkedin.com/in/abhishek-singh-16bbb9205",
+    linkedin: "https://www.linkedin.com/in/abhishek-singh-16bbb9205",
     github: "https://github.com/abhisingh38203",
   },
   {
@@ -31,8 +31,8 @@ export const membersData = [
     batch: 2023,
     role: 2,
     img: require("../Assets/members/AmanKhan.jpeg"),
-    linkedin: "www.linkedin.com/in/amankhan0701",
-    github: "https://github.com/Kissuuu",
+    linkedin: "https://www.linkedin.com/in/amankhan0701/",
+    github: "https://github.com/iam-aman-khan",
     additional: "https://www.instagram.com/__.k.i.s.s.u.__/",
   },
   {
@@ -54,8 +54,8 @@ export const membersData = [
     batch: 2023,
     role: 1,
     img: require("../Assets/members/AryanTiwari.jpg"),
-    linkedin: "www.linkedin.com/in/aryan-tiwari-636943207/",
-    github: "github.com/Gitter-Aryan",
+    linkedin: "https://www.linkedin.com/in/aryan-tiwari-636943207/",
+    github: "https://github.com/Gitter-Aryan",
   },
   {
     name: "Ayan Karmakar",
@@ -85,8 +85,7 @@ export const membersData = [
     role: 1,
     img: require("../Assets/members/DebjeetUpadhyay.jpg"),
     linkedin: "https://www.linkedin.com/in/debjeet-upadhyay-a4762322a",
-    github:
-      "https://github.com/Deb666/Deb666/blob/bc832fbf6b2d25235e50796a6214804542d32c64/README.md",
+    github: "https://github.com/Deb666",
   },
   {
     name: "Debosmit Choudhury",
@@ -140,8 +139,8 @@ export const membersData = [
     batch: 2023,
     role: 1,
     img: require("../Assets/members/NilavaBepari.jpeg"),
-    linkedin: "linkedin.com/in/nilava-bepari-26a885191",
-    github: "https://github.com/NILAVABEAPRI",
+    linkedin: "https://linkedin.com/in/nilava-bepari-26a885191",
+    github: "https://github.com/NILAVABEPARI",
   },
   {
     name: "Pranay Gupta",

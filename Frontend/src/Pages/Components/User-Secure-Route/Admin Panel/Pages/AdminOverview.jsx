@@ -24,7 +24,7 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    console.log("Batch data - ", data);
+    //console.log("Batch data - ", data);
     setYeardata(await data);
   };
 
@@ -34,7 +34,7 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    console.log("Year data - ", data);
+    //console.log("Year data - ", data);
     setBatchdata(await data);
   };
 
@@ -44,9 +44,9 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    console.log("User data -------------------- ", data.users);
+    //console.log("User data -------------------- ", data.users);
     setuserdata(await data);
-  }
+  };
 
   const yerarDataSet = [
     { name: "AEIE", value: yeardata.AEIE },
@@ -67,7 +67,7 @@ const AdminOverview = () => {
     { name: "First", value: batchdata.first },
     { name: "Second", value: batchdata.second },
     { name: "Third", value: batchdata.third },
-    { name: "Fourth", value: batchdata.fourth }
+    { name: "Fourth", value: batchdata.fourth },
   ];
 
   useEffect(() => {
@@ -78,10 +78,18 @@ const AdminOverview = () => {
 
   return (
     <>
-      {console.log("Whats your year", yeardata)}
-      {console.log("Whats your branch", batchdata)}
-      {console.log("Whats your branch", yerarDataSet)}
-      {console.log("Whats your User bro=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-", userData)}
+      {
+        //console.log("Whats your year", yeardata)
+      }
+      {
+        //console.log("Whats your branch", batchdata)
+      }
+      {
+        //console.log("Whats your branch", yerarDataSet)
+      }
+      {
+        //console.log("Whats your User bro=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-", userData)
+      }
       <h1>Overview</h1>
 
       <ResponsiveContainer width="100%" aspect={4}>
@@ -131,7 +139,7 @@ const AdminOverview = () => {
       </ResponsiveContainer>
 
       <div>
-      {/* {userData.map((value) => {
+        {/* {userData.map((value) => {
         <h2 key={value._id}>{value.email}</h2>
       })} */}
       </div>
