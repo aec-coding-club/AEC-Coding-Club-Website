@@ -17,6 +17,7 @@ import {
 const AdminOverview = () => {
   const [yeardata, setYeardata] = useState([]);
   const [batchdata, setBatchdata] = useState([]);
+  const [userData, setuserdata] = useState([]);
 
   const fetchBatchdata = async () => {
     const authToken = localStorage.getItem("token");
