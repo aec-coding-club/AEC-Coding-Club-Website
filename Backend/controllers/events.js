@@ -74,7 +74,20 @@ exports.getevent = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     const events = await event.find({});
-    res.status(200).json({ events: events.reverse(), length: events.length });
+    // console.log(events);
+    var Upcomingevent = []
+    var Previousevent = []
+    events.map(event => {
+      if(event.eventTime < new Date()) {
+        Previousevent.push(event)
+      }else{
+        Upcomingevent.push(event)
+      }
+    })
+
+    console.log("Previous Event : ------------------> ", Previousevent);
+    console.log("Upcoming Event : ==================> ", Upcomingevent);
+    res.status(200).json({ events: events.reverse(), length: events.length, prevEvent : Previousevent, upcomingEvent : Upcomingevent });
   } catch (error) {
     console.log(error);
     res.json({ error: "Cannot Find Events" });

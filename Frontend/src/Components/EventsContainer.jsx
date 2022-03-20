@@ -12,28 +12,31 @@ const EventsContainer = ({
   tokenChecker,
   userRole,
   setEditEventID,
+  array,
+  loder,
+  arrName
 }) => {
-  const [allEvents, setEvents] = useState([])
-  const [loading, setLoading] = useState(false)
-  async function fetchdata() {
-    setLoading(true)
-    const parseddata = await axios.get(`${Api}events`, {
-      withCredentials: true,
-    })
-    setLoading(false)
-    setEvents(parseddata.data.events)
-    console.log(allEvents)
-  }
+  // const [allEvents, setEvents] = useState([])
+  // const [loading, setLoading] = useState(false)
+  // async function fetchdata() {
+  //   setLoading(true)
+  //   const parseddata = await axios.get(`${Api}events`, {
+  //     withCredentials: true,
+  //   })
+  //   setLoading(false)
+  //   setEvents(parseddata.data.upcomingEvent)
+  //   console.log(allEvents)
+  // }
 
-  useEffect(() => {
-    fetchdata()
-  }, [])
+  // useEffect(() => {
+  //   fetchdata()
+  // }, [])
 
   return (
     <>
-      {!loading ? (
+      {!loder ? (
         <div className='events-container'>
-          {allEvents.map((data) => (
+          {array.map((data) => (
             <EventCard
               key={data._id}
               cardData={data}
@@ -42,6 +45,8 @@ const EventsContainer = ({
               tokenChecker={tokenChecker}
               userRole={userRole}
               setEditEventID={setEditEventID}
+              decisionArray={array}
+              name={arrName}
             />
           ))}
         </div>
