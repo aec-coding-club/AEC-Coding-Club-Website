@@ -246,7 +246,9 @@
     width: auto;
     align-items: center;
   }
-
+  .type-wrap span{
+    font-size: 1.5rem;
+  }
   .cards {
     padding: 0.8rem;
     height: 120px;
@@ -279,6 +281,10 @@
     margin: 2rem 0;
     border-radius: 30px;
     border: 5px solid #333;
+  }
+  .section-text{
+    max-width:100%;
+    line-height: 1.6;
   }
 }
 
@@ -381,6 +387,9 @@
   }
   .objective p {
     font-size: 0.5rem;
+  }
+  .objective-sec{
+    width: 93%;
   }
 }
 
