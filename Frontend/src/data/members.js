@@ -31,8 +31,8 @@ export const membersData = [
     batch: 2023,
     role: 2,
     img: require("../Assets/members/AmanKhan.jpeg"),
-    linkedin: "www.linkedin.com/in/amankhan0701",
-    github: "https://github.com/Kissuuu",
+    linkedin: "https://www.linkedin.com/in/amankhan0701/",
+    github: "https://github.com/iam-aman-khan",
     additional: "https://www.instagram.com/__.k.i.s.s.u.__/",
   },
   {
