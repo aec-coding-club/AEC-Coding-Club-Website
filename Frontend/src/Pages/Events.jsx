@@ -18,11 +18,11 @@ const Events = ({ tokenChecker }) => {
     const parseddata = await axios.get(`${Api}dashboard`, {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
-    })
+    });
     //console.log('User data :- ', parseddata)
     //console.log('User Role :- ', parseddata.data.user_data.role)
-    setUserRole(parseddata.data.user_data.role)
-  }
+    setUserRole(parseddata.data.user_data.role);
+  };
 
   function onHide() {
     setModalShow(false);
@@ -59,23 +59,23 @@ const Events = ({ tokenChecker }) => {
     setEditEventDetails,
   };
 
-  const [prevEvents, setprevEvents] = useState([])
-  const [upcomingEvents, setupcomingEvents] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [prevEvents, setprevEvents] = useState([]);
+  const [upcomingEvents, setupcomingEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function fetchdata() {
-    setLoading(true)
+    setLoading(true);
     const parseddata = await axios.get(`${Api}events`, {
       withCredentials: true,
-    })
-    setLoading(false)
-    setupcomingEvents(parseddata.data.upcomingEvent)
-    setprevEvents(parseddata.data.prevEvent)
+    });
+    setLoading(false);
+    setupcomingEvents(parseddata.data.upcomingEvent);
+    setprevEvents(parseddata.data.prevEvent);
   }
 
   useEffect(() => {
     fetchUserData();
-    fetchdata()
+    fetchdata();
   }, []);
 
   return (
@@ -123,24 +123,29 @@ const Events = ({ tokenChecker }) => {
           setEditEventID={setEditEventID}
           array={upcomingEvents}
           loder={loading}
-          arrName= {true}
+          arrName={true}
         />
-
-        <div className="events-section">
-          <div className="header-wrapper">
-            <h3 className="events-section-header">Previous Events</h3>
-          </div>
-        </div>
-        <EventsContainer
-          setModalShow={setModalShow}
-          cardEditData={cardEditData}
-          tokenChecker={tokenChecker}
-          userRole={userRole}
-          setEditEventID={setEditEventID}
-          array={prevEvents}
-          loder={loading}
-          arrName={false}
-        />
+        {tokenChecker && (prevEvents.length > 0) ? (
+          <>
+            <div className="events-section">
+              <div className="header-wrapper">
+                <h3 className="events-section-header">Previous Events</h3>
+              </div>
+            </div>
+            <EventsContainer
+              setModalShow={setModalShow}
+              cardEditData={cardEditData}
+              tokenChecker={tokenChecker}
+              userRole={userRole}
+              setEditEventID={setEditEventID}
+              array={prevEvents}
+              loder={loading}
+              arrName={false}
+            />
+          </>
+        ) : (
+          <></>
+        )}
       </main>
     </>
   );
