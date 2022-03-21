@@ -96,3 +96,22 @@
     padding: 1rem 1rem;
   }
 }
+/* Mobile View */
+@media (max-width: 500px){
+  .admin-details{
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+  .admin-details h2{
+    display: block;
+  }
+  .left{
+    flex-direction: column;
+    width: 100%;
+  }
+  .admin-uid{
+    font-size: 1rem;
+    padding: .3rem .75rem;
+  }
+}

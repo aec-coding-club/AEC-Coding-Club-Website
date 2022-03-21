@@ -191,6 +191,9 @@ h1 {
     height: 1.2rem;
     margin-top: 0.3rem;
   }
+  .inline-input-svg{
+    width: 100%;
+  }
   /*for signin page ----> */
   .useridPass {
     width: fit-content;
@@ -204,6 +207,12 @@ h1 {
   }
   .user-login p {
     font-size: 0.9rem;
+  }
+  .otp__input__field{
+    display: block;
+    margin: 1.75rem auto;
+    width: calc(10rem + 22vw);
+    text-align: center;
   }
 }
 @media (max-width: 354px) {
