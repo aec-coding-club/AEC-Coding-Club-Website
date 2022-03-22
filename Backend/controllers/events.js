@@ -73,7 +73,7 @@ exports.getevent = async (req, res) => {
 // Get All Events
 exports.getAll = async (req, res) => {
   try {
-    const events = await event.find({});
+    const events = await event.find({}).sort({eventTime : 1});
     // console.log(events);
     var Upcomingevent = []
     var Previousevent = []
@@ -85,7 +85,7 @@ exports.getAll = async (req, res) => {
       }
     })
 
-    console.log("Previous Event : ------------------> ", Previousevent);
+    console.log("Previous Event : ------------------> ", Previousevent.sort());
     console.log("Upcoming Event : ==================> ", Upcomingevent);
     res.status(200).json({ events: events.reverse(), length: events.length, prevEvent : Previousevent, upcomingEvent : Upcomingevent });
   } catch (error) {
