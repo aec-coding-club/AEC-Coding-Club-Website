@@ -1,113 +1,119 @@
-import React, { useState, useEffect } from 'react'
-import { FaBars } from 'react-icons/fa'
-import { NavLink, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { FaBars } from "react-icons/fa";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import Logo from '../Assets/logo.svg'
-import UserImage from '../Assets/members/member.png'
+import Logo from "../Assets/logo.svg";
+import UserImage from "../Assets/members/member.png";
 // import NavbarSvg from "../Assets/navbarsvg.svg";
-import SideBar from './SideBar'
-import Cookies from 'js-cookie'
-import './styles/Navbar.css'
-import { toast } from 'react-toastify'
+import SideBar from "./SideBar";
+import Cookies from "js-cookie";
+import "./styles/Navbar.css";
+import { toast } from "react-toastify";
 
-import axios from 'axios'
-import { Api } from '../backend'
+import axios from "axios";
+import { Api } from "../backend";
 
 const NavCompoA = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
-      <div className='nav-btn-wrapper'>
-        <button className='btn sign-up' onClick={() => navigate('/signup')}>
+      <div className="nav-btn-wrapper">
+        <button className="btn sign-up" onClick={() => navigate("/signup")}>
           Sign Up
         </button>
-        <button className='btn sign-in' onClick={() => navigate('/signin')}>
+        <button className="btn sign-in" onClick={() => navigate("/signin")}>
           Sign In
         </button>
       </div>
     </>
-  )
-}
+  );
+};
 
 const NavCompoB = ({ userImg, userNameText, userRole }) => {
   //console.log(userNameText)
+  const navigate = useNavigate();
 
   const signOut = () => {
-    localStorage.clear()
-    sessionStorage.clear()
-    window.location.reload()
-  }
+    console.log("Sign Out");
+    localStorage.clear();
+    navigate("/")
+    sessionStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <>
-      <div className='nav-btn-wrapper'>
-        <img className='logged-user-image' src={userImg} />
+      <div className="nav-btn-wrapper">
+        <img className="logged-user-image" src={userImg} />
         <NavLink
-          to={userRole <= 2 ? '/dashboard' : '/admin/overview'}
-          className='nav-link'
+          to={userRole <= 2 ? "/dashboard" : "/admin/overview"}
+          className="nav-link"
         >
           <div
-            className='user-name-text'
-            style={{ textDecoration: 'none', color: '#D62828' }}
+            className="user-name-text"
+            style={{ textDecoration: "none", color: "#D62828" }}
           >
             {userNameText}
           </div>
         </NavLink>
-        <button className='btn sign-in' onClick={signOut}>
-          Sign Out
-        </button>
+
+        <NavLink to="/">
+          <button className="btn sign-in" onClick={signOut}>
+            Sign Out
+          </button>
+        </NavLink>
       </div>
     </>
-  )
-}
+  );
+};
 
 const Navbar = ({ userImage, userNameText }) => {
-  const [tokenChecker, setTokenChecker] = useState(false)
-  const [userRole, setUserRole] = useState(0)
+  const [tokenChecker, setTokenChecker] = useState(false);
+  const [userRole, setUserRole] = useState(0);
 
   const checkToken = async () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     //console.log(token)
     if (token) {
-      setTokenChecker(true)
+      setTokenChecker(true);
       // TODO: Set the Role of the user
       const parseddata = await axios.get(`${Api}dashboard`, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` },
-      })
-      setUserRole(parseddata.data.user_data.role)
+      });
+      setUserRole(parseddata.data.user_data.role);
     }
-  }
+  };
   // @TODO: Add user styles and pop up Component
 
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const navigate = useNavigate()
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   function handleSideBar(sidebarState) {
-    setSidebarOpen(sidebarState)
+    setSidebarOpen(sidebarState);
   }
 
   useEffect(() => {
-    checkToken()
-  }, [])
+    checkToken();
+  }, []);
 
   return (
     <nav>
-      <div className='logo' onClick={() => navigate('/')}>
-        <img src={Logo} alt='AECCC-LOGO' className='logo-image' />
-        <div className='logo-text'>
-          <p className='logo-name'>aec coding club</p>
-          <p className='logo-motto'>Always Top Of The Heap</p>
+      <div className="logo" onClick={() => navigate("/")}>
+        <img src={Logo} alt="AECCC-LOGO" className="logo-image" />
+        <div className="logo-text">
+          <p className="logo-name">aec coding club</p>
+          <p className="logo-motto">Always Top Of The Heap</p>
         </div>
       </div>
-      <div className='nav-link-wrapper'>
-        <NavLink to='/' className='nav-link'>
+      <div className="nav-link-wrapper">
+        <NavLink to="/" className="nav-link">
           Home
         </NavLink>
-        <NavLink to='/events' className='nav-link'>
+        <NavLink to="/events" className="nav-link">
           Events
         </NavLink>
-        <NavLink to='/members' className='nav-link'>
+        <NavLink to="/members" className="nav-link">
           Members
         </NavLink>
       </div>
@@ -121,7 +127,7 @@ const Navbar = ({ userImage, userNameText }) => {
         <NavCompoA />
       )}
 
-      <div className='menu-toggle-icon' onClick={() => handleSideBar(true)}>
+      <div className="menu-toggle-icon" onClick={() => handleSideBar(true)}>
         <FaBars />
       </div>
       <SideBar
@@ -136,7 +142,7 @@ const Navbar = ({ userImage, userNameText }) => {
         <img src={NavbarSvg} alt='curve' />
       </div> */}
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
