@@ -110,7 +110,7 @@ h1 {
   position: absolute;
   top: 0.48rem;
   right: 0.3rem;
-  z-index: 1111;
+  z-index: 100;
   color: rgba(151, 151, 151, 0.692);
 }
 .inline-input-svg {

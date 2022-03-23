@@ -40,6 +40,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  zone: {
+    type: String,
+    default: "White",
+  },
   profilePicture: {
     type: String,
     default:
