@@ -9,7 +9,7 @@ import './styles/SigninSignup.css'
 const Mainform = () => {
   return (
     <>
-      <div className='user-login'>
+      <div className='user-login otpVerify-page'>
         <div className='user-img'>
           <img alt='' src={otpImg}></img>
         </div>

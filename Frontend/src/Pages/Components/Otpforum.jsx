@@ -49,6 +49,10 @@ const Otpforum = () => {
       <form onSubmit={(e) => submit(e)}>
         <h1>Enter your OTP here to Verify your Account</h1>
         <div className='details'>
+          <p className="email-notify">
+            we sent an email with varification code to <br />
+            <span className="email-name">pranaygupta123@gamil.com.</span>
+          </p>
           <input
             type='text'
             name='otp'
@@ -62,7 +66,13 @@ const Otpforum = () => {
             maxLength={6}
           ></input>
         </div>
-
+        <p className="otp-bottom-notes">
+          Didn't get the code?
+          <ul>
+            <li>Codes can take up to 5 minutes to arrive </li>
+            <li>Check your spam and promotion folder</li>
+          </ul>
+        </p>
         <button className='btn login-signup-btn'>Verify OTP</button>
       </form>
     </>
