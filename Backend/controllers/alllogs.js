@@ -76,7 +76,7 @@ exports.yeardata = async (req, res) => {
 
 exports.alluser = async (req, res) => {
   const allusers = await User.find(
-    {},
+    { active: true },
     {
       _id: true,
       uid: true,
