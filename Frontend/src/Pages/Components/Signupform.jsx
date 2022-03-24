@@ -47,6 +47,7 @@ const Signupform = () => {
         `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
       );
       localStorage.setItem("pimage", `${dataposted.data.user.profilePicture}`);
+      localStorage.setItem("email", `${dataposted.data.user.email}`);
       // Cookies.set('token', dataposted.data.token); // setting token to cookies
       navigate("/verify");
     } else {

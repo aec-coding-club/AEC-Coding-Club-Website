@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { Api } from "../../backend";
@@ -8,6 +8,7 @@ const Otpforum = () => {
   const [registerdata, setRegisterdata] = useState({
     otp: "",
   });
+  const [email, setEmail] = useState("")
   let navigate = useNavigate();
 
   async function submit(e) {
@@ -21,6 +22,8 @@ const Otpforum = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
+
+    
     if (dataposted.data.success) {
       //console.log("User Created Successfully");
       navigate("/dashboard");
@@ -35,7 +38,7 @@ const Otpforum = () => {
       });
       navigate("/verify");
     }
-    //console.log(dataposted);
+    // console.log(dasbodedata);
   }
 
   function handelChange(e) {
@@ -44,6 +47,10 @@ const Otpforum = () => {
     setRegisterdata(newdata);
     //console.log(newdata);
   }
+  useEffect(() => {
+    const e = localStorage.getItem('email')
+    setEmail(e)
+  }, [])
   return (
     <>
       <form onSubmit={(e) => submit(e)}>
@@ -51,7 +58,7 @@ const Otpforum = () => {
         <div className='details'>
           <p className="email-notify">
             we sent an email with varification code to <br />
-            <span className="email-name">pranaygupta123@gamil.com.</span>
+            <span className="email-name">{email}</span>
           </p>
           <input
             type='text'

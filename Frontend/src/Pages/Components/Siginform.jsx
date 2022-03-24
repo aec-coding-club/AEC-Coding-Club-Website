@@ -32,6 +32,7 @@ const Siginform = () => {
         `${dataposted.data.user.firstName} ${dataposted.data.user.lastName}`
       )
       localStorage.setItem('pimage', `${dataposted.data.user.profilePicture}`)
+      localStorage.setItem("email", `${dataposted.data.user.email}`);
       if (dataposted.data.user.role <= 2) navigate('/dashboard')
       else navigate('/admin/overview')
       window.location.reload()
