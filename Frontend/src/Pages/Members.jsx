@@ -54,17 +54,17 @@ const Members = () => {
           <div className='teacher-container'>
             <div className='teacher-img'>
               <img
-                src='https://res.cloudinary.com/sahebcloud/image/upload/v1647626528/125117693_357780665522683_8638435484497410468_n_osozlr.jpg'
+                src='https://res.cloudinary.com/sahebcloud/image/upload/v1648147559/AECCC%20Members/PP_Sudip_Kumar_De_pqo4h6.jpg'
                 alt='teacher'
               />
             </div>
             <p className='teacher-name'>Sudip Kumar De</p>
-            <p className='teacher-designation'>Assistant professor, IT</p>
+            <p className='teacher-designation'>Assistant Professor, IT</p>
           </div>
           <div className='teacher-container'>
             <div className='teacher-img'>
               <img
-                src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
+                src='https://res.cloudinary.com/sahebcloud/image/upload/v1648147188/AECCC%20Members/PP_Anup_Kumar_M_izylak.jpg'
                 alt='teacher'
               />
             </div>
@@ -74,12 +74,12 @@ const Members = () => {
           <div className='teacher-container'>
             <div className='teacher-img'>
               <img
-                src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80'
+                src='https://res.cloudinary.com/sahebcloud/image/upload/v1648148328/AECCC%20Members/biplab_sir_fxijyl.png'
                 alt='teacher'
               />
             </div>
             <p className='teacher-name'>Biplab Mondal</p>
-            <p className='teacher-designation'>Assistant professor, IT</p>
+            <p className='teacher-designation'>Assistant Professor, IT</p>
           </div>
         </div>
         <MemberFilter
