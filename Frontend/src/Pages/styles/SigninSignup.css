@@ -11,7 +11,6 @@
 .user-img img {
   width: 500px;
 }
-
 form {
   width: 420px;
   margin: 20px 30px;
@@ -75,7 +74,34 @@ h1 {
 .signin__input__field {
   width: calc(15rem + 3vw);
 }
-
+.otpVerify-page{
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.otpVerify-page h1, .otpVerify-page .details, .otpVerify-page .details input{
+  text-align: center;
+}
+.otpVerify-page .login-signup-btn{
+  display: block;
+  margin: 0 auto;
+}
+.otpVerify-page form p, .otpVerify-page form p ul li{
+  font-size: .8rem;
+}
+.otpVerify-page form p{
+  margin: 1rem 0;
+}
+.email-notify{
+  color: var(--btn-bg);
+}
+.otp-bottom-notes{
+  width: fit-content;
+  margin: 1rem auto;
+}
+.email-name{
+  color: yellow;
+}
 .details-input {
   width: 200px;
   height: 35px;
@@ -149,6 +175,9 @@ h1 {
     position: relative;
     left: 20vw;
   }
+  .otp-bottom-notes{
+    margin: 0;
+  }
 }
 
 /* For Mobile Use ---> */
@@ -193,6 +222,11 @@ h1 {
   }
   .inline-input-svg{
     width: 100%;
+  }
+  .otpVerify-page{
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
   }
   /*for signin page ----> */
   .useridPass {
