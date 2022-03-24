@@ -50,9 +50,22 @@ const AdminLogs = () => {
   return (
     <div className='admin-container'>
       <h3>Activity Feed (LOGS)</h3>
-      <div>
+      <div
+        style={
+          loading
+            ? {
+                display: 'flex',
+                justifyContent: 'center',
+              }
+            : {}
+        }
+      >
         {loading ? (
-          <p>Loading</p>
+          <img
+            src='../../../../../Assets/loader.gif'
+            alt='loader'
+            className='admin-loader'
+          />
         ) : (
           <>
             <div className='log-data-container'>{displayLogs}</div>

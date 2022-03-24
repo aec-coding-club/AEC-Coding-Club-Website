@@ -77,9 +77,23 @@ const AdminUsers = () => {
           <FaSearch fill='#d6d6d6' className='user-search-icon' />
         </div>
       </div>
-      <div className='users-container'>
+      <div
+        className='users-container'
+        style={
+          loading
+            ? {
+                display: 'flex',
+                justifyContent: 'center',
+              }
+            : {}
+        }
+      >
         {loading ? (
-          <p>Loading...</p>
+          <img
+            src='../../../../../Assets/loader.gif'
+            alt='loader'
+            className='admin-loader'
+          />
         ) : displayData.length < 1 || !displayData ? (
           <div className='user-not-found'>
             <h3>No Such User Found!</h3>

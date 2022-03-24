@@ -80,6 +80,12 @@
   margin-bottom: 1.45rem;
 }
 
+.users-container .admin-loader {
+  margin-top: 1.5rem;
+  width: 250px;
+  height: 250px;
+}
+
 @media (max-width: 900px) {
   .admin-nav {
     gap: 2rem 4rem;
