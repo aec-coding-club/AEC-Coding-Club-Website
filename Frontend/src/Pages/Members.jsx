@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from "react";
 
-import './styles/Members.css'
-import Navbar from '../Components/Navbar'
-import MemberFilter from '../Components/MemberFilter'
-import MembersContainer from '../Components/MembersContainer'
-import UserContext from './Context/LoggedUserContext'
+import "./styles/Members.css";
+import Navbar from "../Components/Navbar";
+import MemberFilter from "../Components/MemberFilter";
+import MembersContainer from "../Components/MembersContainer";
+import UserContext from "./Context/LoggedUserContext";
 
 const Members = () => {
-  const [memberFilter, setMemberFilter] = useState('all')
+  const [memberFilter, setMemberFilter] = useState("all");
 
   function handleMemberFilter(selectedFilter) {
-    setMemberFilter(selectedFilter)
+    setMemberFilter(selectedFilter);
   }
 
   // const details = useContext(UserContext);
@@ -59,7 +59,7 @@ const Members = () => {
               />
             </div>
             <p className='teacher-name'>Sudip Kumar De</p>
-            <p className='teacher-designation'>Assistant proffesor, IT</p>
+            <p className='teacher-designation'>Assistant professor, IT</p>
           </div>
           <div className='teacher-container'>
             <div className='teacher-img'>
@@ -79,7 +79,7 @@ const Members = () => {
               />
             </div>
             <p className='teacher-name'>Biplab Mondal</p>
-            <p className='teacher-designation'>Assistant proffesor, IT</p>
+            <p className='teacher-designation'>Assistant professor, IT</p>
           </div>
         </div>
         <MemberFilter
@@ -89,7 +89,7 @@ const Members = () => {
         <MembersContainer memberFilter={memberFilter} />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Members
+export default Members;
