@@ -8,6 +8,8 @@ import '../../../Components/styles/EventsContainer.css'
 const DashboadComponent = ({ details, tokenChecker }) => {
   const [events, setEvents] = useState([])
   const [userId, setUserId] = useState(null)
+  const [zone, setZone] = useState('white')
+  const [role, setRole] = useState(0)
 
   const navigate = useNavigate()
 
@@ -21,7 +23,8 @@ const DashboadComponent = ({ details, tokenChecker }) => {
     })
     if (parseddata.data.user_data.role > 2) navigate('/admin/overview')
     setUserId(parseddata.data.user_data.uid)
-
+    setZone(parseddata.data.user_data.zone)
+    setRole(parseddata.data.user_data.role)
     const allEvents = details.userInfo.events.map(async (id) => {
       const response = await axios.get(`${Api}${id}`, {
         withCredentials: true,
@@ -53,11 +56,41 @@ const DashboadComponent = ({ details, tokenChecker }) => {
           />
           <div className='user-details'>
             <p className='logged-user logged-user-text'>
-              <span>Name: </span>
               {tokenChecker && tokenChecker[1]}
+              {role > 0 && role < 3 && (
+                <div
+                  className='zone-light'
+                  title={
+                    zone === 'Red'
+                      ? 'Inactive'
+                      : zone === 'Yellow'
+                      ? 'Active'
+                      : zone === 'Green'
+                      ? 'Good'
+                      : ''
+                  }
+                  style={
+                    zone === 'Red'
+                      ? {
+                          backgroundColor: '#eb4511',
+                          boxShadow: '0px 0px 5px 3px #eb4511',
+                        }
+                      : zone === 'Yellow'
+                      ? {
+                          backgroundColor: '#ffdd00',
+                          boxShadow: '0px 0px 5px 3px #ffdd00',
+                        }
+                      : zone === 'Green'
+                      ? {
+                          backgroundColor: '#5aff15',
+                          boxShadow: '0px 0px 5px 3px #5aff15',
+                        }
+                      : {}
+                  }
+                ></div>
+              )}
             </p>
             <p className='logged-user logged-user-id'>
-              <span>UID: </span>
               <span className='admin-uid'>
                 {userId ? userId : 'Loading...'}
               </span>
