@@ -33,7 +33,7 @@ function SideBar({
           <div className='sidebar-btn-wrapper'>
             <img className='logged-user-image' src={userImg} />
             <NavLink
-              to={userRole <= 2 ? '/dashboard' : '/admin'}
+              to={userRole <= 2 ? '/dashboard' : '/admin/overview'}
               className='nav-link'
               onClick={hideSidebar}
             >

@@ -46,6 +46,11 @@ const AdminUser = ({ user }) => {
           <p className='user-role'>
             <b>Role:</b> {user.role}
           </p>
+          {user.role < 3 && (
+            <p className='user-zone'>
+              <b>Zone:</b> {user.zone}
+            </p>
+          )}
         </div>
       </div>
       <AdminUserUpdate modalShow={modalShow} onHide={onHide} user={user} />

@@ -7,7 +7,6 @@ import './Styles/admin-index.css'
 
 const Admin = ({ userImage, userNameText }) => {
   const [userId, setUserId] = useState(null)
-
   const navigate = useNavigate()
 
   const fetchLogs = async () => {
@@ -20,6 +19,7 @@ const Admin = ({ userImage, userNameText }) => {
     })
     if (!parseddata) navigate('/')
     setUserId(parseddata.data.user_data.uid)
+    console.log(parseddata)
     if (parseddata.data.user_data.role <= 2) navigate('/dashboard')
   }
 
@@ -38,11 +38,11 @@ const Admin = ({ userImage, userNameText }) => {
           />
           <div className='user-details'>
             <p className='logged-user logged-user-text'>
-              <span>Name: </span>
+              {/* <span>Name: </span> */}
               {userNameText}
             </p>
             <p className='logged-user logged-user-id'>
-              <span>UID: </span>
+              {/* <span>UID: </span> */}
               <span className='admin-uid'>
                 {userId ? userId : 'Loading...'}
               </span>

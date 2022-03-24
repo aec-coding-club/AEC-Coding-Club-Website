@@ -31,9 +31,23 @@ const AdminEvents = () => {
   return (
     <>
       <div className='admin-users-wrapper'>
-        <div className='admin-users-container'>
+        <div
+          className='admin-users-container'
+          style={
+            loading
+              ? {
+                  display: 'flex',
+                  justifyContent: 'center',
+                }
+              : {}
+          }
+        >
           {loading ? (
-            <p>Loading...</p>
+            <img
+              src='../../../../../Assets/loader.gif'
+              alt='loader'
+              className='admin-loader'
+            />
           ) : (
             displayData.map((event) => (
               <EventBlock key={uuidv4()} eventdetails={event} />

@@ -149,6 +149,30 @@
   max-width: 600px;
 }
 
+.input-wrapper-container {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.input-wrapper-container .input-wrapper {
+  width: 50%;
+}
+
+.input-wrapper-container .input-wrapper select {
+  width: 100% !important;
+  border: none;
+  outline: none;
+  margin: 0 !important;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-family: Poppins, sans-serif;
+}
+
+.input-wrapper-container .input-wrapper select:focus {
+  outline: 1px solid var(--btn-bg);
+}
+
 .modal-admin-header {
   display: flex;
   align-items: center;
