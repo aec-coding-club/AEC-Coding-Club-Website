@@ -3,6 +3,8 @@ import { Api } from "../../../../../backend";
 import axios from "axios";
 import {
   ResponsiveContainer,
+  PieChart,
+  Pie,
   LineChart,
   Line,
   XAxis,
@@ -11,7 +13,6 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-import Log from "../Components/Log";
 
 const AdminOverview = () => {
   const [yeardata, setYeardata] = useState([]);
@@ -73,7 +74,6 @@ const AdminOverview = () => {
   useEffect(() => {
     fetchBatchdata();
     fetchYeardata();
-    fetchUser();
   }, []);
 
   return (
@@ -92,46 +92,46 @@ const AdminOverview = () => {
       }
       <h1>Overview</h1>
 
-      <ResponsiveContainer width="100%" aspect={4}>
+      <ResponsiveContainer width='100%' aspect={4}>
         <LineChart
           data={yerarDataSet}
           width={100}
           height={100}
-          margin={{ top: 10, left: 10, bottom: 0, right: 50 }}
+          margin={{ top: 10, left: 10, bottom: 0, right: 900 }}
         >
-          <CartesianGrid strokeDasharray="3 15" />
-          <XAxis dataKey="name" interval={"preserveStartEnd"} />
+          <CartesianGrid strokeDasharray='3 15' />
+          <XAxis dataKey='name' interval={"preserveStartEnd"} />
           <YAxis />
           <Tooltip contentStyle={{ backgroundColor: "black" }} />
           <Legend />
           <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#EAE2B7"
-            legendType="wye"
+            type='monotone'
+            dataKey='value'
+            stroke='#EAE2B7'
+            legendType='wye'
             activeDot={{ stroke: "red", strokeWidth: 2, r: 7 }}
             strokeWidth={5}
           />
         </LineChart>
       </ResponsiveContainer>
 
-      <ResponsiveContainer width="100%" aspect={4}>
+      <ResponsiveContainer width='100%' aspect={4}>
         <LineChart
           data={batchDataSet}
           width={100}
           height={100}
-          margin={{ top: 10, left: 10, bottom: 0, right: 50 }}
+          margin={{ top: 10, left: 10, bottom: 0, right: 900 }}
         >
-          <CartesianGrid strokeDasharray="3 15" />
-          <XAxis dataKey="name" interval={"preserveStartEnd"} />
+          <CartesianGrid strokeDasharray='3 15' />
+          <XAxis dataKey='name' interval={"preserveStartEnd"} />
           <YAxis />
           <Tooltip contentStyle={{ backgroundColor: "black" }} />
           <Legend />
           <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#D93E39"
-            legendType="wye"
+            type='monotone'
+            dataKey='value'
+            stroke='#D93E39'
+            legendType='wye'
             activeDot={{ stroke: "red", strokeWidth: 2, r: 7 }}
             strokeWidth={5}
           />

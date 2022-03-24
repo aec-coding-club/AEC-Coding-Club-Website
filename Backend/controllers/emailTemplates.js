@@ -1,9 +1,3 @@
-const marked = require('marked')
-const createDomPurify = require('dompurify')
-const { JSDOM } = require('jsdom')
-const dompurify = createDomPurify(new JSDOM().window)
-
-
 const otpTemplate = (user, otp) => {
   return `<body>
 <div>
@@ -46,30 +40,28 @@ const otpTemplate = (user, otp) => {
 </body>`;
 };
 
-// const announceall = (event, date, image, description, url) => {
-//   return ` <body> 
-//               <div>
-//               Dear student,
-//              AECCC is going to host <b>${event}</b> on ${date}.
-//               <img src=${image} alt="Event Image">
-//               <br>
-//               ${description}
-//               <br>
-//               Please check it on official site here ${url}
-//               </div>
-//         </body>`;
-// };
 const announceall = (event, date, image, description, url) => {
-    description = dompurify.sanitize(marked.parse(description))
+  description = dompurify.sanitize(marked.parse(description));
   return ` <body> 
               <div>
-              Dear student, AECCC is going to host <b>${event}</b> on ${date}.
+              Dear student,
+             AECCC is going to host <b>${event}</b> on ${date}.
               <img src=${image} alt="Event Image">
+              <br>
               ${description}
+              <br>
               Please check it on official site here ${url}
               </div>
         </body>`;
 };
+// const announceall = (event, date, image, description, url) => {
+//     description = dompurify.sanitize(marked.parse(description))
+//   return ` <body>
+//               <div>
+//               Dear student, AECCC is going to host a <b>${event}</b> on ${date}. Please check it on official site here ${url}
+//               </div>
+//         </body>`
+// }
 
 const notifyall = (event, date, url) => {
   return `Dear participant ${event} is going to start from ${date} link of the event ${url}`;

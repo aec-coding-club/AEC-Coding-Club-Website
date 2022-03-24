@@ -10,14 +10,12 @@ const {
 } = require("./emailTemplates");
 
 exports.announceall = async (req, res) => {
-  // date = req.body.eventDate;
-  const { eventTitle, eventTime, eventImage, eventDetails } = req.body;
+  date = req.body.eventDate;
+  eventName = req.body.eventName;
 
-  if (!eventTitle || !eventTime || !eventImage || !eventDetails) {
-    res.json({
-      message: "All Data is required",
-      success: false,
-    });
+  if (!date || !eventName) {
+    date = "Not Available";
+    eventName = "Not Available";
   }
   let emails = await User.find({}, { _id: false, email: true });
   let emaillist = [];
@@ -75,19 +73,26 @@ exports.getAll = async (req, res) => {
   try {
     const events = await event.find({}).sort({eventTime : 1});
     // console.log(events);
-    var Upcomingevent = []
-    var Previousevent = []
-    events.map(event => {
-      if(event.eventTime < new Date()) {
-        Previousevent.push(event)
-      }else{
-        Upcomingevent.push(event)
+    var Upcomingevent = [];
+    var Previousevent = [];
+    events.map((event) => {
+      if (event.eventTime < new Date()) {
+        Previousevent.push(event);
+      } else {
+        Upcomingevent.push(event);
       }
-    })
+    });
 
     console.log("Previous Event : ------------------> ", Previousevent.sort());
     console.log("Upcoming Event : ==================> ", Upcomingevent);
-    res.status(200).json({ events: events.reverse(), length: events.length, prevEvent : Previousevent, upcomingEvent : Upcomingevent });
+    res
+      .status(200)
+      .json({
+        events: events.reverse(),
+        length: events.length,
+        prevEvent: Previousevent,
+        upcomingEvent: Upcomingevent,
+      });
   } catch (error) {
     console.log(error);
     res.json({ error: "Cannot Find Events" });
