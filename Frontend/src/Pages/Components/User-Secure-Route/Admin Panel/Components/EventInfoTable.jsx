@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { v4 as uuidv4 } from 'uuid'
 import '../Styles/event-info-table.css'
 
 const EventInfoTable = ({ eventData }) => {
   const tBodyContent = eventData.map((data) => (
-    <tr>
+    <tr key={uuidv4()}>
       <td data-label='slNo'>{data.slNo}</td>
       <td data-label='email'>{data.email}</td>
       <td data-label='userId'>{data.userId}</td>

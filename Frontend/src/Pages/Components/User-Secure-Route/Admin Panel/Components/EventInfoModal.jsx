@@ -29,7 +29,7 @@ export const EventInfoModal = ({ modalShow, onHide, event }) => {
   }, [modalShow])
 
   return (
-    <div className={modalContainerClass}>
+    <div className={`${modalContainerClass} admin-event-modal-container`}>
       <div className={modalClass}>
         <div className='modal-admin-header'>
           <h3>

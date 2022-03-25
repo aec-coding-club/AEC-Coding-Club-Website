@@ -30,6 +30,17 @@
   border-radius: 10%;
 }
 
+.admin-event-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.admin-event-modal-container {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1000px) {
   .event-block {
     display: flex;

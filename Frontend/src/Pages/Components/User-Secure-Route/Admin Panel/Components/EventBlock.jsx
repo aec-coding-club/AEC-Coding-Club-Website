@@ -28,11 +28,13 @@ const EventBlock = ({ eventdetails }) => {
           </p>
         </div>
       </div>
-      <EventInfoModal
-        modalShow={modalShow}
-        onHide={onHide}
-        event={eventdetails}
-      />
+      {eventdetails.name && eventdetails.name.length > 0 && (
+        <EventInfoModal
+          modalShow={modalShow}
+          onHide={onHide}
+          event={eventdetails}
+        />
+      )}
     </>
   )
 }
