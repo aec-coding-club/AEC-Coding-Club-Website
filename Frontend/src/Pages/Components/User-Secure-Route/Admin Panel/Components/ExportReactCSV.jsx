@@ -15,8 +15,12 @@ export const ExportReactCSV = ({ csvData, fileName }) => {
   }
 
   return (
-    <button className='btn' onClick={(e) => exportToCSV(csvData, fileName)}>
-      Export
+    <button
+      className='btn'
+      style={{ marginTop: '0.5rem', borderRadius: '0.25rem' }}
+      onClick={(e) => exportToCSV(csvData, fileName)}
+    >
+      Export List
     </button>
   )
 }
