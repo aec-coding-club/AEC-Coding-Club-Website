@@ -19,7 +19,6 @@ const Admin = ({ userImage, userNameText }) => {
     })
     if (!parseddata) navigate('/')
     setUserId(parseddata.data.user_data.uid)
-    console.log(parseddata)
     if (parseddata.data.user_data.role <= 2) navigate('/dashboard')
   }
 

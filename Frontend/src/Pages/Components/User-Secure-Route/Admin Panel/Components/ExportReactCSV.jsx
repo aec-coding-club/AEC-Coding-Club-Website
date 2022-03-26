@@ -1,3 +1,4 @@
+import { FaDownload } from 'react-icons/fa'
 import * as FileSaver from 'file-saver'
 import * as XLSX from 'xlsx'
 
@@ -15,8 +16,12 @@ export const ExportReactCSV = ({ csvData, fileName }) => {
   }
 
   return (
-    <button className='btn' onClick={(e) => exportToCSV(csvData, fileName)}>
-      Export
+    <button
+      className='btn admin-event-download-btn'
+      style={{ marginTop: '0.75rem', borderRadius: '0.25rem' }}
+      onClick={(e) => exportToCSV(csvData, fileName)}
+    >
+      Export List <FaDownload />
     </button>
   )
 }
