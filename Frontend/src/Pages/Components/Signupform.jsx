@@ -191,9 +191,9 @@ const Signupform = () => {
                 <option value='EE'>EE</option>
                 <option value='CE'>CE</option>
                 <option value='ME'>ME</option>
-                <option value='ME'>BBA</option>
-                <option value='ME'>BCA</option>
-                <option value='ME'>MCA</option>
+                <option value='BBA'>BBA</option>
+                <option value='BCA'>BCA</option>
+                <option value='MCA'>MCA</option>
               </select>
             </label>
 
