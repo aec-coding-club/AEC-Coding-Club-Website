@@ -118,7 +118,7 @@ const Siginform = () => {
               className='input__field signin__input__field'
               onChange={(e) => handelChange(e)}
               value={registerdata.uid}
-              placeholder='Enter User ID'
+              placeholder='AECCC/IT/2024/0001'
               required
               autoComplete='off'
             ></input>
