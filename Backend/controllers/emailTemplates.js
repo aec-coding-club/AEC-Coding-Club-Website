@@ -37,11 +37,11 @@ const otpTemplate = (user, otp) => {
         </div>
     </div>
 </div>
-</body>`;
-};
+</body>`
+}
 
 const announceall = (event, date, image, description, url) => {
-  description = dompurify.sanitize(marked.parse(description));
+  description = dompurify.sanitize(marked.parse(description))
   return ` <body> 
               <div>
               Dear student,
@@ -52,8 +52,8 @@ const announceall = (event, date, image, description, url) => {
               <br>
               Please check it on official site here ${url}
               </div>
-        </body>`;
-};
+        </body>`
+}
 // const announceall = (event, date, image, description, url) => {
 //     description = dompurify.sanitize(marked.parse(description))
 //   return ` <body>
@@ -64,15 +64,15 @@ const announceall = (event, date, image, description, url) => {
 // }
 
 const notifyall = (event, date, url) => {
-  return `Dear participant ${event} is going to start from ${date} link of the event ${url}`;
-};
+  return `Dear participant ${event} is going to start from ${date} link of the event ${url}`
+}
 
 const resettoken = (url, uid) => {
   return `Hello, You Requested for a Password Reset Please Click On the Link to Reset Password ${url}
   <br
-  >UID : ${uid}`;
-};
+  >UID : ${uid}`
+}
 
 // const custom = (msg) => {};
 
-module.exports = { otpTemplate, announceall, notifyall, resettoken };
+module.exports = { otpTemplate, announceall, notifyall, resettoken }

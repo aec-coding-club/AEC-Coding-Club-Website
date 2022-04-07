@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -42,15 +42,14 @@ const userSchema = new mongoose.Schema({
   },
   zone: {
     type: String,
-    default: "White",
+    default: 'White',
   },
   profilePicture: {
     type: String,
-    default:
-      "https://res.cloudinary.com/sahebcloud/image/upload/v1644605990/dummypic_vns8f6.jpg",
+    default: 'https://res.cloudinary.com/sahebcloud/image/upload/v1644605990/dummypic_vns8f6.jpg',
   },
-  linkedin: { type: String, default: "https://www.linkedin.com" },
-  github: { type: String, default: "https://github.com/" },
+  linkedin: { type: String, default: 'https://www.linkedin.com' },
+  github: { type: String, default: 'https://github.com/' },
   event: {
     type: Array,
   },
@@ -71,6 +70,6 @@ const userSchema = new mongoose.Schema({
     initialTimeStamp: { type: Number },
   },
   timeStamp: { type: Number, default: Date.now() },
-});
+})
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model('user', userSchema)
