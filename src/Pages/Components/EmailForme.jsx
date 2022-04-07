@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 import { Api } from "../../backend";
 
 const EmailForme = () => {
@@ -33,6 +33,7 @@ const EmailForme = () => {
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
+          className="input__field"
           value={email}
           onChange={(e) => handelChange(e)}
           type="email"

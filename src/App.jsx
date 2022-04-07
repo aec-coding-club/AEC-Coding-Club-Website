@@ -13,6 +13,7 @@ import Dashboard from "./Pages/Dashboard-Secure";
 import Admin from "./Pages/Components/User-Secure-Route/Admin Panel/Admin";
 import Errorpage from "./Pages/Errorpage";
 import Enteremail from './Pages/Enteremail';
+import Setpassword from "./Pages/Setpassword";
 import "./App.css";
 import { Api } from "./backend";
 import UserContext from "./Pages/Context/LoggedUserContext";
@@ -27,6 +28,7 @@ import AdminUsers from "./Pages/Components/User-Secure-Route/Admin Panel/Pages/A
 import AdminEvents from "./Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminEvents";
 import AdminLogs from "./Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminLogs";
 import AdminStats from "./Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminStats";
+
 
 const getFromLocalStorage = () => {
   const token = localStorage.getItem("token");
@@ -60,6 +62,7 @@ const App = () => {
           <Route exact path="/signin" element={<Signin />} />
           <Route exact path="/enteremail" element={<Enteremail />} />
           <Route exact path="/verify" element={<Otpverify />} />
+          <Route exact path="/setNewPassword/:token" element={<Setpassword />} />
           <Route
             exact
             path="/dashboard"
