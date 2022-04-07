@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const Elog = new mongoose.Schema({
   Operation: {
@@ -10,6 +10,6 @@ const Elog = new mongoose.Schema({
   eventDescription: { type: String },
   image: { type: String },
   updatedAt: { type: Date },
-});
+})
 
-module.exports = mongoose.model("Elog", Elog);
+module.exports = mongoose.model('Elog', Elog)

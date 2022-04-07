@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const { MONGODB_URL } = process.env;
+const { MONGODB_URL } = process.env
 
 exports.connect = () => {
   mongoose
@@ -10,8 +10,8 @@ exports.connect = () => {
     })
     .then(console.log(`DB Connection Success`))
     .catch((err) => {
-      console.log(`DB Connection Failed`);
-      console.log(err);
-      prcess.exit(1);
-    });
-};
+      console.log(`DB Connection Failed`)
+      console.log(err)
+      prcess.exit(1)
+    })
+}

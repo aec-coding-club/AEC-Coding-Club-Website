@@ -1,0 +1,50 @@
+.aeccc-numbers {
+  color: black;
+  padding: 2rem 0;
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intro-head-hr{
+  width: 170px;
+  margin: auto;
+}
+
+.aeccc-count-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.count-box {
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://res.cloudinary.com/sahebcloud/image/upload/v1646770306/hexagon_oingtz.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.count-box > p:first-child {
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+.count-box > p:last-child {
+  padding: 0.25rem 0;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 550px) {
+  .aeccc-numbers-heading {
+    width: 90vw;
+  }
+}

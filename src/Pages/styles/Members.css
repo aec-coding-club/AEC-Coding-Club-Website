@@ -1,0 +1,93 @@
+.members {
+  width: 90%;
+  margin: 0 auto;
+  padding-block: 2rem;
+}
+
+.members-header {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.members-header h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.members-header p {
+  margin-top: 1.25rem;
+  letter-spacing: 1px;
+  line-height: 1.75rem;
+}
+
+.members hr {
+  border-top: none;
+  margin-block: 2rem;
+}
+
+/* teacher coordinators */
+
+.teacher-header {
+  text-align: center;
+  margin-block: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+}
+
+.teacher-wrapper {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-block: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.teacher-container {
+  margin: 0 auto;
+}
+
+.teacher-container p {
+  text-align: center;
+}
+
+.teacher-img {
+  width: 150px;
+  height: 150px;
+  background-color: var(--nav-body);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.teacher-img img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.teacher-name {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.teacher-designation {
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 500px) {
+  .members-header p {
+    text-align: justify;
+    letter-spacing: unset;
+  }
+}

@@ -1,0 +1,132 @@
+.admin-details {
+  padding: 2rem 5rem;
+  background-color: #202024;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-user-img {
+  width: 4.5rem;
+}
+
+.zone-light {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.logged-user-text {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logged-user-id {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+/* .logged-user span:first-child {
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+} */
+
+.admin-uid {
+  border: 1px solid var(--btn-bg);
+  padding: 0.45rem 1rem;
+  border-radius: 0.45rem;
+}
+
+.admin-nav {
+  width: 100%;
+  min-height: 8vh;
+  background-color: #485461;
+  background-image: linear-gradient(15deg, #424547 0%, #35353b 74%);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem 8rem;
+}
+
+.admin-nav-link {
+  color: aliceblue;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.admin-nav-link.active {
+  color: var(--btn-bg);
+}
+.admin-nav-link.active {
+  border-bottom: 2px solid var(--btn-bg);
+}
+
+.admin-container {
+  padding: 1rem 5rem;
+}
+
+.admin-container h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.45rem;
+}
+
+.users-container .admin-loader {
+  margin-top: 1.5rem;
+  width: 250px;
+  height: 250px;
+}
+
+@media (max-width: 900px) {
+  .admin-nav {
+    gap: 2rem 4rem;
+    padding: 0 1rem;
+  }
+
+  .admin-details h2 {
+    display: none;
+  }
+
+  .admin-container {
+    padding: 1rem 2rem;
+  }
+
+  .admin-details {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-nav {
+    gap: 1rem 4rem;
+    padding: 1rem 1rem;
+  }
+}
+/* Mobile View */
+@media (max-width: 500px) {
+  .admin-details {
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding-bottom: 2rem;
+  }
+  .admin-details h2 {
+    display: block;
+  }
+  .left {
+    flex-direction: column;
+    width: 100%;
+  }
+  .admin-uid {
+    font-size: 1rem;
+    padding: 0.3rem 0.75rem;
+  }
+}

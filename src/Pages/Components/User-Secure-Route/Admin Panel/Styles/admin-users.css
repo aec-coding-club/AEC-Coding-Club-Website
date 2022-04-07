@@ -1,0 +1,207 @@
+.users-wrapper {
+  padding: 2rem 5rem;
+}
+
+.user-data-container {
+  max-width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.search-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.user-search-box {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-user-input {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--background-1);
+  border: none;
+  outline: none;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 0.35rem;
+}
+.search-user-input::placeholder {
+  color: #d6d6d6;
+}
+.search-user-input:focus {
+  outline: 1px solid #494949;
+}
+
+.user-search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.users-container {
+  margin-top: 1.75rem;
+}
+
+.admin-user {
+  max-width: 1000px;
+  background-color: var(--background-1);
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.35rem;
+}
+
+.admin-user p {
+  overflow-wrap: break-word;
+}
+
+.admin-user-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-user-icons svg {
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.admin-user-icons svg:hover {
+  transform: scale(1.1);
+}
+
+.icon-edit:hover {
+  fill: yellow;
+}
+
+.icon-ban:hover {
+  fill: var(--btn-bg);
+}
+
+.user-image {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.user-profile {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-name {
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+.user-email {
+  font-size: 0.85rem;
+  font-style: italic;
+  letter-spacing: 0.75px;
+  overflow-wrap: break-word;
+}
+
+.user-college-info {
+  margin-block: 0.75rem;
+}
+
+.user-id {
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
+}
+
+.user-uid {
+  background-color: var(--background-2);
+  font-size: 0.85rem;
+  padding: 0.15rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.user-not-found {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.user-not-found h3 {
+  color: var(--btn-bg);
+  font-size: 2rem;
+}
+
+.user-not-found p {
+  font-size: 1.25rem;
+}
+
+.admin-modal-container {
+  display: grid;
+  place-items: center;
+}
+
+.admin-modal-container .event-modal {
+  max-width: 600px;
+}
+
+.input-wrapper-container {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.input-wrapper-container .input-wrapper {
+  width: 50%;
+}
+
+.input-wrapper-container .input-wrapper select {
+  width: 100% !important;
+  border: none;
+  outline: none;
+  margin: 0 !important;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-family: Poppins, sans-serif;
+}
+
+.input-wrapper-container .input-wrapper select:focus {
+  outline: 1px solid var(--btn-bg);
+}
+
+.modal-admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--btn-bg);
+  margin-bottom: 0.5rem;
+}
+
+.modal-admin-header svg {
+  cursor: pointer;
+}
+
+.admin-modal-container .event-modal .btn {
+  margin-top: 1rem;
+  border-radius: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .users-wrapper {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .admin-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+  }
+}
