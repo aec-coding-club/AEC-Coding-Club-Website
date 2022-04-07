@@ -67,6 +67,12 @@ const notifyall = (event, date, url) => {
   return `Dear participant ${event} is going to start from ${date} link of the event ${url}`;
 };
 
-const custom = (msg) => {};
+const resettoken = (url, uid) => {
+  return `Hello, You Requested for a Password Reset Please Click On the Link to Reset Password ${url}
+  <br
+  >UID : ${uid}`;
+};
 
-module.exports = { otpTemplate, announceall, notifyall, custom };
+// const custom = (msg) => {};
+
+module.exports = { otpTemplate, announceall, notifyall, resettoken };

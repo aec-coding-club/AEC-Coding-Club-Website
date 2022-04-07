@@ -1,9 +1,18 @@
 var express = require("express");
+
 var router = express.Router();
 const { check, validationResult } = require("express-validator");
 const { register, login, verifyOTP } = require("../controllers/auth");
-const { isAuthenticated, isActivated } = require("../middlewares/verify");
-const { dashboard } = require("../controllers/user");
+const {
+  isAuthenticated,
+  isActivated,
+  resetTokenVerify,
+} = require("../middlewares/verify");
+const {
+  dashboard,
+  tokenforreset,
+  setNewPassword,
+} = require("../controllers/user");
 
 router.post(
   "/register",
@@ -32,6 +41,8 @@ router.get("/dummy", function (req, res) {
 });
 
 router.get("/dashboard", isAuthenticated, isActivated, dashboard);
+router.get("/tokenforreset", tokenforreset);
+router.post("/setNewPassword/:token", resetTokenVerify, setNewPassword);
 router.get("/dashboardtry", isAuthenticated, (req, res) => {
   return res.json({ message: "Welcome To proected Route", user: req.user });
 });

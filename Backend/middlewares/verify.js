@@ -86,3 +86,29 @@ exports.isAdmin = async (req, res, next) => {
     return res.json({ success: false, message: error.message });
   }
 };
+
+exports.resetTokenVerify = async (req, res, next) => {
+  try {
+    const token = req.params.token;
+    if (!token || token == "undefined") {
+      return res.json({ message: "Token is undefined" });
+    }
+    try {
+      const userDetails = jwt.verify(token, process.env.SECRET);
+      req.user = userDetails;
+    } catch (e) {
+      return res.json({
+        error: e.message,
+        success: false,
+        message: `Token Mismatch`,
+      });
+    }
+    next();
+  } catch (error) {
+    return res.json({
+      error: e.message,
+      success: false,
+      message: `Some Error occurred in Reseting the Password`,
+    });
+  }
+};
