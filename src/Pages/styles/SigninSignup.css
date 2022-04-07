@@ -122,6 +122,12 @@ h1 {
   border: none;
   margin-bottom: 20px;
 }
+.forgotPassword-links{
+  color: rgba(214, 40, 40, 1);
+  font-size: 0.95em;  
+  /* padding:1.2em;
+  margin: 6em; */
+}
 
 .links {
   color: rgb(180, 178, 178);
