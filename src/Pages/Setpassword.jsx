@@ -29,6 +29,18 @@ const Setpassword = () => {
         crossorigin: true,
       }
     );
+    if(dataPosted.data.success){
+      toast.success(dataPosted.data.message, {theme : "dark"});
+      navigate("/signin")
+    }else{
+      toast.error(dataPosted.data.message, {
+        theme: 'dark',
+      })
+      setPassword({
+        password: "",
+        confirmPassword: "",
+      })
+    }
     console.log("Data: ", dataPosted);
   };
 
@@ -58,7 +70,7 @@ const Setpassword = () => {
           className="input__field"
           name="password"
           id="password"
-          type="text"
+          type="password"
           placeholder="Enter the new password"
           value={Passworddata.password}
           onChange={(e) => handelChange(e)}
@@ -68,7 +80,7 @@ const Setpassword = () => {
           className="input__field"
           name="confirmPassword"
           id="confirmPassword"
-          type="text"
+          type="password"
           placeholder="Confirm the password"
           value={Passworddata.confirmPassword}
           onChange={(e) => handelChange(e)}

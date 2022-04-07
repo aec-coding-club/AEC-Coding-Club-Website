@@ -18,13 +18,7 @@ const Enteremail = () => {
 
   return (
     <>
-      {/* TODO: DESIGNE A ARROW TO GET BACK TO THE SIGNiN PAGE */}
-      {/* <Link to="/signin">
-        <h1>
-          <BiArrowBack />
-        </h1>
-      </Link> */}
-      <h1>Enter your email address</h1>
+      <h1>Enter your email address to Reset Password</h1>
       <EmailForme />
     </>
   );

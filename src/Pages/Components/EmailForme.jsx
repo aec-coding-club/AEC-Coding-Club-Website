@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Api } from "../../backend";
+import {useNavigate} from "react-router-dom"
 
 const EmailForme = () => {
   const [email, setEmail] = useState("");
+  let navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,16 @@ const EmailForme = () => {
         crossorigin: true,
       }
     );
+    if(data.success) {
+      toast.success("Email Sent Successfully Check Your Email", {theme : "dark"});
+      navigate("/")
+      // toast.success("Check Your Email", {theme : "dark"});
+    }else{
+      toast.error("User Not Registered", {
+        theme: 'dark',
+      })
+      setEmail("")
+    }
     console.log("Data: ", data);
   };
 
