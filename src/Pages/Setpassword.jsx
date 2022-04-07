@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Api } from "../backend";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Setpassword = () => {
@@ -11,6 +11,7 @@ const Setpassword = () => {
   });
 
   let loation = useLocation();
+  let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,11 +33,22 @@ const Setpassword = () => {
   };
 
   function handelChange(e) {
-    const newdata = { ...Passworddata }
-    newdata[e.target.id] = e.target.value
-    setPassword(newdata)
-    console.log(newdata)
+    const newdata = { ...Passworddata };
+    newdata[e.target.id] = e.target.value;
+    setPassword(newdata);
+    console.log(newdata);
   }
+
+  async function tokenCheker() {
+    const authToken = localStorage.getItem("token");
+    if (authToken) {
+      navigate("/");
+    }
+  }
+
+  useEffect(() => {
+    tokenCheker();
+  }, []);
 
   return (
     <>
@@ -44,8 +56,8 @@ const Setpassword = () => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           className="input__field"
-          name='password'
-          id='password'
+          name="password"
+          id="password"
           type="text"
           placeholder="Enter the new password"
           value={Passworddata.password}
@@ -54,8 +66,8 @@ const Setpassword = () => {
         <br />
         <input
           className="input__field"
-          name='confirmPassword'
-          id='confirmPassword'
+          name="confirmPassword"
+          id="confirmPassword"
           type="text"
           placeholder="Confirm the password"
           value={Passworddata.confirmPassword}
