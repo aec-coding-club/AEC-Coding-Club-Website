@@ -17,8 +17,8 @@ const Setpassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted Successfully");
-    console.log("Path Name : ", loation.pathname.slice(1));
+    // console.log("Form Submitted Successfully");
+    // console.log("Path Name : ", loation.pathname.slice(1));
     const data = {
       password: Passworddata.password,
       confirmPassword: Passworddata.confirmPassword,
@@ -43,14 +43,14 @@ const Setpassword = () => {
         confirmPassword: "",
       });
     }
-    console.log("Data: ", dataPosted);
+    // console.log("Data: ", dataPosted);
   };
 
   function handelChange(e) {
     const newdata = { ...Passworddata };
     newdata[e.target.id] = e.target.value;
     setPassword(newdata);
-    console.log(newdata);
+    // console.log(newdata);
   }
 
   async function tokenCheker() {

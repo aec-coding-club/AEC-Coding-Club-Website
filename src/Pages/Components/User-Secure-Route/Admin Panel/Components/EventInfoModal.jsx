@@ -41,7 +41,7 @@ export const EventInfoModal = ({ modalShow, onHide, event }) => {
         <EventInfoTable eventData={eventData} />
       </div>
       {
-        //console.log('Modal Data', eventData)
+        //// console.log('Modal Data', eventData)
       }
     </div>
   )

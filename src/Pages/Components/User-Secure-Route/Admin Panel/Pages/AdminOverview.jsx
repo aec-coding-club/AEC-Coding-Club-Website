@@ -25,7 +25,7 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    //console.log("Batch data - ", data);
+    //// console.log("Batch data - ", data);
     setYeardata(await data);
   };
 
@@ -35,7 +35,7 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    //console.log("Year data - ", data);
+    //// console.log("Year data - ", data);
     setBatchdata(await data);
   };
 
@@ -45,7 +45,7 @@ const AdminOverview = () => {
       withCredentials: true,
       headers: { Authorization: `Bearer ${authToken}` },
     });
-    //console.log("User data -------------------- ", data.users);
+    //// console.log("User data -------------------- ", data.users);
     setuserdata(await data);
   };
 
@@ -79,16 +79,16 @@ const AdminOverview = () => {
   return (
     <>
       {
-        //console.log("Whats your year", yeardata)
+        //// console.log("Whats your year", yeardata)
       }
       {
-        //console.log("Whats your branch", batchdata)
+        //// console.log("Whats your branch", batchdata)
       }
       {
-        //console.log("Whats your branch", yerarDataSet)
+        //// console.log("Whats your branch", yerarDataSet)
       }
       {
-        //console.log("Whats your User bro=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-", userData)
+        //// console.log("Whats your User bro=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-", userData)
       }
       <h1>Overview</h1>
 

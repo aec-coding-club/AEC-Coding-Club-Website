@@ -134,7 +134,7 @@ export default Admin
 //       withCredentials: true,
 //       headers: { Authorization: `Bearer ${authToken}` },
 //     })
-//     //console.log('data: ', data)
+//     //// console.log('data: ', data)
 //     setLogData(await data.data.logs)
 //     setLoading(false)
 //   }

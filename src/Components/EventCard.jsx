@@ -20,7 +20,7 @@ export const EventCard = ({
   name,
 }) => {
   const { eventImage, eventTitle, eventDetails, eventTime, _id } = cardData
-  // console.log("Card data :- ", cardData);
+  // // console.log("Card data :- ", cardData);
   let navigate = useNavigate()
 
   const [showConfirm, setShowConfirm] = useState(false)
@@ -36,7 +36,7 @@ export const EventCard = ({
   } = cardEditData || {}
 
   function onEdit(id) {
-    console.log(id)
+    // console.log(id)
     setEditEventID(id)
     setModalShow(true)
     setAddEvent(false)
@@ -63,8 +63,8 @@ export const EventCard = ({
         crossorigin: true,
         headers: { Authorization: `Bearer ${authToken}` },
       })
-      //console.log('MAIL SEND ........', parseddata)
-      //console.log('MAIL DATA: ', mailData)
+      //// console.log('MAIL SEND ........', parseddata)
+      //// console.log('MAIL DATA: ', mailData)
       toast.success('Users Notified', {
         theme: 'dark',
       })
@@ -74,7 +74,7 @@ export const EventCard = ({
   }
 
   const signInFirst = () => {
-    //console.log('Log In to your account to Register in this event')
+    //// console.log('Log In to your account to Register in this event')
     toast.error('Sign In To Register To The Event', {
       theme: 'dark',
       onClick: () => navigate('/signin'),
@@ -84,15 +84,15 @@ export const EventCard = ({
   // This will register the user for the event
   const registerToEvent = async (id) => {
     try {
-      //console.log(`Events added to the user page ${id}`)
+      //// console.log(`Events added to the user page ${id}`)
       const authToken = localStorage.getItem('token')
-      //console.log('AuthToken :- ', authToken)
+      //// console.log('AuthToken :- ', authToken)
       let parseddata = await axios.post(`${Api}registerevent/${id}`, '', {
         withCredentials: true,
         crossorigin: true,
         headers: { Authorization: `Bearer ${authToken}` },
       })
-      //console.log('User data :- ', parseddata)
+      //// console.log('User data :- ', parseddata)
       navigate('/dashboard')
       toast.success('You have successfully registered', {
         theme: 'dark',
@@ -105,15 +105,15 @@ export const EventCard = ({
   }
 
   const onDelete = async (id) => {
-    //console.log(`Deleting the event with id ${id}`)
+    //// console.log(`Deleting the event with id ${id}`)
     const authToken = localStorage.getItem('token')
-    //console.log('AuthToken :- ', authToken)
+    //// console.log('AuthToken :- ', authToken)
     let { data } = await axios.delete(`${Api}delete/${id}`, {
       withCredentials: true,
       crossorigin: true,
       headers: { Authorization: `Bearer ${authToken}` },
     })
-    //console.log('User data :- ', data)
+    //// console.log('User data :- ', data)
     if (data.success) {
       window.location.reload()
     }
@@ -151,7 +151,7 @@ export const EventCard = ({
           )}
 
           <div className='event-btn-wrapper'>
-            {/* {console.log("Decd Array -> ", decisionArray)} */}
+            {/* {// console.log("Decd Array -> ", decisionArray)} */}
             {tokenChecker ? (
               userRole >= 3 ? (
                 <></>

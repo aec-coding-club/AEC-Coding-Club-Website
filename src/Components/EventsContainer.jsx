@@ -25,7 +25,7 @@ const EventsContainer = ({
   //   })
   //   setLoading(false)
   //   setEvents(parseddata.data.upcomingEvent)
-  //   console.log(allEvents)
+  //   // console.log(allEvents)
   // }
 
   // useEffect(() => {

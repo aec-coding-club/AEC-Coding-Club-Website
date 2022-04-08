@@ -11,7 +11,7 @@ const EmailForme = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted Successfully");
+    // console.log("Form Submitted Successfully");
     const { data } = await axios.post(
       `${Api}tokenforreset`,
       {
@@ -34,14 +34,14 @@ const EmailForme = () => {
       });
       setEmail("");
     }
-    console.log("Data: ", data);
+    // console.log("Data: ", data);
   };
 
   // abirpal282002@gmail.com
 
   function handelChange(e) {
     setEmail(e.target.value);
-    console.log(email);
+    // console.log(email);
   }
 
   return (
