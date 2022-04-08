@@ -28,7 +28,7 @@ h1 {
 }
 
 .asterik {
-  color: rgba(214, 40, 40, 1);
+  color: var(--btn-bg);
 }
 
 .name {
@@ -51,19 +51,19 @@ h1 {
   padding: 0.3rem 0.5rem;
   margin-top: 0.3rem;
   font-size: 0.85rem;
-  border: 1.5px solid rgba(214, 40, 40, 1);
+  border: 1.5px solid var(--btn-bg);
   box-sizing: border-box;
   border-radius: 5px;
 }
 
 .input__field:hover {
-  outline: 1px solid rgba(214, 40, 40, 1);
+  outline: 1px solid var(--btn-bg);
 }
 
 .input__field:focus {
   border: none;
-  outline: 0.5px solid rgba(214, 40, 40, 1);
-  box-shadow: 0 0 3px 1px rgba(214, 40, 40, 1);
+  outline: 0.5px solid var(--btn-bg);
+  box-shadow: 0 0 3px 1px var(--btn-bg);
 }
 
 .otp__input__field {
@@ -74,32 +74,35 @@ h1 {
 .signin__input__field {
   width: calc(15rem + 3vw);
 }
-.otpVerify-page{
+.otpVerify-page {
   height: 100vh;
   align-items: center;
   justify-content: center;
 }
-.otpVerify-page h1, .otpVerify-page .details, .otpVerify-page .details input{
+.otpVerify-page h1,
+.otpVerify-page .details,
+.otpVerify-page .details input {
   text-align: center;
 }
-.otpVerify-page .login-signup-btn{
+.otpVerify-page .login-signup-btn {
   display: block;
   margin: 0 auto;
 }
-.otpVerify-page form p, .otpVerify-page form p ul li{
-  font-size: .8rem;
+.otpVerify-page form p,
+.otpVerify-page form p ul li {
+  font-size: 0.8rem;
 }
-.otpVerify-page form p{
+.otpVerify-page form p {
   margin: 1rem 0;
 }
-.email-notify{
+.email-notify {
   color: var(--btn-bg);
 }
-.otp-bottom-notes{
+.otp-bottom-notes {
   width: fit-content;
   margin: 1rem auto;
 }
-.email-name{
+.email-name {
   color: yellow;
 }
 .details-input {
@@ -108,7 +111,7 @@ h1 {
   font-size: 0.83rem;
   margin-top: 5px;
   border-radius: 4px;
-  border: 2px solid rgba(214, 40, 40, 1);
+  border: 2px solid var(--btn-bg);
 }
 
 .login-signup-btn {
@@ -122,18 +125,19 @@ h1 {
   border: none;
   margin-bottom: 20px;
 }
-.forgotPassword-links{
-  color: rgba(214, 40, 40, 1);
-  font-size: 0.85em;  
-  /* padding:1.2em;
-  margin: 6em; */
+.forgotPassword-links {
+  color: var(--btn-bg);
+  font-size: 0.95em;
+  text-decoration: none;
+  /* padding-top:1.2em; */
+  /* margin: 6em; */
 }
 
 .links {
   color: rgb(180, 178, 178);
 }
 .links:hover {
-  color: rgba(214, 40, 40, 1);
+  color: var(--btn-bg);
 }
 
 #password + span svg,
@@ -149,6 +153,22 @@ h1 {
   position: relative;
   width: fit-content;
 }
+.Cpass-btn {
+  width: auto;
+}
+
+/* @media (max-width: 868px) {
+  .user-login {
+    margin: 0 50px;
+    padding: 5px 8%;
+    flex-direction: column;
+    width: auto;
+  }
+  .head-input {
+    display: block;
+    margin: 0 auto;
+  }
+} */
 
 @media (max-width: 868px) {
   .user-login {
@@ -157,9 +177,10 @@ h1 {
     flex-direction: column;
     width: auto;
   }
-}
-
-@media (max-width: 668px) {
+  /* .head-input {
+    display: block;
+    margin: 0 auto;
+  } */
   .user-img img {
     width: 250px;
   }
@@ -179,9 +200,9 @@ h1 {
 
   .login-signup-btn {
     position: relative;
-    left: 20vw;
+    /* left: 20vw; */
   }
-  .otp-bottom-notes{
+  .otp-bottom-notes {
     margin: 0;
   }
 }
@@ -226,10 +247,10 @@ h1 {
     height: 1.2rem;
     margin-top: 0.3rem;
   }
-  .inline-input-svg{
+  .inline-input-svg {
     width: 100%;
   }
-  .otpVerify-page{
+  .otpVerify-page {
     height: 100vh;
     align-items: center;
     justify-content: center;
@@ -248,7 +269,7 @@ h1 {
   .user-login p {
     font-size: 0.9rem;
   }
-  .otp__input__field{
+  .otp__input__field {
     display: block;
     margin: 1.75rem auto;
     width: calc(10rem + 22vw);
