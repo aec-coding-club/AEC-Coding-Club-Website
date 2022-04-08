@@ -65,6 +65,11 @@ const Setpassword = () => {
     setViewPassword(!viewPassword)
   }
 
+  const [viewPasswordOne, setViewPasswordOne] = useState(false);
+  const togglePasswordOne = () => {
+    setViewPasswordOne(!viewPasswordOne);
+  };
+
   useEffect(() => {
     tokenCheker();
   }, []);
@@ -97,13 +102,13 @@ const Setpassword = () => {
               className="input__field signin__input__field"
               name="confirmPassword"
               id="confirmPassword"
-              type={viewPassword ? 'text' : 'password'}
+              type={viewPasswordOne ? "text" : "password"}
               placeholder="Confirm the New Password"
               value={Passworddata.confirmPassword}
               onChange={(e) => handelChange(e)}
             />
-            <span onClick={togglePassword}>
-              {viewPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            <span onClick={togglePasswordOne}>
+              {viewPasswordOne ? <AiFillEyeInvisible /> : <AiFillEye />}
             </span>
           </div>
           <button type="submit" className="btn">
