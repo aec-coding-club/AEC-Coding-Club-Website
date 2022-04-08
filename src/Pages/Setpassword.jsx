@@ -3,7 +3,7 @@ import axios from "axios";
 import { Api } from "../backend";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import resetpassword from "../Assets/Reset password.gif";
+import resetpassword from "../Assets/rstpassword.svg";
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const Setpassword = () => {
@@ -77,14 +77,14 @@ const Setpassword = () => {
         </div>
 
         <form onSubmit={(e) => handleSubmit(e)}>
-          <h1>Update Your Password</h1>
+          <h1>Reset Your Password</h1>
           <div className="details inline-input-svg">
             <input
               className="input__field signin__input__field"
               name="password"
               id="password"
               type={viewPassword ? 'text' : 'password'}
-              placeholder="Enter the new password"
+              placeholder="Enter the New Password"
               value={Passworddata.password}
               onChange={(e) => handelChange(e)}
             />
@@ -98,7 +98,7 @@ const Setpassword = () => {
               name="confirmPassword"
               id="confirmPassword"
               type={viewPassword ? 'text' : 'password'}
-              placeholder="Confirm the password"
+              placeholder="Confirm the New Password"
               value={Passworddata.confirmPassword}
               onChange={(e) => handelChange(e)}
             />
