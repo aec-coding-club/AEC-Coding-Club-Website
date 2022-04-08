@@ -39,7 +39,7 @@ exports.tokenforreset = async (req, res) => {
       },
       process.env.SECRET,
       {
-        expiresIn: '0.5h',
+        expiresIn: '0.25h',
       }
     )
 

@@ -30,11 +30,11 @@ const NavCompoA = () => {
 };
 
 const NavCompoB = ({ userImg, userNameText, userRole }) => {
-  //console.log(userNameText)
+  //// console.log(userNameText)
   const navigate = useNavigate();
 
   const signOut = () => {
-    console.log("Sign Out");
+    // console.log("Sign Out");
     localStorage.clear();
     navigate("/")
     sessionStorage.clear();
@@ -73,7 +73,7 @@ const Navbar = ({ userImage, userNameText }) => {
 
   const checkToken = async () => {
     const token = localStorage.getItem("token");
-    //console.log(token)
+    //// console.log(token)
     if (token) {
       setTokenChecker(true);
       // TODO: Set the Role of the user

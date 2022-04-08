@@ -16,7 +16,7 @@ const DashboadComponent = ({ details, tokenChecker }) => {
   const fetchEvents = async () => {
     // Check Role for redirects
     const token = localStorage.getItem('token')
-    //console.log(token)
+    //// console.log(token)
     const parseddata = await axios.get(`${Api}dashboard`, {
       withCredentials: true,
       headers: { Authorization: `Bearer ${token}` },
@@ -42,7 +42,7 @@ const DashboadComponent = ({ details, tokenChecker }) => {
   return (
     <>
       {/* <div className='home-main'>
-        {//console.log('Events Array: ', events && events)}
+        {//// console.log('Events Array: ', events && events)}
 
         <br />
         <br />

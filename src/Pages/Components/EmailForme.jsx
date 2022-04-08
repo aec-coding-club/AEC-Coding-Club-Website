@@ -11,7 +11,7 @@ const EmailForme = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted Successfully");
+    // console.log("Form Submitted Successfully");
     const { data } = await axios.post(
       `${Api}tokenforreset`,
       {
@@ -34,31 +34,31 @@ const EmailForme = () => {
       });
       setEmail("");
     }
-    console.log("Data: ", data);
+    // console.log("Data: ", data);
   };
 
   // abirpal282002@gmail.com
 
   function handelChange(e) {
     setEmail(e.target.value);
-    console.log(email);
+    // console.log(email);
   }
 
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
         <h1>Enter your email address to Reset Password</h1>
-        <div className="details">
+        <div className='details'>
           <input
-            className="input__field signin__input__field"
+            className='input__field signin__input__field head-input'
             value={email}
             onChange={(e) => handelChange(e)}
-            type="email"
-            placeholder="Enter the Email to Reset Password"
+            type='email'
+            placeholder='Enter the Email to Reset Password'
           ></input>
         </div>
-        <button className="btn" type="submit">
-          Send Email 
+        <button className='btn login-signup-btn' type='submit'>
+          Send Email
           {/* &nbsp; <span style={{fontSize: "1.5em", alignItems : "center"}}><GrSend/></span> */}
         </button>
       </form>

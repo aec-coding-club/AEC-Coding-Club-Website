@@ -14,7 +14,7 @@ const Siginform = () => {
 
   async function submit(e) {
     e.preventDefault()
-    //console.log('Data Submitted')
+    //// console.log('Data Submitted')
     const data = {
       uid: registerdata.uid,
       password: registerdata.password,
@@ -25,7 +25,7 @@ const Siginform = () => {
     })
 
     if (dataposted.data.success) {
-      //console.log('Logged In Successfully')
+      //// console.log('Logged In Successfully')
       localStorage.setItem('token', dataposted.data.token)
       localStorage.setItem(
         'name',
@@ -37,7 +37,7 @@ const Siginform = () => {
       else navigate('/admin/overview')
       window.location.reload()
     } else {
-      //console.log('Access Denied')
+      //// console.log('Access Denied')
       setRegisterdata({
         uid: '',
         password: '',
@@ -46,11 +46,11 @@ const Siginform = () => {
         theme: 'dark',
       })
     }
-    //console.log(dataposted)
+    //// console.log(dataposted)
   }
   // async function submit(e) {
   //   e.preventDefault();
-  //   //console.log("Data Submitted");
+  //   //// console.log("Data Submitted");
   //   const data = {
   //     uid: registerdata.uid,
   //     password: registerdata.password,
@@ -61,7 +61,7 @@ const Siginform = () => {
   //   });
 
   //   if (dataposted.data.success) {
-  //     //console.log("Logged In Successfully");
+  //     //// console.log("Logged In Successfully");
   //     localStorage.setItem("token", dataposted.data.token);
   //     localStorage.setItem(
   //       "name",
@@ -71,13 +71,13 @@ const Siginform = () => {
   //     navigate("/dashboard");
   //     window.location.reload();
   //   } else {
-  //     //console.log("Access Denied");
+  //     //// console.log("Access Denied");
   //     setRegisterdata({
   //       uid: "",
   //       password: "",
   //     });
   //   }
-  //   //console.log(dataposted);
+  //   //// console.log(dataposted);
   // }
 
   async function tokenCheker() {
@@ -91,7 +91,7 @@ const Siginform = () => {
     const newdata = { ...registerdata }
     newdata[e.target.id] = e.target.value
     setRegisterdata(newdata)
-    //console.log(newdata)
+    //// console.log(newdata)
   }
 
   const [viewPassword, setViewPassword] = useState(false)

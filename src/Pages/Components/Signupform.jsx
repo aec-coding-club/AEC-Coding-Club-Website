@@ -19,12 +19,12 @@ const Signupform = () => {
     linkedin: "",
     github: "",
   });
-  //console.log("API is :- ", Api);
+  //// console.log("API is :- ", Api);
   let navigate = useNavigate();
 
   async function submit(e) {
     e.preventDefault();
-    //console.log("Data Submitted");
+    //// console.log("Data Submitted");
     const dataposted = await Axios.post(`${Api}register`, {
       firstName: registerdata.firstName,
       lastName: registerdata.lastName,
@@ -38,9 +38,9 @@ const Signupform = () => {
       github: registerdata.github,
     });
 
-    //console.log(dataposted);
+    //// console.log(dataposted);
     if (dataposted.data.success) {
-      //console.log("User Created Successfully");
+      //// console.log("User Created Successfully");
       localStorage.setItem("token", dataposted.data.token); // setting token to localstorage
       localStorage.setItem(
         "name",
@@ -51,13 +51,13 @@ const Signupform = () => {
       // Cookies.set('token', dataposted.data.token); // setting token to cookies
       navigate("/verify");
     } else {
-      //console.log("User Not Created Successfully");
-      //console.log("Error data - ", dataposted.data);
+      //// console.log("User Not Created Successfully");
+      //// console.log("Error data - ", dataposted.data);
       toast.error(dataposted.data.error, {
         theme: "dark",
       });
     }
-    //console.log(dataposted);
+    //// console.log(dataposted);
   }
 
   function handelChange(e) {
