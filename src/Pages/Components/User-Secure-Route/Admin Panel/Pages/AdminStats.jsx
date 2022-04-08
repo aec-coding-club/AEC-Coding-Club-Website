@@ -1,14 +1,20 @@
-import React from 'react'
+import React from "react";
 
 const AdminStats = () => {
   return (
     <>
-      <h1 style={{ 
-        fontSize : "4em", 
-        marginTop : "5rem"
-      }}><center>👷‍♂️ Under Construction ⚙️</center></h1>
+      <center>
+        <img
+          src="https://res.cloudinary.com/sahebcloud/image/upload/v1649358135/Under_construction-amico_wltocj.svg"
+          alt=""
+          style={{
+            width: "35%",
+            alignItems: "center",
+          }}
+        />
+      </center>
     </>
-  )
-}
+  );
+};
 
-export default AdminStats
+export default AdminStats;

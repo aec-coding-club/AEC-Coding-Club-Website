@@ -88,7 +88,7 @@ const Events = ({ tokenChecker }) => {
             </div>
             <div className="events-header-right">
               <img
-                src="../Assets/events/events-header.jpg"
+                src="https://res.cloudinary.com/sahebcloud/image/upload/v1649361289/welcome-animate_mhsyet.svg"
                 alt="events"
                 className="events-header-img"
               />

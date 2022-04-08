@@ -143,6 +143,7 @@ const Siginform = () => {
                 {viewPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
               </span>
             </div>
+              <Link to="/enteremail" className='forgotPassword-links'>Forgot Password ?</Link>
           </div>
         </div>
 

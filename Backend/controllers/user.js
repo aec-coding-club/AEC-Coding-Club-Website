@@ -42,7 +42,10 @@ exports.tokenforreset = async (req, res) => {
         expiresIn: '0.5h',
       }
     )
-    const url = `https://testaeccc.web.app/setNewPassword/${token}`
+
+    // TODO: Need to be changed 
+    // http://localhost:3000/setNewPassword/
+    const url = `http://localhost:3000/setNewPassword/${token}`
 
     const emailstat = sendOTP(email, resettoken(url, user.uid))
     console.log(emailstat)
