@@ -78,7 +78,7 @@ const Setpassword = () => {
     <>
       <div className="user-login ">
         <div className="user-img">
-          <img alt="" src={resetpassword}></img>
+          <img alt="" src="https://res.cloudinary.com/sahebcloud/image/upload/v1649396488/Reset_password_epyfbh.svg"></img>
         </div>
 
         <form onSubmit={(e) => handleSubmit(e)}>
