@@ -4,6 +4,7 @@ import { Api } from "../backend";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import resetpassword from "../Assets/Reset password.gif";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const Setpassword = () => {
   const [Passworddata, setPassword] = useState({
@@ -59,6 +60,11 @@ const Setpassword = () => {
     }
   }
 
+  const [viewPassword, setViewPassword] = useState(false)
+  const togglePassword = () => {
+    setViewPassword(!viewPassword)
+  }
+
   useEffect(() => {
     tokenCheker();
   }, []);
@@ -71,31 +77,37 @@ const Setpassword = () => {
         </div>
 
         <form onSubmit={(e) => handleSubmit(e)}>
-          <h1>Update Password Page</h1>
-          <div className="details">
+          <h1>Update Your Password</h1>
+          <div className="details inline-input-svg">
             <input
-              className="input__field"
+              className="input__field signin__input__field"
               name="password"
               id="password"
-              type="password"
+              type={viewPassword ? 'text' : 'password'}
               placeholder="Enter the new password"
               value={Passworddata.password}
               onChange={(e) => handelChange(e)}
             />
+            <span onClick={togglePassword}>
+              {viewPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </span>
           </div>
-          <div className="details">
+          <div className="details inline-input-svg">
             <input
-              className="input__field"
+              className="input__field signin__input__field"
               name="confirmPassword"
               id="confirmPassword"
-              type="password"
+              type={viewPassword ? 'text' : 'password'}
               placeholder="Confirm the password"
               value={Passworddata.confirmPassword}
               onChange={(e) => handelChange(e)}
             />
+            <span onClick={togglePassword}>
+              {viewPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </span>
           </div>
           <button type="submit" className="btn">
-            Submit
+            Change Password
           </button>
         </form>
       </div>

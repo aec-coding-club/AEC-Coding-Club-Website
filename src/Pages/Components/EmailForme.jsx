@@ -49,15 +49,15 @@ const EmailForme = () => {
         <h1>Enter your email address to Reset Password</h1>
         <div className="details">
           <input
-            className="input__field"
+            className="input__field signin__input__field"
             value={email}
             onChange={(e) => handelChange(e)}
             type="email"
-            placeholder="Enter the email"
+            placeholder="Enter the Email to Reset Password"
           ></input>
         </div>
         <button className="btn" type="submit">
-          Submit
+          Send Email
         </button>
       </form>
     </>
