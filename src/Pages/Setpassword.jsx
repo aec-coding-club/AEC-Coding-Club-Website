@@ -3,6 +3,7 @@ import axios from "axios";
 import { Api } from "../backend";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import resetpassword from "../Assets/Reset password.gif";
 
 const Setpassword = () => {
   const [Passworddata, setPassword] = useState({
@@ -29,17 +30,17 @@ const Setpassword = () => {
         crossorigin: true,
       }
     );
-    if(dataPosted.data.success){
-      toast.success(dataPosted.data.message, {theme : "dark"});
-      navigate("/signin")
-    }else{
+    if (dataPosted.data.success) {
+      toast.success(dataPosted.data.message, { theme: "dark" });
+      navigate("/signin");
+    } else {
       toast.error(dataPosted.data.message, {
-        theme: 'dark',
-      })
+        theme: "dark",
+      });
       setPassword({
         password: "",
         confirmPassword: "",
-      })
+      });
     }
     console.log("Data: ", dataPosted);
   };
@@ -64,32 +65,40 @@ const Setpassword = () => {
 
   return (
     <>
-      <h1>Update Password Page</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          className="input__field"
-          name="password"
-          id="password"
-          type="password"
-          placeholder="Enter the new password"
-          value={Passworddata.password}
-          onChange={(e) => handelChange(e)}
-        />
-        <br />
-        <input
-          className="input__field"
-          name="confirmPassword"
-          id="confirmPassword"
-          type="password"
-          placeholder="Confirm the password"
-          value={Passworddata.confirmPassword}
-          onChange={(e) => handelChange(e)}
-        />
-        <br />
-        <button type="submit" className="btn">
-          Submit
-        </button>
-      </form>
+      <div className="user-login ">
+        <div className="user-img">
+          <img alt="" src={resetpassword}></img>
+        </div>
+
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <h1>Update Password Page</h1>
+          <div className="details">
+            <input
+              className="input__field"
+              name="password"
+              id="password"
+              type="password"
+              placeholder="Enter the new password"
+              value={Passworddata.password}
+              onChange={(e) => handelChange(e)}
+            />
+          </div>
+          <div className="details">
+            <input
+              className="input__field"
+              name="confirmPassword"
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm the password"
+              value={Passworddata.confirmPassword}
+              onChange={(e) => handelChange(e)}
+            />
+          </div>
+          <button type="submit" className="btn">
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 };
