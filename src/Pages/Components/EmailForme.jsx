@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Api } from "../../backend";
 import { useNavigate } from "react-router-dom";
+import { GrSend } from "react-icons/gr";
 
 const EmailForme = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +58,8 @@ const EmailForme = () => {
           ></input>
         </div>
         <button className="btn" type="submit">
-          Send Email
+          Send Email 
+          {/* &nbsp; <span style={{fontSize: "1.5em", alignItems : "center"}}><GrSend/></span> */}
         </button>
       </form>
     </>

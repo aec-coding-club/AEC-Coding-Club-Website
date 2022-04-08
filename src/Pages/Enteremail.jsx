@@ -21,7 +21,7 @@ const Enteremail = () => {
     <>
       <div className="user-login ">
         <div className="user-img">
-          <img alt="" src={forgotpassword}></img>
+          <img alt="" src="https://res.cloudinary.com/sahebcloud/image/upload/v1649397165/forgot-password-animate_fyfjlr.svg"></img>
         </div>
         <EmailForme />
       </div>
