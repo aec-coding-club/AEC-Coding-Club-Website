@@ -21,6 +21,7 @@ app.use(
 )
 
 // ! AUTHENTICATION ROUTE
+app.get('/', (req, res) =>{ res.send('<br><br><h1 style="text-align: center;"><img src="https://i.ibb.co/3fd4H5Y/image.png" alt="Bhai Kya Kar Raha Hai Tu?" border="0"></h1> ') })
 app.use('/api/v1', alllogs)
 app.use('/api/v1', auth)
 app.use('/api/v1', events)
