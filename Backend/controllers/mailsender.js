@@ -22,8 +22,8 @@ async function sendOTP(email, msgbody) {
       let info = await transporter.sendMail({
         from: `"AEC Coding Club" <${process.env.MAIL_USER}>`, // sender address
         to: `${emailrspnt}`, // list of receivers
-        subject: 'Announcement from AECCC', // Subject line
-        html: msgbody, // html body
+        subject: msgbody[0], // Subject line
+        html: msgbody[1], // html body
       })
 
       console.log(info)
@@ -42,8 +42,8 @@ async function sendOTP(email, msgbody) {
     let info = await transporter.sendMail({
       from: `"AEC Coding Club" <${process.env.MAIL_USER}>`, // sender address
       to: `${email}`, // list of receivers
-      subject: 'OTP for AEC Coding Club Registration', // Subject line
-      html: msgbody, // html body
+      subject: msgbody[0], // Subject line
+      html: msgbody[1], // html body
     })
 
     return info
