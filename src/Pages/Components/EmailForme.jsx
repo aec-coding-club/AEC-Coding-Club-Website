@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Api } from "../../backend";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const EmailForme = () => {
   const [email, setEmail] = useState("");
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,15 +21,17 @@ const EmailForme = () => {
         crossorigin: true,
       }
     );
-    if(data.success) {
-      toast.success("Email Sent Successfully Check Your Email", {theme : "dark"});
-      navigate("/")
+    if (data.success) {
+      toast.success("Email Sent Successfully Check Your Email", {
+        theme: "dark",
+      });
+      navigate("/");
       // toast.success("Check Your Email", {theme : "dark"});
-    }else{
+    } else {
       toast.error("User Not Registered", {
-        theme: 'dark',
-      })
-      setEmail("")
+        theme: "dark",
+      });
+      setEmail("");
     }
     console.log("Data: ", data);
   };
@@ -44,15 +46,18 @@ const EmailForme = () => {
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          className="input__field"
-          value={email}
-          onChange={(e) => handelChange(e)}
-          type="email"
-          placeholder="Enter the email"
-        ></input>
+        <h1>Enter your email address to Reset Password</h1>
+        <div className="details">
+          <input
+            className="input__field signin__input__field"
+            value={email}
+            onChange={(e) => handelChange(e)}
+            type="email"
+            placeholder="Enter the Email to Reset Password"
+          ></input>
+        </div>
         <button className="btn" type="submit">
-          Submit
+          Send Email
         </button>
       </form>
     </>

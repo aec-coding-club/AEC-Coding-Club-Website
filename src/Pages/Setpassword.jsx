@@ -3,6 +3,8 @@ import axios from "axios";
 import { Api } from "../backend";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import resetpassword from "../Assets/rstpassword.svg";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const Setpassword = () => {
   const [Passworddata, setPassword] = useState({
@@ -29,17 +31,17 @@ const Setpassword = () => {
         crossorigin: true,
       }
     );
-    if(dataPosted.data.success){
-      toast.success(dataPosted.data.message, {theme : "dark"});
-      navigate("/signin")
-    }else{
+    if (dataPosted.data.success) {
+      toast.success(dataPosted.data.message, { theme: "dark" });
+      navigate("/signin");
+    } else {
       toast.error(dataPosted.data.message, {
-        theme: 'dark',
-      })
+        theme: "dark",
+      });
       setPassword({
         password: "",
         confirmPassword: "",
-      })
+      });
     }
     console.log("Data: ", dataPosted);
   };
@@ -58,38 +60,62 @@ const Setpassword = () => {
     }
   }
 
+  const [viewPassword, setViewPassword] = useState(false)
+  const togglePassword = () => {
+    setViewPassword(!viewPassword)
+  }
+
+  const [viewPasswordOne, setViewPasswordOne] = useState(false);
+  const togglePasswordOne = () => {
+    setViewPasswordOne(!viewPasswordOne);
+  };
+
   useEffect(() => {
     tokenCheker();
   }, []);
 
   return (
     <>
-      <h1>Update Password Page</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input
-          className="input__field"
-          name="password"
-          id="password"
-          type="password"
-          placeholder="Enter the new password"
-          value={Passworddata.password}
-          onChange={(e) => handelChange(e)}
-        />
-        <br />
-        <input
-          className="input__field"
-          name="confirmPassword"
-          id="confirmPassword"
-          type="password"
-          placeholder="Confirm the password"
-          value={Passworddata.confirmPassword}
-          onChange={(e) => handelChange(e)}
-        />
-        <br />
-        <button type="submit" className="btn">
-          Submit
-        </button>
-      </form>
+      <div className="user-login ">
+        <div className="user-img">
+          <img alt="" src="https://res.cloudinary.com/sahebcloud/image/upload/v1649396488/Reset_password_epyfbh.svg"></img>
+        </div>
+
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <h1>Reset Your Password</h1>
+          <div className="details inline-input-svg">
+            <input
+              className="input__field signin__input__field"
+              name="password"
+              id="password"
+              type={viewPassword ? 'text' : 'password'}
+              placeholder="Enter the New Password"
+              value={Passworddata.password}
+              onChange={(e) => handelChange(e)}
+            />
+            <span onClick={togglePassword}>
+              {viewPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </span>
+          </div>
+          <div className="details inline-input-svg">
+            <input
+              className="input__field signin__input__field"
+              name="confirmPassword"
+              id="confirmPassword"
+              type={viewPasswordOne ? "text" : "password"}
+              placeholder="Confirm the New Password"
+              value={Passworddata.confirmPassword}
+              onChange={(e) => handelChange(e)}
+            />
+            <span onClick={togglePasswordOne}>
+              {viewPasswordOne ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </span>
+          </div>
+          <button type="submit" className="btn">
+            Change Password
+          </button>
+        </form>
+      </div>
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import EmailForme from "./Components/EmailForme";
+import forgotpassword from "../Assets/forgotpassword.svg";
 
 const Enteremail = () => {
   let navigate = useNavigate();
@@ -18,8 +19,12 @@ const Enteremail = () => {
 
   return (
     <>
-      <h1>Enter your email address to Reset Password</h1>
-      <EmailForme />
+      <div className="user-login ">
+        <div className="user-img">
+          <img alt="" src={forgotpassword}></img>
+        </div>
+        <EmailForme />
+      </div>
     </>
   );
 };
