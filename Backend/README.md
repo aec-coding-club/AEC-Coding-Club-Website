@@ -1,46 +1,56 @@
-# Backend
+### Express Server API URLs:
 
-api URL routes (/routes/auth.js) ->
+<pre>
+<a href="./Backend/app.js">General:</a>
+<b>[GET]</b>
+        • /
+        • /*
 
-- ### /api/v1/register (post)
+<a href="./Backend/routes/alllogs.js">Logs:</a>
+<b>[GET]</b>
+        • /api/v1/logger
+        • /api/v1/branchdata
+        • /api/v1/yeardata
+        • /api/v1/alluser
+        • /api/v1/eventsdata
+<b>[POST]</b>
+        • /api/v1/updateuser/:id
 
-  - **body:**  
-    {  
-    "firstName": {string},  
-    "lastName": {string},  
-    "email": {string},  
-    "contact_no": {string},  
-    "branch" : {string},  
-    "batch": {number},  
-    "password": {string},  
-    "confirmPassword": {string}  
-    }
+<a href="./Backend/auth.js">Authentication:</a>
+<b>[GET]</b>
+        • /api/v1/dummy
+        • /api/v1/dashboard
+        • /api/v1/dashboardtry
+<b>[POST]</b>
+        • /api/v1/register
+        • /api/v1/login
+        • /api/v1/verify
+        • /api/v1/dummy
+        • /api/v1/tokenforreset
+        • /api/v1/setNewPassword/:token
 
-- ### /api/v1/login (post)
+<a href="./Backend/routes/events.js">Events:</a>
+<b>[GET]</b>
+        • /api/v1/events
+        • /api/v1/:id
+<b>[POST]</b>
+        • /api/v1/add
+        • /api/v1/registerevent:id
+        • /api/v1/announceall
+<b>[PUT]</b>
+        • /api/v1/update/:id
+<b>[DELETE]</b>
+        • /api/v1/delete
+</pre>
 
-  - **body:**  
-    {  
-     "uid": {string},  
-     "password": {string}  
-     }
+## First time?
 
-- ### /api/v1/verify/{string} (get)
-- ### /api/v1/dummy (get)
-- ### /api/v1/whoami (get)
-- ### /api/v1/dashboard (get)
-
----
-
-<br>
-<br>
-
-## first time?
-
-**add .env file and write:**
-
+**Add `.env` file and write:**
+<pre>
 PORT = 4000
-MONGODB_URL = mongodb://localhost:27017/AECCC <br>
-SECRET = Hello@Welcome to AECCC./, <br>
-MAIL_HOST = 'smtp.gmail.com' <br>
-MAIL_USER = < create yourself or ask souvik > <br>
-MAIL_PASS = < create yourself or ask souvik > <br>
+MONGODB_URL = mongodb://localhost:27017/AECCC
+SECRET = Hello@Welcome to AECCC./,
+MAIL_HOST = 'smtp.gmail.com'
+MAIL_USER = &lt;create yourself or ask <a href="https://github.com/8-bit-souvik">Souvik</a>&gt;
+MAIL_PASS = &lt;create yourself or ask <a href="https://github.com/8-bit-souvik">Souvik</a>&gt;
+</pre>
