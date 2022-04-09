@@ -80,7 +80,7 @@ The frontend was bootstrapped with Create React App. In the project root directo
 <b>[PUT]</b>
         • /api/v1/update/:id
 <b>[DELETE]</b>
-        • /api/v1/deleter
+        • /api/v1/delete
 </pre>
 
 <br>
