@@ -38,6 +38,51 @@ This project was bootstrapped with Create React App. In the [`Frontend`](./Front
   <b>/*</b>                      -> <a href="Pages/Errorpage.jsx">Pages/Errorpage.jsx</a>
 </pre>
 
+### Express Server API:
+
+<pre>
+<a href="./Backend/app.js">General:</a>
+<b>[GET]</b>
+        • /
+        • /*
+
+<a href="./Backend/routes/alllogs.js">Logs:</a>
+<b>[GET]</b>
+        • /api/v1/logger
+        • /api/v1/branchdata
+        • /api/v1/yeardata
+        • /api/v1/alluser
+        • /api/v1/eventsdata
+<b>[POST]</b>
+        • /api/v1/updateuser/:id
+
+<a href="./Backend/auth.js">Authentication:</a>
+<b>[GET]</b>
+        • /api/v1/dummy
+        • /api/v1/dashboard
+        • /api/v1/dashboardtry
+<b>[POST]</b>
+        • /api/v1/register
+        • /api/v1/login
+        • /api/v1/verify
+        • /api/v1/dummy
+        • /api/v1/tokenforreset
+        • /api/v1/setNewPassword/:token
+
+<a href="./Backend/routes/events.js">Events:</a>
+<b>[GET]</b>
+        • /api/v1/events
+        • /api/v1/:id
+<b>[POST]</b>
+        • /api/v1/add
+        • /api/v1/registerevent:id
+        • /api/v1/announceall
+<b>[PUT]</b>
+        • /api/v1/update/:id
+<b>[DELETE]</b>
+        • /api/v1/deleter
+</pre>
+
 <br>
 
 ## ⚒️ Tools and Frameworks
