@@ -17,6 +17,27 @@ This is the student-run community site and event management webapp for the Codin
 
 This project was bootstrapped with Create React App. In the [`Frontend`](./Frontend) directory, run `npm install` to install all project dependencies. Next, run `npm start` to start the developmental server which will trigger open your default browser to `localhost:3000`.
 
+### React app routers:
+
+<pre>
+<b>/</b>                         -> <a href="Pages/Home.jsx">Pages/Home.jsx</a>
+  <b>/events</b>                 -> <a href="Pages/Events.jsx">Pages/Events.jsx</a>
+  <b>/members</b>                -> <a href="Pages/Members.jsx">Pages/Members.jsx</a>
+  <b>/signup</b>                 -> <a href="Pages/Signup.jsx">Pages/Signup.jsx</a>
+  <b>/signin</b>                 -> <a href="Pages/Signin.jsx">Pages/Signin.jsx</a>
+  <b>/entermail</b>              -> <a href="Pages/Enteremail.jsx">Pages/Enteremail.jsx</a>
+  <b>/verify</b>                 -> <a href="Pages/OTP.jsx">Pages/OTP.jsx</a>
+  <b>/setNewPassword/:token</b>  -> <a href="Pages/Setpassword.jsx">Pages/Setpassword.jsx</a>
+  <b>/dashboard</b>              -> <a href="Pages/Dashboard-Secure.jsx">Pages/Dashboard-Secure.jsx</a>
+  <b>/admin</b>                  -> <a href="Pages/Components/User-Secure-Route/Admin Panel/Admin.jsx">Pages/Components/User-Secure-Route/Admin Panel/Admin.jsx</a>
+    <b>/admin/overview</b>       -> <a href="Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminOverview.jsx">Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminOverview.jsx</a>
+    <b>/admin/admin-users</b>    -> <a href="Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminUsers.jsx">Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminUsers.jsx</a>
+    <b>/admin-events</b>         -> <a href="Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminEvents.jsx">Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminEvents.jsx</a>
+    <b>/admin-logs</b>           -> <a href="Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminLogs.jsx">Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminLogs.jsx</a>
+    <b>/admin-stats</b>          -> <a href="Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminStats.jsx">Pages/Components/User-Secure-Route/Admin Panel/Pages/AdminStats.jsx</a>
+  <b>/*</b>                      -> <a href="Pages/Errorpage.jsx">Pages/Errorpage.jsx</a>
+</pre>
+
 <br>
 
 ## ⚒️ Tools and Frameworks
