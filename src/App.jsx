@@ -45,11 +45,11 @@ const App = () => {
     <>
       {/* <UserContext.Provider value={userdata}> */}
       <Router>
-        {tokenChecker ? (
+        {/* {tokenChecker ? (
           <Navbar userImage={tokenChecker[2]} userNameText={tokenChecker[1]} />
         ) : (
           <Navbar />
-        )}
+        )} */}
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route

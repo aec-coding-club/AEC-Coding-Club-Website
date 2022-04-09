@@ -2,18 +2,19 @@ import React from "react";
 import signupImg from "../Assets/sign-up.svg";
 import "./styles/SigninSignup.css";
 import Signupform from "./Components/Signupform";
-import Navbar from "../Components/Navbar";
+import Base from "../Base";
 
 const Signup = () => {
   return (
     <>
-      {/* <Navbar /> */}
-      <div className='user-login '>
-        <div className='user-img'>
-          <img alt='' src={signupImg}></img>
+      <Base>
+        <div className="user-login ">
+          <div className="user-img">
+            <img alt="" src={signupImg}></img>
+          </div>
+          <Signupform />
         </div>
-        <Signupform />
-      </div>
+      </Base>
     </>
   );
 };

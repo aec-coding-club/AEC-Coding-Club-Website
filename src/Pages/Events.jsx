@@ -7,6 +7,7 @@ import EventsContainer from "../Components/EventsContainer";
 import UserContext from "./Context/LoggedUserContext";
 import { Api } from "../backend";
 import axios from "axios";
+import Base from "../Base";
 
 const Events = ({ tokenChecker }) => {
   const [modalShow, setModalShow] = useState(false);
@@ -80,73 +81,75 @@ const Events = ({ tokenChecker }) => {
 
   return (
     <>
-      <main className="events-main">
-        {tokenChecker && (
-          <div className="events-header">
-            <div className="events-header-left">
-              <p>Hi, {tokenChecker[1]}</p>
-            </div>
-            <div className="events-header-right">
-              <img
-                src="https://res.cloudinary.com/sahebcloud/image/upload/v1649361289/welcome-animate_mhsyet.svg"
-                alt="events"
-                className="events-header-img"
-              />
-            </div>
-          </div>
-        )}
-        <div className="events-section">
-          <div className="header-wrapper">
-            <h3 className="events-section-header">Upcoming Events</h3>
-            {userRole >= 2 && (
-              <button className="event-btn" onClick={handleEditClick}>
-                <div>Add Event</div>{" "}
-                <div>
-                  <FaEdit />
-                </div>
-              </button>
-            )}
-          </div>
-          <EventModal
-            cardEditData={cardEditData}
-            addEvent={true}
-            modalShow={modalShow}
-            onHide={onHide}
-            editEventID={editEventID}
-          />
-        </div>
-        <EventsContainer
-          setModalShow={setModalShow}
-          cardEditData={cardEditData}
-          tokenChecker={tokenChecker}
-          userRole={userRole}
-          setEditEventID={setEditEventID}
-          array={upcomingEvents}
-          loder={loading}
-          arrName={true}
-        />
-        {tokenChecker && (prevEvents.length > 0) ? (
-          <>
-            <div className="events-section">
-              <div className="header-wrapper">
-                <h3 className="events-section-header">Previous Events</h3>
+      <Base>
+        <main className="events-main">
+          {tokenChecker && (
+            <div className="events-header">
+              <div className="events-header-left">
+                <p>Hi, {tokenChecker[1]}</p>
+              </div>
+              <div className="events-header-right">
+                <img
+                  src="https://res.cloudinary.com/sahebcloud/image/upload/v1649361289/welcome-animate_mhsyet.svg"
+                  alt="events"
+                  className="events-header-img"
+                />
               </div>
             </div>
-            <EventsContainer
-              setModalShow={setModalShow}
+          )}
+          <div className="events-section">
+            <div className="header-wrapper">
+              <h3 className="events-section-header">Upcoming Events</h3>
+              {userRole >= 2 && (
+                <button className="event-btn" onClick={handleEditClick}>
+                  <div>Add Event</div>{" "}
+                  <div>
+                    <FaEdit />
+                  </div>
+                </button>
+              )}
+            </div>
+            <EventModal
               cardEditData={cardEditData}
-              tokenChecker={tokenChecker}
-              userRole={userRole}
-              setEditEventID={setEditEventID}
-              array={prevEvents}
-              loder={loading}
-              arrName={false}
+              addEvent={true}
+              modalShow={modalShow}
+              onHide={onHide}
+              editEventID={editEventID}
             />
-          </>
-        ) : (
-          <></>
-        )}
-      </main>
+          </div>
+          <EventsContainer
+            setModalShow={setModalShow}
+            cardEditData={cardEditData}
+            tokenChecker={tokenChecker}
+            userRole={userRole}
+            setEditEventID={setEditEventID}
+            array={upcomingEvents}
+            loder={loading}
+            arrName={true}
+          />
+          {tokenChecker && prevEvents.length > 0 ? (
+            <>
+              <div className="events-section">
+                <div className="header-wrapper">
+                  <h3 className="events-section-header">Previous Events</h3>
+                </div>
+              </div>
+              <EventsContainer
+                setModalShow={setModalShow}
+                cardEditData={cardEditData}
+                tokenChecker={tokenChecker}
+                userRole={userRole}
+                setEditEventID={setEditEventID}
+                array={prevEvents}
+                loder={loading}
+                arrName={false}
+              />
+            </>
+          ) : (
+            <></>
+          )}
+        </main>
+      </Base>
     </>
   );
 };

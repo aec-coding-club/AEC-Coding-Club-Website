@@ -47,7 +47,7 @@ const EmailForme = () => {
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <h1>Enter your email address to Reset Password</h1>
+        <h1>Reset Your Password</h1>
         <div className='details'>
           <input
             className='input__field signin__input__field head-input'

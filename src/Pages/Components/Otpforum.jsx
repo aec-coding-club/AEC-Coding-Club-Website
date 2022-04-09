@@ -13,7 +13,7 @@ const Otpforum = () => {
 
   async function submit(e) {
     e.preventDefault();
-    //// console.log("Data Submitted");
+    // console.log("Data Submitted");
     const data = {
       otp: registerdata.otp,
     };
@@ -25,11 +25,11 @@ const Otpforum = () => {
 
     
     if (dataposted.data.success) {
-      //// console.log("User Created Successfully");
+      //console.log("User Created Successfully");
       navigate("/dashboard");
       window.location.reload();
     } else {
-      //// console.log("User Not Created Successfully");
+      // console.log("User Not Created Successfully");
       setRegisterdata({
         otp: "",
       });
@@ -38,14 +38,14 @@ const Otpforum = () => {
       });
       navigate("/verify");
     }
-    // // console.log(dasbodedata);
+    // console.log(dasbodedata);
   }
 
   function handelChange(e) {
     const newdata = { ...registerdata };
     newdata[e.target.id] = e.target.value;
     setRegisterdata(newdata);
-    //// console.log(newdata);
+    // console.log(newdata);
   }
   useEffect(() => {
     const e = localStorage.getItem('email')

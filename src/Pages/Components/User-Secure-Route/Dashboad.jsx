@@ -41,12 +41,7 @@ const DashboadComponent = ({ details, tokenChecker }) => {
 
   return (
     <>
-      {/* <div className='home-main'>
-        {//// console.log('Events Array: ', events && events)}
-
-        <br />
-        <br />
-      </div> */}
+      
       <div className='admin-details'>
         <div className='left'>
           <img

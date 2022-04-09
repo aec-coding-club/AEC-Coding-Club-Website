@@ -4,8 +4,9 @@ import axios from "axios";
 import { Api } from "../backend";
 import DashboadComponent from "./Components/User-Secure-Route/Dashboad";
 import "./styles/Home.css";
+import Base from "../Base";
 
-const Home = ({tokenChecker}) => {
+const Home = ({ tokenChecker }) => {
   const [auth, setAuth] = useState(false);
   const [successDecision, setSuccessDecision] = useState(false);
   const [userdata, setUserdata] = useState({});
@@ -21,15 +22,15 @@ const Home = ({tokenChecker}) => {
       //// console.log("Navigating1");
       navigate("/");
     }
-    
+
     //// console.log(Api);
     //// console.log("Parsed data :- ", parseddata);
     setUserdata({
       userInfo: parseddata.data.user_data,
     });
     setAuth(parseddata.data.token);
-    setSuccessDecision(parseddata.data.success)
-    if(!parseddata.data.success){
+    setSuccessDecision(parseddata.data.success);
+    if (!parseddata.data.success) {
       //// console.log("Navigating2");
       navigate("/verify");
     }
@@ -43,11 +44,13 @@ const Home = ({tokenChecker}) => {
 
   return (
     <>
-      {auth && successDecision ? (
-        <DashboadComponent details={userdata} tokenChecker={tokenChecker}/>
-      ) : (
-        <h1></h1>
-      )}
+      <Base>
+        {auth && successDecision ? (
+          <DashboadComponent details={userdata} tokenChecker={tokenChecker} />
+        ) : (
+          <h1></h1>
+        )}
+      </Base>
     </>
   );
 };
