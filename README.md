@@ -15,7 +15,7 @@ This is the student-run community site and event management webapp for the Codin
 
 ## 💻 Getting started
 
-This project was bootstrapped with Create React App. In the [`Frontend`](./Frontend) directory, run `npm install` to install all project dependencies. Next, run `npm start` to start the developmental server which will trigger open your default browser to `localhost:3000`.
+The frontend was bootstrapped with Create React App. In the project root directory, run `npm install` to install all project dependencies. Next, run `npm start` to start the developmental server which will trigger open your default browser to `localhost:3000`. Run `npm install` and `npm run dev` in [`Backend`](./Backend) directory to set up the Express server.
 
 ### React app routers:
 
