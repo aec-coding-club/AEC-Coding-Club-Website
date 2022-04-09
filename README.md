@@ -1,7 +1,7 @@
 <p>
-    <img src="https://img.shields.io/bitbucket/issues-raw/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/github/issues-raw/aec-coding-club/AEC-Coding-Club-Website">
     <img src="https://img.shields.io/github/contributors/aec-coding-club/AEC-Coding-Club-Website">
-    <img src="https://img.shields.io/bitbucket/pr/aec-coding-club/AEC-Coding-Club-Website">
+    <img src="https://img.shields.io/github/issues-pr/aec-coding-club/AEC-Coding-Club-Website">
     <img src="https://img.shields.io/github/license/aec-coding-club/AEC-Coding-Club-Website">
     <img src="https://img.shields.io/github/last-commit/aec-coding-club/AEC-Coding-Club-Website">
     <img src="https://img.shields.io/badge/react-%5E17.0.2-blue">
