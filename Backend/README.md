@@ -1,12 +1,12 @@
 ### Express Server API URLs:
 
 <pre>
-<a href="./Backend/app.js">General:</a>
+<a href="./app.js">General:</a>
 <b>[GET]</b>
         • /
         • /*
 
-<a href="./Backend/routes/alllogs.js">Logs:</a>
+<a href="./routes/alllogs.js">Logs:</a>
 <b>[GET]</b>
         • /api/v1/logger
         • /api/v1/branchdata
@@ -16,7 +16,7 @@
 <b>[POST]</b>
         • /api/v1/updateuser/:id
 
-<a href="./Backend/auth.js">Authentication:</a>
+<a href="./routes/auth.js">Authentication:</a>
 <b>[GET]</b>
         • /api/v1/dummy
         • /api/v1/dashboard
@@ -29,7 +29,7 @@
         • /api/v1/tokenforreset
         • /api/v1/setNewPassword/:token
 
-<a href="./Backend/routes/events.js">Events:</a>
+<a href="./routes/events.js">Events:</a>
 <b>[GET]</b>
         • /api/v1/events
         • /api/v1/:id
