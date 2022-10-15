@@ -212,14 +212,6 @@ export const membersData = [
     linkedin: "https://www.linkedin.com/in/sayantanee-sinha-407b9b230",
   },
   {
-    name: "Shubh kumar",
-    batch: 2025,
-    role: 1,
-    img: require("../Assets/members/ShubhKumar.jpg"),
-    linkedin: "https://www.linkedin.com/in/shubh-kumar-733773187/",
-    github: "https://github.com/shubhyagami",
-  },
-  {
     name: "Siddharth Keshri",
     batch: 2023,
     role: 2,
