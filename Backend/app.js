@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieparser());
 app.use(
   cors({
-    origin: "http://aeccc.targettechnology.in",
+    origin: "https://aeccc.targettechnology.in",
     credentials: true,
   })
 );
