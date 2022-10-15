@@ -24,7 +24,8 @@ const MembersContainer = ({ memberFilter }) => {
       });
   } else if (memberFilter === "passout") {
     allMembers = membersData
-      .filter((member) => member.role === 4)
+      // .filter((member) => member.role === 4)
+      .filter((member) => member.batch <= new Date().getFullYear())
       .map((member) => {
         return <MemberCard member={member} memberFilter={memberFilter} key={uuidv4()} />;
       });

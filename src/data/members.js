@@ -141,12 +141,6 @@ export const membersData = [
     github: "https://github.com/kamran-hassan",
   },
   {
-    name: "Maharghya Hazra",
-    batch: 2024,
-    role: 1,
-    img: require("../Assets/members/MaharghyaHazra.jpg"),
-  },
-  {
     name: "Mayank Kumar Singh",
     batch: 2023,
     role: 1,
@@ -209,23 +203,6 @@ export const membersData = [
     img: require("../Assets/members/SaikatMukherjee.jpg"),
     linkedin: "https://www.linkedin.com/in/saikat-mukherjee-2a925b1b7/",
     github: "https://github.com/saikatmu31",
-  },
-  {
-    name: "Saurav Mukherjee",
-    batch: 2024,
-    role: 1,
-    img: require("../Assets/members/SauravMukherjee.jpg"),
-    linkedin: "https://www.linkedin.com/in/sauravmukherjee44/",
-    github: "https://github.com/SauravMukherjee44",
-    additional: "https://saurav-mukherjee.netlify.app/",
-  },
-  {
-    name: "Sayan Sen",
-    batch: 2025,
-    role: 1,
-    img: require("../Assets/members/SayanSen.jpeg"),
-    linkedin: "https://www.linkedin.com/in/sayan-sen-06b635221",
-    github: "https://github.com/sayansen2003",
   },
   {
     name: "Sayantanee Sinha",
@@ -322,13 +299,6 @@ export const membersData = [
     img: require("../Assets/members/UjjwalKumar.jpg"),
     linkedin: "https://www.linkedin.com/in/ujjwal-kumar-5994121b6",
     github: "https://github.com/triggeredujjwal",
-  },
-  {
-    name: "Upama Mukhopadhyay",
-    batch: 2024,
-    role: 1,
-    img: require("../Assets/members/UpamaMukhopadhyay.jpeg"),
-    linkedin: "https://www.linkedin.com/in/upama-m-8b6848204",
   },
   {
     name: "Varun Kedia",
